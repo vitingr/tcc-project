@@ -12,6 +12,10 @@ const PrivateRoute = ({ children }) => {
   const [isLogged, setIsLogged] = useState(true)
   const { push } = useRouter()
 
+  if (isLogged == false) {
+    push(APP_ROUTES.public.inicio)
+  }
+
   useEffect(() => {
     // Verificar se o usuário está autenticado 
     const isUserAuthenticated = () => {
@@ -22,11 +26,6 @@ const PrivateRoute = ({ children }) => {
       }
     }
     isUserAuthenticated()
-    console.log(session)
-    console.log(isLogged)
-    if (isLogged === false) {
-      push(APP_ROUTES.public.inicio)
-    }
   }, [push])
 
   return (

@@ -5,6 +5,7 @@ import Feed from '@components/Feed'
 import Sidebar from '@components/Sidebar/Sidebar'
 import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
+import Loader from '@components/Loader'
 
 export default function Home() {
 
@@ -24,10 +25,12 @@ export default function Home() {
     }
   }, [session])
 
-  return (
+  return session ? (
     <div className='home-container'>
       <Feed data={data} />
       <Sidebar data={data} />
     </div>
+  ) : (
+    <Loader />
   )
 }

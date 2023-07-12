@@ -1,9 +1,12 @@
 import React from 'react'
+import Post from './Post'
 
-const Posts = () => {
+const Posts = ({ posts }) => {
   return (
     <div className='publications-container'>
-      POSTS
+      {posts.map((post) => (
+        <Post post={post} />
+      ))}
     </div>
   )
 }

@@ -60,6 +60,7 @@ const AddExperience = ({ data, handleClick }) => {
 
         if (response.ok) {
           handleClick(false)
+          toast.success("Experiência Adicionada")
           router.push("/pages/usuario/profile")
         }
 

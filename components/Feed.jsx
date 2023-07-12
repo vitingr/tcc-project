@@ -1,12 +1,14 @@
 "use client"
 
 // Imports React
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { toast } from 'react-toastify'
 
 // Import Components
 import Posts from './Posts'
+import ToastMessage from '@components/ToastMessage'
 
 // Imports NextAuth
 import { useSession } from "next-auth/react"
@@ -17,25 +19,61 @@ import { IoPencilOutline, IoPeopleSharp, IoBusinessOutline, IoPodiumSharp, IoThu
 const Feed = ({ data }) => {
 
   const { data: session } = useSession()
-
   const [post, setPost] = useState("")
+  const [postagens, setPostagens] = useState([])
+
+  const fetchData = async () => {
+    const answer = await fetch(`/api/posts/${session?.user.id}`)
+    const data = await answer.json()
+    setPostagens(data)
+  }
 
   const createPost = async () => {
-    console.log(`POST CRIADO: ${post}`)
+    try {
+
+      const response = await fetch("/api/posts/new", {
+        method: "POST",
+        body: JSON.stringify({
+          userId: session?.user.id,
+          foto: "/assets/images/bg1.jpg",
+          nomeDono: data.nomeCompleto,
+          conteudo: post,
+          curtidas: 0,
+          compartilhamentos: 0
+        })
+      })
+
+      if (response.ok) {
+        fetchData()
+        toast.success("Post Criado com sucesso!")
+      } else {
+        toast.error("Houve um erro ao publicar o Post")
+      }
+
+    } catch (error) {
+      console.log(error)
+    }
   }
+
+  useEffect(() => {
+    if (session) {
+      fetchData()
+    }
+  }, [session])
 
   return (
     <div className='feed-container'>
+      <ToastMessage />
       <div className='actions-container'>
         <div className='home-profile'>
           <div className='background-home-profile'>
           </div>
           <div className='photo-home-profile center'>
-            <Image src={data.foto} width={100} height={100} className='medium-rounded-photo' alt='photo' />
+            <Image src={session?.user.image} width={100} height={100} className='medium-rounded-photo' alt='photo-left' />
           </div>
           <div className='info-home-profile'>
             <div className='home-basic-info'>
-              <Link href="/pages/usuario/profile">
+              <Link href="/usuario/profile">
               <h2>{data.nomeCompleto}</h2>
               </Link>
               <p>{data.email}</p>
@@ -82,7 +120,7 @@ const Feed = ({ data }) => {
 
         <div className='top-posts-container'>
           <div className='write-posts-container'>
-            <Image src={data.foto} width={100} height={100} className='very-small-rounded-photo' alt='photo' />
+            <Image src={session?.user.image} width={100} height={100} className='very-small-rounded-photo' alt='photo-post' />
             <input type="text" name="post-something" id="post-something" className='post-something' onChange={(e) => setPost(e.target.value)} />
           </div>
 
@@ -104,8 +142,7 @@ const Feed = ({ data }) => {
           </div>
         </div>
 
-
-        <Posts />
+        <Posts posts={postagens} />
 
       </div>
     </div>

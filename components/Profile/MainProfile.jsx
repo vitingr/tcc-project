@@ -98,7 +98,7 @@ const MainProfile = ({ data, setShowAddExperience, setShowAddCertificado }) => {
             <div>
               <h6>Sem dados...</h6>
               <p>Nenhuma informações sobre certificações disponível!</p>
-              <Link href="#top-profilm, e">
+              <Link href="#top-profile">
                 <div className='section-button center' onClick={() => setShowAddCertificado(true)}>
                   Adicionar Certificações
                 </div>

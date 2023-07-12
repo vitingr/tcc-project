@@ -1,10 +1,10 @@
 import {Schema, model, models} from "mongoose"
 
-const newPostagem = new Schema({
+const PostagemSchema = new Schema({
 
     dono: {
         type: Schema.Types.ObjectId,
-        ref: "usuarios",
+        ref: "User",
         required: true        
     },
     fotoDono: {
@@ -35,5 +35,5 @@ const newPostagem = new Schema({
 
 })
 
-const Postagem = models.Postagem || model('postagens', newPostagem);
+const Postagem = models.Postagem || model('Postagem', PostagemSchema);
 export default Postagem;

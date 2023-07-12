@@ -51,6 +51,7 @@ const AddCertificado = ({ data, handleClick }) => {
     
           if (response.ok) {
             handleClick(false)
+            toast.success("Certificado Adicionado")
             router.push("/pages/usuario/profile")
           } 
     
