@@ -8,33 +8,34 @@ import Link from 'next/link'
 import { IoEyeOutline } from 'react-icons/io5'
 import Certificado from './Certificado'
 import Experiencia from './Experiencia'
+import { infoUser } from '@utils/userContext'
 
-const MainProfile = ({ data, setShowAddExperience, setShowAddCertificado }) => {
+const MainProfile = ({ content, setShowAddExperience, setShowAddCertificado }) => {
 
   const [certificados, setCertificados] = useState([])
   const [experiencias, setExperiencias] = useState([])
 
-  const { data: session } = useSession()
+  const {data} = infoUser()
 
   useEffect(() => {
     const fetchData = async () => {
-      if (session !== undefined && data._id !== undefined) {
+      if (data !== undefined && data._id !== undefined) {
 
         // Fetch Certificados
-        const responseCertificados = await fetch(`/api/profile/certificado/user/${session?.user.id}`)
+        const responseCertificados = await fetch(`/api/profile/certificado/user/${data._id}`)
         const fetchCertificados = await responseCertificados.json()
         setCertificados(fetchCertificados)
 
         // Fetch Experiencias
-        const responseExperiencias = await fetch(`/api/profile/experiencia/user/${session?.user.id}`)
+        const responseExperiencias = await fetch(`/api/profile/experiencia/user/${data._id}`)
         const fetchExperiencias = await responseExperiencias.json()
         setExperiencias(fetchExperiencias)
       }
     }
-    if (session) {
+    if (data) {
       fetchData()
     }
-  }, [session])
+  }, [])
 
   return (
     <div className='main-profile-container'>
@@ -52,9 +53,9 @@ const MainProfile = ({ data, setShowAddExperience, setShowAddCertificado }) => {
       <div className='container-section-profile'>
         <div className='section-top'>
           <h3>Recursos</h3>
-          {data._id === session?.user.id ? (
+          {content._id === data._id ? (
             <span className='section-icon'>
-              <IoEyeOutline size={15} />
+              <IoEyeOutline size={15} /> 
               <p>somente você pode ver</p>
             </span>
           ) : (

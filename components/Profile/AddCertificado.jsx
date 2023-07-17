@@ -3,7 +3,6 @@
 // Imports React
 import React, { useState } from 'react'
 import { IoCloseSharp } from 'react-icons/io5'
-import { useRouter } from 'next/navigation'
 import { toast } from 'react-toastify'
 
 // Imports Components
@@ -12,7 +11,7 @@ import Popup from '@components/Popup'
 
 const AddCertificado = ({ data, handleClick }) => {
 
-  const router = useRouter()
+  const {getTheme} = infoUser()
   const [nomeCurso, setNomeCurso] = useState("")
   const [nomeInstituicao, setNomeInstituicao] = useState("")
   const [erros, setErros] = useState(false)
@@ -47,9 +46,9 @@ const AddCertificado = ({ data, handleClick }) => {
           })
         })
         if (response.ok) {
+          getTheme()
           handleClick(false)
           toast.success("Certificado Adicionado")
-          router.push("/pages/usuario/profile")
         }
       } catch (error) {
         console.log(error)

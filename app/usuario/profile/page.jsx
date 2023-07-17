@@ -10,30 +10,20 @@ import Sidebar from '@components/Sidebar/Sidebar'
 import Profile from '@components/Profile/Profile'
 import AddCertificado from '@components/Profile/AddCertificado'
 import AddExperience from '@components/Profile/AddExperience'
+import EditProfile from '@components/Profile/EditProfile'
 import Loader from '@components/Loader'
+import { infoUser } from '@utils/userContext'
 
 const page = () => {
 
-  const { data: session } = useSession()
-  const [data, setData] = useState([])
+  const { data } = infoUser()
   const [showAddExperience, setShowAddExperience] = useState(false)
   const [showAddCertificado, setShowAddCertificado] = useState(false)
+  const [showEditProfile, setShowEditProfile] = useState(false)
 
-  const getUser = async () => {
-    const response = await fetch(`/api/user/${session?.user.id}`)
-    const answer = await response.json()
-    setData(answer)
-  }
-
-  useEffect(() => {
-    if (session) {
-      getUser()
-    }
-  }, [session])
-
-  return session ? (
+  return data ? (
     <div className='profile-main-container'>
-      <Profile data={data} showAddExperience={setShowAddExperience} showAddCertificado={setShowAddCertificado} />
+      <Profile data={data} showAddExperience={setShowAddExperience} showAddCertificado={setShowAddCertificado} showEditProfile={setShowEditProfile} />
       <Sidebar data={data} />
       {showAddExperience ? (
         <AddExperience data={data} handleClick={setShowAddExperience} />
@@ -44,6 +34,11 @@ const page = () => {
         <AddCertificado data={data} handleClick={setShowAddCertificado} />
       ) : (
         <div className='display-none'></div>
+      )}
+      {showEditProfile ? (
+        <EditProfile data={data} handleClick={setShowEditProfile} />
+      ) : (
+        <div> </div>
       )}
 
     </div>

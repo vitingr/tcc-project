@@ -6,7 +6,7 @@ import { IoNewspaperOutline, IoMailOutline, IoSchoolOutline, IoCallOutline, IoGl
 // Imports Components
 import MainProfile from './MainProfile'
 
-const profile = ({ data, showAddExperience, showAddCertificado }) => {
+const profile = ({ data, showAddExperience, showAddCertificado, showEditProfile }) => {
 
   return (
     <div className='profile-container'>
@@ -23,7 +23,12 @@ const profile = ({ data, showAddExperience, showAddCertificado }) => {
           </div>
           <div className='profile-info'>
             <div className='top-profile-info'>
-              <h2>{data.nomeCompleto}</h2>
+              <div className='profile-name'>
+                <h2>{data.nomeCompleto}</h2>
+                <div className='edit-profile' onClick={() => showEditProfile(true)}>
+                  Editar Perfil
+                </div>
+              </div>
               <p className='pink-span'>{data.seguidores} seguidores</p>
             </div>
             <div className='main-profile-info'>
@@ -84,7 +89,7 @@ const profile = ({ data, showAddExperience, showAddCertificado }) => {
 
       </div>
       <div className='profile-container-main'>
-          <MainProfile data={data} setShowAddExperience={showAddExperience} setShowAddCertificado={showAddCertificado} />
+        <MainProfile content={data} setShowAddExperience={showAddExperience} setShowAddCertificado={showAddCertificado} />
       </div>
     </div>
   )

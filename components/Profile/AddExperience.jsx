@@ -3,16 +3,16 @@
 // Imports React
 import React, { useState } from 'react'
 import { IoCloseSharp } from 'react-icons/io5'
-import { useRouter } from 'next/navigation'
 import { toast } from 'react-toastify'
 import Popup from '@components/Popup'
 
 // Imports Components
 import ToastMessage from '@components/ToastMessage'
+import { infoUser } from '@utils/userContext'
 
 const AddExperience = ({ data, handleClick }) => {
 
-  const router = useRouter()
+  const {getTheme} = infoUser()
   const [empresa, setEmpresa] = useState("")
   const [cargo, setCargo] = useState("")
   const [erros, setErros] = useState(false)
@@ -54,9 +54,9 @@ const AddExperience = ({ data, handleClick }) => {
           })
         })
         if (response.ok) {
+          getTheme()
           handleClick(false)
           toast.success("Experiência Adicionada")
-          router.push("/pages/usuario/profile")
         }
       } catch (error) {
         console.log(error)

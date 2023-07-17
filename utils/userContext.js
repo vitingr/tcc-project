@@ -16,15 +16,14 @@ export const ThemeProvider = ({ children }) => {
 			const answer = await fetch(`/api/user/${session?.user.id}`)
 			const response = await answer.json()
 			setData(response)
-			console.log(response)
 
+			// Definir o tema
 			if (response.tema === "light") {
 				setTema("light")
 			}
 			if (response.tema === "dark") {
 				setTema("dark")
 			}
-			console.log(`TEMA ${tema}`)
 		} catch (error) {
 			console.log(error)
 		}
@@ -37,10 +36,10 @@ export const ThemeProvider = ({ children }) => {
 	}, [session])
 
 	return (
-		<ThemeContext.Provider value={{ tema, setTema }}>
+		<ThemeContext.Provider value={{ tema, setTema, data, setData, getTheme }}>
 			{children}
 		</ThemeContext.Provider>
 	)
 }
 
-export const userTheme = () => useContext(ThemeContext)
+export const infoUser = () => useContext(ThemeContext)

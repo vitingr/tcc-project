@@ -7,7 +7,7 @@ import React, { useContext, useEffect } from "react"
 import Navbar from "@components/Navbar"
 import Footer from "@components/Footer"
 import Provider from "@components/Provider"
-import { ThemeProvider } from "@utils/ThemeContext"
+import { ThemeProvider } from "@utils/userContext"
 
 // Import Functions
 import { usePathname } from "next/navigation"

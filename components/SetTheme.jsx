@@ -1,11 +1,11 @@
 "use client"
 
 import React from 'react'
-import { userTheme } from '@utils/ThemeContext'
+import { infoUser } from '@utils/userContext'
 
 const setTheme = ({children}) => {
 
-    const {tema} = userTheme()
+    const {tema} = infoUser()
     if (tema === "light") {
         document.documentElement.style.setProperty('--font-color', '#2f3234');
         document.documentElement.style.setProperty('--font-color-low-emphasis', 'rgba(0, 0, 0, 0.6)');
@@ -31,6 +31,58 @@ const setTheme = ({children}) => {
         document.documentElement.style.setProperty('--background-color', '#252145');
         document.documentElement.style.setProperty('--container-color', '#2f2c55');
     }
+
+    if (tema === "old") {
+      document.documentElement.style.setProperty('--font-color', '#f0efff');
+      document.documentElement.style.setProperty('--font-color-low-emphasis', 'f0efff7e');
+      document.documentElement.style.setProperty('--color1', '#5864fd');
+      document.documentElement.style.setProperty('--color2', '#243f82');
+      document.documentElement.style.setProperty('--color3', '#6570dc');
+      document.documentElement.style.setProperty('--color4', '#5864fd');
+      document.documentElement.style.setProperty('--color5', '#2c3972');
+      document.documentElement.style.setProperty('--color6', '#b0b7f5');
+      document.documentElement.style.setProperty('--background-color', '#252145');
+      document.documentElement.style.setProperty('--container-color', '#2f2c55');
+  }
+
+  if (tema === "alternative1") {
+    document.documentElement.style.setProperty('--font-color', '#f0efff');
+    document.documentElement.style.setProperty('--font-color-low-emphasis', 'f0efff7e');
+    document.documentElement.style.setProperty('--color1', '#5864fd');
+    document.documentElement.style.setProperty('--color2', '#243f82');
+    document.documentElement.style.setProperty('--color3', '#6570dc');
+    document.documentElement.style.setProperty('--color4', '#5864fd');
+    document.documentElement.style.setProperty('--color5', '#2c3972');
+    document.documentElement.style.setProperty('--color6', '#b0b7f5');
+    document.documentElement.style.setProperty('--background-color', '#252145');
+    document.documentElement.style.setProperty('--container-color', '#2f2c55');
+}
+
+if (tema === "alternative2") {
+  document.documentElement.style.setProperty('--font-color', '#f0efff');
+  document.documentElement.style.setProperty('--font-color-low-emphasis', 'f0efff7e');
+  document.documentElement.style.setProperty('--color1', '#5864fd');
+  document.documentElement.style.setProperty('--color2', '#243f82');
+  document.documentElement.style.setProperty('--color3', '#6570dc');
+  document.documentElement.style.setProperty('--color4', '#5864fd');
+  document.documentElement.style.setProperty('--color5', '#2c3972');
+  document.documentElement.style.setProperty('--color6', '#b0b7f5');
+  document.documentElement.style.setProperty('--background-color', '#252145');
+  document.documentElement.style.setProperty('--container-color', '#2f2c55');
+}
+
+if (tema === "glassmorphism") {
+  document.documentElement.style.setProperty('--font-color', '#f0efff');
+  document.documentElement.style.setProperty('--font-color-low-emphasis', 'f0efff7e');
+  document.documentElement.style.setProperty('--color1', '#5864fd');
+  document.documentElement.style.setProperty('--color2', '#243f82');
+  document.documentElement.style.setProperty('--color3', '#6570dc');
+  document.documentElement.style.setProperty('--color4', '#5864fd');
+  document.documentElement.style.setProperty('--color5', '#2c3972');
+  document.documentElement.style.setProperty('--color6', '#b0b7f5');
+  document.documentElement.style.setProperty('--background-color', 'url(/assets/images/bg1.jpg)');
+  document.documentElement.style.setProperty('--container-color', '#2f2c55');
+}
 
   return (
     <div>

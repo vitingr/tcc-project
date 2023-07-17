@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Theme = ({ image, title, color1, color2, color3, color4, color5}) => {
+const Theme = ({ image, title, color1, color2, color3, color4, color5, handleClick, tema}) => {
   return (
-    <div className='theme-option'>
+    <div className='theme-option' onClick={() => handleClick(`${tema}`)}>
         <div className='theme-photo-container'>
             <img src={image} alt="background" className='theme-image' />
         </div>
