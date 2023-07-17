@@ -3,15 +3,17 @@
 import "@style/global.css"
 
 // Imports Components
-import React, { useEffect } from "react"
+import React, { useContext, useEffect } from "react"
 import Navbar from "@components/Navbar"
 import Footer from "@components/Footer"
 import Provider from "@components/Provider"
+import { ThemeProvider } from "@utils/ThemeContext"
 
 // Import Functions
 import { usePathname } from "next/navigation"
 import { checkIsPublicRoute } from "@functions/check-route"
 import PrivateRoute from "@components/PrivateRoute"
+import SetTheme from "@components/SetTheme"
 
 export const metadata = {
   title: 'Linkedin Fake',
@@ -38,13 +40,20 @@ export default function RootLayout({ children }) {
           {isPublic && children}
 
           {!isPublic && (
-            <PrivateRoute>
-              <Navbar />
-              <main className="main-container center">
-                {children}
-              </main>
-              <Footer />
-            </PrivateRoute>
+            <ThemeProvider>
+              <PrivateRoute>
+                <SetTheme>
+                  <Navbar />
+                  <div className="main">
+                    <div className="gradient"></div>
+                  </div>
+                  <main className="main-container center">
+                    {children}
+                  </main>
+                  <Footer />
+                </SetTheme>
+              </PrivateRoute>
+            </ThemeProvider>
           )}
         </Provider>
       </body>

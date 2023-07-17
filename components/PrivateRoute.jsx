@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 
 import { APP_ROUTES } from '@constants/app-routes'
 import { useSession } from 'next-auth/react'
+import { getServerSession } from 'next-auth'
 
 const PrivateRoute = ({ children }) => {
 
@@ -13,7 +14,7 @@ const PrivateRoute = ({ children }) => {
   const { push } = useRouter()
 
   if (isLogged == false) {
-    push(APP_ROUTES.public.inicio)
+    push(APP_ROUTES.public.login)
   }
 
   useEffect(() => {
@@ -25,6 +26,7 @@ const PrivateRoute = ({ children }) => {
         setIsLogged(false)
       }
     }
+    console.log(session)
     isUserAuthenticated()
   }, [push])
 

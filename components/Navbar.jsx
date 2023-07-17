@@ -53,7 +53,7 @@ const Navbar = () => {
 								</Link>
 							</li>
 							<li>
-								<Link href="/usuario/profile" className='link-nav center'>
+								<Link href="/usuario/settings" className='link-nav center'>
 									<div><IoSettingsSharp size={17.5} /></div>
 									<p>Settings</p>
 								</Link>

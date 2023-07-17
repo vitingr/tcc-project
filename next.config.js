@@ -4,6 +4,7 @@ const nextConfig = {
         appDir: true,
         serverComponentsExternalPackages: ["mongoose"],
     },
+    reactStrictMode: false,
     images: {
         domains: ['lh3.googleusercontent.com'],
     },

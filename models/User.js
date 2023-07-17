@@ -96,6 +96,11 @@ const UserSchema = new Schema({
     novoUsuario: {
         type: Number,
         default: true
+    },
+    tema: {
+        type: String,
+        default: "light",
+        required: true
     }
 
 })
