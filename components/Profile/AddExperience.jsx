@@ -12,12 +12,15 @@ import { infoUser } from '@utils/userContext'
 
 const AddExperience = ({ data, handleClick }) => {
 
-  const {getTheme} = infoUser()
+  const {getInfo} = infoUser()
   const [empresa, setEmpresa] = useState("")
   const [cargo, setCargo] = useState("")
   const [erros, setErros] = useState(false)
 
   const createExperiencia = async (e) => {
+
+    e.preventDefault()
+
     if (empresa.length > 35) {
       toast.error("O nome da empresa é muito longa")
       setErros(true)
@@ -54,7 +57,7 @@ const AddExperience = ({ data, handleClick }) => {
           })
         })
         if (response.ok) {
-          getTheme()
+          getInfo()
           handleClick(false)
           toast.success("Experiência Adicionada")
         }
@@ -76,7 +79,7 @@ const AddExperience = ({ data, handleClick }) => {
           <p>Cargo</p>
           <input type="text" name="cargo" id="add-input" className='add-input' placeholder='ex: Auxiliar de Administração.' autoComplete='off' maxLength={40} minLength={4} onChange={(e) => setCargo(e.target.value)} required />
         </div>
-        <button type="submit" className='add-button center' onClick={(e) => createExperiencia()}>
+        <button type="submit" className='add-button center' onClick={(e) => createExperiencia(e)}>
           Adicionar
         </button>
       </form>

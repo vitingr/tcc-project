@@ -47,7 +47,7 @@ const Navbar = () => {
 								</Link>
 							</li>
 							<li>
-								<Link href="#" className='link-nav center'>
+								<Link href="/usuario/notificacoes" className='link-nav center'>
 									<div><IoNotifications size={17.5} /></div>
 									<p>Notif.</p>
 								</Link>

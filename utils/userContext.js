@@ -11,7 +11,7 @@ export const ThemeProvider = ({ children }) => {
 	const [tema, setTema] = useState("")
 	const [data, setData] = useState([])
 
-	const getTheme = async () => {
+	const getInfo = async () => {
 		try {
 			const answer = await fetch(`/api/user/${session?.user.id}`)
 			const response = await answer.json()
@@ -31,12 +31,12 @@ export const ThemeProvider = ({ children }) => {
 
 	useEffect(() => {
 		if (session != undefined || session != null) {
-			getTheme()
+			getInfo()
 		}
 	}, [session])
 
 	return (
-		<ThemeContext.Provider value={{ tema, setTema, data, setData, getTheme }}>
+		<ThemeContext.Provider value={{ tema, setTema, data, setData, getInfo }}>
 			{children}
 		</ThemeContext.Provider>
 	)

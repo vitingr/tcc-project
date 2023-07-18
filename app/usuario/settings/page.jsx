@@ -10,7 +10,7 @@ import ToastMessage from '@components/ToastMessage'
 
 const page = () => {
 
-  const { data, getTheme } = infoUser()
+  const { data, getInfo } = infoUser()
   const [theme, setTheme] = useState("")
 
   const changeTheme = async (tema) => {
@@ -24,7 +24,7 @@ const page = () => {
       })
 
       if (response.ok) {
-        getTheme()
+        getInfo()
         toast.success("Tema do usuário alterado com sucesso")
       } else {
         toast.error("Erro ao alterar o tema do usuário")

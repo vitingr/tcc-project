@@ -11,12 +11,15 @@ import Popup from '@components/Popup'
 
 const AddCertificado = ({ data, handleClick }) => {
 
-  const {getTheme} = infoUser()
+  const {getInfo} = infoUser()
   const [nomeCurso, setNomeCurso] = useState("")
   const [nomeInstituicao, setNomeInstituicao] = useState("")
   const [erros, setErros] = useState(false)
 
   const createCertificado = async (e) => {
+
+    e.preventDefault()
+
     if (nomeCurso.length > 30) {
       toast.error("O nome do curso é muito longo")
       setErros(true)
@@ -46,7 +49,7 @@ const AddCertificado = ({ data, handleClick }) => {
           })
         })
         if (response.ok) {
-          getTheme()
+          getInfo()
           handleClick(false)
           toast.success("Certificado Adicionado")
         }
@@ -71,7 +74,7 @@ const AddCertificado = ({ data, handleClick }) => {
             <option value="teste">teste</option>
           </select>
         </div>
-        <button type="submit" className='add-button center' onClick={(e) => createCertificado()}>
+        <button type="submit" className='add-button center' onClick={(e) => createCertificado(e)}>
           Adicionar
         </button>
       </form>

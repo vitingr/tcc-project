@@ -1,6 +1,6 @@
 import {Schema, model, models} from "mongoose"
 
-const newNotificacao = new Schema({
+const NotificaoSchema = new Schema({
 
     dono: {
         type: Schema.Types.ObjectId,
@@ -27,5 +27,5 @@ const newNotificacao = new Schema({
 
 })
 
-const Notificacao = models.Notificacao || model('notificacoes', newNotificacao);
+const Notificacao = models.Notificacao || model('Notificacao', NotificaoSchema);
 export default Notificacao;

@@ -21,6 +21,7 @@
 	--color6: #e394b1;
 	--background-color: #e2e6e9;
 	--container-color: #fafafa; 
+	--friend-color: #fff;
 }
 
 /* --font-color: #f0efff;
@@ -188,7 +189,7 @@ html {
 	margin-top: -150px;
 	position: absolute;
 	width: 100%;
-	height: 140%;
+	height: 180%;
 	backdrop-filter: blur(6px);
 	-webkit-backdrop-filter: blur(6px);
 	border-radius: 10px;
@@ -218,6 +219,13 @@ html {
 	background: linear-gradient(-45deg, var(--color1), var(--color2), var(--color4), var(--color5), #f3e308);
 	animation: gradiente 7.5s ease-in-out alternate infinite;
 	background-size: 300%;
+}
+
+.edit-profile-form {
+	display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 700px;
 }
 
 /* -=-=- CONFIGURAÇÕES NAVBAR -=-=- */
@@ -884,7 +892,7 @@ html {
 	box-shadow: 0 8px 32px 0 rgba(41, 41, 41, 0.37);
 	border-radius: 10px;
 	border: 1px solid #3333332a;
-	width: 500px;
+	max-width: 625px;
 	min-height: 300px;
 	background: var(--container-color);
 	padding: 25px 35px 35px 35px;
@@ -924,10 +932,37 @@ html {
 	border-radius: 20px;
 	transition-timing-function: ease-in-out;
 	transition-duration: 0.3s;
+	color: white;
 }
 
 .edit-profile:hover {
 	background: var(--color3);
+}
+
+.edit-profile-types {
+	margin: 50px 0px 50px 0px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 50px;
+	width: 100%;
+}
+
+.edit-profile-type {
+	cursor: pointer;
+	border-bottom: 1px solid var(--color1);
+	padding: 10px;
+	transition-timing-function: ease-in-out;
+	transition-duration: 0.3s;
+}
+
+.edit-profile-type:hover {
+	background: var(--color1);
+	color: white;
+}
+
+.edit-profile-container {
+	min-height: 700px;
 }
 
 /* -=-=- AMIGOS -=-=- */
@@ -1022,10 +1057,9 @@ html {
 .friend-option {
 	border-radius: 10px;
 	border: 1px solid #33333317;
-	max-width: 300px;
+	width: 300px;
 	height: 315px;
-	width: 100%;
-	background: var(--background-color);
+	background: var(--friend-color);
 }
 
 .friend-bg {
@@ -1095,6 +1129,11 @@ html {
 	font-size: 16px;
 }
 
+.input-add-container .tox-tinymce {
+	height: 265px !important;
+	margin-bottom: 25px;
+}
+
 .add-input {
 	font-size: 16px;
 	outline: 0;
@@ -1107,6 +1146,7 @@ html {
 }
 
 .add-button {
+	width: 100%;
 	cursor: pointer;
 	margin-top: 15px;
 	border-radius: 10px;
@@ -1314,6 +1354,78 @@ html {
 	gap: 6.5px;
 }
 
+/* -=-=- EDITAR PERFIL -=-=- */
+
+.edit-photos-container {
+	margin-top: 10px;
+}
+
+.edit-photo-profile {
+	display: flex;
+	gap: 20PX;
+	margin-bottom: 20px;
+}
+
+.left-edit-photo img {
+	border-radius: 5px;
+	width: 90px;
+	height: 90px;
+	transition-timing-function: ease-in-out;
+	transition-duration: 0.3s;
+}
+
+.left-edit-photo img:hover {
+	cursor: pointer;
+	transform: scale(1.05);
+}
+
+.right-edit-photo h2 {
+	font-size: 16px;
+	font-weight: 500;
+	margin-bottom: 5px;
+}
+
+/* -=-=- NOTIFICAÇÕES -=-=- */
+
+.notificacoes-container {
+	border-radius: 7.5px;
+	background: var(--container-color);
+	max-width: 650px;
+	width: 100%;
+	padding: 25px;
+}
+
+.notificacao {
+	border-radius: 5px;
+	padding: 35px 15px 35px 15px;
+	width: 100%;
+	display: flex;
+	gap: 15px;
+	transition-timing-function: ease-in-out;
+	transition-duration: 0.3s;
+}
+
+.notificacao:hover {
+	background: var(--background-color);
+}
+
+.notificacao-image {
+	display: flex;
+	align-items: center;
+}
+
+.notificacao-content {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.notificacao-actions {
+	display: flex;
+	align-items: center;
+	padding: 0px 15px 0px 15px;
+}
+
 /* -=-=- ANIMAÇÕES -=-=- */
 
 @keyframes gradiente {
@@ -1405,7 +1517,7 @@ html {
 		justify-content: center;
 	}
 
-	.actions-navbar,
+	/* .actions-navbar,
 	.search-content,
 	.nav-content {
 		display: none;
@@ -1413,11 +1525,19 @@ html {
 
 	.navbar {
 		justify-content: flex-end;
-	}
+	} */
 
 	.menu-navbar {
 		display: block;
 		cursor: pointer;
 		padding-right: 25px;
+	}
+
+	.notificacoes-container {
+		padding: 0;
+	}
+
+	.notificacao-content p {
+		font-size: 12px;
 	}
 }
