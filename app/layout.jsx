@@ -1,5 +1,3 @@
-"use client"
-
 import "@style/global.css"
 
 // Imports Components
