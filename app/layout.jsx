@@ -1,3 +1,4 @@
+"use client"
 
 import "@style/global.css"
 
