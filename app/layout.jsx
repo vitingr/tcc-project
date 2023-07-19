@@ -1,7 +1,7 @@
 import "@style/global.css"
 
 // Imports Components
-import React, { useContext, useEffect } from "react"
+import React from "react"
 import Navbar from "@components/Navbar"
 import Footer from "@components/Footer"
 import Provider from "@components/Provider"
