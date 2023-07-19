@@ -15,12 +15,12 @@ import { checkIsPublicRoute } from "@functions/check-route"
 import PrivateRoute from "@components/PrivateRoute"
 import SetTheme from "@components/SetTheme"
 
-export const metadata = {
-  title: 'Linkedin Fake',
-  description: 'Grupo do TCC',
-}
-
 export default function RootLayout({ children }) {
+
+  const metadata = {
+    title: 'Linkedin Fake',
+    description: 'Grupo do TCC',
+  }
 
   const path = usePathname()
 
