@@ -3,7 +3,7 @@ export const APP_ROUTES = {
         usuario: "/usuario/feed"
     },
     public: {
-        login: "/inicio/login",
+        login: "/",
         cadastro: "/inicio/cadastro"
     }
 }

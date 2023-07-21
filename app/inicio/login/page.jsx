@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 // Imports NextAuth
-import { signIn, signOut, useSession, getProviders } from "next-auth/react";
+import { signIn, useSession, getProviders } from "next-auth/react";
 
 // Import Icons
 import { IoMailSharp, IoLockClosed, IoPersonSharp, IoLogoGoogle, IoLogoInstagram, IoLogoFacebook, IoLogoTwitter, IoLogoTwitch } from 'react-icons/io5'
@@ -78,7 +78,7 @@ const page = () => {
             </div>
           </div>
           <div className='register-login-more'>
-            <Link href="/inicio/cadastro">
+            <Link href="/">
               Não possui uma conta? clique <span className='pink-span'>aqui</span>
             </Link>
           </div>

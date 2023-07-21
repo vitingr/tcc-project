@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48.11" height="48.03" viewBox="0 0 48.11 48.03" id="company-small" data-supported-dps="48x48">
+  <path d="M7.14 16h13.91v32h-17V19.07A3.07 3.07 0 017.12 16z" fill="#788fa5"/>
+  <path d="M18.77 42h2.28V16h-8v20.17a5.91 5.91 0 001.68 4.14 5.67 5.67 0 004 1.71z" fill="#56687a"/>
+  <path fill="#c0d1e2" d="M21.05.03v47.99h24V.03h-24z"/>
+  <circle cx="8.05" cy="37.02" r="7" fill="#9db88f"/>
+  <path d="M7.05 48v-8a1.15 1.15 0 011-1 1.13 1.13 0 011 1v8z" fill="#d7ebce"/>
+  <path fill="#dce6f1" d="M29.05 8.02h16v36h-16z"/>
+  <path fill="#56687a" d="M29.05 8.02h16v2h-16zM29.05 17.02h16v2h-16zM29.05 26.02h16v2h-16zM29.05 35.02h16v2h-16z"/>
+</svg>

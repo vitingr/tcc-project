@@ -33,7 +33,7 @@ const TextEditor = () => {
 			/>
 			{/* <button onClick={log}>Log editor content</button> */}
 		</>
-	);
+	)
 }
 
 export default TextEditor

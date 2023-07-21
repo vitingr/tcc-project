@@ -5,30 +5,31 @@ import { useRouter } from 'next/navigation'
 
 import { APP_ROUTES } from '@constants/app-routes'
 import { useSession } from 'next-auth/react'
-import { getServerSession } from 'next-auth'
 
 const PrivateRoute = ({ children }) => {
 
-  const { data: session } = useSession()
+  const { data: session, status } = useSession()
   const [isLogged, setIsLogged] = useState(true)
-  const { push } = useRouter()
 
-  if (isLogged == false) {
-    push(APP_ROUTES.public.login)
-  }
+  const router = useRouter()
 
   useEffect(() => {
     // Verificar se o usuário está autenticado 
     const isUserAuthenticated = () => {
-      if (session) {
-        setIsLogged(true)
+
+      if (status == 'loading') {
+        // A sessão ainda está sendo carregada, não faz nada neste momento.
       } else {
-        setIsLogged(false)
+        if (status == "unauthenticated") {
+          router.push(APP_ROUTES.public.login)
+        } 
+        if (status == "authenticated") {
+          setIsLogged(true)
+        }
       }
     }
-    console.log(session)
     isUserAuthenticated()
-  }, [push])
+  }, [session])
 
   return (
     <>

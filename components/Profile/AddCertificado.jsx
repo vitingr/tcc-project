@@ -8,6 +8,7 @@ import { toast } from 'react-toastify'
 // Imports Components
 import ToastMessage from '@components/ToastMessage'
 import Popup from '@components/Popup'
+import { infoUser } from '@utils/userContext'
 
 const AddCertificado = ({ data, handleClick }) => {
 
@@ -45,7 +46,7 @@ const AddCertificado = ({ data, handleClick }) => {
             userId: data._id,
             nome: nomeCurso,
             unidade: nomeInstituicao,
-            foto: "/assets/images/bg1.jpg"
+            foto: "/assets/image s/bg1.jpg"
           })
         })
         if (response.ok) {

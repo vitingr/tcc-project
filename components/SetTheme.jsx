@@ -17,7 +17,7 @@ const setTheme = ({ children }) => {
     document.documentElement.style.setProperty('--color6', '#e394b1');
     document.documentElement.style.setProperty('--background-color', '#e2e6e9');
     document.documentElement.style.setProperty('--container-color', '#fafafa');
-    document.documentElement.style.setProperty('--friend - color', '#fff');
+    document.documentElement.style.setProperty('--friend-color', '#fff');
   }
 
   if (tema === "dark") {
@@ -31,7 +31,7 @@ const setTheme = ({ children }) => {
     document.documentElement.style.setProperty('--color6', '#b0b7f5');
     document.documentElement.style.setProperty('--background-color', '#252145');
     document.documentElement.style.setProperty('--container-color', '#2f2c55');
-    document.documentElement.style.setProperty('--friend - color', '#252145');
+    document.documentElement.style.setProperty('--friend-color', '#252145');
   }
 
   if (tema === "old") {

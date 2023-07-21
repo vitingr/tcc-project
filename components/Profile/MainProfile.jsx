@@ -1,7 +1,7 @@
 "use client"
 
 // Imports NextAuth
-import { useSession } from 'next-auth/react'
+
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 
@@ -19,8 +19,7 @@ const MainProfile = ({ content, setShowAddExperience, setShowAddCertificado }) =
 
   useEffect(() => {
     const fetchData = async () => {
-      if (data !== undefined && data._id !== undefined) {
-
+      try {
         // Fetch Certificados
         const responseCertificados = await fetch(`/api/profile/certificado/user/${data._id}`)
         const fetchCertificados = await responseCertificados.json()
@@ -30,6 +29,8 @@ const MainProfile = ({ content, setShowAddExperience, setShowAddCertificado }) =
         const responseExperiencias = await fetch(`/api/profile/experiencia/user/${data._id}`)
         const fetchExperiencias = await responseExperiencias.json()
         setExperiencias(fetchExperiencias)
+      } catch (error) {
+        console.log(error)
       }
     }
     if (data) {

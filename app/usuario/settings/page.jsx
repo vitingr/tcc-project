@@ -42,10 +42,10 @@ const page = () => {
         <h1 className='settings-title'>Informações Pessoais</h1>
         <div className='main-settings-section'>
           <div className='settings-item'>
-            Nome do Usuário: <span className='low-emphasis-span'> Alfredo Bundudo</span>
+            Nome do Usuário: <span className='low-emphasis-span'> {data.nomeCompleto}</span>
           </div>
           <div className='settings-item'>
-            Email: <span className='low-emphasis-span'> alfredo@gmail.com</span>
+            Email: <span className='low-emphasis-span'> {data.email}</span>
           </div>
           <div className='settings-item'>
             Local: <span className='low-emphasis-span'> Santa Bárbara d'Oeste, SP - Brasil</span>

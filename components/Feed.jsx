@@ -35,7 +35,7 @@ const Feed = ({ data }) => {
         method: "POST",
         body: JSON.stringify({
           userId: session?.user.id,
-          foto: "/assets/images/bg1.jpg",
+          foto: data.foto,
           nomeDono: data.nomeCompleto,
           conteudo: post,
           curtidas: 0,
@@ -45,6 +45,7 @@ const Feed = ({ data }) => {
 
       if (response.ok) {
         fetchData()
+        setPost("")
         toast.success("Post Criado com sucesso!")
       } else {
         toast.error("Houve um erro ao publicar o Post")
@@ -74,13 +75,13 @@ const Feed = ({ data }) => {
           <div className='info-home-profile'>
             <div className='home-basic-info'>
               <Link href="/usuario/profile">
-              <h2>{data.nomeCompleto}</h2>
+                <h2>{data.nomeCompleto}</h2>
               </Link>
               <p>{data.email}</p>
             </div>
             <div className='home-friends'>
               <div>
-                <Link href="/pages/usuario/amigos">
+                <Link href="/usuario/amigos">
                   <h4>Amizades</h4>
                   <p>Adicione amigos</p>
                 </Link>
@@ -90,14 +91,18 @@ const Feed = ({ data }) => {
               </div>
             </div>
             <div className='home-options'>
-              <li className='icon-cursor'>
-                <div className='center'><IoPeopleSharp size={15} /></div>
-                <div>Ver amizades</div>
-              </li>
-              <li className='icon-cursor'>
-                <div className='center'><IoBusinessOutline size={15} /></div>
-                <div>Conta Empresarial</div>
-              </li>
+              <Link href="/usuario/amigos">
+                <li className='icon-cursor'>
+                  <div className='center'><IoPeopleSharp size={15} /></div>
+                  <div>Ver amizades</div>
+                </li>
+              </Link>
+              <Link href="/empresa">
+                <li className='icon-cursor'>
+                  <div className='center'><IoBusinessOutline size={15} /></div>
+                  <div>Conta Empresarial</div>
+                </li>
+              </Link>
               <li className='icon-cursor'>
                 <div className='center'><IoPencilOutline size={15} /></div>
                 <div>Editar perfil</div>
@@ -108,7 +113,7 @@ const Feed = ({ data }) => {
               </li>
               <li className='icon-cursor'>
                 <div className='center'><IoPodiumSharp size={15} /></div>
-                <div>Atividade perfil</div>
+                <div className='center'>Atividade perfil</div>
               </li>
             </div>
           </div>
