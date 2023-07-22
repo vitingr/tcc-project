@@ -1,6 +1,6 @@
 import {Schema, model, models} from "mongoose"
 
-const newPagina = new Schema({
+const PaginaSchema = new Schema({
 
     dono: {
         type: Schema.Types.ObjectId,
@@ -46,5 +46,5 @@ const newPagina = new Schema({
 
 })
 
-const Pagina = models.Pagina || model('paginas', newPagina);
+const Pagina = models.Pagina || model('mundoebebersssoeeds', PaginaSchema);
 export default Pagina;

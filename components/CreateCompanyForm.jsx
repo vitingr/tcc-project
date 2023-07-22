@@ -1,7 +1,13 @@
+"use client"
+
+// Imports React
 import React from 'react'
 import TextEditor from './TextEditor'
 
-const CreateCompanyForm = ({ title, nome, website, industria, tamanho, tipo, descricao, confirm, handleClick }) => {
+// Import Components
+import UploadPhoto from './UploadPhoto'
+
+const CreateCompanyForm = ({ title, nome, website, industria, tamanho, tipo, descricao, photo, confirm, handleClick }) => {
 	return (
 		<div className='create-company-form'>
 
@@ -22,18 +28,22 @@ const CreateCompanyForm = ({ title, nome, website, industria, tamanho, tipo, des
 
 				<div className='input-create-company-container'>
 					<p>Website <span className='pink-span'>*</span></p>
-					<input type="text" name="nome" id="nome" className='input-create-company' placeholder={`Digite um nome para a sua ${title}`} onChange={(e) => website(e.target.value)} autoComplete='off' maxLength={60} minLength={2} required />
+					<input type="text" name="website" id="website" className='input-create-company' placeholder={`O domínio da sua ${title} na internet`} onChange={(e) => website(e.target.value)} autoComplete='off' maxLength={75} minLength={6} required />
 				</div>
 
 				<div className='input-create-company-container'>
 					<p>Descrição <span className='pink-span'>*</span></p>
-					<TextEditor />
+					<input type="text" name="descricao" id="descricao" className='input-create-company' placeholder={`Coloque uma breve descrição`} onChange={(e) => website(e.target.value)} autoComplete='off' maxLength={75} minLength={6} required />
 				</div>
 
 				<div className='input-create-company-container'>
 					<p>Indústria <span className='pink-span'>*</span></p>
-					<input type="text" name="nome" id="nome" className='input-create-company' placeholder={`Digite um nome para a sua ${title}`} onChange={(e) => industria(e.target.value)} autoComplete='off' maxLength={60} minLength={2} required />
+					<input type="text" name="industria" id="industria" className='input-create-company' placeholder={`Informe o ramo da sua ${title}`} onChange={(e) => industria(e.target.value)} autoComplete='off' maxLength={40} minLength={2} required />
 				</div>
+
+				<UploadPhoto />
+
+				{/* <input type="file" name="baby" id="baby" onChange={(e) => photo(e.target.value)} /> */}
 
 				<div className='input-create-company-container'>
 					<p>Tamanho da {title} <span className='pink-span'>*</span></p>
