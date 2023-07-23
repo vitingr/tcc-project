@@ -1,27 +1,21 @@
 "use client"
 
 import React, { useState } from 'react'
+import { CldUploadButton } from 'next-cloudinary'
+import {IoCameraSharp} from 'react-icons/io5'
+import axios from 'axios'
 
 const UploadPhoto = () => {
 
   const [file, setFile] = useState()
 
-  const handleChange = async (e) => {
-    setFile(e.target.files[0])
-
-    const formData = new FormData()
-    formData.append('file', file)
-   
+  const handleUpload = async (e) => {
+    
+    console.log(e)
     try {
-      const response = await fetch("/api/upload", {
-        method: "POST",
-        body: formData
+      axios.post("/api/upload", {
+        image: e.info.secure_url 
       })
-
-      if (response.ok) {
-        console.log(response.data)
-      }
-
     } catch (error) {
       console.log(error)
     }
@@ -29,7 +23,9 @@ const UploadPhoto = () => {
 
   return (
     <div className='uploadPhoto-container'>
-      <input type="file" onChange={(e) => handleChange(e)} />
+      <CldUploadButton options={{maxFiles: 1}} onUpload={handleUpload} uploadPreset='m3k11e7o'>
+        <IoCameraSharp size={20} />
+      </CldUploadButton>
     </div>
   )
 }

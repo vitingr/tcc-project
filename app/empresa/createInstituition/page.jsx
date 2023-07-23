@@ -4,12 +4,14 @@ import React, { useState } from 'react'
 import CreateCompanyForm from '@components/CreateCompanyForm'
 import { infoUser } from '@utils/userContext'
 import { toast } from 'react-toastify'
+import { useRouter } from 'next/navigation'
 
 // Imports Components
 import ToastMessage from '@components/ToastMessage'
 
 const page = () => {
 
+	const router = useRouter()
 	const { data } = infoUser()
 
 	const [nome, setNome] = useState("")
@@ -50,6 +52,7 @@ const page = () => {
 				method: "POST",
 				body: JSON.stringify({
 					userId: data._id,
+					modelo: "instituicao",
 					nome: nome,
 					website: website,
 					industria: industria,
@@ -59,6 +62,8 @@ const page = () => {
 			})
 
 			if (response.ok) {
+				toast.success("Empresa Criada com Sucesso")
+				router.push("/usuario/feed")
 
 			} else {
 				console.log(response)

@@ -18,7 +18,7 @@ function gerarURL() {
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, "./uploads/")
+        cb(null, "public/assets/uploads/")
     },
     filename: function (req, file, cb) {
         const nomeArquivo = gerarURL()
@@ -27,3 +27,5 @@ const storage = multer.diskStorage({
 })
 
 const upload = multer({ storage: storage })
+
+export default upload
