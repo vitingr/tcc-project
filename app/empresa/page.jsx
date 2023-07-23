@@ -1,8 +1,12 @@
 "use client"
 
+// Imports React
 import { infoUser } from '@utils/userContext'
 import React, { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+
+// Imports Components
+import MainCompany from '@components/Company/MainCompany'
 
 const page = () => {
 
@@ -11,7 +15,7 @@ const page = () => {
 
   useEffect(() => {
     if (data) {
-      if (data.tipoConta == "empresarial") {
+      if (data.tipoConta == "instituicao" || data.tipoConta == "empresa") {
         console.log("Conta Empresarial")
       } else {
         router.push("/empresa/create")
@@ -21,7 +25,7 @@ const page = () => {
 
   return (
     <div className='company-container'>
-
+      <MainCompany />
     </div>
   )
 }

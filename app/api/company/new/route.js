@@ -1,5 +1,6 @@
 import { ConnectToDB } from "@utils/database";
 import Pagina from "@models/Pagina";
+import User from "@models/User";
 
 export const POST = async (request) => {
     const { userId, nome, modelo, website, photo, industria, tamanho, tipo } = await request.json()
@@ -14,6 +15,7 @@ export const POST = async (request) => {
                     dono: userId,
                     modelo: modelo,
                     nome: nome,
+                    photo: photo,
                     website: website,
                     qtdFuncionarios: tamanho,
                     industria: industria,
@@ -23,8 +25,18 @@ export const POST = async (request) => {
                     seguidores: 0
                 })
 
-                await newCompany.save()
-                return new Response(JSON.stringify(), { status: 200 })
+                const usuario = await User.findOne({_id: userId})
+
+                if (usuario) {
+                    
+                    usuario.tipoConta = `${modelo}`
+                    await newCompany.save()
+                    await usuario.save()
+                    
+                    return new Response(JSON.stringify(), { status: 200 })
+                } else {
+                    return new Response(`Falha ao localizar o Usuário, ${error}`, { status: 500 })
+                }
 
             } catch (error) {
                 console.log(error)

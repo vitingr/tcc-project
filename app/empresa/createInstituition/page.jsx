@@ -54,6 +54,7 @@ const page = () => {
 					userId: data._id,
 					modelo: "instituicao",
 					nome: nome,
+					photo: photo,
 					website: website,
 					industria: industria,
 					tamanho: tamanho,
@@ -62,8 +63,8 @@ const page = () => {
 			})
 
 			if (response.ok) {
-				toast.success("Empresa Criada com Sucesso")
 				router.push("/usuario/feed")
+				toast.success("Empresa Criada com Sucesso")
 
 			} else {
 				console.log(response)

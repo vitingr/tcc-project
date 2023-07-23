@@ -5,9 +5,7 @@ import { CldUploadButton } from 'next-cloudinary'
 import {IoCameraSharp} from 'react-icons/io5'
 import axios from 'axios'
 
-const UploadPhoto = () => {
-
-  const [file, setFile] = useState()
+const UploadPhoto = ({ file }) => {
 
   const handleUpload = async (e) => {
     
@@ -16,6 +14,8 @@ const UploadPhoto = () => {
       axios.post("/api/upload", {
         image: e.info.secure_url 
       })
+
+      file(e.info.secure_url)
     } catch (error) {
       console.log(error)
     }

@@ -46,5 +46,5 @@ const PaginaSchema = new Schema({
 
 })
 
-const Pagina = models.Pagina || model('mundoebebersssoeeds', PaginaSchema);
+const Pagina = models.Pagina || model('Pagina', PaginaSchema);
 export default Pagina;

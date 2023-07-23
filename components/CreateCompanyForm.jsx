@@ -41,7 +41,7 @@ const CreateCompanyForm = ({ title, nome, website, industria, tamanho, tipo, des
 					<input type="text" name="industria" id="industria" className='input-create-company' placeholder={`Informe o ramo da sua ${title}`} onChange={(e) => industria(e.target.value)} autoComplete='off' maxLength={40} minLength={2} required />
 				</div>
 
-				<UploadPhoto />
+				<UploadPhoto file={photo} />
 
 				{/* <input type="file" name="baby" id="baby" onChange={(e) => photo(e.target.value)} /> */}
 

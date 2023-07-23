@@ -10,6 +10,25 @@ export const ThemeProvider = ({ children }) => {
 	const { data: session } = useSession()
 	const [tema, setTema] = useState("")
 	const [data, setData] = useState([])
+	const [companyInfo, setCompanyInfo] = useState([])
+
+	const getCompany = async () => {
+		try {
+			const company = await fetch(`/api/company/${session?.user.id}`)
+			const companyInfo = await company.json()
+
+			console.log(companyInfo)
+
+			if (companyInfo.ok) {
+				setCompanyInfo(companyInfo)
+			} else {
+				console.log("Usuário não possui empresa")
+			}
+
+		} catch (error) {
+			console.error(error)
+		}
+	}
 
 	const getInfo = async () => {
 		try {
@@ -32,11 +51,12 @@ export const ThemeProvider = ({ children }) => {
 	useEffect(() => {
 		if (session != undefined || session != null) {
 			getInfo()
+			getCompany()
 		}
 	}, [session])
 
 	return (
-		<ThemeContext.Provider value={{ tema, setTema, data, setData, getInfo }}>
+		<ThemeContext.Provider value={{ tema, setTema, data, setData, companyInfo, setCompanyInfo, getInfo, getCompany }}>
 			{children}
 		</ThemeContext.Provider>
 	)
