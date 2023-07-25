@@ -49,15 +49,15 @@ const CreateCompanyForm = ({ title, nome, website, industria, tamanho, tipo, des
 					<p>Tamanho da {title} <span className='pink-span'>*</span></p>
 					<select name="tamanho" id="tamanho" className='input-create-company' onChange={(e) => tamanho(e.target.value)} required>
 						<option value=""></option>
-						<option value="0 - 1 Colaboradores">0 - 1 Colaboradores</option>
-						<option value="2 - 10 Colaboradores">2 - 10 Colaboradores</option>
-						<option value="11 - 50 Colaboradores">11 - 50 Colaboradores</option>
-						<option value="51 - 200 Colaboradores">51 - 200 Colaboradores</option>
-						<option value="201 - 500 Colaboradores">201 - 500 Colaboradores</option>
-						<option value="501 - 1.000 Colaboradores">501 - 1.000 Colaboradores</option>
-						<option value="1.001 - 5.000 Colaboradores">1.001 - 5.000 Colaboradores</option>
-						<option value="5.001 - 10.000 Colaboradores">5.001 - 10.000 Colaboradores</option>
-						<option value="+ 10.000 Colaboradores">+ 10.000 Colaboradores</option>
+						<option value="0 - 1 Colaboradoras">0 - 1 Colaboradoras</option>
+						<option value="2 - 10 Colaboradoras">2 - 10 Colaboradoras</option>
+						<option value="11 - 50 Colaboradoras">11 - 50 Colaboradoras</option>
+						<option value="51 - 200 Colaboradoras">51 - 200 Colaboradoras</option>
+						<option value="201 - 500 Colaboradoras">201 - 500 Colaboradoras</option>
+						<option value="501 - 1.000 Colaboradoras">501 - 1.000 Colaboradoras</option>
+						<option value="1.001 - 5.000 Colaboradoras">1.001 - 5.000 Colaboradoras</option>
+						<option value="5.001 - 10.000 Colaboradoras">5.001 - 10.000 Colaboradoras</option>
+						<option value="+ 10.000 Colaboradoras">+ 10.000 Colaboradoras</option>
 					</select>
 				</div>
 

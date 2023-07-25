@@ -2,10 +2,17 @@
 
 import React from 'react'
 import { infoUser } from '@utils/userContext'
+import { useRouter } from 'next/navigation'
 
 const setTheme = ({ children }) => {
 
-  const { tema } = infoUser()
+  const router = useRouter()
+  const { data, tema } = infoUser()
+
+  if (!data.endereco || !data.ultimo_cargo || !data.ultima_empresa || !data.preferencia_emprego || !data.procurando_emprego || data.area) {
+    router.push("/usuario/info")
+  }
+
   if (tema === "light") {
     document.documentElement.style.setProperty('--font-color', '#2f3234');
     document.documentElement.style.setProperty('--font-color-low-emphasis', 'rgba(0, 0, 0, 0.6)');
@@ -22,7 +29,7 @@ const setTheme = ({ children }) => {
 
   if (tema === "dark") {
     document.documentElement.style.setProperty('--font-color', '#f0efff');
-    document.documentElement.style.setProperty('--font-color-low-emphasis', 'f0efff7e');
+    document.documentElement.style.setProperty('--font-color-low-emphasis', '#f0efff7e');
     document.documentElement.style.setProperty('--color1', '#5864fd');
     document.documentElement.style.setProperty('--color2', '#243f82');
     document.documentElement.style.setProperty('--color3', '#6570dc');

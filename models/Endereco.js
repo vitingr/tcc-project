@@ -1,10 +1,11 @@
 import {Schema, model, models} from "mongoose"
 
-const newEndereco = new Schema({
+const EnderecoSchema = new Schema({
 
     dono: {
         type: Schema.Types.ObjectId,
-        ref: "usuarios"
+        ref: "usuarios",
+        required: true
     },
     pais: {
         type: String,
@@ -17,8 +18,9 @@ const newEndereco = new Schema({
     cidade: {
         type: String,
         required: true
-    },
+    }
+
 })
 
-const Endereco = models.Endereco || model('enderecos', newEndereco);
+const Endereco = models.Endereco || model('Endereco', EnderecoSchema);
 export default Endereco;

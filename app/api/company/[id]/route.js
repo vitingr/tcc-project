@@ -6,8 +6,6 @@ export const GET = async (request, { params }) => {
   try {
     await ConnectToDB()
 
-    console.log(`ID: ${params.id}`)
-
     const usuario = await User.findOne({ _id: params.id }).lean()
 
     if (usuario.tipoConta == "empresa" || usuario.tipoConta == "instituicao") {
@@ -25,7 +23,6 @@ export const GET = async (request, { params }) => {
     }
 
   } catch (error) {
-    console.log(error)
     return new Response(`Falha ao localizar o Usuário, ${error}`, { status: 500 })
   }
 }
