@@ -56,7 +56,7 @@ const page = () => {
           <p>
             Faça seu registro para ter acesso a todos os recursos oferecidos e disponibilizados pela nossa plataforma
           </p>
-          <form onSubmit={submitHandler}>
+          <form>
             <div className='register-login-form'>
               <div className='register-login-input'>
                 <IoPersonSharp size={20} />

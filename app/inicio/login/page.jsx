@@ -60,7 +60,7 @@ const page = () => {
             </div>
           </div>
           <div className="register-login-button center">
-            Registrar
+            Entrar
           </div>
           <div className='register-login-icons-container'>
             <>
