@@ -5,10 +5,6 @@ import React from 'react'
 import Link from 'next/link'
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { toast } from 'react-toastify'
-
-// Imports Components
-import ToastMessage from '@components/ToastMessage'
 
 // Imports NextAuth
 import { signIn, useSession, getProviders } from "next-auth/react";
@@ -20,17 +16,14 @@ const page = () => {
 
   const { data: session } = useSession();
   const router = useRouter()
+
   const [providers, setProviders] = useState(null);
-  const [nome, setNome] = useState("")
-  const [sobrenome, setSobrenome] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [confirmPassword, setConfirmPassword] = useState("")
 
   useEffect(() => {
 
     const setUpProviders = async () => {
       const response = await getProviders()
+
       setProviders(response)
     }
 
@@ -43,7 +36,6 @@ const page = () => {
 
   return (
     <div className='register-login-container center'>
-      <ToastMessage />
       <div className='register-login-left-container'>
         <div className='register-login-left center'>
           <h3>Novo por Aqui?</h3>
@@ -56,33 +48,31 @@ const page = () => {
           <p>
             Faça seu registro para ter acesso a todos os recursos oferecidos e disponibilizados pela nossa plataforma
           </p>
-          <form>
-            <div className='register-login-form'>
-              <div className='register-login-input'>
-                <IoPersonSharp size={20} />
-                <input type="text" name="nome" id="nome" placeholder='Nome' onChange={(e) => setNome(e.target.value)} autoComplete='off' minLength={3} maxLength={55} required />
-              </div>
-              <div className='register-login-input'>
-                <IoPersonSharp size={20} />
-                <input type="text" name="sobrenome" id="sobrenome" onChange={(e) => setSobrenome(e.target.value)} placeholder='Sobrenome' autoComplete='off' minLength={3} maxLength={55} required />
-              </div>
-              <div className='register-login-input'>
-                <IoMailSharp size={20} />
-                <input type="email" name="email" id="email" onChange={(e) => setEmail(e.target.value)} minLength={8} maxLength={120} placeholder='Email' required />
-              </div>
-              <div className='register-login-input'>
-                <IoLockClosed size={20} />
-                <input type="password" name="senha" id="senha" onChange={(e) => setPassword(e.target.value)} placeholder='Senha' maxLength={30} minLength={8} autoComplete='off' required />
-              </div>
-              <div className='register-login-input'>
-                <IoLockClosed size={20} />
-                <input type="password" name="confirmarSenha" id="confirmarSenha" placeholder='Confirmar Senha' onChange={(e) => setConfirmPassword(e.target.value)} maxLength={30} minLength={8} autoComplete='off' required />
-              </div>
+          <div className='register-login-form'>
+            <div className='register-login-input'>
+              <IoPersonSharp size={20} />
+              <input type="text" name="nome" id="nome" placeholder='Nome' autoComplete='off' minLength={3} maxLength={55} required />
             </div>
-            <button type='submit' className="register-login-button center">
-              Registrar
-            </button>
-          </form>
+            <div className='register-login-input'>
+              <IoPersonSharp size={20} />
+              <input type="text" name="sobrenome" id="sobrenome" placeholder='Sobrenome' autoComplete='off' minLength={3} maxLength={55} required />
+            </div>
+            <div className='register-login-input'>
+              <IoMailSharp size={20} />
+              <input type="email" name="email" id="email" minLength={8} maxLength={120} placeholder='Email' required />
+            </div>
+            <div className='register-login-input'>
+              <IoLockClosed size={20} />
+              <input type="password" name="senha" id="senha" placeholder='Senha' maxLength={30} minLength={8} autoComplete='off' required />
+            </div>
+            <div className='register-login-input'>
+              <IoLockClosed size={20} />
+              <input type="password" name="confirmarSenha" id="confirmarSenha" placeholder='Confirmar Senha' maxLength={30} minLength={8} autoComplete='off' required />
+            </div>
+          </div>
+          <div className="register-login-button center">
+            Registrar
+          </div>
           <div className='register-login-icons-container'>
             <>
               {providers &&
@@ -105,7 +95,6 @@ const page = () => {
           </div>
         </div>
       </div>
-
     </div>
   )
 }

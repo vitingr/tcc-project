@@ -10,7 +10,7 @@ import { useRouter } from 'next/navigation';
 import { signIn, useSession, getProviders } from "next-auth/react";
 
 // Import Icons
-import { IoMailSharp, IoLockClosed, IoPersonSharp, IoLogoGoogle, IoLogoInstagram, IoLogoFacebook, IoLogoTwitter, IoLogoTwitch } from 'react-icons/io5'
+import { IoMailSharp, IoLockClosed, IoLogoGoogle, IoLogoFacebook, } from 'react-icons/io5'
 
 const page = () => {
 
