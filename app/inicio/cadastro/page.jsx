@@ -27,24 +27,6 @@ const page = () => {
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
 
-  const submitHandler = async (e) => {
-    e.preventDefault()
-    if (confirmPassword === password) {
-      try {
-        const response = await fetch("/api/register", {
-         method: "POST",
-         body: JSON.stringify({
-          
-         })
-        })
-      } catch (error) {
-        toast.error("Não foi possível cadastrar o usuário")
-      }
-    } else {
-      toast.error("ERRO! As senhas são diferentes.")
-    }
-  }
-
   useEffect(() => {
 
     const setUpProviders = async () => {
