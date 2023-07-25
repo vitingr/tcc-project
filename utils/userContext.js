@@ -7,7 +7,7 @@ const ThemeContext = createContext()
 
 export const ThemeProvider = ({ children }) => {
 
-	const { data: session } = useSession()
+	const { data: session, status } = useSession()
 	const [tema, setTema] = useState("")
 	const [data, setData] = useState([])
 
@@ -30,9 +30,19 @@ export const ThemeProvider = ({ children }) => {
 	}
 
 	useEffect(() => {
-		if (session != undefined || session != null) {
-			getInfo()
-		}
+		const isUserAuthenticated = () => {
+
+      if (status == 'loading') {
+        // A sessão ainda está sendo carregada, não faz nada neste momento.
+      } else {
+        if (status == "authenticated") {
+					if (session != undefined || session != null) {
+						getInfo()
+					}
+        }
+      }
+    }
+    isUserAuthenticated()
 	}, [session])
 
 	return (

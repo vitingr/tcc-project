@@ -1,18 +1,18 @@
 import React from 'react'
 import InfoForm from './InfoForm'
 
-const Cargo = ({ step, setStep }) => {
+const Cargo = ({ step, setStep, cargoAtual, setCargoAtual, ultimoContrato, setUltimoContrato, ultimaEmpresa, setUltimaEmpresa }) => {
   return (
     <div>
       <InfoForm setStep={setStep} step={step}>
         <div className='info-form-input'>
           <h3>Cargo mais recente / atual <span className='pink-span'>*</span></h3>
-          <input type="text" name="cargo_recente" id="cargo_recente" minlength="3" maxlength="40"  placeholder="Seu cargo atual / mais recente" autoComplete='off' required />
+          <input type="text" name="cargo_recente" id="cargo_recente" minLength="3" maxLength="40" onChange={(e) => setCargoAtual(e.target.value)} placeholder="Seu cargo atual / mais recente" autoComplete='off' required />
         </div>
 
         <div className='info-form-input'>
           <h3>Tipo de Emprego <span className='pink-span'>*</span></h3>
-          <select name="tipo_emprego" id="tipo_emprego">
+          <select name="tipo_emprego" id="tipo_emprego" onChange={(e) => setUltimoContrato(e.target.value)} required>
             <option value="">Tipo do Contrato</option>
             <option value="determinado">Tempo determinado</option>
             <option value="indeterminado">Tempo Indeterminado</option>
@@ -29,7 +29,7 @@ const Cargo = ({ step, setStep }) => {
 
         <div className='info-form-input'>
           <h3>Empresa mais recente<span className='pink-span'>*</span></h3>
-          <input type="text" name="cargo_recente" id="cargo_recente" placeholder="Última empresa que você trabalhou" minlength="3" maxlength="45" autoComplete='off' required />
+          <input type="text" name="cargo_recente" id="cargo_recente" placeholder="Última empresa que você trabalhou" minLength="3" maxLength="45" autoComplete='off' onChange={(e) => setUltimaEmpresa(e.target.value)} required />
         </div>
       </InfoForm>
     </div>

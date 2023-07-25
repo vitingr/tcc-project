@@ -4,17 +4,16 @@ import React, { useState } from 'react'
 import InfoForm from './InfoForm'
 import { CIDADES_BRASIL } from '@constants/json-cidades'
 
-const Endereco = ({ step, setStep }) => {
+const Endereco = ({ step, setStep, pais, setPais, cidade, setCidade, estado, setEstado }) => {
 
   const [cidadesList, setCidadesList] = useState([])
-  const [cidade, setCidade] = useState("")
-  const [estado, setEstado] = useState("")
-  const [pais, setPais] = useState("")
 
   const buscaCidadesPorEstado = (estado) => {
-    var estadoSelecionado = CIDADES_BRASIL.estados.find((sigla) => estado.sigla === estadoSelecionado);
+    var estadoSelecionado = CIDADES_BRASIL.estados.find((sigla) => sigla.sigla === estado); // Vai procurar no json estados, um estado com o sigla igual ao estado Selecionado
     var cidades = estadoSelecionado.cidades
     return cidades;
+
+    // estado busca o BA, estado selecionado para procurar no json
   }
 
   const handleChangeEstado = (e) => {
@@ -56,7 +55,7 @@ const Endereco = ({ step, setStep }) => {
             ))}
           </select>
         </div>
-        
+
       </InfoForm>
     </div>
   )

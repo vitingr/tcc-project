@@ -17,6 +17,13 @@ const Post = ({ post }) => {
 			<div className='content-post'>
 				{post.conteudo}
 			</div>
+			{post.fotos ? (
+				<div className='image-post'> 
+					<img src={post.fotos} className='image-post-photo' alt="photo-post" />
+				</div>
+			) : (
+				<></>
+			)}
 			<div className='post-actions'>
 				<div className='post-icons'>
 					<div className='post-icon icon-cursor'><IoHeartOutline size={18} /></div>

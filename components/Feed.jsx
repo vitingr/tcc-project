@@ -23,9 +23,13 @@ const Feed = ({ data }) => {
   const [postagens, setPostagens] = useState([])
 
   const fetchData = async () => {
-    const answer = await fetch(`/api/posts/${session?.user.id}`)
-    const data = await answer.json()
-    setPostagens(data)
+    try {
+      const answer = await fetch(`/api/posts/`)
+      const data = await answer.json()
+      setPostagens(data)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   const createPost = async () => {
@@ -70,7 +74,7 @@ const Feed = ({ data }) => {
           <div className='background-home-profile'>
           </div>
           <div className='photo-home-profile center'>
-            <Image src={session?.user.image} width={100} height={100} className='medium-rounded-photo' alt='photo-left' />
+            <img src={session?.user.image} className='medium-rounded-photo' alt='photo-left' />
           </div>
           <div className='info-home-profile'>
             <div className='home-basic-info'>
@@ -119,13 +123,30 @@ const Feed = ({ data }) => {
           </div>
         </div>
 
+        <div className='actions-texts'>
+          <p>Sobre</p>
+          <p>Acessibilidade</p>
+          <p>Centro de Ajuda</p>
+          <p>Privacidade</p>
+          <p>Termos</p>
+          <p>Propagandas</p>
+          <p>Serviços</p>
+          <p>Contatos</p>
+          <p>Mais</p>
+        </div>
+
+        <div className='actions-credits'>
+          <img src="https://i.pinimg.com/736x/3d/37/60/3d3760207a12e626f1149118404e003d.jpg" alt="logo" />
+          <p>Projeto TCC EtecJd. © 2023</p>
+        </div>
+
       </div>
 
       <div className='posts-container'>
 
         <div className='top-posts-container'>
           <div className='write-posts-container'>
-            <Image src={session?.user.image} width={100} height={100} className='very-small-rounded-photo' alt='photo-post' />
+            <img src={session?.user.image} className='very-small-rounded-photo' alt='photo-post' />
             <input type="text" name="post-something" id="post-something" className='post-something' onChange={(e) => setPost(e.target.value)} />
           </div>
 

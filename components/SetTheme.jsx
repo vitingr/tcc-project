@@ -1,17 +1,14 @@
 "use client"
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { infoUser } from '@utils/userContext'
 import { useRouter } from 'next/navigation'
+import { useSession } from 'next-auth/react'
 
 const setTheme = ({ children }) => {
 
   const router = useRouter()
   const { data, tema } = infoUser()
-
-  if (!data.endereco || !data.ultimo_cargo || !data.ultima_empresa || !data.preferencia_emprego || !data.procurando_emprego || data.area) {
-    router.push("/usuario/info")
-  }
 
   if (tema === "light") {
     document.documentElement.style.setProperty('--font-color', '#2f3234');
@@ -96,6 +93,15 @@ const setTheme = ({ children }) => {
     document.documentElement.style.setProperty('--container-color', '#2f2c55');
     document.documentElement.style.setProperty('--friend - color', '#fff');
   }
+
+  useEffect(() => {
+    if (!data.cargo_atual === undefined) {
+      if (!data.cargo_atual) {
+        router.push("/usuario/info")
+      }
+    }
+
+  }, [])
 
   return (
     <div>

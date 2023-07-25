@@ -94,10 +94,11 @@
 .main-container {
 	background: var(--background-color);
 	padding: 3% 10%;
-	min-height: 135vh;
+	min-height: 72vh;
 	justify-content: start !important;
 	background-repeat: no-repeat;
 	background-size: cover;
+	padding-bottom: 250px;
 }
 
 a {
@@ -473,12 +474,17 @@ html {
 	justify-content: flex-end;
 }
 
+.actions-container {
+	max-width: 265px;
+	width: 100%;
+}
+
 .home-profile {
+	min-width: 100%;
 	border-radius: 6.5px;
 	display: flex;
 	flex-direction: column;
 	gap: 15px;
-	width: 265px;
 	min-height: 100px;
 	background: var(--container-color);
 }
@@ -489,6 +495,50 @@ html {
 	background: linear-gradient(-25deg, var(--color1), var(--color2), var(--color3), var(--color4));
 	animation: gradiente 7.5s ease-in-out alternate infinite;
 	background-size: 300%;
+}
+
+.actions-texts {
+	display: flex;
+	justify-content: center;
+	gap: 15px;
+	flex-wrap: wrap;
+	margin-top: 15px;
+	width: 100%;
+}
+
+.actions-texts p {
+	transition-timing-function: ease-in-out;
+	transition-duration: 0.3s;
+	font-size: 12px;
+	color: var(--font-color-low-emphasis);
+}
+
+.actions-texts p:hover {
+	cursor: pointer;
+	text-decoration: underline;
+	text-underline-offset: 3px;
+	color: var(--font-color);
+}
+
+.actions-credits {
+	margin-top: 35px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	gap: 7.5px;
+}
+
+.actions-credits img {
+	width: 25px;
+	height: 25px;
+}
+
+.actions-credits p {
+	color: var(--font-color-low-emphasis);
+	letter-spacing: 0.5px;
+	font-size: 12px;
+
 }
 
 .photo-home-profile {
@@ -617,6 +667,7 @@ html {
 	margin-top: 25px;
 	width: 100%;
 	min-height: 1000px;
+	max-width: 575px;
 }
 
 /* -=-=- SIDEBAR -=-=- */
@@ -1241,7 +1292,18 @@ html {
 }
 
 .content-post {
+	font-size: 13px;
 	margin-bottom: 20px;
+}
+
+.image-post {
+	width: 100%;
+	margin-bottom: 25px;
+}
+
+.image-post-photo {
+	border-radius: 5px;
+	width: 100%;
 }
 
 .post-actions {
@@ -1752,11 +1814,11 @@ html {
 }
 
 .info-form-buttons div {
-	cursor: pointer;
 	color: var(--color1);
 }
 
-.info-form-buttons div:hover {
+.info-form-buttons .action-info-form:hover {
+	cursor: pointer;
 	text-decoration: underline;
 	text-underline-offset: 3px;
 }
@@ -1815,6 +1877,14 @@ html {
 .info-form-submit:hover {
 	background: var(--color1);
 	color: white;
+}
+
+.finalizar-container {
+	margin-top: 50px;
+}
+
+.finalizar-container p {
+	text-align: center;
 }
 
 /* -=-=- ANIMAÇÕES -=-=- */
