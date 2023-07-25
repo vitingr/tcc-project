@@ -27,13 +27,17 @@ const InfoForm = ({ children, step, setStep }) => {
     console.log(step)
   }
 
+  const terminarCadastro = async () => {
+   console.log("baby") 
+  }
+
   return (
     <div className='info-form-container'>
       <div className='info-form-main'>
         <h1>Bem-Vindo {data.nome}</h1>
         <h5>Antes da gente começar, precisamos de algumas informações básicas, vamos lá!</h5>
         <div className='info-form-inputs'>
-          <form>
+          <form onSubmit={terminarCadastro}>
             {children}
           </form>
           <div className='info-form-buttons'>
