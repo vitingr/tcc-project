@@ -2,7 +2,6 @@
 
 // Imports React
 import React, { useEffect, useState } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { toast } from 'react-toastify'
 
@@ -23,13 +22,9 @@ const Feed = ({ data }) => {
   const [postagens, setPostagens] = useState([])
 
   const fetchData = async () => {
-    try {
-      const answer = await fetch(`/api/posts/`)
-      const data = await answer.json()
-      setPostagens(data)
-    } catch (error) {
-      console.log(error)
-    }
+    const answer = await fetch(`/api/posts/`)
+    const data = await answer.json()
+    setPostagens(data)
   }
 
   const createPost = async () => {
@@ -162,7 +157,7 @@ const Feed = ({ data }) => {
                 <IoHappyOutline size={18} />
               </span>
             </div>
-            <div className='post-publication icon-cursor' onClick={createPost}>
+            <div className='post-publication icon-cursor center' onClick={createPost}>
               Publicar
             </div>
           </div>

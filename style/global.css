@@ -625,6 +625,7 @@ html {
 }
 
 .post-something {
+	background-color: var(--friend-color);
 	font-size: 12px;
 	outline: 0;
 	width: 100%;
@@ -651,15 +652,23 @@ html {
 }
 
 .actions-posts-container span {
+	cursor: pointer;
 	color: var(--font-color-low-emphasis);
+	transition-timing-function: ease-in-out;
+	transition-duration: 0.3s;
+}
+
+.actions-posts-container span:hover {
+	transform: scale(1.1);
 }
 
 .post-publication {
+	font-size: 12px;
 	text-align: center;
 	border-radius: 15px;
 	padding: 2.5px;
 	width: 75px;
-	background: var(--color6);
+	background: var(--color1);
 	color: white;
 }
 

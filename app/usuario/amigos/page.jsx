@@ -1,7 +1,6 @@
 "use client"
 
 import React from 'react'
-import Image from 'next/image'
 import FriendActions from '@components/FriendActions'
 import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
@@ -9,7 +8,7 @@ import FriendOption from '@components/FriendOption'
 
 const page = () => {
 
-  const { data: session } = useSession()
+  const { data: session } = useSession() 
   const [data, setData] = useState([])
 
   useEffect(() => {
