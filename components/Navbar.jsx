@@ -41,7 +41,7 @@ const Navbar = () => {
 								</Link>
 							</li>
 							<li>
-								<Link href="#" className='link-nav center'>
+								<Link href="/usuario/empregos" className='link-nav center'>
 									<div><IoBriefcaseSharp size={17.5} /></div>
 									<p>Emprego</p>
 								</Link>
