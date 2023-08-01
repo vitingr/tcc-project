@@ -95,7 +95,7 @@ const setTheme = ({ children }) => {
   }
 
   useEffect(() => {
-    if (!data.cargo_atual === undefined) {
+    if (!data.cargo_atual === "" || !data.ultima_empresa === "" || !data.ultimo_contrato === "" || !data.area === "" || !data.procurando_emprego === "") {
       if (!data.cargo_atual) {
         router.push("/usuario/info")
       }

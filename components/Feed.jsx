@@ -24,7 +24,7 @@ const Feed = ({ data }) => {
   const fetchData = async () => {
     const answer = await fetch(`/api/posts/`)
     const data = await answer.json()
-    return data
+    setPostagens(data)
   }
 
   const createPost = async () => {
@@ -163,7 +163,7 @@ const Feed = ({ data }) => {
           </div>
         </div>
 
-        <Posts fetchData={fetchData}/>
+        <Posts posts={postagens} />
 
       </div>
     </div>

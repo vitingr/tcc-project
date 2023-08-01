@@ -1896,6 +1896,149 @@ html {
 	text-align: center;
 }
 
+/* -=-=- JOBS CONTAINER -=-=- */
+
+.empregos-container {
+	display: flex;
+	justify-content: center;
+	max-width: 1300px;
+	width: 100%;
+	gap: 50px;
+	padding-bottom: 200px;
+}
+
+.empregos-list-container {
+	display: flex;
+	flex-direction: column;
+	max-width: 500px;
+	min-height: 800px;
+	width: 100%;
+	background: var(--container-color);
+	z-index: 10;
+	border-radius: 10px;
+}
+
+.emprego-popup-container {
+	max-width: 700px;
+	min-height: 800px;
+	width: 100%;
+	background: var(--container-color);
+	z-index: 10;
+	padding: 40px;
+	border-radius: 10px;
+}
+
+.emprego-container {
+	display: flex;
+	cursor: pointer;
+	gap: 10px;
+	padding: 15px 15px 0px 15px;
+	width: 100%;
+	background: var(--friend-color);
+	transition-timing-function: ease-in-out;
+}
+
+.emprego-container:hover {
+	border-right: 2px solid var(--color1);
+}
+
+.logo-emprego img {
+	width: 40px;
+	height: 40px;
+}
+
+.info-emprego {
+	padding-bottom: 15px;
+	width: 100%;
+	border-bottom: 1px solid #33333318;
+}
+
+.info-emprego h1 {
+	font-size: 16px;
+}
+
+.info-emprego h2 {
+	font-weight: 500;
+	color: var(--font-color-low-emphasis);
+}
+
+.info-emprego h6 {
+	font-weight: 400;
+	color: var(--font-color-low-emphasis);
+	font-size: 13px;
+}
+
+.status-emprego {
+	cursor: pointer;
+	margin-top: 15px;
+	display: flex;
+	align-items: center;
+	gap: 5px;
+}
+
+.status-emprego * {
+	color: var(--color1);
+}
+
+.empregos-aplicados {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	background: var(--color1);
+	color: white;
+	padding: 15px;
+	cursor: pointer;
+	transition-timing-function: ease-in-out;
+	transition-duration: 0.3s;
+}
+
+.empregos-aplicados:hover {
+	background: var(--color4);
+}
+
+.status-emprego p {
+	font-size: 12px;
+}
+
+.emprego-popup-container h1 {
+	font-size: 20px;
+}
+
+.emprego-popup-container h2 {
+	font-weight: 400;
+}
+
+.emprego-stats {
+	margin-top: 25px;
+}
+
+.emprego-stat {
+	padding: 5px;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.emprego-stat * {
+	color: var(--font-color-low-emphasis);
+}
+
+.main-info-emprego {
+	margin-top: 25px;
+}
+
+.main-info-emprego h2 {
+	font-weight: 600;
+	font-size: 15px;
+	margin-bottom: 15px;
+}
+
+.main-info-emprego p {
+	font-size: 13px;
+	color: var(--font-color-low-emphasis);
+}
+
 /* -=-=- ANIMAÇÕES -=-=- */
 
 @keyframes gradiente {
@@ -1974,6 +2117,10 @@ html {
 	.actions-container,
 	.home-profile {
 		max-width: none;
+	}
+
+	.emprego-popup-container {
+		display: none;
 	}
 }
 
