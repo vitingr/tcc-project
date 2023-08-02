@@ -8,6 +8,7 @@ import { toast } from 'react-toastify'
 // Imports Components
 import ToastMessage from '@components/ToastMessage'
 import { infoUser } from '@utils/userContext'
+import e from 'cors'
 
 const EditProfile = ({ data, handleClick }) => {
 
@@ -21,6 +22,12 @@ const EditProfile = ({ data, handleClick }) => {
   const [cargoAtual, setCargoAtual] = useState(data.cargo_atual)
   const [area, setArea] = useState(data.area)
   const [ultimaEmpresa, setUltimaEmpresa] = useState(data.ultima_empresa)
+  const [teste, setTeste ]= useState("")
+
+  const baby = () => {
+    e.preventDefault()
+    console.log(teste)
+  }
 
   const [showProfessionalInfo, setShowProfessionalInfo] = useState(false)
 
@@ -73,8 +80,9 @@ const EditProfile = ({ data, handleClick }) => {
             <div>
               <div className='input-add-container'>
                 <p>Resumo</p>
-                <TextEditor />
+                <TextEditor value={teste} onEditorChange={(e) => setTeste(e.target.value)} />
                 {/* <input type="text" name="resumo" id="add-input" className='add-input' placeholder='Nome' autoComplete='off' maxLength={35} minLength={4} onChange={(e) => setResumo(e.target.value)} value={nome} required /> */}
+                <div onClick={baby}>enviar</div>
               </div>
               <div className='input-add-container'>
                 <p>Cargo Atual</p>
