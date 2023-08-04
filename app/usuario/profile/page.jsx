@@ -2,7 +2,7 @@
 
 // Imports React
 import React from 'react'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 // Imports Components
 import Sidebar from '@components/Sidebar/Sidebar'
@@ -27,17 +27,17 @@ const page = () => {
       {showAddExperience ? (
         <AddExperience data={data} handleClick={setShowAddExperience} />
       ) : (
-        <div className='display-none'></div>
+        <></>
       )}
       {showAddCertificado ? (
         <AddCertificado data={data} handleClick={setShowAddCertificado} />
       ) : (
-        <div className='display-none'></div>
+        <></>
       )}
       {showEditProfile ? (
         <EditProfile data={data} handleClick={setShowEditProfile} />
       ) : (
-        <div> </div>
+        <></>
       )}
 
     </div>

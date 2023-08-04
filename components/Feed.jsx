@@ -29,7 +29,6 @@ const Feed = ({ data }) => {
 
   const createPost = async () => {
     try {
-
       const response = await fetch("/api/posts/new", {
         method: "POST",
         body: JSON.stringify({
@@ -69,7 +68,7 @@ const Feed = ({ data }) => {
           <div className='background-home-profile'>
           </div>
           <div className='photo-home-profile center'>
-            <img src={session?.user.image} className='medium-rounded-photo' alt='photo-left' />
+            <img src={data.foto} className='medium-rounded-photo' alt='photo-left' />
           </div>
           <div className='info-home-profile'>
             <div className='home-basic-info'>
@@ -141,7 +140,7 @@ const Feed = ({ data }) => {
 
         <div className='top-posts-container'>
           <div className='write-posts-container'>
-            <img src={session?.user.image} className='very-small-rounded-photo' alt='photo-post' />
+            <img src={data.foto} className='very-small-rounded-photo' alt='photo-post' />
             <input type="text" name="post-something" id="post-something" className='post-something' onChange={(e) => setPost(e.target.value)} />
           </div>
 
