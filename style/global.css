@@ -1650,9 +1650,7 @@ html {
 
 .main-company-container {
 	width: 100%;
-	height: 600px;
 	border-radius: 10px;
-	background: var(--container-color);
 }
 
 .bg-company {
@@ -1662,6 +1660,10 @@ html {
 	border-radius: 10px 10px 0px 0px;
 	width: 100%;
 	height: 200px;
+}
+
+.main-company-color-container {
+	background: var(--container-color);
 }
 
 .main-company-content {
@@ -2037,6 +2039,80 @@ html {
 .main-info-emprego p {
 	font-size: 13px;
 	color: var(--font-color-low-emphasis);
+}
+
+.company-feed-container {
+	margin-top: 50px;
+	width: 100%;
+	border-radius: 7.5px;
+}
+
+.company-feed-item {
+	margin-bottom: 25px;
+	padding: 50px;
+	border-radius: 7.5px;
+	background: var(--container-color);
+}
+
+.company-feed-item h1 {
+	font-size: 22.5px;
+	margin-bottom: 3px;
+}
+
+.company-feed-item p {
+	font-size: 13.25px;
+	text-align: justify;
+}
+
+.company-feed-about-bottom {
+	margin-top: 25px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 25px;
+}
+
+.contact-company,
+.acoes-company {
+	padding: 25px;
+	border-radius: 10px;
+	border: 1px solid #33333323;
+	width: 100%;
+}
+
+.contact-company h3,
+.acoes-company h3 {
+	font-size: 13px;
+	margin-bottom: 5px;
+	font-weight: normal;
+	color: var(--font-color-low-emphasis);
+}
+
+.contact-company a {
+	color: var(--color1);
+}
+
+.interest-flex {
+	display: flex;
+	gap: 25px;
+}
+
+.interest-left button {
+	margin-top: 15px;
+	padding: 5px;
+	background: transparent;
+	border: 1px solid var(--color1);
+	color: var(--color1);
+	border-radius: 20px;
+	cursor: pointer;
+}
+
+.btn-edit-company {
+	margin-top: 50px;
+	border-top: 1px solid #33333311;
+	padding: 25px 0px 0px 0px;
+	text-align: center;
+	cursor: pointer;
 }
 
 /* -=-=- ANIMAÇÕES -=-=- */

@@ -12,15 +12,20 @@ import Sidebar from '@components/Sidebar/Sidebar'
 const page = () => {
 
   const router = useRouter()
-  const {data} = infoUser()
+  const { data } = infoUser()
 
   const [company, setCompany] = useState([])
+  const [isDono, setIsDono] = useState(false)
 
   const getCompany = async () => {
     try {
       const answer = await fetch(`/api/company/${data._id}`)
       const response = await answer.json()
       setCompany(response)
+
+      if (data._id === response.dono) {
+        setIsDono(true)
+      }
 
     } catch (error) {
       console.log(error)
@@ -34,12 +39,12 @@ const page = () => {
       } else {
         router.push("/empresa/create")
       }
-    } 
+    }
   }, [data])
 
   return (
     <div className='company-container'>
-      <MainCompany data={company} />
+      <MainCompany data={company} dono={isDono} />
       <Sidebar />
     </div>
   )

@@ -24,11 +24,6 @@ const EditProfile = ({ data, handleClick }) => {
   const [ultimaEmpresa, setUltimaEmpresa] = useState(data.ultima_empresa)
   const [teste, setTeste ]= useState("")
 
-  const baby = () => {
-    e.preventDefault()
-    console.log(teste)
-  }
-
   const [showProfessionalInfo, setShowProfessionalInfo] = useState(false)
 
   const updateProfile = async (e) => {
@@ -82,7 +77,6 @@ const EditProfile = ({ data, handleClick }) => {
                 <p>Resumo</p>
                 <TextEditor value={teste} onEditorChange={(e) => setTeste(e.target.value)} />
                 {/* <input type="text" name="resumo" id="add-input" className='add-input' placeholder='Nome' autoComplete='off' maxLength={35} minLength={4} onChange={(e) => setResumo(e.target.value)} value={nome} required /> */}
-                <div onClick={baby}>enviar</div>
               </div>
               <div className='input-add-container'>
                 <p>Cargo Atual</p>

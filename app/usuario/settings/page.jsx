@@ -25,7 +25,6 @@ const page = () => {
 
       if (response.ok) {
         getInfo()
-        toast.success("Tema do usuário alterado com sucesso")
       } else {
         toast.error("Erro ao alterar o tema do usuário")
       }
