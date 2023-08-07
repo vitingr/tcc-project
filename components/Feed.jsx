@@ -141,7 +141,7 @@ const Feed = ({ data }) => {
         <div className='top-posts-container'>
           <div className='write-posts-container'>
             <img src={data.foto} className='very-small-rounded-photo' alt='photo-post' />
-            <input type="text" name="post-something" id="post-something" className='post-something' onChange={(e) => setPost(e.target.value)} />
+            <input type="text" name="post-something" id="post-something" className='post-something' onChange={(e) => setPost(e.target.value)} value={post} />
           </div>
 
           <div className='main-posts-container'>

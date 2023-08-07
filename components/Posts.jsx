@@ -1,19 +1,9 @@
-"use client"
-
 import React, { useEffect } from 'react'
 import Post from './Post'
 import { motion } from "framer-motion";
 import { useSession } from 'next-auth/react';
 
-const Posts = ({ posts, fetch }) => {
-
-  const { data: session } = useSession()
-
-  useEffect(() => {
-    if (session) {
-      fetch()
-    }
-  })
+const Posts = ({ posts }) => {
 
   const container = {
     hidden: { opacity: 1, scale: 0 },
@@ -38,7 +28,7 @@ const Posts = ({ posts, fetch }) => {
   return (
     <div className='publications-container'>
       <motion.ul
-        className="friends-options"
+        className=""
         variants={container}
         initial="hidden"
         animate="visible"
