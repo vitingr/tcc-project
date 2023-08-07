@@ -42,14 +42,9 @@ const Feed = ({ data }) => {
       })
 
       if (response.ok) {
-        try {
-          fetchData()
-          setPost("")
-          toast.success("Post Criado com sucesso!")
-        } catch (error) {
-          console.log(error)
-          console.log("deu erro")
-        }
+        fetchData()
+        setPost("")
+        toast.success("Post Criado com sucesso!")
       } else {
         toast.error("Houve um erro ao publicar o Post")
       }
@@ -167,7 +162,7 @@ const Feed = ({ data }) => {
           </div>
         </div>
 
-        <Posts posts={postagens} />
+        <Posts posts={postagens} fetch={fetchData} />
 
       </div>
     </div>
