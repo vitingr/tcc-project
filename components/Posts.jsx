@@ -44,7 +44,7 @@ const Posts = ({ posts, fetch }) => {
         animate="visible"
       >
         {posts.map((post) => (
-          <motion.li key={amigo} variants={item}>
+          <motion.li key={post} variants={item}>
             <Post key={post._id} post={post} />
           </motion.li>
 
