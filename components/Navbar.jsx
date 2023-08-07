@@ -19,11 +19,14 @@ const Navbar = () => {
 		<header>
 			{session?.user ? (
 				<nav className='navbar'>
-					<div className='search-content'>
-						<div className='icon-cursor center'>
-							<IoSearchOutline size={22.5} />
+					<div className='search-container'>
+						<img src="https://i.pinimg.com/736x/3d/37/60/3d3760207a12e626f1149118404e003d.jpg" alt="logo" className='search-logo' />
+						<div className='search-content'>
+							<div className='icon-cursor center'>
+								<IoSearchOutline size={22.5} />
+							</div>
+							<input type="text" name="search-home" id="search-home" placeholder='Buscar' />
 						</div>
-						<input type="text" name="search-home" id="search-home" placeholder='Buscar' />
 					</div>
 
 					<div className='nav-content'>

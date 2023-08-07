@@ -6,6 +6,7 @@ import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
 import FriendOption from '@components/FriendOption'
 import { toast } from 'react-toastify'
+import { motion } from "framer-motion";
 
 // Imports Components
 import ToastMessage from '@components/ToastMessage'
@@ -30,13 +31,13 @@ const page = () => {
           amigo: amigo
         })
       })
-  
+
       if (soliticacao.ok) {
         fetchData()
         toast.success("Convite aceito com sucesso!")
       } else {
         toast.error("Erro ao aceitar o convite de amizade")
-      }  
+      }
     } catch (error) {
       console.log(error)
     }
@@ -47,6 +48,26 @@ const page = () => {
       fetchData()
     }
   }, [session])
+
+  const container = {
+    hidden: { opacity: 1, scale: 0 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        delayChildren: 0.3,
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const item = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1
+    }
+  };
 
   return (
     <div className='friends-container'>
@@ -63,9 +84,18 @@ const page = () => {
 
         {data.length > 0 ? (
           <div className="friends-options">
-            {data.map((amigo) => (
-              <FriendOption key={amigo._id} amigo={amigo} message={"Confirmar"} handleClick={aceitarAmigo} />
-            ))}
+            <motion.ul
+              className="friends-options"
+              variants={container}
+              initial="hidden"
+              animate="visible"
+            >
+              {data.map((amigo) => (
+                <motion.li key={amigo} variants={item}>
+                  <FriendOption key={amigo._id} amigo={amigo} message={"Confirmar"} handleClick={aceitarAmigo} />
+                </motion.li>
+              ))}
+            </motion.ul>
           </div>
         ) : (
           <div> Não há opções de amigos </div>

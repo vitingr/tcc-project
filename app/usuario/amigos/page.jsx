@@ -5,10 +5,11 @@ import FriendActions from '@components/FriendActions'
 import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
 import FriendOption from '@components/FriendOption'
+import { motion } from "framer-motion";
 
 const page = () => {
 
-  const { data: session } = useSession() 
+  const { data: session } = useSession()
   const [data, setData] = useState([])
 
   useEffect(() => {
@@ -21,6 +22,26 @@ const page = () => {
       fetchData()
     }
   }, [session])
+
+  const container = {
+    hidden: { opacity: 1, scale: 0 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        delayChildren: 0.3,
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const item = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1
+    }
+  };
 
   return (
     <div className='friends-container'>
@@ -36,9 +57,19 @@ const page = () => {
 
         {data.length > 0 ? (
           <div className="friends-options">
-            {data.map((amigo) => (
-              <FriendOption key={amigo._id} amigo={amigo} message={"Remover"} handleClick={"Remover"} />
-            ))}
+            <motion.ul
+              className="friends-options"
+              variants={container}
+              initial="hidden"
+              animate="visible"
+            >
+              {data.map((amigo) => (
+                <motion.li key={amigo} variants={item}>
+                  <FriendOption key={amigo._id} amigo={amigo} message={"Remover"} handleClick={"Remover"} />
+                </motion.li>
+              ))}
+
+            </motion.ul>
           </div>
         ) : (
           <div> Você não possui amigos </div>

@@ -1,6 +1,6 @@
-import {Schema, model, models} from "mongoose"
+import { Schema, model, models } from "mongoose"
 
-const newVaga = new Schema({
+const VagaSchema = new Schema({
 
     empresa: {
         type: Schema.Types.ObjectId,
@@ -15,9 +15,12 @@ const newVaga = new Schema({
         type: String,
         required: true
     },
-    modelo: {
+    titulo: {
         type: String,
         required: true
+    },
+    modelo: {
+        type: String
     },
     tipo: {
         type: String,
@@ -27,12 +30,9 @@ const newVaga = new Schema({
         type: String,
         required: true
     },
-    salarioMinimo: {
+    salario: {
         type: Number,
         required: true
-    },
-    salarioMaximo: {
-        type: Number
     },
     vagasDisponiveis: {
         type: Number
@@ -46,9 +46,12 @@ const newVaga = new Schema({
     },
     foto: {
         type: String
+    },
+    requisitos: {
+        type: String
     }
 
 })
 
-const Vaga = models.Vaga || model('vagas', newVaga);
+const Vaga = models.Vaga || model('Vaga', VagaSchema);
 export default Vaga;

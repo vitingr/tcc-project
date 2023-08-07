@@ -22,6 +22,7 @@
 	--background-color: #e2e6e9;
 	--container-color: #fafafa;
 	--friend-color: #fff;
+	--border-color: #3333331f;
 }
 
 /* --font-color: #f0efff;
@@ -37,6 +38,14 @@
 } */
 
 /* -=-=- CONFIGURAÇÕES GERAIS -=-=- */
+
+ul {
+	list-style: none;
+}
+
+li {
+	list-style: none;
+}
 
 .gradient {
 	height: fit-content;
@@ -175,7 +184,7 @@ html {
 	height: 25px;
 	width: 25px;
 	border-radius: 50%;
-	border: 1px solid #3333333f;
+	border: 1px solid var(--border-color);
 }
 
 .online {
@@ -246,6 +255,7 @@ html {
 	align-items: center;
 	width: 100%;
 	height: 75px;
+	padding: 0px 10% 0px 10%;
 }
 
 .menu-navbar {
@@ -320,6 +330,18 @@ html {
 	background: var(--color3);
 	color: white;
 	text-align: center;
+}
+
+.search-container {
+	max-width: 400px;
+	width: 100%;
+	display: flex;
+	gap: 25px;
+}
+
+.search-logo {
+	width: 40px;
+	height: 40px;
 }
 
 /* -=-=- LOGIN / REGISTER -=-=- */
@@ -2074,9 +2096,10 @@ html {
 
 .contact-company,
 .acoes-company {
+	background: var(--friend-color);
 	padding: 25px;
 	border-radius: 10px;
-	border: 1px solid #33333323;
+	border: 1px solid var(--border-color);
 	width: 100%;
 }
 
@@ -2113,6 +2136,78 @@ html {
 	padding: 25px 0px 0px 0px;
 	text-align: center;
 	cursor: pointer;
+}
+
+.padding-create-vaga {
+	margin-left: -28%;
+}
+
+.about-input {
+	height: 400px;
+}
+
+.error-msg-company {
+	padding: 50px 0px 50px 0px;
+	text-align: center;
+}
+
+.vagas-card-container {
+	margin-top: 25px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 25px;
+}
+
+.vaga-card {
+	background: var(--friend-color);
+	border-radius: 10px;
+	padding: 25px;
+	border: 1px solid #3333331a;
+	width: 275px;
+	height: 300px;
+}
+
+.vaga-card-top {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	margin-bottom: 15px;
+}
+
+.vaga-card-main h1 {
+	font-weight: 600;
+	font-size: 20px;
+	margin-bottom: -3px;
+}
+
+.vaga-card-main h2 {
+	font-weight: normal;
+	font-size: 14px;
+}
+
+.vaga-card-main h4 {
+	color: var(--font-color-low-emphasis);
+	font-size: 13px;
+	font-weight: normal;
+}
+
+.vaga-card-bottom {
+	margin-top: 25px;
+}
+
+.vaga-card-foto {
+	width: 50px;
+	height: 50px;
+}
+
+.vaga-card-time {
+	border-top: 1px solid var(--border-color);
+	padding: 15px 0px 25px 0px;
+	margin-top: 40px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	color: var(--font-color-low-emphasis);
 }
 
 /* -=-=- ANIMAÇÕES -=-=- */

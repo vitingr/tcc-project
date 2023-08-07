@@ -56,8 +56,6 @@ export default function RootLayout({ children }) {
             </ThemeProvider>
           )}
         </Provider>
-        <script src="@public/functions/reveal.js" defer></script>
-        <script src="@public/functions/revealConfig.js" defer></script>
       </body>
     </html>
   )

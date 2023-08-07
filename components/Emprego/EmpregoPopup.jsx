@@ -1,41 +1,52 @@
 import React from 'react'
-import {IoPeopleSharp, IoListOutline, IoBriefcase, IoBusinessOutline} from 'react-icons/io5'
+import { IoPeopleSharp, IoListOutline, IoBriefcase, IoBusinessOutline, IoCashSharp } from 'react-icons/io5'
 
-const EmpregoPopup = () => {
+const EmpregoPopup = ({ info }) => {
   return (
     <div className='emprego-popup-container'>
       <h1>
-        Desenvolvedor de Software - Remote Work USA
+        {info.titulo}
       </h1>
       <h2>
-        Google SA. - Santa Bárbara d'Oeste (Remoto) - 360 candidatas
+        {info.nomeEmpresa}- {info.local} {info.tipo} - 0 candidatas
       </h2>
 
       <div className='emprego-stats'>
         <div className='emprego-stat'>
           <IoBriefcase size={16} />
-          <p>Emprego Remoto</p>
+          <p>Emprego {info.tipo}</p>
         </div>
 
         <div className='emprego-stat'>
           <IoPeopleSharp size={16} />
-          <p>+10.000 colaboradas</p>
+          <p>+10.000 colaboradoras</p>
         </div>
 
         <div className='emprego-stat'>
           <IoBusinessOutline size={16} />
-          <p>Santa Bárbara d'Oeste, SP - Brasil</p>
+          <p>{info.local} - Brasil</p>
         </div>
 
         <div className='emprego-stat'>
           <IoListOutline size={16} />
-          <p>Requisitos: Next.JS, Javascript, Html, CSS, React, MongoDB, Express, Nodejs</p>
+          <p>Requisitos: {info.requisitos}</p>
         </div>
+      </div>
+
+      <div className='emprego-stat'>
+        <IoCashSharp size={16} />
+        <p>Salário: R${info.salario},00</p>
       </div>
 
       <div className='main-info-emprego'>
         <h2>Sobre a Vaga</h2>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae numquam beatae tenetur, sequi libero nam mollitia incidunt impedit illum at nemo eligendi aperiam saepe neque quidem distinctio consequuntur nobis porro.</p>
+        <p>{info.descricao}</p>
+      </div>
+
+      <div>
+        <button className='section-button center'>
+          Aplicar-se
+        </button>
       </div>
 
     </div>

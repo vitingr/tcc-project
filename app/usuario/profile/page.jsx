@@ -1,7 +1,8 @@
 "use client"
 
 // Imports React
-import React from 'react'
+import * as React from "react";
+import { motion } from "framer-motion";
 import { useState } from 'react'
 
 // Imports Components
@@ -20,10 +21,31 @@ const page = () => {
   const [showAddCertificado, setShowAddCertificado] = useState(false)
   const [showEditProfile, setShowEditProfile] = useState(false)
 
+  const container = {
+    hidden: { opacity: 1, scale: 0 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        delayChildren: 0.3,
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const item = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1
+    }
+  };
+
   return data ? (
     <div className='profile-main-container'>
       <Profile data={data} showAddExperience={setShowAddExperience} showAddCertificado={setShowAddCertificado} showEditProfile={setShowEditProfile} />
       <Sidebar data={data} />
+
       {showAddExperience ? (
         <AddExperience data={data} handleClick={setShowAddExperience} />
       ) : (

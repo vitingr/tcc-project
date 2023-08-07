@@ -1,9 +1,9 @@
 import React from 'react'
 import { IoCloseSharp } from 'react-icons/io5'
 
-const Popup = ({children, title, subtitle, handleClick}) => {
+const Popup = ({children, title, subtitle, handleClick, classStyles}) => {
 	return (
-    <div className='glassmorphism'>
+    <div className={`glassmorphism ${classStyles}`}>
       <div className='center-glassmorphism center'>
         <div className='add-profile-container'>
           <div className='top-add-profile-container'>

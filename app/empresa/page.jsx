@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation'
 // Imports Components
 import MainCompany from '@components/Company/MainCompany'
 import Sidebar from '@components/Sidebar/Sidebar'
+import CreateVaga from '@components/Company/CreateVaga'
 
 const page = () => {
 
@@ -16,6 +17,8 @@ const page = () => {
 
   const [company, setCompany] = useState([])
   const [isDono, setIsDono] = useState(false)
+
+  const [createVaga, setCreateVaga] = useState(false)
 
   const getCompany = async () => {
     try {
@@ -44,8 +47,13 @@ const page = () => {
 
   return (
     <div className='company-container'>
-      <MainCompany data={company} dono={isDono} />
+      <MainCompany data={company} dono={isDono} setCreateVaga={setCreateVaga} />
       <Sidebar />
+      {createVaga ? (
+        <CreateVaga handleClick={setCreateVaga} />
+      ) : (
+        <></>
+      )}
     </div>
   )
 }

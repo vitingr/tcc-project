@@ -1,17 +1,20 @@
 "use client"
 
 import { infoUser } from '@utils/userContext'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { IoAddSharp, IoOpenOutline } from 'react-icons/io5'
 import CompanyFeed from './CompanyFeed'
 import Link from 'next/link'
+import CreateVaga from './CreateVaga'
 
-const MainCompany = ({ data, dono }) => {
+const MainCompany = ({ data, dono, setCreateVaga }) => {
 
   console.log(data)
+  const [posts, setPosts] = useState([])
+
 
   return (
-    <div className='main-company-container'>
+    <div className='main-company-container' id="about">
       <div className='main-company-color-container'>
         <div className='bg-company' style={{ backgroundImage: `url(${data.background})` }}></div>
         <div className='main-company-content'>
@@ -55,7 +58,7 @@ const MainCompany = ({ data, dono }) => {
       </div>
 
       <div className='company-feed-container'>
-        <CompanyFeed data={data} dono={dono} />
+        <CompanyFeed info={data} dono={dono} posts={posts} setCreateVaga={setCreateVaga} />
       </div>
     </div>
   )
