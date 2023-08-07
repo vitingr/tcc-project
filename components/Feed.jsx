@@ -42,9 +42,14 @@ const Feed = ({ data }) => {
       })
 
       if (response.ok) {
-        fetchData()
-        setPost("")
-        toast.success("Post Criado com sucesso!")
+        try {
+          fetchData()
+          setPost("")
+          toast.success("Post Criado com sucesso!")
+        } catch (error) {
+          console.log(error)
+          console.log("deu erro")
+        }
       } else {
         toast.error("Houve um erro ao publicar o Post")
       }
