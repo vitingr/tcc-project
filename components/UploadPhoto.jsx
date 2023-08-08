@@ -24,7 +24,9 @@ const UploadPhoto = ({ file }) => {
   return (
     <div className='uploadPhoto-container'>
       <CldUploadButton options={{maxFiles: 1}} onUpload={handleUpload} uploadPreset='m3k11e7o'>
-        <IoCameraSharp size={20} />
+        <div className='select-photo-cloudinary'>
+          Selecionar Foto
+        </div>
       </CldUploadButton>
     </div>
   )

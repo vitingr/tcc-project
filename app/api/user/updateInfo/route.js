@@ -1,9 +1,10 @@
 import { ConnectToDB } from "@utils/database";
 import User from "@models/User";
+import Post from "@components/Post";
 
 export const POST = async (request) => {
 
-    const { userId, nome, sobrenome, telefone, website, cargo_atual, area, ultima_empresa } = await request.json()
+    const { userId, nome, sobrenome, telefone, website, cargo_atual, area, ultima_empresa, foto, background } = await request.json()
 
     // Verificar Parametros
     if (userId) {
@@ -25,8 +26,19 @@ export const POST = async (request) => {
                 user.cargo_atual = cargo_atual
                 user.area = area
                 user.ultima_empresa = ultima_empresa
+                user.foto = foto
+                user.background = background
 
                 user.save()
+
+                const posts = await Post.find({dono: userId})
+
+                posts.forEach((post) => {
+                    post.fotoDono = foto
+                    post.nomeDono = nomeCompleto
+                    post.save()
+                });
+
                 return new Response("Usuário atualizado com sucesso!", { status: 200 })
 
 

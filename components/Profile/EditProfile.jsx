@@ -8,7 +8,7 @@ import { toast } from 'react-toastify'
 // Imports Components
 import ToastMessage from '@components/ToastMessage'
 import { infoUser } from '@utils/userContext'
-import e from 'cors'
+import UploadPhoto from '@components/UploadPhoto'
 
 const EditProfile = ({ data, handleClick }) => {
 
@@ -23,6 +23,8 @@ const EditProfile = ({ data, handleClick }) => {
   const [area, setArea] = useState(data.area)
   const [ultimaEmpresa, setUltimaEmpresa] = useState(data.ultima_empresa)
   const [teste, setTeste ]= useState("")
+  const [foto, setFoto] = useState(data.foto)
+  const [background, setBackground] = useState(data.background)
 
   const [showProfessionalInfo, setShowProfessionalInfo] = useState(false)
 
@@ -40,6 +42,8 @@ const EditProfile = ({ data, handleClick }) => {
           telefone: telefone,
           website: website,
           cargo_atual: cargoAtual,
+          foto: foto,
+          background: background,
           area: area,
           ultima_empresa: ultimaEmpresa
         })
@@ -116,7 +120,7 @@ const EditProfile = ({ data, handleClick }) => {
                   </div>
                   <div className='right-edit-photo'>
                     <h2>Alterar Foto de Perfil</h2>
-                    <input type="file" name="profile-photo" id="profile-photo" />
+                    <UploadPhoto file={setFoto} value={foto} />
                   </div>
                 </div>
 
@@ -126,7 +130,7 @@ const EditProfile = ({ data, handleClick }) => {
                   </div>
                   <div className='right-edit-photo'>
                     <h2>Alterar Foto de Fundo</h2>
-                    <input type="file" name="baackground-photo" id="baackground-photo" />
+                    <UploadPhoto file={setBackground} value={background} />
                   </div>
                 </div>
               </div>

@@ -10,10 +10,12 @@ import { signOut, useSession } from "next-auth/react"
 
 // Imports Icons
 import { IoSearchOutline, IoHomeSharp, IoGitNetwork, IoBriefcaseSharp, IoNotifications, IoSettingsSharp, IoExit, IoNewspaper, IoMenuSharp } from 'react-icons/io5'
+import { infoUser } from '@utils/userContext'
 
 const Navbar = () => {
 
 	const { data: session } = useSession()
+	const {data} = infoUser()
 
 	return (
 		<header>
@@ -73,7 +75,7 @@ const Navbar = () => {
 					<div className='actions-navbar center'>
 						<Link href="/usuario/profile">
 							<div className='center'>
-								<Image src={session?.user.image} width={100} height={100} className='very-small-rounded-photo scale-transform' alt='photo' />
+								<Image src={data.foto} width={100} height={100} className='very-small-rounded-photo scale-transform' alt='photo' />
 							</div>
 						</Link>
 						<div className='sign-out center icon-cursor' onClick={signOut}>

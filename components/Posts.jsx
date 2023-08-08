@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react'
+"use client"
+
+import React from 'react'
 import Post from './Post'
 import { motion } from "framer-motion";
-import { useSession } from 'next-auth/react';
 
 const Posts = ({ posts }) => {
 
@@ -34,10 +35,9 @@ const Posts = ({ posts }) => {
         animate="visible"
       >
         {posts.map((post) => (
-          <motion.li key={post} variants={item}>
-            <Post key={post._id} post={post} />
+          <motion.li key={post._id} variants={item}>
+            <Post post={post} />
           </motion.li>
-
         ))}
       </motion.ul>
     </div>

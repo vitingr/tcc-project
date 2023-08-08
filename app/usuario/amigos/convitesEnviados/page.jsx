@@ -95,8 +95,8 @@ const page = () => {
               animate="visible"
             >
               {data.map((amigo) => (
-                <motion.li key={amigo} variants={item}>
-                  <FriendOption key={amigo._id} amigo={amigo} message={"Cancelar"} handleClick={cancelarConvite} />
+                <motion.li key={amigo._id} variants={item}>
+                  <FriendOption amigo={amigo} message={"Cancelar"} handleClick={cancelarConvite} />
                 </motion.li>
               ))}
             </motion.ul>
