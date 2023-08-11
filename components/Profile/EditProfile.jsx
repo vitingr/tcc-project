@@ -116,7 +116,7 @@ const EditProfile = ({ data, handleClick }) => {
               <div className='edit-photos-container'>
                 <div className='edit-photo-profile'>
                   <div className='left-edit-photo'>
-                    <img src={data.foto} alt="photo" />
+                    <img src={foto} alt="photo" />
                   </div>
                   <div className='right-edit-photo'>
                     <h2>Alterar Foto de Perfil</h2>
@@ -126,7 +126,7 @@ const EditProfile = ({ data, handleClick }) => {
 
                 <div className='edit-photo-profile'>
                   <div className='left-edit-photo'>
-                    <img src={data.background} alt="photo" />
+                    <img src={background} alt="photo" />
                   </div>
                   <div className='right-edit-photo'>
                     <h2>Alterar Foto de Fundo</h2>

@@ -6,6 +6,9 @@ const Experiencia = ({ experiencia }) => {
         <h2>
             {experiencia.cargo} - {experiencia.empresa}
         </h2>
+        <p className="aprendizado-experiencia">
+          {experiencia.aprendizado}
+        </p>
     </div>
   )
 }

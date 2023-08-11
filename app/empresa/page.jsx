@@ -9,11 +9,13 @@ import { useRouter } from 'next/navigation'
 import MainCompany from '@components/Company/MainCompany'
 import Sidebar from '@components/Sidebar/Sidebar'
 import CreateVaga from '@components/Company/CreateVaga'
+import { useSession } from 'next-auth/react'
 
 const page = () => {
 
   const router = useRouter()
   const { data } = infoUser()
+  const {data: session} = useSession()
 
   const [company, setCompany] = useState([])
   const [isDono, setIsDono] = useState(false)
@@ -26,6 +28,8 @@ const page = () => {
       const response = await answer.json()
       setCompany(response)
 
+      console.log(`1 = ${response}`)
+
       if (data._id === response.dono) {
         setIsDono(true)
       }
@@ -36,14 +40,14 @@ const page = () => {
   }
 
   useEffect(() => {
-    if (data) {
+    if (session) {
       if (data.tipoConta == "instituicao" || data.tipoConta == "empresa") {
         getCompany()
       } else {
         router.push("/empresa/create")
       }
     }
-  }, [data])
+  }, [session])
 
   return (
     <div className='company-container'>

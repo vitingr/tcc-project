@@ -20,9 +20,10 @@ export const POST = async (request) => {
                     qtdFuncionarios: tamanho,
                     industria: industria,
                     tipo: tipo,
-                    logo: "https://cdn-icons-png.flaticon.com/512/5809/5809858.png",
+                    foto: "https://cdn-icons-png.flaticon.com/512/5809/5809858.png",
                     background: "/assets/images/bg2.jpg",
-                    seguidores: 0
+                    qtdSeguidores: 0,
+                    seguidores: ""
                 })
 
                 const usuario = await User.findOne({_id: userId})

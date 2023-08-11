@@ -9,9 +9,10 @@ import CreateVaga from './CreateVaga'
 
 const MainCompany = ({ data, dono, setCreateVaga }) => {
 
-  console.log(data)
   const [posts, setPosts] = useState([])
 
+  
+  console.log(`1 = ${data}`)
 
   return (
     <div className='main-company-container' id="about">
@@ -19,12 +20,12 @@ const MainCompany = ({ data, dono, setCreateVaga }) => {
         <div className='bg-company' style={{ backgroundImage: `url(${data.background})` }}></div>
         <div className='main-company-content'>
           <div className='main-company-logo-container'>
-            <img src={data.logo} alt="photo-company" className='main-company-logo' />
+            <img src={data.foto} alt="photo-company" className='main-company-logo' />
           </div>
           <div className='main-company-info'>
             <div className='top-company-info'>
               <h1>{data.nome}</h1>
-              <p>{data.industria} ● Santa Bárbara d'Oeste, SP ● {data.seguidores} seguidores ● {data.qtdFuncionarios}</p>
+              <p>{data.industria} ● Santa Bárbara d'Oeste, SP ● {data.qtdSeguidores} seguidores ● {data.qtdFuncionarios}</p>
             </div>
             <div className='mid-company-info'>
               <div className='about-company'>

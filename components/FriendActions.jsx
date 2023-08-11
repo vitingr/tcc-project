@@ -13,7 +13,7 @@ const FriendActions = () => {
             <p>Meus Amigos</p>
           </div>
         </Link>
-        <Link href="/usuario/">
+        <Link href="/usuario/paginas">
           <div className='friend-action icon-cursor'>
             <IoDocumentTextSharp size={17} className='friend-action-icon' />
             <p>Páginas Seguidas</p>
@@ -25,7 +25,7 @@ const FriendActions = () => {
             <p>Encontrar Amigos</p>
           </div>
         </Link>
-        <Link href="/usuario/">
+        <Link href="/usuario/paginas/encontrarPaginas">
           <div className='friend-action icon-cursor'>
             <IoRocketSharp size={17} className='friend-action-icon' />
             <p>Encontrar Páginas</p>

@@ -1072,6 +1072,7 @@ html {
 /* -=-=- AMIGOS -=-=- */
 
 .friends-container {
+	z-index: 999;
 	width: 100%;
 	display: flex;
 	flex-wrap: wrap;
@@ -1504,6 +1505,11 @@ html {
 	margin-bottom: 5px;
 }
 
+.aprendizado-experiencia {
+	color: var(--font-color-low-emphasis);
+	font-size: 13px;
+}
+
 /* -=-=- NOTIFICAÇÕES -=-=- */
 
 .notificacoes-container {
@@ -1703,6 +1709,7 @@ html {
 }
 
 .main-company-color-container {
+	border-radius: 10px;
 	background: var(--container-color);
 }
 
@@ -1996,6 +2003,7 @@ html {
 }
 
 .info-emprego h1 {
+	font-weight: 500;
 	font-size: 16px;
 }
 
@@ -2094,6 +2102,10 @@ html {
 	background: var(--container-color);
 }
 
+.card-items {
+	padding: 25px !important;
+}
+
 .company-feed-item h1 {
 	font-size: 22.5px;
 	margin-bottom: 3px;
@@ -2181,8 +2193,9 @@ html {
 	border-radius: 10px;
 	padding: 25px;
 	border: 1px solid #3333331a;
-	width: 275px;
+	width: 250px;
 	height: 300px;
+	overflow: hidden;
 }
 
 .vaga-card-top {
@@ -2226,6 +2239,89 @@ html {
 	display: flex;
 	justify-content: center;
 	color: var(--font-color-low-emphasis);
+}
+
+/* -=-=- PREMIUM OFFER -=-=-  */
+
+.offer-premium {
+	background: var(--container-color);
+	width: 100%;
+	height: 175px;
+	border-top: 3px solid #e2b318;
+	;
+	border-radius: 0px 0px 10px 10px;
+	padding: 25px;
+	margin-bottom: 15px;
+}
+
+.offer-premium-top p {
+	margin-bottom: 10px;
+	width: 100%;
+	text-align: center;
+	font-size: 12px;
+	color: var(--font-color-low-emphasis);
+}
+
+.offer-premium-main {
+	padding: 10px;
+	display: flex;
+	gap: 10px;
+	justify-content: space-between;
+}
+
+.offer-premium-main p {
+	font-size: 13px;
+}
+
+.offer-premium-main img {
+	width: 30px;
+	height: 30px;
+}
+
+.offer-premium-bottom {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	margin: auto;
+	margin-top: 10px;
+	width: 150px;
+	padding: 5px;
+	color: white;
+	border-radius: 20px;
+	background: #e2b318;
+}
+
+.sidebar-friends-option-container {
+	padding: 10px 10px 10px 0px;
+	cursor: pointer;
+	border-radius: 10px;
+	width: 100%;
+	margin-bottom: 25px;
+	display: flex;
+	gap: 10px;
+	transition-timing-function: ease-in-out;
+	transition-duration: 0.3s;
+}
+
+.sidebar-friends-option-container:hover {
+	background: #33333311;
+}
+
+.sidebar-friend-main h1 {
+	font-size: 14px;
+}
+
+.sidebar-friend-main p {
+	font-size: 12px;
+}
+
+.sidebar-friend-right {
+	display: flex;
+	align-items: center;
+}
+
+.sidebar-friend-right svg {
+	cursor: pointer;
 }
 
 /* -=-=- ANIMAÇÕES -=-=- */

@@ -14,8 +14,12 @@ const ExperienciaSchema = new Schema({
     cargo: {
         type: String,
         required: true
+    },
+    aprendizado: {
+        type: String,
+        required: true
     }
 })
 
-const Experiencia = models.Experiencia || model('Experiencia', ExperienciaSchema);
+const Experiencia = models.Experiencia || model('Experiencias', ExperienciaSchema);
 export default Experiencia;

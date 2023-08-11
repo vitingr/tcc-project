@@ -65,7 +65,7 @@ const page = () => {
             >
               {data.map((amigo) => (
                 <motion.li key={amigo} variants={item}>
-                  <FriendOption key={amigo._id} amigo={amigo} message={"Remover"} handleClick={"Remover"} />
+                  <FriendOption key={amigo._id} content={amigo} message={"Remover"} handleClick={"Remover"} />
                 </motion.li>
               ))}
 

@@ -75,7 +75,7 @@ const Navbar = () => {
 					<div className='actions-navbar center'>
 						<Link href="/usuario/profile">
 							<div className='center'>
-								<Image src={data.foto} width={100} height={100} className='very-small-rounded-photo scale-transform' alt='photo' />
+								<img src={data.foto} className='very-small-rounded-photo scale-transform' alt='photo' />
 							</div>
 						</Link>
 						<div className='sign-out center icon-cursor' onClick={signOut}>

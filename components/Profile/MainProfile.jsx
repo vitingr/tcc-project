@@ -9,6 +9,7 @@ import { IoEyeOutline } from 'react-icons/io5'
 import Certificado from './Certificado'
 import Experiencia from './Experiencia'
 import { infoUser } from '@utils/userContext'
+import { useSession } from 'next-auth/react'
 
 const MainProfile = ({ content, setShowAddExperience, setShowAddCertificado }) => {
 
@@ -16,6 +17,7 @@ const MainProfile = ({ content, setShowAddExperience, setShowAddCertificado }) =
   const [experiencias, setExperiencias] = useState([])
 
   const {data} = infoUser()
+  const {data: session} = useSession()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,7 +35,7 @@ const MainProfile = ({ content, setShowAddExperience, setShowAddCertificado }) =
         console.log(error)
       }
     }
-    if (data) {
+    if (session) {
       fetchData()
     }
   }, [])

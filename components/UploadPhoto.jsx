@@ -5,7 +5,7 @@ import { CldUploadButton } from 'next-cloudinary'
 import {IoCameraSharp} from 'react-icons/io5'
 import axios from 'axios'
 
-const UploadPhoto = ({ file }) => {
+const UploadPhoto = ({ file, value }) => {
 
   const handleUpload = async (e) => {
     

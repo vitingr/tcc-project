@@ -8,6 +8,9 @@ import VagaCard from './VagaCard'
 
 const CompanyFeed = ({ info, dono, posts, setCreateVaga }) => {
 
+  
+  console.log(`3 = ${info._id}`)
+
   const { data: session } = useSession()
   const { data } = infoUser()
   const [vagas, setVagas] = useState([])
@@ -93,7 +96,7 @@ const CompanyFeed = ({ info, dono, posts, setCreateVaga }) => {
       </div>
 
       {/* Empregos Fornecidos pela Empresa */}
-      <div className='company-feed-item'>
+      <div className='company-feed-item card-items'>
         <h1>Vagas Oferecidas</h1>
         <p>Aqui é possível e analisar ver as vagas e oportunidades oferecidas exclusivamente pela empresa para mulheres ingresseram nela.</p>
         {vagas.length > 0 ? (

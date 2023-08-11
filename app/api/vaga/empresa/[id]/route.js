@@ -7,7 +7,8 @@ export const GET = async (request, { params }) => {
     await ConnectToDB()
 
     try {
-      const response = await Vaga.find({ dono: params.id}).lean()
+      console.log(params.id)
+      const response = await Vaga.find({ empresa: params.id}).lean()
       // const response = await Vaga.find({dono: {$ne: params.id}}).lean()
 
       if (response) {

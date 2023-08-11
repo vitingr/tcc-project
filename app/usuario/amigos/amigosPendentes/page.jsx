@@ -92,7 +92,7 @@ const page = () => {
             >
               {data.map((amigo) => (
                 <motion.li key={amigo} variants={item}>
-                  <FriendOption key={amigo._id} amigo={amigo} message={"Confirmar"} handleClick={aceitarAmigo} />
+                  <FriendOption key={amigo._id} content={amigo} message={"Confirmar"} handleClick={aceitarAmigo} />
                 </motion.li>
               ))}
             </motion.ul>

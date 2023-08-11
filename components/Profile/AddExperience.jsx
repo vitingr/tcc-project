@@ -15,6 +15,7 @@ const AddExperience = ({ data, handleClick }) => {
   const {getInfo} = infoUser()
   const [empresa, setEmpresa] = useState("")
   const [cargo, setCargo] = useState("")
+  const [aprendizado, setAprendizado] = useState("")
   const [erros, setErros] = useState(false)
 
   const createExperiencia = async (e) => {
@@ -41,6 +42,10 @@ const AddExperience = ({ data, handleClick }) => {
       toast.error("Informe a empresa trabalhada")
       setErros(true)
     }
+    if (!aprendizado) {
+      toast.error("Informe a experiência adquirida")
+      setErros(true)
+    }
     if (!cargo) {
       toast.error("Informe o cargo ocupado")
       setErros(true)
@@ -53,7 +58,8 @@ const AddExperience = ({ data, handleClick }) => {
           body: JSON.stringify({
             userId: data._id,
             empresa: empresa,
-            cargo: cargo
+            cargo: cargo,
+            aprendizado: aprendizado
           })
         })
         if (response.ok) {
@@ -78,6 +84,10 @@ const AddExperience = ({ data, handleClick }) => {
         <div className='input-add-container'>
           <p>Cargo</p>
           <input type="text" name="cargo" id="add-input" className='add-input' placeholder='ex: Auxiliar de Administração.' autoComplete='off' maxLength={40} minLength={4} onChange={(e) => setCargo(e.target.value)} required />
+        </div>
+        <div className='input-add-container'>
+          <p>Experiência Adquirida</p>
+          <input type="text" name="experiencia" id="add-input" className='add-input' placeholder='Experiência adquirida na empresa.' autoComplete='off' maxLength={60} minLength={4} onChange={(e) => setAprendizado(e.target.value)} required />
         </div>
         <button type="submit" className='add-button center' onClick={(e) => createExperiencia(e)}>
           Adicionar

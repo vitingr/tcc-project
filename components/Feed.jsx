@@ -65,7 +65,7 @@ const Feed = ({ data }) => {
       <ToastMessage />
       <div className='actions-container'>
         <div className='home-profile'>
-          <div className='background-home-profile'>
+          <div className='background-home-profile' style={{ backgroundImage: `url(${data.background})` }}>
           </div>
           <div className='photo-home-profile center'>
             <img src={data.foto} className='medium-rounded-photo' alt='photo-left' />

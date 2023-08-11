@@ -31,24 +31,19 @@ export const POST = async (request) => {
 
                 user.save()
 
-                const posts = await Post.find({dono: userId})
-
-                posts.forEach((post) => {
-                    post.fotoDono = foto
-                    post.nomeDono = nomeCompleto
-                    post.save()
-                });
-
                 return new Response("Usuário atualizado com sucesso!", { status: 200 })
 
 
             } else {
+                console.log(error)
                 return new Response(`Não foi possível encontrar o usuário. ${error}`, { status: 500 })
             }
         } catch (error) {
+            console.log(error)
             return new Response(`Falha ao fazer o GET dos posts. ${error}`, { status: 500 })
         }
     } else {
+        console.log(error)
         return new Response(`Não foi possível encontrar o usuário. ${error}`, { status: 500 })
     }
 }

@@ -39,9 +39,12 @@ const PaginaSchema = new Schema({
     background: {
         type: String
     },
-    seguidores: {
+    qtdSeguidores: {
         type: Number,
         default: 0
+    },
+    seguidores: {
+        type: String
     }
 
 })

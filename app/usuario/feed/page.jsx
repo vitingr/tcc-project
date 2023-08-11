@@ -13,7 +13,7 @@ export default function Home() {
   return data ? (
     <div className='home-container'>
       <Feed data={data} />
-      <Sidebar data={data} />
+      <Sidebar info={data} />
     </div>
   ) : (
     <Loader />
