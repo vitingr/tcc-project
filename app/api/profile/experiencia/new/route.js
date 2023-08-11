@@ -2,7 +2,7 @@ import { ConnectToDB } from "@utils/database";
 import Experiencia from "@models/Experiencia";
 
 export const POST = async (request) => {
-    const { userId, empresa, cargo, aprendizado } = await request.json()
+    const { userId, empresa, cargo, aprendizado, mesInicio, mesFim, anoInicio, anoFim, habilidades, local } = await request.json()
     try {
 
         await ConnectToDB()
@@ -17,7 +17,13 @@ export const POST = async (request) => {
                     dono: userId,
                     empresa: empresa,
                     cargo: cargo,
-                    aprendizado: aprendizado
+                    aprendizado: aprendizado,
+                    mesInicio: mesInicio,
+                    mesFim: mesFim,
+                    anoInicio: anoInicio,
+                    anoFim: anoFim,
+                    local: local,
+                    habilidades: habilidades
                 })
 
                 await newExperiencia.save()
