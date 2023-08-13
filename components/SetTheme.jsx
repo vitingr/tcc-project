@@ -1,5 +1,3 @@
-"use client"
-
 import React, { useEffect, useState } from 'react'
 import { infoUser } from '@utils/userContext'
 import { useRouter } from 'next/navigation'
@@ -95,13 +93,11 @@ const setTheme = ({ children }) => {
   }
 
   useEffect(() => {
-    if (!data.cargo_atual === "" || !data.ultima_empresa === "" || !data.ultimo_contrato === "" || !data.area === "" || !data.procurando_emprego === "") {
-      if (!data.cargo_atual) {
-        router.push("/usuario/info")
-      }
+    if (data.cargo_atual === "" || data.ultima_empresa === "" || data.ultimo_contrato === "" || data.area === "" || data.procurando_emprego === "") {
+      router.push("/usuario/info")
     }
 
-  }, [])
+  }, [data])
 
   return (
     <div>

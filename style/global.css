@@ -214,13 +214,14 @@ html {
 }
 
 .glassmorphism {
-	margin-top: -150px;
+	inset: 0;
 	position: fixed;
 	width: 100%;
-	height: 180%;
+	height: 100vh;
 	backdrop-filter: blur(6px);
 	-webkit-backdrop-filter: blur(6px);
 	border-radius: 10px;
+	overflow-y: hidden;
 }
 
 .loader-container {
@@ -2293,9 +2294,8 @@ html {
 .offer-premium {
 	background: var(--container-color);
 	width: 100%;
-	height: 175px;
+	min-height: 175px;
 	border-top: 3px solid #e2b318;
-	;
 	border-radius: 0px 0px 10px 10px;
 	padding: 25px;
 	margin-bottom: 15px;
@@ -2352,6 +2352,10 @@ html {
 
 .sidebar-friends-option-container:hover {
 	background: #33333311;
+}
+
+.sidebar-friend-main {
+	width: 100%;
 }
 
 .sidebar-friend-main h1 {

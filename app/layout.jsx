@@ -35,7 +35,7 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="pt-br">
-      <body>
+      <body id="body">
         <Provider>
           {isPublic && children}
 

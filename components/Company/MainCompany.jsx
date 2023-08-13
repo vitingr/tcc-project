@@ -11,9 +11,6 @@ const MainCompany = ({ data, dono, setCreateVaga }) => {
 
   const [posts, setPosts] = useState([])
 
-  
-  console.log(`1 = ${data}`)
-
   return (
     <div className='main-company-container' id="about">
       <div className='main-company-color-container'>
