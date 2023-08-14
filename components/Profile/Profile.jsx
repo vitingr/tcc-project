@@ -1,4 +1,5 @@
 // Imports React
+
 import React from 'react'
 import Image from 'next/image'
 import { IoNewspaperOutline, IoMailOutline, IoSchoolOutline, IoCallOutline, IoGlobeOutline } from 'react-icons/io5'
@@ -6,6 +7,7 @@ import { IoNewspaperOutline, IoMailOutline, IoSchoolOutline, IoCallOutline, IoGl
 // Imports Components
 import MainProfile from './MainProfile'
 import { infoUser } from '@utils/userContext'
+import { useEffect } from 'react'
 
 const profile = ({ content, showAddExperience, showAddCertificado, showEditProfile, showAddDescricao }) => {
 

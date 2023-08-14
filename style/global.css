@@ -1302,9 +1302,10 @@ html {
 .certificado-container {
 	width: 100%;
 	display: flex;
+	align-items: center;
 	gap: 15px;
 	padding: 15px 0px 15px 0px;
-	border-bottom: 1px dashed #33333315;
+	border-bottom: 1px solid #33333315;
 }
 
 .certificado-photo {
@@ -1314,7 +1315,18 @@ html {
 }
 
 .certificado-info h3 {
-	font-size: 16px;
+	font-weight: 600;
+	font-size: 14px;
+}
+
+.certificado-info h4 {
+	font-weight: normal;
+	font-size: 12.5px;
+}
+
+.certificado-info p {
+	color: var(--font-color-low-emphasis);
+	font-size: 12px;
 }
 
 .experiencia-container {

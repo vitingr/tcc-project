@@ -11,7 +11,6 @@ import { IoEyeOutline } from 'react-icons/io5'
 import Certificado from './Certificado'
 import Experiencia from './Experiencia'
 import { infoUser } from '@utils/userContext'
-import { useSession } from 'next-auth/react'
 
 const MainProfile = ({ content, setShowAddExperience, setShowAddCertificado, setShowAddDescricao }) => {
 
@@ -19,29 +18,30 @@ const MainProfile = ({ content, setShowAddExperience, setShowAddCertificado, set
   const [experiencias, setExperiencias] = useState([])
 
   const { data } = infoUser()
-  const { data: session } = useSession()
   const descricao = data.resumo
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        // Fetch Certificados
-        const responseCertificados = await fetch(`/api/profile/certificado/user/${content._id}`)
-        const fetchCertificados = await responseCertificados.json()
-        setCertificados(fetchCertificados)
+  const fetchData = async () => {
+    try {
+      // Fetch Certificados
+      const responseCertificados = await fetch(`/api/profile/certificado/user/${data._id}`)
+      const fetchCertificados = await responseCertificados.json()
+      setCertificados(fetchCertificados)
 
-        // Fetch Experiencias
-        const responseExperiencias = await fetch(`/api/profile/experiencia/user/${content._id}`)
-        const fetchExperiencias = await responseExperiencias.json()
-        setExperiencias(fetchExperiencias)
-      } catch (error) {
-        console.log(error)
-      }
+      // Fetch Experiencias
+      const responseExperiencias = await fetch(`/api/profile/experiencia/user/${data._id}`)
+      const fetchExperiencias = await responseExperiencias.json()
+      setExperiencias(fetchExperiencias)
+
+    } catch (error) {
+      console.log(error)
     }
-    if (session) {
+  }
+
+  useEffect(() => {
+    if (data) {
       fetchData()
     }
-  }, [])
+  }, [data])
 
   return (
     <div className='main-profile-container'>

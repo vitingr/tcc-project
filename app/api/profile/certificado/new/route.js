@@ -2,7 +2,7 @@ import { ConnectToDB } from "@utils/database";
 import Certificado from "@models/Certificado";
 
 export const POST = async (request) => {
-    const { userId, nome, unidade, foto } = await request.json()
+    const { userId, nome, unidade, foto, mesInicio, mesFim, anoInicio, anoFim } = await request.json()
     try {
 
         await ConnectToDB()
@@ -17,7 +17,11 @@ export const POST = async (request) => {
                     dono: userId,
                     nome: nome,
                     unidade: unidade,
-                    foto: foto
+                    foto: foto,
+                    mesInicio: mesInicio,
+                    mesFim: mesFim,
+                    anoInicio: anoInicio,
+                    anoFim: anoFim,
                 })
 
                 await newCertificado.save()

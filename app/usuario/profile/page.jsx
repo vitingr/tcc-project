@@ -13,10 +13,32 @@ import AddDescricao from "@components/Profile/AddDescricao";
 import EditProfile from '@components/Profile/EditProfile'
 import Loader from '@components/Loader'
 import { infoUser } from '@utils/userContext'
+import { useEffect } from "react";
+import { useSession } from "next-auth/react";
 
 const page = () => {
 
   const { data } = infoUser()
+  // const {data: session} = useSession()
+  // const [content, setContent] = useState([])
+
+  // const fetchData = async () => {
+  //   try {
+  //     const result = await fetch(`/api/user/${data._id}`)
+  //     const response = await result.json()
+  //     setContent(response)
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   if (session) {
+  //     fetchData()
+  //   }
+  // }, [session])
+
+
   const [showAddDescricao, setShowAddDescricao] = useState(false)
   const [showAddExperience, setShowAddExperience] = useState(false)
   const [showAddCertificado, setShowAddCertificado] = useState(false)

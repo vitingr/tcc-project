@@ -18,7 +18,19 @@ const CertificadoSchema = new Schema({
     foto: {
         type: String,
         default: "https://cdn-icons-png.flaticon.com/512/5809/5809858.png"
-    }
+    },
+    mesInicio: {
+        type: String
+    },
+    mesFim: {
+        type: String
+    },
+    anoInicio: {
+        type: String
+    },
+    anoFim: {
+        type: String
+    },
 
 })
 

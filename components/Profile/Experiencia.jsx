@@ -17,7 +17,25 @@ const Experiencia = ({ experiencia }) => {
 
       <p className="main-experiencia">
         <h3>
-          {experiencia.mesInicio} {experiencia.anoInicio} - {experiencia.mesFim}, {experiencia.anoFim}
+          {experiencia.mesInicio && experiencia.anoInicio ? (
+            <>
+              {experiencia.mesInicio}, {experiencia.anoInicio} -
+            </>
+          ) : (
+            <>
+              {experiencia.mesInicio} {experiencia.anoInicio} -
+            </>
+          )}
+          {experiencia.mesFim && experiencia.anoFim ? (
+            <>
+             {experiencia.mesFim}, {experiencia.anoFim} 
+            </>
+          ) : (
+            <>
+             {experiencia.mesFim} {experiencia.anoFim} 
+            </>
+          )}
+          
         </h3>
 
         <h5>
@@ -25,9 +43,9 @@ const Experiencia = ({ experiencia }) => {
         </h5>
 
         <p>
-        {experiencia.aprendizado}
+          {experiencia.aprendizado}
         </p>
-        
+
         <h4>
           <span className="bold">Habilidades: </span> teste teste {experiencia.habilidades}
         </h4>

@@ -105,9 +105,9 @@ const AddExperience = ({ data, handleClick }) => {
           })
         })
         if (response.ok) {
+          toast.success("Experiência Adicionada")
           getInfo()
           handleClick(false)
-          toast.success("Experiência Adicionada")
         }
       } catch (error) {
         console.log(error)
@@ -136,7 +136,7 @@ const AddExperience = ({ data, handleClick }) => {
 
         <div className='input-add-container'>
           <p>Ano de Início <span className="pink-span">*</span></p>
-          <select name="mes-inicio" id="mes-final" className='add-input' onChange={(e) => setMesInicio(e.target.value)} required>
+          <select name="mes-inicio" id="mes-final" className='add-input' onChange={(e) => setMesInicio(e.target.value)}>
             <option value="">Mês</option>
             <option value="Janeiro">Janeiro</option>
             <option value="Fevereiro">Fevereiro</option>
@@ -152,7 +152,7 @@ const AddExperience = ({ data, handleClick }) => {
             <option value="Dezembro">Dezembro</option>
           </select>
 
-          <select name="ano-inicio" id="ano-inicio" className='add-input' onChange={(e) => setAnoInicio(e.target.value)} required>
+          <select name="ano-inicio" id="ano-inicio" className='add-input' onChange={(e) => setAnoInicio(e.target.value)}>
             <option value="">Ano</option>
             <option value="2023">2023</option>
             <option value="2022">2022</option>
@@ -198,7 +198,7 @@ const AddExperience = ({ data, handleClick }) => {
 
         <div className='input-add-container'>
           <p>Ano Final <span className="pink-span">*</span></p>
-          <select name="mes-inicio" id="mes-final" className='add-input' onChange={(e) => setMesFim(e.target.value)} required>
+          <select name="mes-inicio" id="mes-final" className='add-input' onChange={(e) => setMesFim(e.target.value)}>
             <option value="">Mês</option>
             <option value="Janeiro">Janeiro</option>
             <option value="Fevereiro">Fevereiro</option>
@@ -214,7 +214,7 @@ const AddExperience = ({ data, handleClick }) => {
             <option value="Dezembro">Dezembro</option>
           </select>
 
-          <select name="ano-inicio" id="ano-final" className='add-input' onChange={(e) => setAnoFim(e.target.value)} required>
+          <select name="ano-inicio" id="ano-final" className='add-input' onChange={(e) => setAnoFim(e.target.value)}>
             <option value="">Ano</option>
             <option value="2023">2023</option>
             <option value="2022">2022</option>
