@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import Popup from '@components/Popup'
 import { toast } from 'react-toastify'
+import TextEditor from '@components/TextEditor'
 
 // Imports Components
 import ToastMessage from '@components/ToastMessage'
@@ -80,7 +81,7 @@ const CreateVaga = ({ handleClick }) => {
 
         <div className='input-add-container'>
           <p>Sobre a vaga</p>
-          <textarea name="sobre" id="add-input" className='add-input about-input' placeholder='Fale sobre a vaga.' autoComplete='off' minLength={4} cols="60" rows="10" onChange={(e) => setSobre(e.target.value)} required></textarea>
+          <TextEditor setValue={setSobre} />
         </div>
 
         <div className='input-add-container'>

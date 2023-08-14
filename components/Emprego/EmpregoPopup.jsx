@@ -1,7 +1,11 @@
 import React from 'react'
 import { IoPeopleSharp, IoListOutline, IoBriefcase, IoBusinessOutline, IoCashSharp } from 'react-icons/io5'
+import HtmlContent from '@components/HtmlContent'
 
 const EmpregoPopup = ({ info }) => {
+  
+  const descricao = info.descricao
+
   return (
     <div className='emprego-popup-container'>
       <h1>
@@ -40,7 +44,7 @@ const EmpregoPopup = ({ info }) => {
 
       <div className='main-info-emprego'>
         <h2>Sobre a Vaga</h2>
-        <p>{info.descricao}</p>
+        <p><HtmlContent html={descricao} /></p>
       </div>
 
       <div>

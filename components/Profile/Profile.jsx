@@ -5,17 +5,20 @@ import { IoNewspaperOutline, IoMailOutline, IoSchoolOutline, IoCallOutline, IoGl
 
 // Imports Components
 import MainProfile from './MainProfile'
+import { infoUser } from '@utils/userContext'
 
-const profile = ({ data, showAddExperience, showAddCertificado, showEditProfile, showAddDescricao }) => {
+const profile = ({ content, showAddExperience, showAddCertificado, showEditProfile, showAddDescricao }) => {
+
+  const { data } = infoUser()
 
   return (
     <div className='profile-container'>
       <div className='profile-container-top' id="profile-top">
-        <div className='profile-bg' style={{ backgroundImage: `url(${data.background})` }}></div>
+        <div className='profile-bg' style={{ backgroundImage: `url(${content.background})` }}></div>
         <div className='main-profile'>
           <div className='profile-photo'>
-            <img src={data.foto} alt='photo-profile' className='big-rounded-photo' />
-            {data.logado ? (
+            <img src={content.foto} alt='photo-profile' className='big-rounded-photo' />
+            {content.logado ? (
               <div className='online'></div>
             ) : (
               <div className='offline'> </div>
@@ -24,23 +27,29 @@ const profile = ({ data, showAddExperience, showAddCertificado, showEditProfile,
           <div className='profile-info'>
             <div className='top-profile-info'>
               <div className='profile-name'>
-                <h2>{data.nomeCompleto}</h2>
-                <div className='edit-profile' onClick={() => showEditProfile(true)}>
-                  Editar Perfil
-                </div>
+                <h2>{content.nomeCompleto}</h2>
+                {data._id === content._id ? (
+                  <div className='edit-profile' onClick={() => showEditProfile(true)}>
+                    Editar Perfil
+                  </div>
+                ) : (
+                  <div className='edit-profile'>
+                    Adicionar
+                  </div>
+                )}
               </div>
-              <p className='pink-span'>{data.seguidores} seguidores</p>
+              <p className='pink-span'>{content.seguidores} seguidores</p>
             </div>
             <div className='main-profile-info'>
-              {data.email ? (
+              {content.email ? (
                 <div className='info-section'>
                   <IoMailOutline size={15} />
-                  {data.email}
+                  {content.email}
                 </div>
               ) : (
                 <div></div>
               )}
-              {data.resumo ? (
+              {content.resumo ? (
                 <div className='info-section'>
                   <IoNewspaperOutline size={15} />
                   Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio minima sunt placeat perferendis quia tempora eius laborum cumque quas! Rem inventore veniam, dolorem itaque tempore expedita laudantium aperiam iusto aliquid.
@@ -49,35 +58,35 @@ const profile = ({ data, showAddExperience, showAddCertificado, showEditProfile,
                 <div></div>
               )}
 
-              {data.formacao ? (
+              {content.formacao ? (
                 <div className='info-section'>
                   <IoSchoolOutline size={15} />
-                  {data.formacao}
+                  {content.formacao}
                 </div>
               ) : (
                 <div></div>
               )}
 
-              {data.telefone ? (
+              {content.telefone ? (
                 <div className='info-section'>
                   <IoCallOutline size={15} />
-                  {data.telefone}
+                  {content.telefone}
                 </div>
               ) : (
                 <div></div>
               )}
 
-              {data.website ? (
+              {content.website ? (
                 <div className='info-section'>
                   <IoGlobeOutline size={15} />
-                  {data.website}
+                  {content.website}
                 </div>
               ) : (
                 <div></div>
               )}
             </div>
             <div className='bottom-profile-info'>
-              {data.endereco ? (
+              {content.endereco ? (
                 <div className='endereco'>Santa Bárbara d'Oeste, São Paulo, Brasil <span className='pink-span'>Contact Info</span></div>
               ) : (
                 <div> </div>
@@ -89,7 +98,7 @@ const profile = ({ data, showAddExperience, showAddCertificado, showEditProfile,
 
       </div>
       <div className='profile-container-main'>
-        <MainProfile content={data} setShowAddExperience={showAddExperience} setShowAddCertificado={showAddCertificado} setShowAddDescricao={showAddDescricao} />
+        <MainProfile content={content} setShowAddExperience={showAddExperience} setShowAddCertificado={showAddCertificado} setShowAddDescricao={showAddDescricao} />
       </div>
     </div>
   )

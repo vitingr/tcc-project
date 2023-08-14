@@ -4,20 +4,25 @@ import React from 'react'
 import FriendActions from '@components/FriendActions'
 import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
-import FriendOption from '@components/FriendOption'
+import NetworkOption from '@components/NetworkOption'
+import { toast } from 'react-toastify'
 import { motion } from "framer-motion";
+
+// Imports Components
+import ToastMessage from '@components/ToastMessage'
 
 const page = () => {
 
-  const {data: session} = useSession()
+  const { data: session } = useSession()
   const [data, setData] = useState([])
 
+  const fetchData = async () => {
+    const result = await fetch(`/api/network/paginas/${session?.user.id}`)
+    const response = await result.json()
+    setData(response)
+  }
+
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await fetch(`/api/network/paginas/${session?.user.id}`)
-      const response = await result.json()
-      setData(response)
-    }
     if (session) {
       fetchData()
     }
@@ -43,16 +48,40 @@ const page = () => {
     }
   };
 
+  const addPage = async (pagina) => {
+    try {
+
+      const response = await fetch("/api/network/paginas/follow", {
+        method: "POST",
+        body: JSON.stringify({
+          userId: session?.user.id,
+          pagina: pagina
+        })
+      })
+
+      if (response.ok) {
+        fetchData()
+        toast.success("Página adicionda com sucesso!")
+      } else {
+        toast.error("ERRO! Não é possível seguir a mesma página mais de uma vez")
+      }
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <div className='friends-container'>
+      <ToastMessage />
       <FriendActions />
       <div className='friends-options-container'>
         <h1 className='friends-options-title'>
-          Páginas que eu sigo
+          Encontrar Páginas
         </h1>
 
         <p className='friends-options-subtitle'>
-          Encontre páginas de empresas e instituições que assemelham com você, é uma excelente maneira de demonstrar o seus gostos pessoais e um modelo de ambiente de trabalho que você goste. 
+          Encontre páginas de empresas e instituições que assemelham com você, é uma excelente maneira de demonstrar o seus gostos pessoais e um modelo de ambiente de trabalho que você goste.
         </p>
 
         {data.length > 0 ? (
@@ -65,7 +94,7 @@ const page = () => {
             >
               {data.map((pagina) => (
                 <motion.li key={pagina} variants={item}>
-                  <FriendOption key={pagina._id} content={pagina} message={"Remover"} handleClick={"Remover"} />
+                  <NetworkOption key={pagina._id} content={pagina} message={"Seguir"} handleClick={addPage} type={"pagina"} />
                 </motion.li>
               ))}
 

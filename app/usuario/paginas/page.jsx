@@ -4,7 +4,7 @@ import React from 'react'
 import FriendActions from '@components/FriendActions'
 import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
-import FriendOption from '@components/FriendOption'
+import NetworkOption from '@components/NetworkOption'
 import { motion } from "framer-motion";
 
 const page = () => {
@@ -12,12 +12,13 @@ const page = () => {
   const {data: session} = useSession()
   const [data, setData] = useState([])
 
+  const fetchData = async () => {
+    const result = await fetch(`/api/network/paginas/minhasPaginas/${session?.user.id}`)
+    const response = await result.json()
+    setData(response)
+  }
+
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await fetch(`/api/network/paginas/${session?.user.id}`)
-      const response = await result.json()
-      setData(response)
-    }
     if (session) {
       fetchData()
     }
@@ -65,7 +66,7 @@ const page = () => {
             >
               {data.map((pagina) => (
                 <motion.li key={pagina} variants={item}>
-                  <FriendOption key={pagina._id} content={pagina} message={"Remover"} handleClick={"Remover"} />
+                  <NetworkOption key={pagina._id} content={pagina} message={"Remover"} handleClick={"Remover"} type={"pagina"} />
                 </motion.li>
               ))}
 

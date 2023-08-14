@@ -5,7 +5,7 @@ import Image from 'next/image'
 import FriendActions from '@components/FriendActions'
 import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
-import FriendOption from '@components/FriendOption'
+import NetworkOption from '@components/NetworkOption'
 import { toast } from 'react-toastify'
 import { motion } from "framer-motion";
 
@@ -96,7 +96,7 @@ const page = () => {
             >
               {data.map((amigo) => (
                 <motion.li key={amigo._id} variants={item}>
-                  <FriendOption content={amigo} message={"Cancelar"} handleClick={cancelarConvite} />
+                  <NetworkOption content={amigo} message={"Cancelar"} handleClick={cancelarConvite} type={"usuario"} />
                 </motion.li>
               ))}
             </motion.ul>

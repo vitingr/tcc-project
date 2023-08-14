@@ -33,7 +33,7 @@ const CreateCompanyForm = ({ title, nome, website, industria, tamanho, tipo, des
 
 				<div className='input-create-company-container'>
 					<p>Descrição <span className='pink-span'>*</span></p>
-					<input type="text" name="descricao" id="descricao" className='input-create-company' placeholder={`Coloque uma breve descrição`} onChange={(e) => descricao(e.target.value)} autoComplete='off' maxLength={75} minLength={6} required />
+					<TextEditor setValue={descricao} />
 				</div>
 
 				<div className='input-create-company-container'>
@@ -42,8 +42,8 @@ const CreateCompanyForm = ({ title, nome, website, industria, tamanho, tipo, des
 				</div>
 
 				<div className='input-create-company-container'>
-				<p>Logo da Empresa <span className='pink-span'>*</span></p>
-				<UploadPhoto file={photo} />
+					<p>Logo da Empresa <span className='pink-span'>*</span></p>
+					<UploadPhoto file={photo} />
 				</div>
 
 				{/* <input type="file" name="baby" id="baby" onChange={(e) => photo(e.target.value)} /> */}

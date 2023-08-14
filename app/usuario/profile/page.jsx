@@ -24,7 +24,7 @@ const page = () => {
 
   return data ? (
     <div className='profile-main-container'>
-      <Profile data={data} showAddExperience={setShowAddExperience} showAddCertificado={setShowAddCertificado} showEditProfile={setShowEditProfile} showAddDescricao={setShowAddDescricao} />
+      <Profile content={data} showAddExperience={setShowAddExperience} showAddCertificado={setShowAddCertificado} showEditProfile={setShowEditProfile} showAddDescricao={setShowAddDescricao} />
       <Sidebar data={data} />
 
       {showAddDescricao ? (

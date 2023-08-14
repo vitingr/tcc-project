@@ -85,7 +85,7 @@ const Feed = ({ data }) => {
                 </Link>
               </div>
               <div className='center'>
-                <span>{data.seguidores}</span>
+                <span className="feed-friends">{data.seguidores}</span>
               </div>
             </div>
             <div className='home-options'>
@@ -101,10 +101,12 @@ const Feed = ({ data }) => {
                   <div>Conta Empresarial</div>
                 </li>
               </Link>
-              <li className='icon-cursor'>
-                <div className='center'><IoPencilOutline size={15} /></div>
-                <div>Editar perfil</div>
-              </li>
+              <Link href="/usuario/profile">
+                <li className='icon-cursor'>
+                  <div className='center'><IoPencilOutline size={15} /></div>
+                  <div>Editar perfil</div>
+                </li>
+              </Link>
               <li className='icon-cursor'>
                 <div className='center'><IoThumbsUpSharp size={15} /></div>
                 <div>Minhas curtidas</div>

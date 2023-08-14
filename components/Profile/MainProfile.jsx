@@ -26,12 +26,12 @@ const MainProfile = ({ content, setShowAddExperience, setShowAddCertificado, set
     const fetchData = async () => {
       try {
         // Fetch Certificados
-        const responseCertificados = await fetch(`/api/profile/certificado/user/${data._id}`)
+        const responseCertificados = await fetch(`/api/profile/certificado/user/${content._id}`)
         const fetchCertificados = await responseCertificados.json()
         setCertificados(fetchCertificados)
 
         // Fetch Experiencias
-        const responseExperiencias = await fetch(`/api/profile/experiencia/user/${data._id}`)
+        const responseExperiencias = await fetch(`/api/profile/experiencia/user/${content._id}`)
         const fetchExperiencias = await responseExperiencias.json()
         setExperiencias(fetchExperiencias)
       } catch (error) {

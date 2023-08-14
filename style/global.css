@@ -622,7 +622,12 @@ html {
 }
 
 .home-friends span {
+	cursor: pointer;
 	color: var(--color1);
+}
+
+.home-friends span:hover {
+	text-decoration: underline;
 }
 
 .home-options {
