@@ -1070,6 +1070,34 @@ html {
 	min-height: 700px;
 }
 
+.analytics-flex {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.analytic-item {
+	width: 100%;
+	display: flex;
+	gap: 15px;
+}
+
+.analytic-item div h4 {
+	font-weight: 600;
+	cursor: pointer;
+	font-size: 15px;
+	transition-timing-function: ease-in-out;
+	transition-duration: 0.3s;
+}
+
+.analytic-item div h4:hover {
+	color: var(--color1);
+}
+
+.analytic-item div p {
+	font-size: 13px;
+}
+
 /* -=-=- AMIGOS -=-=- */
 
 .friends-container {
@@ -2214,10 +2242,6 @@ html {
 	padding: 25px 0px 0px 0px;
 	text-align: center;
 	cursor: pointer;
-}
-
-.padding-create-vaga {
-	margin-left: -28%;
 }
 
 .about-input {

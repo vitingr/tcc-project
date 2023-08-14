@@ -49,7 +49,7 @@ const CreateVaga = ({ handleClick }) => {
   }
 
   return (
-    <Popup title={"Adicone Oportunidades de Emprego"} subtitle={"Informe as vagas e oportunidades de emprego para mulheres que a sua empresa está oferencendo."} handleClick={handleClick} classStyles={"padding-create-vaga"}>
+    <Popup title={"Adicone Oportunidades de Emprego"} subtitle={"Informe as vagas e oportunidades de emprego para mulheres que a sua empresa está oferencendo."} handleClick={handleClick} classStyles={""}>
       <ToastMessage />
       <form>
 

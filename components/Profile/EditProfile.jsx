@@ -45,7 +45,8 @@ const EditProfile = ({ data, handleClick }) => {
           foto: foto,
           background: background,
           area: area,
-          ultima_empresa: ultimaEmpresa
+          ultima_empresa: ultimaEmpresa,
+          resumo: ""
         })
       })
 

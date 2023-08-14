@@ -4,10 +4,12 @@ import Post from "@components/Post";
 
 export const POST = async (request) => {
 
-    const { userId, nome, sobrenome, telefone, website, cargo_atual, area, ultima_empresa, foto, background } = await request.json()
+    const { userId, nome, sobrenome, telefone, website, cargo_atual, area, ultima_empresa, foto, background, resumo } = await request.json()
 
     // Verificar Parametros
     if (userId) {
+
+
         try {
 
             await ConnectToDB()
@@ -28,11 +30,10 @@ export const POST = async (request) => {
                 user.ultima_empresa = ultima_empresa
                 user.foto = foto
                 user.background = background
+                user.resumo = resumo
 
                 user.save()
-
                 return new Response("Usuário atualizado com sucesso!", { status: 200 })
-
 
             } else {
                 console.log(error)

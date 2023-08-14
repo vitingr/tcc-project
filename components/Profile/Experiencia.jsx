@@ -19,12 +19,15 @@ const Experiencia = ({ experiencia }) => {
         <h3>
           {experiencia.mesInicio} {experiencia.anoInicio} - {experiencia.mesFim}, {experiencia.anoFim}
         </h3>
+
         <h5>
           Santa Bárbara d'Oeste, SP - Brasil
         </h5>
+
         <p>
         {experiencia.aprendizado}
         </p>
+        
         <h4>
           <span className="bold">Habilidades: </span> teste teste {experiencia.habilidades}
         </h4>

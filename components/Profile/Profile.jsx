@@ -6,7 +6,7 @@ import { IoNewspaperOutline, IoMailOutline, IoSchoolOutline, IoCallOutline, IoGl
 // Imports Components
 import MainProfile from './MainProfile'
 
-const profile = ({ data, showAddExperience, showAddCertificado, showEditProfile }) => {
+const profile = ({ data, showAddExperience, showAddCertificado, showEditProfile, showAddDescricao }) => {
 
   return (
     <div className='profile-container'>
@@ -43,7 +43,7 @@ const profile = ({ data, showAddExperience, showAddCertificado, showEditProfile 
               {data.resumo ? (
                 <div className='info-section'>
                   <IoNewspaperOutline size={15} />
-                  {data.resumo}
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio minima sunt placeat perferendis quia tempora eius laborum cumque quas! Rem inventore veniam, dolorem itaque tempore expedita laudantium aperiam iusto aliquid.
                 </div>
               ) : (
                 <div></div>
@@ -89,7 +89,7 @@ const profile = ({ data, showAddExperience, showAddCertificado, showEditProfile 
 
       </div>
       <div className='profile-container-main'>
-        <MainProfile content={data} setShowAddExperience={showAddExperience} setShowAddCertificado={showAddCertificado} />
+        <MainProfile content={data} setShowAddExperience={showAddExperience} setShowAddCertificado={showAddCertificado} setShowAddDescricao={showAddDescricao} />
       </div>
     </div>
   )

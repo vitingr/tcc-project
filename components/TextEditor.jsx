@@ -3,7 +3,7 @@
 import React, { useRef } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 
-const TextEditor = () => {
+const TextEditor = ({value, setValue}) => {
 	const editorRef = useRef(null);
 	const log = () => {
 		if (editorRef.current) {
@@ -15,7 +15,10 @@ const TextEditor = () => {
 			<Editor
 				apiKey='6espmx3caysbp4lgeuk7j57elnl47badfrzwxrnl2f71hirk'
 				onInit={(evt, editor) => editorRef.current = editor}
-				initialValue=""
+				initialValue={value}
+				onEditorChange={(newValue) => {
+					setValue(newValue);
+				}}
 				init={{
 					height: 500,
 					menubar: false,

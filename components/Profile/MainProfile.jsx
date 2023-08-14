@@ -4,6 +4,8 @@
 
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
+import { IoPeopleSharp, IoSearchSharp } from 'react-icons/io5'
+import HtmlContent from '@components/HtmlContent'
 
 import { IoEyeOutline } from 'react-icons/io5'
 import Certificado from './Certificado'
@@ -11,13 +13,14 @@ import Experiencia from './Experiencia'
 import { infoUser } from '@utils/userContext'
 import { useSession } from 'next-auth/react'
 
-const MainProfile = ({ content, setShowAddExperience, setShowAddCertificado }) => {
+const MainProfile = ({ content, setShowAddExperience, setShowAddCertificado, setShowAddDescricao }) => {
 
   const [certificados, setCertificados] = useState([])
   const [experiencias, setExperiencias] = useState([])
 
-  const {data} = infoUser()
-  const {data: session} = useSession()
+  const { data } = infoUser()
+  const { data: session } = useSession()
+  const descricao = data.resumo
 
   useEffect(() => {
     const fetchData = async () => {
@@ -45,11 +48,30 @@ const MainProfile = ({ content, setShowAddExperience, setShowAddCertificado }) =
 
       <div className='container-section-profile' id="analytics">
         <div className='section-top'>
-          <h3>Analystics</h3>
+          <h3>Analytics</h3>
         </div>
         <div className='section-bottom'>
-          <h6>Sem dados...</h6>
-          <p>Nenhuma informações sobre seu perfil disponível!</p>
+          <div className="analytics-flex">
+            <div className="analytic-item">
+              <div>
+                <IoPeopleSharp size={20} />
+              </div>
+              <div>
+                <h4>0 Visualizações de Perfil</h4>
+                <p>Descubra pessoas que visualizaram seu perfil</p>
+              </div>
+            </div>
+
+            <div className="analytic-item">
+              <div>
+                <IoSearchSharp size={20} />
+              </div>
+              <div>
+                <h4>0 Ocorrências de buscas</h4>
+                <p>Veja com qual frequência você apareceu em resultados de busca</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -58,11 +80,11 @@ const MainProfile = ({ content, setShowAddExperience, setShowAddCertificado }) =
           <h3>Recursos</h3>
           {content._id === data._id ? (
             <span className='section-icon'>
-              <IoEyeOutline size={15} /> 
+              <IoEyeOutline size={15} />
               <p>somente você pode ver</p>
             </span>
           ) : (
-            <div></div>
+            <></>
           )}
         </div>
         <div className='section-bottom'>
@@ -70,6 +92,43 @@ const MainProfile = ({ content, setShowAddExperience, setShowAddCertificado }) =
           <p>Nenhuma informações sobre certificações disponível!</p>
         </div>
       </div>
+
+      <div className='container-section-profile'>
+        <div className='section-top'>
+          <h3>Sobre Mim</h3>
+        </div>
+        {content.resumo ? (
+          <div>
+            <div className="resumo-container-profile">
+              <HtmlContent html={descricao} />
+            </div>
+            {content._id === data._id ? (
+              <Link href="#top-profile">
+                <div className='section-button center' onClick={() => setShowAddDescricao(true)}>
+                  Alterar Descrição
+                </div>
+              </Link>
+            ) : (
+              <></>
+            )}
+          </div>
+        ) : (
+          <div className='section-bottom'>
+            <h6>Sem dados...</h6>
+            <p>Nenhuma descrição sobre você disponível!</p>
+            {content._id === data._id ? (
+              <Link href="#top-profile">
+                <div className='section-button center' onClick={() => setShowAddDescricao(true)}>
+                  Adicionar uma Descrição
+                </div>
+              </Link>
+            ) : (
+              <></>
+            )}
+          </div>
+        )
+        }
+      </div >
 
       <div className='container-section-profile'>
         <div className='section-top'>
@@ -108,7 +167,7 @@ const MainProfile = ({ content, setShowAddExperience, setShowAddCertificado }) =
                 </div>
               </Link>
             </div>
-          )} 
+          )}
         </div>
       </div>
 
