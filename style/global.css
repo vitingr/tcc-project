@@ -884,7 +884,7 @@ html {
 }
 
 .profile-bg {
-	height: 175px;
+	height: 205px;
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -1009,7 +1009,7 @@ html {
 	max-width: 625px;
 	min-height: 300px;
 	background: var(--container-color);
-	padding: 25px 35px 65px 35px;
+	padding: 25px 35px 150px 35px;
 }
 
 .add-profile-container h2 {

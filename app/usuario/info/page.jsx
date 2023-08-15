@@ -32,7 +32,6 @@ const AditionalInfoContainer = () => {
   const [ultimoContrato, setUltimoContrato] = useState("")
   const [ultimaEmpresa, setUltimaEmpresa] = useState("")
   const [procurandoEmprego, setProcurandoEmprego] = useState("")
-
   const [share, setShare] = useState(false)
 
   const verify = () => {

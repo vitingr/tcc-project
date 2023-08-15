@@ -18,7 +18,7 @@ const MainProfile = ({ content, setShowAddExperience, setShowAddCertificado, set
   const [experiencias, setExperiencias] = useState([])
 
   const { data } = infoUser()
-  const descricao = data.resumo
+  const descricao = content.resumo
 
   const fetchData = async () => {
     try {
