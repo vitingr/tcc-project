@@ -31,7 +31,7 @@ const page = () => {
       const response = await signIn("credentials", {
         email: data.email,
         password: data.password,
-        redirect: "/usuario/feed"
+        redirect: false
       })
 
       console.log(response)

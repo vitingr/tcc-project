@@ -40,10 +40,15 @@ const handler = NextAuth({
 						console.log("Usuario não Encontrado")
 					} else {
 						console.log("Usuário Existente")
+
+						const user = { id: userExists._id, name: userExists.nomeCompleto, email: userExists.email }
+
+						if (user) {
+							return user
+						} else {
+							return null
+						}
 					}
-	
-					console.log("Deu bom")
-					return { id: "1234", name: "Alfredo", email: email}
 
 				} catch (error) {
 
@@ -63,6 +68,8 @@ const handler = NextAuth({
 				email: session.user.email
 			})
 
+			console.log(session)
+
 			session.user.id = sessionUser._id.toString()
 			return session
 		},
@@ -72,7 +79,7 @@ const handler = NextAuth({
 				await ConnectToDB()
 
 				if (credentials) {
-					return false
+					return true
 				}
 
 				if (profile) {
