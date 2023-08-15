@@ -3,7 +3,7 @@ import Pagina from "@models/Pagina";
 import User from "@models/User";
 
 export const POST = async (request) => {
-    const { userId, nome, modelo, website, photo, industria, tamanho, tipo } = await request.json()
+    const { userId, nome, modelo, website, photo, industria, tamanho, tipo, descricao } = await request.json()
     try {
         await ConnectToDB()
         if (!userId) {
@@ -23,7 +23,9 @@ export const POST = async (request) => {
                     foto: "https://cdn-icons-png.flaticon.com/512/5809/5809858.png",
                     background: "/assets/images/bg2.jpg",
                     qtdSeguidores: 0,
-                    seguidores: ""
+                    seguidores: "",
+                    endereco: "",
+                    descricao: descricao
                 })
 
                 const usuario = await User.findOne({_id: userId})

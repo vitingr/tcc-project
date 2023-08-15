@@ -58,7 +58,8 @@ const page = () => {
 					website: website,
 					industria: industria,
 					tamanho: tamanho,
-					tipo: tipo
+					tipo: tipo,
+					descricao: descricao
 				})
 			})
 

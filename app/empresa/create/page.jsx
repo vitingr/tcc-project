@@ -12,7 +12,7 @@ const page = () => {
 
 	useEffect(() => {
 		if (data) {
-			if (data.tipoConta == "instituicao" || data.tipoConta == "empresarial") {
+			if (data.tipoConta == "instituicao" || data.tipoConta == "empresa") {
 				router.push("/empresa")
 			} else {
 				console.log("Conta não Empresarial")

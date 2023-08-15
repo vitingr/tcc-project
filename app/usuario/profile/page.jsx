@@ -68,7 +68,7 @@ const page = () => {
       )}
 
       {showEditProfile ? (
-        <EditProfile data={data} handleClick={setShowEditProfile} />
+        <EditProfile content={data} handleClick={setShowEditProfile} />
       ) : (
         <></>
       )}

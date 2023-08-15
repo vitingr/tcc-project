@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
   const path = usePathname()
 
   const isPublic = checkIsPublicRoute(path)
-  console.log(isPublic)
+  // console.log(isPublic)
 
   // SE o usuário estiver autenticado e acessar uma rota privada
   // ele vai conseguir visualizar a página

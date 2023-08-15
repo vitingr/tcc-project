@@ -8,26 +8,30 @@ import VagaCard from './VagaCard'
 
 const CompanyFeed = ({ info, dono, posts, setCreateVaga }) => {
 
-  
-  console.log(`3 = ${info._id}`)
-
   const { data: session } = useSession()
   const { data } = infoUser()
   const [vagas, setVagas] = useState([])
 
+  const getInfo = async () => {
+    if (info && info._id !== undefined) {
+      try {
+        const result = await fetch(`/api/vaga/empresa/${info._id}`)
+        const response = await result.json()
+        setVagas(response)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  }
+
   useEffect(() => {
-
-    const getInfo = async () => {
-      const result = await fetch(`/api/vaga/empresa/${info._id}`)
-      const response = await result.json()
-      setVagas(response)
-    } 
-
     if (session) {
-      getInfo()
+      if (info) {
+        getInfo()
+      }
     }
 
-  }, [session])
+  }, [session, info])
 
   return (
     <div className='company-feed-container'>
@@ -102,11 +106,11 @@ const CompanyFeed = ({ info, dono, posts, setCreateVaga }) => {
         {vagas.length > 0 ? (
           <div className='vagas-card-container'>
             {vagas.map((item) => (
-              <VagaCard info={item} />
+              <VagaCard info={item} key={item._id} />
             ))}
           </div>
         ) : (
-          <div className='error-msg-company'> 
+          <div className='error-msg-company'>
             Essa empresa não possui nenhuma vaga ativa no momento
           </div>
         )}

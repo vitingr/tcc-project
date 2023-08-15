@@ -6,6 +6,8 @@ export const GET = async (request, { params }) => {
 
     await ConnectToDB()
 
+    console.log(params.id)
+
     try {
       console.log(params.id)
       const response = await Vaga.find({ empresa: params.id}).lean()

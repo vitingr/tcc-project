@@ -32,7 +32,7 @@ const PaginaSchema = new Schema({
     descricao: {
         type: String
     },
-    logo: {
+    foto: {
         type: String,
         default: "https://cdn-icons-png.flaticon.com/512/5809/5809858.png"
     },
@@ -44,6 +44,9 @@ const PaginaSchema = new Schema({
         default: 0
     },
     seguidores: {
+        type: String
+    },
+    endereco: {
         type: String
     }
 

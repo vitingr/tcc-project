@@ -25,7 +25,7 @@ const PrivateRoute = ({ children }) => {
         } 
         if (status == "authenticated") {
           setIsLogged(true)
-          console.log(session)
+          // console.log(session)
         }
       }
     }

@@ -10,21 +10,20 @@ import ToastMessage from '@components/ToastMessage'
 import { infoUser } from '@utils/userContext'
 import UploadPhoto from '@components/UploadPhoto'
 
-const EditProfile = ({ data, handleClick }) => {
+const EditProfile = ({ content, handleClick }) => {
 
   const {getInfo} = infoUser()
 
-  const [nome, setNome] = useState(data.nome)
-  const [sobrenome, setSobrenome] = useState(data.sobrenome)
-  const [telefone, setTelefone] = useState(data.telefone)
-  const [website, setWebsite] = useState(data.website)
-  const [resumo, setResumo] = useState(data.resumo)
-  const [cargoAtual, setCargoAtual] = useState(data.cargo_atual)
-  const [area, setArea] = useState(data.area)
-  const [ultimaEmpresa, setUltimaEmpresa] = useState(data.ultima_empresa)
-  const [teste, setTeste ]= useState("")
-  const [foto, setFoto] = useState(data.foto)
-  const [background, setBackground] = useState(data.background)
+  const [nome, setNome] = useState(content.nome)
+  const [sobrenome, setSobrenome] = useState(content.sobrenome)
+  const [telefone, setTelefone] = useState(content.telefone)
+  const [website, setWebsite] = useState(content.website)
+  const [resumo, setResumo] = useState(content.resumo)
+  const [cargoAtual, setCargoAtual] = useState(content.cargo_atual)
+  const [area, setArea] = useState(content.area)
+  const [ultimaEmpresa, setUltimaEmpresa] = useState(content.ultima_empresa)
+  const [foto, setFoto] = useState(content.foto)
+  const [background, setBackground] = useState(content.background)
 
   const [showProfessionalInfo, setShowProfessionalInfo] = useState(false)
 
@@ -36,7 +35,7 @@ const EditProfile = ({ data, handleClick }) => {
       const response = await fetch("/api/user/updateInfo", {
         method: "POST",
         body: JSON.stringify({
-          userId: data._id,
+          userId: content._id,
           nome: nome,
           sobrenome: sobrenome,
           telefone: telefone,
@@ -46,12 +45,13 @@ const EditProfile = ({ data, handleClick }) => {
           background: background,
           area: area,
           ultima_empresa: ultimaEmpresa,
-          resumo: ""
+          resumo: resumo
         })
       })
 
       if (response.ok) {
         getInfo()
+        handleClick(false)
         toast.success("O seu perfil foi atualizado com sucesso!")
       } else {
         toast.error("Não foi possível atualizar o perfil do usuário")
@@ -80,7 +80,7 @@ const EditProfile = ({ data, handleClick }) => {
             <div>
               <div className='input-add-container'>
                 <p>Resumo</p>
-                <TextEditor value={teste} onEditorChange={(e) => setTeste(e.target.value)} />
+                <TextEditor value={resumo} setValue={setResumo} />
                 {/* <input type="text" name="resumo" id="add-input" className='add-input' placeholder='Nome' autoComplete='off' maxLength={35} minLength={4} onChange={(e) => setResumo(e.target.value)} value={nome} required /> */}
               </div>
               <div className='input-add-container'>
