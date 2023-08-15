@@ -1,7 +1,11 @@
+import { useSession } from 'next-auth/react'
 import React from 'react'
 
 const Footer = () => {
-  return (
+
+  const {data: session} = useSession()
+
+  return session ? (
     <div className='footer-container'>
       <div>
         <div className="custom-shape-divider-bottom-1688910825">
@@ -16,6 +20,8 @@ const Footer = () => {
 
       </div>
     </div>
+  ) : (
+    <></>
   )
 }
 

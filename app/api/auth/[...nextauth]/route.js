@@ -1,77 +1,128 @@
 import NextAuth from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
+import CredentialsProvider from "next-auth/providers/credentials"
 
 import { ConnectToDB } from '@utils/database'
 import User from '@models/User'
+import { signIn } from 'next-auth/react'
 
 const handler = NextAuth({
-    providers: [
-        GoogleProvider({
-            clientId: process.env.GOOGLE_ID,
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        })
-    ],
-    callbacks: {
-        async session({ session }) {
-            const sessionUser = await User.findOne({
-                email: session.user.email
-            })
+	session: {
+		strategy: "jwt"
+	},
+	providers: [
+		GoogleProvider({
+			clientId: process.env.GOOGLE_ID,
+			clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+		}),
+		CredentialsProvider({
+			name: "credentials",
+			credentials: {
+				email: { label: "Email", type: "email", placeholder: "Seu email" },
+				password: { label: "Password", type: "password" }
+			},
+			async authorize(credentials, req) {
 
-            session.user.id = sessionUser._id.toString()
-            return session
-        },
+				const { email, password } = credentials
 
-        async signIn({ profile }) {
-            try {
+				if (!email || !password) {
+					throw new Error(`Credenciais Inválidas`)
+				} 
 
-                await ConnectToDB()
+				try {
+					await ConnectToDB()
 
-                const userExists = await User.findOne({
-                    email: profile.email
-                })
-
-				if (!userExists) {
-					const separatedNames = profile.name.split(" ")
-
-					await User.create({
-						logado: true,
-						tipoConta: "usuario",
-						nome: separatedNames[0],
-						sobrenome: separatedNames[1],
-						nomeCompleto: profile.name,
-						email: profile.email,
-						senha: 123456789,
-						ultimo_cargo: "",
-						ultima_empresa: "",
-						ultimo_contrato: "",
-						area: "",
-						preferencia_emprego: "",
-						procurando_emprego: "",
-						escola: "",
-						amigos: "",
-						amigos_pendentes: "",
-						notificacoes: 0,
-						paginas: "",
-						foto: profile.picture,
-						background: "/assets/images/bg1.jpg",
-						seguidores: 0,
-						resumo: "",
-						cargo_atual: "",
-						telefone: "",
-						website: "",
-						novoUsuario: true
+					const userExists = await User.findOne({
+						email: email
 					})
+	
+					if (!userExists) {
+						console.log("Usuario não Encontrado")
+					} else {
+						console.log("Usuário Existente")
+					}
+	
+					console.log("Deu bom")
+					return { id: "1234", name: "Alfredo", email: email}
 
-				} else {
+				} catch (error) {
 
-					console.log("Usuário Existente")
+					console.log(`ERRO primeiro: ${error}`);
+					return false
+
+				}
+			}
+		})
+	],
+	pages: {
+		signIn: "/",
+	},
+	callbacks: {
+		async session({ session }) {
+			const sessionUser = await User.findOne({
+				email: session.user.email
+			})
+
+			session.user.id = sessionUser._id.toString()
+			return session
+		},
+		async signIn({ profile, credentials }) {
+			try {
+
+				await ConnectToDB()
+
+				if (credentials) {
+					return false
 				}
 
-				return true
+				if (profile) {
+					const userExists = await User.findOne({
+						email: profile.email
+					})
+	
+					if (!userExists) {
+						const separatedNames = profile.name.split(" ")
+	
+						await User.create({
+							logado: true,
+							tipoConta: "usuario",
+							nome: separatedNames[0],
+							sobrenome: separatedNames[1],
+							nomeCompleto: profile.name,
+							email: profile.email,
+							senha: 123456789,
+							ultimo_cargo: "",
+							ultima_empresa: "",
+							ultimo_contrato: "",
+							area: "",
+							preferencia_emprego: "",
+							procurando_emprego: "",
+							escola: "",
+							amigos: "",
+							amigos_pendentes: "",
+							notificacoes: 0,
+							paginas: "",
+							foto: profile.picture,
+							background: "/assets/images/bg1.jpg",
+							seguidores: 0,
+							resumo: "",
+							cargo_atual: "",
+							telefone: "",
+							website: "",
+							novoUsuario: true
+						})
+	
+					} else {
+	
+						console.log("Usuário Existente")
+					}
+	
+					return true
+				}
 
 			} catch (error) {
 
-				console.log(`ERRO: ${error}`);
+				console.log(`ERRO segundo: ${error}`);
 				return false
 
 			}

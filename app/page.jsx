@@ -19,6 +19,32 @@ const page = () => {
 
   const [providers, setProviders] = useState(null);
 
+  const [data, setData] = useState({
+    email: "",
+    password: "",
+  })
+
+  const registerUser = async (e) => {
+    e.preventDefault()
+
+    if (data.password) {
+      const response = await signIn("credentials", {
+        email: data.email,
+        password: data.password,
+        redirect: "/usuario/feed"
+      })
+
+      console.log(response)
+
+      // if (response.ok) {
+      //   router.push("/usuario/feed")
+      // }
+
+    } else {
+      console.log("erro")
+    }
+  }
+
   useEffect(() => {
 
     const setUpProviders = async () => {
@@ -49,27 +75,35 @@ const page = () => {
           <p>
             Faça seu login para ter acesso a todos os recursos oferecidos e disponibilizados pela nossa plataforma
           </p>
-          <div className='register-login-form'>
-            <div className='register-login-input'>
-              <IoMailSharp size={20} />
-              <input type="email" name="email" id="email" minLength={8} maxLength={120} placeholder='Email' required />
+          <form onSubmit={registerUser}>
+            <div className='register-login-form'>
+              <div className='register-login-input'>
+                <IoMailSharp size={20} />
+                <input type="email" name="email" id="email" minLength={8} maxLength={120} placeholder='Email' value={data.email} onChange={(e) => { setData({ ...data, email: e.target.value }) }} required />
+              </div>
+              <div className='register-login-input'>
+                <IoLockClosed size={20} />
+                <input type="password" name="senha" id="senha" placeholder='Senha' maxLength={30} minLength={8} autoComplete='off' value={data.password} onChange={(e) => { setData({ ...data, password: e.target.value }) }} required />
+              </div>
             </div>
-            <div className='register-login-input'>
-              <IoLockClosed size={20} />
-              <input type="password" name="senha" id="senha" placeholder='Senha' maxLength={30} minLength={8} autoComplete='off' required />
-            </div>
-          </div>
-          <div className="register-login-button center">
-            Registrar
-          </div>
+            <button type="submit" className="register-login-button center">
+              Entrar
+            </button>
+          </form>
           <div className='register-login-icons-container'>
             <>
               {providers &&
                 Object.values(providers).map((provider) => (
-                  <button className='register-login-icon icon-cursor transparent' type="button" key={provider.name} onClick={() => signIn(provider.id)}>
-                    <IoLogoGoogle size={25} />
-                    Entrar com Google
-                  </button>
+                  <>
+                    {provider.name != "credentials" ? (
+                      <button className='register-login-icon icon-cursor transparent' type="button" key={provider.name} onClick={() => signIn(provider.id)}>
+                        <IoLogoGoogle size={25} />
+                        Entrar com {provider.name}
+                      </button>
+                    ) : (
+                      <></>
+                    )}
+                  </>
                 ))}
             </>
             <div className="register-login-icon icon-cursor">

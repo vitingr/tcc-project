@@ -1,3 +1,5 @@
+"use client"
+
 // Imports React
 import React from 'react'
 import Link from 'next/link'
@@ -66,7 +68,7 @@ const page = () => {
                 Object.values(providers).map((provider) => (
                   <button className='register-login-icon icon-cursor transparent' type="button" key={provider.name} onClick={() => signIn(provider.id)}>
                     <IoLogoGoogle size={25} />
-                    Entrar com Google
+                    {provider}
                   </button>
                 ))}
             </>
