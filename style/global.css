@@ -381,6 +381,10 @@ html {
     text-align: center;
 }
 
+.profile-photo-navbar-sm {
+	display: none;
+}
+
 /* -=-=- LOGIN / REGISTER -=-=- */
 
 .register-login-container {
@@ -2610,6 +2614,7 @@ html {
 	}
 
 	.feed-container {
+		gap: 0px;
 		flex-wrap: wrap;
 		justify-content: center;
 	}
@@ -2634,28 +2639,66 @@ html {
 
 @media (max-width: 650px) {
 
+	.medium-rounded-photo {
+		width: 65px;
+		height: 65px;
+	}
+	
+	.friends-container {
+		gap: 0;
+	}
+
 	.main-container {
-		padding: 10% 0%;
+		padding: 10% 1%;
 	}
 
 	.friends-options {
 		justify-content: center;
 	}
 
-	/* .actions-navbar,
-	.search-content,
+	.actions-navbar {
+		display: none;
+	}
+
 	.nav-content {
+		width: 100%;
+		position: fixed;
+		left: 0%;
+		top: 92%;
+		background: var(--container-color);
+		z-index: 1000;
+		padding: 10px 0px 6px 0px;
+	}
+
+	.nav-list {
+		gap: 17.5px;
+		justify-content: center;
+	}
+
+	.settings {
 		display: none;
 	}
 
 	.navbar {
 		justify-content: flex-end;
-	} */
+		gap: 15px
+	}
+
+	.search-logo {
+		display: none;
+	}
+
+	.search-content {
+		height: 30px;
+	}
+	
+	.search-content div {
+		padding: 0;
+	}
 
 	.menu-navbar {
 		display: block;
 		cursor: pointer;
-		padding-right: 25px;
 	}
 
 	.notificacoes-container {
@@ -2665,4 +2708,90 @@ html {
 	.notificacao-content p {
 		font-size: 12px;
 	}
+
+	.profile-photo-navbar-sm {
+		display: block;
+	}
+
+	.actions-container {
+		display: none;
+	}
+
+	.post-photo-profile {
+		display: none;
+	}
+
+	.friends-actions-container {
+		max-width: 100%;
+		padding: 25px 10px 15px 10px;
+	}
+
+	.friend-option {
+		width: 190px;
+		height: 285px;
+	}
+
+	.friends-options-container {
+		padding: 0px 0px 50px 0px;
+	}
+
+	.friends-options-title {
+		padding: 25px 25px 0px 25px;
+	}
+
+	.friends-options-subtitle {
+		padding: 0px 25px 25px 25px;
+	}
+
+	.add-friend-actions {
+		padding: 0px 20px 0px 15px;
+	}
+
+	.friend-main-info h4 {
+		font-size: 14px;
+	}
+
+	.friend-main-info p {
+		font-size: 11px;
+	}
+
+	.add-friend-button {
+		padding: 2.5px;
+		font-size: 11px;
+	}
+
+	.friend-photo-container {
+		margin-top: -55px;
+	}
+
+	.friend-main-info {
+		margin-top: 0;
+	}
+
+	.footer-container {
+		margin: 0;
+		background: var(--background-color);
+	}
+
+	.profile-bg {
+		border-radius: 0;
+	}
+
+	.profile-main-container {
+		margin-top: -10%;
+	}
+
+	.main-profile {
+		padding: 25px;
+	}
+
+	.analytics-flex {
+		flex-direction: column;
+		gap: 25px;
+	}
+
+	.container-section-profile {
+		padding: 25px;
+	}
+
 }

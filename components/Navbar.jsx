@@ -15,12 +15,21 @@ import { infoUser } from '@utils/userContext'
 const Navbar = () => {
 
 	const { data: session } = useSession()
-	const {data} = infoUser()
+	const { data } = infoUser()
 
 	return (
 		<header>
 			{session?.user ? (
 				<nav className='navbar' id="navbar">
+
+					<div className="profile-photo-navbar-sm">
+						<Link href="/usuario/profile">
+							<div className='center'>
+								<img src={data.foto} className='very-small-rounded-photo scale-transform' alt='photo' />
+							</div>
+						</Link>
+					</div>
+
 					<div className='search-container'>
 						<img src="https://i.pinimg.com/736x/3d/37/60/3d3760207a12e626f1149118404e003d.jpg" alt="logo" className='search-logo' />
 						<div className='search-content'>
@@ -60,7 +69,7 @@ const Navbar = () => {
 									</div>
 								</Link>
 							</li>
-							<li>
+							<li className="settings">
 								<Link href="/usuario/settings" className='link-nav center'>
 									<div><IoSettingsSharp size={17.5} /></div>
 									<p>Settings</p>

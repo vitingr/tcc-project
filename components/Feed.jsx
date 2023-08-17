@@ -85,7 +85,7 @@ const Feed = ({ data }) => {
                 </Link>
               </div>
               <div className='center'>
-                <Link href={`/usuario/seguidores/${content._id}`}>
+                <Link href={`/usuario/seguidores/${data._id}`}>
                   <span className="feed-friends">{data.seguidores}</span>
                 </Link>
               </div>
@@ -144,7 +144,7 @@ const Feed = ({ data }) => {
 
         <div className='top-posts-container'>
           <div className='write-posts-container'>
-            <img src={data.foto} className='very-small-rounded-photo' alt='photo-post' />
+            <img src={data.foto} className='very-small-rounded-photo post-photo-profile' alt='photo-post' />
             <input type="text" name="post-something" id="post-something" className='post-something' onChange={(e) => setPost(e.target.value)} value={post} />
           </div>
 
