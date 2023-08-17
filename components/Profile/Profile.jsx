@@ -8,12 +8,14 @@ import { IoNewspaperOutline, IoMailOutline, IoSchoolOutline, IoCallOutline, IoGl
 import MainProfile from './MainProfile'
 import { infoUser } from '@utils/userContext'
 import { useEffect } from 'react'
+import Link from 'next/link'
+import Loader from '@components/Others/Loader'
 
 const profile = ({ content, showAddExperience, showAddCertificado, showEditProfile, showAddDescricao }) => {
 
   const { data } = infoUser()
 
-  return (
+  return data ? (
     <div className='profile-container'>
       <div className='profile-container-top' id="profile-top">
         <div className='profile-bg' style={{ backgroundImage: `url(${content.background})` }}></div>
@@ -40,7 +42,9 @@ const profile = ({ content, showAddExperience, showAddCertificado, showEditProfi
                   </div>
                 )}
               </div>
-              <p className='pink-span'>{content.seguidores} seguidores</p>
+              <Link href={`/usuario/seguidores/${content._id}`}>
+                <p className='pink-span pink-hover'>{content.seguidores} seguidores</p>
+              </Link>
             </div>
             <div className='main-profile-info'>
               {content.email ? (
@@ -103,6 +107,8 @@ const profile = ({ content, showAddExperience, showAddCertificado, showEditProfi
         <MainProfile content={content} setShowAddExperience={showAddExperience} setShowAddCertificado={showAddCertificado} setShowAddDescricao={showAddDescricao} />
       </div>
     </div>
+  ) : (
+    <Loader />
   )
 }
 

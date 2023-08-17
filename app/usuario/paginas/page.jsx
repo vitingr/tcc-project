@@ -6,6 +6,7 @@ import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
 import NetworkOption from '@components/NetworkOption'
 import { motion } from "framer-motion";
+import Sidebar from '@components/Sidebar/Sidebar'
 
 const page = () => {
 
@@ -76,6 +77,7 @@ const page = () => {
           <div> Você não segue nenhuma página </div>
         )}
       </div>
+      <Sidebar />
     </div >
   )
 }

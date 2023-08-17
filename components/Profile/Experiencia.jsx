@@ -15,7 +15,7 @@ const Experiencia = ({ experiencia }) => {
         </div>
       </div>
 
-      <p className="main-experiencia">
+      <div className="main-experiencia">
         <h3>
           {experiencia.mesInicio && experiencia.anoInicio ? (
             <>
@@ -49,7 +49,7 @@ const Experiencia = ({ experiencia }) => {
         <h4>
           <span className="bold">Habilidades: </span> teste teste {experiencia.habilidades}
         </h4>
-      </p>
+      </div>
     </div>
   )
 }

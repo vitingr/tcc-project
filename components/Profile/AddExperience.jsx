@@ -7,7 +7,7 @@ import { toast } from 'react-toastify'
 import Popup from '@components/Popup'
 
 // Imports Components
-import ToastMessage from '@components/ToastMessage'
+import ToastMessage from '@components/Others/ToastMessage'
 import { infoUser } from '@utils/userContext'
 
 const AddExperience = ({ data, handleClick }) => {

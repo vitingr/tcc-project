@@ -4,10 +4,10 @@ import React, { useState } from 'react'
 import { toast } from 'react-toastify'
 
 // Imports Components
-import ToastMessage from '@components/ToastMessage'
+import ToastMessage from '@components/Others/ToastMessage'
 import { infoUser } from '@utils/userContext'
 import Popup from '@components/Popup'
-import TextEditor from '@components/TextEditor'
+import TextEditor from '@components/Others/TextEditor'
 
 const AddDescricao = ({ data, handleClick }) => {
 

@@ -55,6 +55,9 @@ const Navbar = () => {
 								<Link href="/usuario/notificacoes" className='link-nav center'>
 									<div><IoNotifications size={17.5} /></div>
 									<p>Notif.</p>
+									<div className="qtd-notificacoes">
+										{data.notificacoes}
+									</div>
 								</Link>
 							</li>
 							<li>

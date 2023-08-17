@@ -5,7 +5,7 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { IoPeopleSharp, IoSearchSharp } from 'react-icons/io5'
-import HtmlContent from '@components/HtmlContent'
+import HtmlContent from '@components/Others/HtmlContent'
 
 import { IoEyeOutline } from 'react-icons/io5'
 import Certificado from './Certificado'
@@ -21,19 +21,21 @@ const MainProfile = ({ content, setShowAddExperience, setShowAddCertificado, set
   const descricao = content.resumo
 
   const fetchData = async () => {
-    try {
-      // Fetch Certificados
-      const responseCertificados = await fetch(`/api/profile/certificado/user/${data._id}`)
-      const fetchCertificados = await responseCertificados.json()
-      setCertificados(fetchCertificados)
+    if (data._id != undefined) {
+      try {
+        // Fetch Certificados
+        const responseCertificados = await fetch(`/api/profile/certificado/user/${data._id}`)
+        const fetchCertificados = await responseCertificados.json()
+        setCertificados(fetchCertificados)
 
-      // Fetch Experiencias
-      const responseExperiencias = await fetch(`/api/profile/experiencia/user/${data._id}`)
-      const fetchExperiencias = await responseExperiencias.json()
-      setExperiencias(fetchExperiencias)
+        // Fetch Experiencias
+        const responseExperiencias = await fetch(`/api/profile/experiencia/user/${data._id}`)
+        const fetchExperiencias = await responseExperiencias.json()
+        setExperiencias(fetchExperiencias)
 
-    } catch (error) {
-      console.log(error)
+      } catch (error) {
+        console.log(error)
+      }
     }
   }
 
@@ -57,8 +59,8 @@ const MainProfile = ({ content, setShowAddExperience, setShowAddCertificado, set
                 <IoPeopleSharp size={20} />
               </div>
               <div>
-                <h4>0 Visualizações de Perfil</h4>
-                <p>Descubra pessoas que visualizaram seu perfil</p>
+                <h4>{data.profile_views ? "0" : `${data.profile_views}`} Visualizações de Perfil</h4>
+                <p>Veja quantas pessoas que visualizaram o seu perfil recentemente</p>
               </div>
             </div>
 
@@ -67,7 +69,7 @@ const MainProfile = ({ content, setShowAddExperience, setShowAddCertificado, set
                 <IoSearchSharp size={20} />
               </div>
               <div>
-                <h4>0 Ocorrências de buscas</h4>
+                <h4>{data.profile_searchs ? "0" : `${data.profile_searchs}`} Ocorrências de buscas</h4>
                 <p>Veja com qual frequência você apareceu em resultados de busca</p>
               </div>
             </div>

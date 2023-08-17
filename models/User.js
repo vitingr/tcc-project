@@ -101,6 +101,12 @@ const UserSchema = new Schema({
         type: String,
         default: "light",
         required: true
+    },
+    profile_views: {
+        type: Number
+    },
+    profile_searchs: {
+        type: Number
     }
 
 })

@@ -9,7 +9,8 @@ import { toast } from 'react-toastify'
 import { motion } from "framer-motion";
 
 // Imports Components
-import ToastMessage from '@components/ToastMessage'
+import ToastMessage from '@components/Others/ToastMessage'
+import Sidebar from '@components/Sidebar/Sidebar'
 
 const page = () => {
 
@@ -91,8 +92,8 @@ const page = () => {
               animate="visible"
             >
               {data.map((amigo) => (
-                <motion.li key={amigo} variants={item}>
-                  <NetworkOption key={amigo._id} content={amigo} message={"Confirmar"} handleClick={aceitarAmigo} type={"usuario"} />
+                <motion.li key={amigo._id} variants={item}>
+                  <NetworkOption content={amigo} message={"Confirmar"} handleClick={aceitarAmigo} type={"usuario"} />
                 </motion.li>
               ))}
             </motion.ul>
@@ -102,6 +103,7 @@ const page = () => {
         )}
 
       </div>
+      <Sidebar />
     </div >
   )
 }

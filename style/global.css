@@ -192,6 +192,11 @@ html {
 	color: var(--color1);
 }
 
+.pink-span:hover {
+	text-underline-offset: 2.5px;
+	text-decoration: underline;
+}
+
 .low-emphasis-span {
 	color: var(--font-color-low-emphasis);
 }
@@ -361,6 +366,19 @@ html {
 .search-logo {
 	width: 40px;
 	height: 40px;
+}
+
+.qtd-notificacoes {
+    background: var(--color1);
+    color: white;
+    position: absolute;
+    margin-left: 15px;
+    margin-top: -10px;
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    font-size: 10px;
+    text-align: center;
 }
 
 /* -=-=- LOGIN / REGISTER -=-=- */
@@ -2418,6 +2436,115 @@ html {
 
 .sidebar-friend-right svg {
 	cursor: pointer;
+}
+
+/* -=-=- SEGUIDORES -=-=- */
+
+.followers-container {
+	padding: 40px;
+	display: flex;
+	flex-direction: column;
+	background: var(--container-color);
+	border-radius: 10px;
+	min-height: 600px;
+	min-width: 650px;
+}
+
+.follower-container {
+	padding-top: 15px;
+	display: flex;
+	align-items: center;
+	gap: 15px;
+}
+
+.follower-main {
+	width: 100%;
+}
+
+.follower-main h2 {
+	font-weight: 600;
+}
+
+.follower-main h4 {
+	font-weight: normal;
+	font-size: 13px;
+}
+
+.follower-main p {
+	font-size: 12px;
+	color: var(--font-color-low-emphasis);
+}
+
+.follower-right {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+}
+
+.follower-left img {
+	width: 55px;
+	height: 55px;
+	border-radius: 50%;
+}
+
+.follower-border {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	padding-bottom: 15px;
+	border-bottom: 1px solid var(--border-color);
+}
+
+.follower-right div {
+	border-radius: 20px;
+	color: var(--color1);
+	border: 1px solid var(--color1);
+	padding: 5px;
+	text-align: center;
+	min-width: 125px;
+	font-size: 12px;
+	transition-timing-function: ease-in-out;
+	transition-duration: 0.3s;
+}
+
+.follower-right div:hover {
+	cursor: pointer;
+	color: white;
+	background: var(--color1);
+}
+
+.followers-config {
+	display: flex;
+	flex-direction: column;
+	padding-bottom: 25px;
+	border-bottom: 1px solid var(--border-color);
+}
+
+.followers-config div {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+}
+
+.followers-config h1 {
+	font-size: 20px;
+	font-weight: 600;
+	margin-bottom: 5px;
+}
+
+.followers-config h1 span {
+	color: var(--color1);
+}
+
+.follower-search {
+	padding: 6.5px 15px 6.5px 15px;
+	width: 100%;
+	outline: 0;
+	border-radius: 15px;
+	border: 1px solid var(--border-color);
+	background: var(--friend-color);
+	font-size: 13px;
+	color: var(--font-color-low-emphasis);
 }
 
 /* -=-=- ANIMAÇÕES -=-=- */

@@ -13,7 +13,7 @@ import TipoEmprego from '@components/Initital-Info/TipoEmprego'
 import { toast } from 'react-toastify'
 
 // Imports Components
-import ToastMessage from '@components/ToastMessage'
+import ToastMessage from '@components/Others/ToastMessage'
 import { infoUser } from '@utils/userContext'
 
 const AditionalInfoContainer = () => {
@@ -67,9 +67,12 @@ const AditionalInfoContainer = () => {
       if (response.ok) {
         toast.success("Perfil Atualizado com sucesso!")
         router.push("/usuario/feed")
+      } else {
+        toast.error("Houve um erro ao atualizar o perfil")
       }
 
     } catch (error) {
+      
       console.log(error)
     }
   }

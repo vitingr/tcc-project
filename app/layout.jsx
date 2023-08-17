@@ -6,14 +6,14 @@ import "@style/global.css"
 import React from "react"
 import Navbar from "@components/Navbar"
 import Footer from "@components/Footer"
-import Provider from "@components/Provider"
+import Provider from "@components/Others/Provider"
 import { ThemeProvider } from "@utils/userContext"
 
 // Import Functions
 import { usePathname } from "next/navigation"
 import { checkIsPublicRoute } from "@functions/check-route"
-import PrivateRoute from "@components/PrivateRoute"
-import SetTheme from "@components/SetTheme"
+import PrivateRoute from "@components/Others/PrivateRoute"
+import SetTheme from "@components/Others/SetTheme"
 
 export default function RootLayout({ children }) {
 

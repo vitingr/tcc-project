@@ -2,13 +2,13 @@
 
 import React, { useState } from 'react'
 import Popup from '@components/Popup'
-import TextEditor from '@components/TextEditor'
+import TextEditor from '@components/Others/TextEditor'
 import { toast } from 'react-toastify'
 
 // Imports Components
-import ToastMessage from '@components/ToastMessage'
+import ToastMessage from '@components/Others/ToastMessage'
 import { infoUser } from '@utils/userContext'
-import UploadPhoto from '@components/UploadPhoto'
+import UploadPhoto from '@components/Others/UploadPhoto'
 
 const EditCompany = ({ content, handleClick }) => {
 

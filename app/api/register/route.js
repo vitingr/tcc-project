@@ -40,7 +40,9 @@ export const POST = async (request) => {
           cargo_atual: "",
           telefone: "",
           website: "",
-          novoUsuario: true
+          novoUsuario: true,
+          profile_views: 0,
+          profile_searchs: 0
         })
       }
 

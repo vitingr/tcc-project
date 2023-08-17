@@ -112,7 +112,9 @@ const handler = NextAuth({
 							cargo_atual: "",
 							telefone: "",
 							website: "",
-							novoUsuario: true
+							novoUsuario: true,
+							profile_views: 0,
+							profile_searchs: 0
 						})
 	
 					} else {

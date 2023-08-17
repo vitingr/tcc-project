@@ -10,7 +10,8 @@ import { toast } from 'react-toastify'
 import { motion } from "framer-motion";
 
 // Imports Components
-import ToastMessage from '@components/ToastMessage'
+import ToastMessage from '@components/Others/ToastMessage'
+import Sidebar from '@components/Sidebar/Sidebar'
 
 const page = () => {
 
@@ -96,7 +97,7 @@ const page = () => {
             >
               {data.map((amigo) => (
                 <motion.li key={amigo._id} variants={item}>
-                  <NetworkOption content={amigo} message={"Cancelar"} handleClick={cancelarConvite} type={"usuario"} />
+                  <NetworkOption message={"Cancelar"} handleClick={cancelarConvite} type={"usuario"} />
                 </motion.li>
               ))}
             </motion.ul>
@@ -106,6 +107,7 @@ const page = () => {
         )}
 
       </div>
+      <Sidebar />
     </div >
   )
 }

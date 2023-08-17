@@ -7,7 +7,7 @@ import { toast } from 'react-toastify'
 
 // Import Components
 import Posts from './Posts'
-import ToastMessage from '@components/ToastMessage'
+import ToastMessage from '@components/Others/ToastMessage'
 
 // Imports NextAuth
 import { useSession } from "next-auth/react"
@@ -85,7 +85,9 @@ const Feed = ({ data }) => {
                 </Link>
               </div>
               <div className='center'>
-                <span className="feed-friends">{data.seguidores}</span>
+                <Link href={`/usuario/seguidores/${content._id}`}>
+                  <span className="feed-friends">{data.seguidores}</span>
+                </Link>
               </div>
             </div>
             <div className='home-options'>

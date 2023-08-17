@@ -1,12 +1,12 @@
 "use client"
 
 import React, { useState } from 'react'
-import Theme from '@components/Theme'
+import Theme from '@components/Others/Theme'
 import { infoUser } from '@utils/userContext'
 import { toast } from 'react-toastify'
 
 // Imports Components
-import ToastMessage from '@components/ToastMessage'
+import ToastMessage from '@components/Others/ToastMessage'
 
 const page = () => {
 

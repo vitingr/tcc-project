@@ -7,7 +7,7 @@ import { toast } from 'react-toastify'
 import { useRouter } from 'next/navigation'
 
 // Imports Components
-import ToastMessage from '@components/ToastMessage'
+import ToastMessage from '@components/Others/ToastMessage'
 
 const page = () => {
 

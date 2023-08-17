@@ -17,6 +17,7 @@ import Loader from '@components/Others/Loader'
 import { infoUser } from '@utils/userContext'
 import { useEffect } from "react";
 import { useSession } from "next-auth/react";
+import Seguidores from '@components/Seguidores'
 
 const page = () => {
 
@@ -29,17 +30,9 @@ const page = () => {
 
   const fetchData = async () => {
     try {
-      const result = await fetch(`/api/user/${userId}`)
+      const result = await fetch(`/api/user/seguidores/${userId}`)
       const response = await result.json()
       setContent(response)
-
-      const profile_visualization = await fetch("/api/user/seeProfile", {
-        method: "POST",
-        body: JSON.stringify({
-          myUser: data._id,
-          userId: userId
-        })
-      })
 
     } catch (error) {
       console.log(error)
@@ -54,7 +47,7 @@ const page = () => {
 
   return session ? (
     <div className='profile-main-container'>
-      <Profile content={content} />
+      <Seguidores content={content} />
       <Sidebar data={content} />
     </div>
   ) : (

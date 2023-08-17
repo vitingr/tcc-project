@@ -6,7 +6,7 @@ import { IoCloseSharp } from 'react-icons/io5'
 import { toast } from 'react-toastify'
 
 // Imports Components
-import ToastMessage from '@components/ToastMessage'
+import ToastMessage from '@components/Others/ToastMessage'
 import Popup from '@components/Popup'
 import { infoUser } from '@utils/userContext'
 

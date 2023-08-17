@@ -9,7 +9,8 @@ import { toast } from 'react-toastify'
 import { motion } from "framer-motion";
 
 // Imports Components
-import ToastMessage from '@components/ToastMessage'
+import ToastMessage from '@components/Others/ToastMessage'
+import Sidebar from '@components/Sidebar/Sidebar'
 
 const page = () => {
 
@@ -104,6 +105,7 @@ const page = () => {
           <div> Nenhuma página foi encontrada </div>
         )}
       </div>
+      <Sidebar />
     </div >
   )
 }

@@ -13,7 +13,7 @@ const FriendOptionSidebar = ({ content }) => {
           <h1>{content.nomeCompleto}</h1>
           {content.area !== "" ? (
             <p>
-              {content.cargo_atual} - {content.area}
+              {content.cargo_atual} - {content.ultima_empresa}
             </p>
           ) : (
             <p>

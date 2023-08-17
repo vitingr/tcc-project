@@ -2,10 +2,10 @@
 
 // Imports React
 import React from 'react'
-import TextEditor from './TextEditor'
+import TextEditor from './Others/TextEditor'
 
 // Import Components
-import UploadPhoto from './UploadPhoto'
+import UploadPhoto from './Others/UploadPhoto'
 
 const CreateCompanyForm = ({ title, nome, website, industria, tamanho, tipo, descricao, photo, confirm, handleClick }) => {
 	return (

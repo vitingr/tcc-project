@@ -1,6 +1,6 @@
 import React from 'react'
 import { IoPeopleSharp, IoListOutline, IoBriefcase, IoBusinessOutline, IoCashSharp } from 'react-icons/io5'
-import HtmlContent from '@components/HtmlContent'
+import HtmlContent from '@components/Others/HtmlContent'
 
 const EmpregoPopup = ({ info }) => {
   

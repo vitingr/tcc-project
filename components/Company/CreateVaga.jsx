@@ -3,10 +3,10 @@
 import React, { useState } from 'react'
 import Popup from '@components/Popup'
 import { toast } from 'react-toastify'
-import TextEditor from '@components/TextEditor'
+import TextEditor from '@components/Others/TextEditor'
 
 // Imports Components
-import ToastMessage from '@components/ToastMessage'
+import ToastMessage from '@components/Others/ToastMessage'
 import { infoUser } from '@utils/userContext'
 
 const CreateVaga = ({ handleClick }) => {

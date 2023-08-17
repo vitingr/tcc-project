@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 import { toast } from 'react-toastify'
 
 // Imports Components
-import ToastMessage from '@components/ToastMessage'
+import ToastMessage from '@components/Others/ToastMessage'
 
 const InfoForm = ({ children, step, setStep, handleClick, verify, share, setShare }) => {
 

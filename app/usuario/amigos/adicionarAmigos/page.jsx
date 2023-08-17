@@ -8,9 +8,10 @@ import { useEffect, useState } from 'react'
 import NetworkOption from '@components/NetworkOption'
 import { toast } from 'react-toastify'
 import { motion } from "framer-motion";
+import Sidebar from '@components/Sidebar/Sidebar'
 
 // Imports Components
-import ToastMessage from '@components/ToastMessage'
+import ToastMessage from '@components/Others/ToastMessage'
 
 const page = () => {
 
@@ -29,7 +30,8 @@ const page = () => {
         method: "POST",
         body: JSON.stringify({
           userId: session?.user.id,
-          amigo: amigo
+          amigo: amigo,
+          foto: data.foto
         })
       })
 
@@ -94,8 +96,8 @@ const page = () => {
               animate="visible"
             >
               {data.map((amigo) => (
-                <motion.li key={amigo} variants={item}>
-                  <NetworkOption key={amigo._id} content={amigo} message={"Adicionar"} handleClick={addAmigo} type={"usuario"} />
+                <motion.li key={amigo._id} variants={item}>
+                  <NetworkOption content={amigo} message={"Adicionar"} handleClick={addAmigo} type={"usuario"} />
                 </motion.li>
               ))}
             </motion.ul>
@@ -105,6 +107,7 @@ const page = () => {
         )}
 
       </div>
+      <Sidebar />
     </div >
   )
 }

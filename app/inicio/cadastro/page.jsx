@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify'
 
 // Imports Components
-import LoginMessage from '@components/LoginMessage';
+import LoginMessage from '@components/Others/LoginMessage';
 
 // Imports NextAuth
 import { signIn, useSession, getProviders } from "next-auth/react";
@@ -41,8 +41,8 @@ const page = () => {
       })
 
       if (response.ok) {
-        toast.success("SUCESSO! A conta foi criada")
         router.push("/")
+        toast.success("SUCESSO! A conta foi criada")
       } else {
         toast.error("ERRO! Não foi possível criar a conta")
       }
