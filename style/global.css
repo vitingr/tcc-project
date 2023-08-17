@@ -2794,4 +2794,16 @@ html {
 		padding: 25px;
 	}
 
+	.register-login-left {
+		display: none;
+	}
+
+	.register-login-container {
+		height: auto;
+	}
+
+	.register-login-right {
+		padding: 75px 50px 50px 50px;
+	}
+
 }
