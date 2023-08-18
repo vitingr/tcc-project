@@ -71,7 +71,7 @@ const AddCertificado = ({ data, handleClick }) => {
   return (
     <Popup title={"Adicionar Certificados"} subtitle={"dicione seus certificados e licenças aqui para informar e atrair mais pessoas ao seu perfil"} handleClick={handleClick}>
       <ToastMessage />
-      <form>
+      <form onSubmit={(e) => createCertificado(e)}>
         <div className='input-add-container'>
           <p>Curso</p>
           <input type="text" name="empresa" id="add-input" className='add-input' placeholder='ex: Curso de Administração.' autoComplete='off' maxLength={30} minLength={4} onChange={(e) => setNomeCurso(e.target.value)} required />
@@ -204,7 +204,7 @@ const AddCertificado = ({ data, handleClick }) => {
             <option value="1985">1985</option>
           </select>
         </div>
-        <button type="submit" className='add-button center' onClick={(e) => createCertificado(e)}>
+        <button type="submit" className='add-button center'>
           Adicionar
         </button>
       </form>

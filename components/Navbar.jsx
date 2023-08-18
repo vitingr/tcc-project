@@ -3,7 +3,6 @@
 // Imports React
 import React from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 
 // Imports NextAuth
 import { signOut, useSession } from "next-auth/react"
@@ -101,7 +100,7 @@ const Navbar = () => {
 
 				</nav>
 			) : (
-				<div></div>
+				<></>
 			)}
 		</header>
 	)

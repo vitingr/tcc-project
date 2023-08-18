@@ -14,15 +14,25 @@ const NetworkOption = ({ content, handleClick, message, type }) => {
 	const { data: session } = useSession()
 	const [data, setData] = useState([])
 
-	// 		<Link href={type === "usuario" ? `/usuario/user/${content._id}` : "/usuario/feed"}>
-
 	return (
 		<div>
 			<ToastMessage />
 			<div className='friend-option'>
 				<div className='friend-bg' style={{ backgroundImage: `url(${content.background})` }}></div>
 				<div className='friend-info'>
-					<div className='friend-photo-container'><img src={content.foto} className='medium-rounded-photo' alt='profile photo' /></div>
+					{type === "pagina" ? (
+						<Link href={`/usuario/pagina/${content._id}`}>
+							<div className='friend-photo-container'>
+								<img src={content.foto} className='medium-rounded-photo' alt='profile photo' />
+							</div>
+						</Link>
+					) : (
+						<Link href={`/usuario/user/${content._id}`}>
+							<div className='friend-photo-container'>
+								<img src={content.foto} className='medium-rounded-photo' alt='profile photo' />
+							</div>
+						</Link>
+					)}
 					<div className='friend-main-info'>
 						{type === "usuario" ? (
 							<h4>{content.nomeCompleto}</h4>

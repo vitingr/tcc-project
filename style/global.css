@@ -910,7 +910,7 @@ html {
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;
-	border-radius: 25px 25px 0px 0px;
+	border-radius: 20px 20px 0px 0px;
 }
 
 .profile-photo {
@@ -941,7 +941,7 @@ html {
 }
 
 .info-section {
-	font-size: 14px;
+	font-size: 13px;
 	width: 100%;
 	display: flex;
 	align-items: center;
@@ -1090,6 +1090,7 @@ html {
 	padding: 10px;
 	transition-timing-function: ease-in-out;
 	transition-duration: 0.3s;
+	text-align: center;
 }
 
 .edit-profile-type:hover {
@@ -2606,6 +2607,10 @@ html {
 	.home-container {
 		max-width: 1020px
 	}
+
+	.nav-content {
+		padding: 0px 35px 0px 35px;
+	}
 }
 
 @media (max-width: 1075px) {
@@ -2664,7 +2669,7 @@ html {
 		width: 100%;
 		position: fixed;
 		left: 0%;
-		top: 92%;
+		top: 89.5vh;
 		background: var(--container-color);
 		z-index: 1000;
 		padding: 10px 0px 6px 0px;
@@ -2724,6 +2729,7 @@ html {
 	.friends-actions-container {
 		max-width: 100%;
 		padding: 25px 10px 15px 10px;
+		margin-bottom: 25px;
 	}
 
 	.friend-option {

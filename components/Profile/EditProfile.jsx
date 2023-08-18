@@ -24,6 +24,7 @@ const EditProfile = ({ content, handleClick }) => {
   const [ultimaEmpresa, setUltimaEmpresa] = useState(content.ultima_empresa)
   const [foto, setFoto] = useState(content.foto)
   const [background, setBackground] = useState(content.background)
+  const [headline, setHeadline] = useState(content.headline)
 
   const [showProfessionalInfo, setShowProfessionalInfo] = useState(false)
 
@@ -45,7 +46,8 @@ const EditProfile = ({ content, handleClick }) => {
           background: background,
           area: area,
           ultima_empresa: ultimaEmpresa,
-          resumo: resumo
+          resumo: resumo,
+          headline: headline
         })
       })
 
@@ -80,12 +82,11 @@ const EditProfile = ({ content, handleClick }) => {
             <div>
               <div className='input-add-container'>
                 <p>Resumo</p>
-                <TextEditor value={resumo} setValue={setResumo} />
-                {/* <input type="text" name="resumo" id="add-input" className='add-input' placeholder='Nome' autoComplete='off' maxLength={35} minLength={4} onChange={(e) => setResumo(e.target.value)} value={nome} required /> */}
+                <textarea name="headline" id="headline" cols="30" rows="10" className='add-input' placeholder='Descriçao de Perfil' autoComplete='off' onChange={(e) => setHeadline(e.target.value)} value={headline} required></textarea>
               </div>
               <div className='input-add-container'>
                 <p>Cargo Atual</p>
-                <input type="text" name="cargo_atual" id="add-input" className='add-input' placeholder='Nome' autoComplete='off' maxLength={35} minLength={4} onChange={(e) => setCargoAtual(e.target.value)} value={cargoAtual} required />
+                <input type="text" name="cargo_atual" id="add-input" className='add-input' placeholder='Ultimo Cargo / Cargo Atual' autoComplete='off' maxLength={35} minLength={4} onChange={(e) => setCargoAtual(e.target.value)} value={cargoAtual} required />
               </div>
               <div className='input-add-container'>
                 <p>Formação</p>
@@ -95,11 +96,11 @@ const EditProfile = ({ content, handleClick }) => {
               </div>
               <div className='input-add-container'>
                 <p>Área</p>
-                <input type="text" name="area" id="add-input" className='add-input' placeholder='Nome' autoComplete='off' maxLength={35} minLength={4} onChange={(e) => setArea(e.target.value)} value={area} required />
+                <input type="text" name="area" id="add-input" className='add-input' placeholder='Sua Área' autoComplete='off' maxLength={35} minLength={4} onChange={(e) => setArea(e.target.value)} value={area} required />
               </div>
               <div className='input-add-container'>
                 <p>Ultima Empresa</p>
-                <input type="text" name="ultima_empresa" id="add-input" className='add-input' placeholder='Nome' autoComplete='off' maxLength={35} minLength={4} onChange={(e) => setUltimaEmpresa(e.target.value)} value={ultimaEmpresa} required />
+                <input type="text" name="ultima_empresa" id="add-input" className='add-input' placeholder='Última Empresa / Empresa Atual' autoComplete='off' maxLength={35} minLength={4} onChange={(e) => setUltimaEmpresa(e.target.value)} value={ultimaEmpresa} required />
               </div>
 
             </div>

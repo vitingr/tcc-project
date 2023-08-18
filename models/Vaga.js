@@ -49,6 +49,9 @@ const VagaSchema = new Schema({
     },
     requisitos: {
         type: String
+    },
+    ativa: {
+        type: Number
     }
 
 })

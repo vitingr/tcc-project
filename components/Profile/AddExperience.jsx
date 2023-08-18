@@ -118,7 +118,7 @@ const AddExperience = ({ data, handleClick }) => {
   return (
     <Popup title={"Adicionar Experiência"} subtitle={"Adicione suas experiências aqui para informar e atrair mais pessoas ao seu perfil"} handleClick={handleClick}>
       <ToastMessage />
-      <form>
+      <form onSubmit={(e) => createExperiencia(e)}>
         <div className='input-add-container'>
           <p>Empresa <span className="pink-span">*</span></p>
           <input type="text" name="empresa" id="add-input" className='add-input' placeholder='ex: Natura LTDA.' autoComplete='off' maxLength={35} minLength={4} onChange={(e) => setEmpresa(e.target.value)} required />
@@ -267,7 +267,7 @@ const AddExperience = ({ data, handleClick }) => {
           <p>Experiência Adquirida <span className="pink-span">*</span></p>
           <textarea name="experiencia" id="add-input" className='add-input' placeholder='Experiência adquirida na empresa.' autoComplete='off' cols="30" rows="10" onChange={(e) => setAprendizado(e.target.value)} required></textarea>
         </div>
-        <button type="submit" className='add-button center' onClick={(e) => createExperiencia(e)}>
+        <button type="submit" className='add-button center'>
           Adicionar
         </button>
       </form>

@@ -4,6 +4,7 @@
 import { infoUser } from '@utils/userContext'
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 
 // Imports Components
 import MainCompany from '@components/Company/MainCompany'
@@ -17,6 +18,8 @@ const page = () => {
   const router = useRouter()
   const { data } = infoUser()
   const { data: session } = useSession()
+  const pathname = usePathname().split("/")
+  const userId = pathname[3]
 
   const [company, setCompany] = useState([])
   const [isDono, setIsDono] = useState(false)
@@ -25,8 +28,8 @@ const page = () => {
 
   const getCompany = async () => {
     try {
-      if (data) {
-        const answer = await fetch(`/api/company/${data._id}`)
+      if (userId != undefined && data != undefined) {
+        const answer = await fetch(`/api/company/visualize/${userId}`)
         const response = await answer.json()
         setCompany(response)
         if (data._id === response.dono) {
@@ -38,25 +41,38 @@ const page = () => {
     }
   }
 
-  const handleClick = async () => {
+  const addPage = async (pagina) => {
+    try {
 
+      const response = await fetch("/api/network/paginas/follow", {
+        method: "POST",
+        body: JSON.stringify({
+          userId: session?.user.id,
+          pagina: pagina
+        })
+      })
+
+      if (response.ok) {
+        fetchData()
+        toast.success("Página adicionda com sucesso!")
+      } else {
+        toast.error("ERRO! Não é possível seguir a mesma página mais de uma vez")
+      }
+
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   useEffect(() => {
-    if (session) {
-      if (data) {
-        if (data.tipoConta == "instituicao" || data.tipoConta == "empresa") {
-          getCompany()
-        } else {
-          router.push("/empresa/create")
-        }
-      }
+    if (session && userId) {
+      getCompany()
     }
-  }, [session, data])
+  }, [session, userId])
 
   return (
     <div className='company-container'>
-      <MainCompany content={company} dono={isDono} setCreateVaga={setCreateVaga} setEditCompany={setEditCompany} handleClick={handleClick} />
+      <MainCompany content={company} dono={isDono} setCreateVaga={setCreateVaga} setEditCompany={setEditCompany} handleClick={addPage} />
       <Sidebar />
       {createVaga ? (
         <CreateVaga handleClick={setCreateVaga} />

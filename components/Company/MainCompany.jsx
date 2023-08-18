@@ -6,10 +6,25 @@ import { IoAddSharp, IoOpenOutline } from 'react-icons/io5'
 import CompanyFeed from './CompanyFeed'
 import Link from 'next/link'
 
-const MainCompany = ({ content, dono, setCreateVaga, setEditCompany }) => {
+const MainCompany = ({ content, dono, setCreateVaga, setEditCompany, handleClick }) => {
 
   const { data } = infoUser()
   const [posts, setPosts] = useState([])
+  const [follow, setFollow] = useState(false)
+
+  useEffect(() => {
+    if (data._id !== undefined && content._id !== undefined) {
+      console.log(content)
+      console.log(data)
+      if (content.dono != data._id) {
+        if (content.seguidores.includes(data._id)) {
+          setFollow(true)
+        } else {
+          setFollow(false)
+        }
+      }
+    }
+  }, [data, content])
 
   return (
     <div className='main-company-container' id="about">
@@ -25,23 +40,28 @@ const MainCompany = ({ content, dono, setCreateVaga, setEditCompany }) => {
               <p>{content.industria} ● Santa Bárbara d'Oeste, SP ● {content.qtdSeguidores} seguidores ● {content.qtdFuncionarios}</p>
             </div>
             <div className='mid-company-info'>
-              {/* <div className='about-company'>
-                <h3>Sobre a empresa</h3>
-                <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque reprehenderit esse velit repudiandae, ea vitae ratione nobis. Obcaecati quisquam necessitatibus, adipisci quae quasi aspernatur aliquam deleniti minus non natus omnis.
-                </p>
-              </div> */}
               <div className='options-company'>
-                <div className='option-mid-company color'><IoAddSharp size={16} /> Seguir</div>
+                {content.dono === data._id ? (
+                  <div className='option-mid-company gray' onClick={() => setEditCompany(true)}>
+                    Editar Página
+                  </div>
+                ) : (
+                  <>
+                    {follow ? (
+                      <div className='option-mid-company color' >
+                        <IoAddSharp size={16} /> Deixar de Seguir
+                      </div>
+                    ) : (
+                      <div className='option-mid-company color' onClick={() => handleClick(content._id)}>
+                        <IoAddSharp size={16} /> Seguir
+                      </div>
+                    )}
+                  </>
+                )}
                 {content.website ? (
                   <Link href={content.website} target='_blank'>
                     <div className='option-mid-company white'>Visitar Website <IoOpenOutline size={16} /></div>
                   </Link>
-                ) : (
-                  <></>
-                )}
-                {content.dono === data._id ? (
-                  <div className='option-mid-company gray' onClick={() => setEditCompany(true)}>Editar Página</div>
                 ) : (
                   <></>
                 )}
@@ -62,7 +82,7 @@ const MainCompany = ({ content, dono, setCreateVaga, setEditCompany }) => {
       <div className='company-feed-container'>
         <CompanyFeed info={content} dono={dono} posts={posts} setCreateVaga={setCreateVaga} />
       </div>
-    </div>
+    </div >
   )
 }
 

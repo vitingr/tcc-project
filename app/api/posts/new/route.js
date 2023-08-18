@@ -22,17 +22,16 @@ export const POST = async (request) => {
                 })
 
                 await newPost.save()
-                return new Response(JSON.stringify(newPost), {status: 200})
+                return new Response(JSON.stringify(newPost), { status: 200 })
 
             } catch (error) {
                 console.log(error)
-                return new Response(`Falha ao criar o posts, ${error}`, {status: 500})
+                return new Response(`Falha ao criar o posts, ${error}`, { status: 500 })
             }
-
         }
 
     } catch (error) {
         console.log(error)
-        return new Response(`Falha ao fazer o POST dos posts, ${error}`, {status: 500})
+        return new Response(`Falha ao fazer o POST dos posts, ${error}`, { status: 500 })
     }
 }

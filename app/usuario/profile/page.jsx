@@ -19,24 +19,24 @@ import { useSession } from "next-auth/react";
 const page = () => {
 
   const { data } = infoUser()
-  // const {data: session} = useSession()
-  // const [content, setContent] = useState([])
+  const {data: session} = useSession()
+  const [endereco, setEndereco] = useState([])
 
-  // const fetchData = async () => {
-  //   try {
-  //     const result = await fetch(`/api/user/${data._id}`)
-  //     const response = await result.json()
-  //     setContent(response)
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
+  const fetchData = async () => {
+    try {
+      const result = await fetch(`/api/endereco/${data._id}`)
+      const response = await result.json()
+      setEndereco(response)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
-  // useEffect(() => {
-  //   if (session) {
-  //     fetchData()
-  //   }
-  // }, [session])
+  useEffect(() => {
+    if (session && data._id !== undefined) {
+      fetchData()
+    }
+  }, [session, data])
 
 
   const [showAddDescricao, setShowAddDescricao] = useState(false)
@@ -46,7 +46,7 @@ const page = () => {
 
   return data ? (
     <div className='profile-main-container'>
-      <Profile content={data} showAddExperience={setShowAddExperience} showAddCertificado={setShowAddCertificado} showEditProfile={setShowEditProfile} showAddDescricao={setShowAddDescricao} />
+      <Profile content={data} showAddExperience={setShowAddExperience} showAddCertificado={setShowAddCertificado} showEditProfile={setShowEditProfile} showAddDescricao={setShowAddDescricao} endereco={endereco} />
       <Sidebar data={data} />
 
       {showAddDescricao ? (

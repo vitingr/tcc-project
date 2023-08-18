@@ -1,12 +1,12 @@
 import { ConnectToDB } from "@utils/database";
-import User from "@models/User";
+import Vaga from "@models/Vaga";
 
 function amigosAleatorios(amigos, quantidade) {
 
   const array = []
   let contador = 0
 
-  if (amigos.length > quantidade) {
+  if (amigos.length >= quantidade) {
     for (contador; contador <= quantidade; contador++) {
       const numero = Math.floor(Math.random() * amigos.length);
 
@@ -37,39 +37,36 @@ function amigosAleatorios(amigos, quantidade) {
 export const GET = async (request, { params }) => {
   try {
     await ConnectToDB()
-    // Criar novo Certificado
     try {
       let options = []
-      const response = await User.find({ _id: { $ne: params.id } }).lean()
+      const response = await Vaga.find().lean()
 
       response.forEach((opcao) => {
-        if (opcao.amigos_pendentes.includes(params.id) || opcao.amigos.includes(params.id)) {
-          console.log("Amigo já adicionado")
+        if (!opcao) {
+          console.log("Não existe")
         } else {
           options.push(opcao)
         }
       })
 
       const search = async () => {
-        const friends = amigosAleatorios(options, 5)
-        return friends
+        const paginas = amigosAleatorios(options, 5)
+        return paginas
       }
 
-      const options_amigos = await search()
+      const options_pages = await search()
 
-      if (options_amigos) {
-        return new Response(JSON.stringify(options_amigos), { status: 200 })
+      if (options_pages) {
+        return new Response(JSON.stringify(options_pages), { status: 200 })
       } else {
-        console.log("ERRO ao encontrar as pessoas")
+        console.log("ERRO ao encontrar as páginas")
       }
 
     } catch (error) {
-      console.log(error)
-      return new Response(`Falha ao encontrar as pessoas, ${error}`, { status: 500 })
+      return new Response(`Falha ao encontrar as páginas, ${error}`, { status: 500 })
     }
 
   } catch (error) {
-    console.log(error)
-    return new Response(`Falha ao fazer o GET das pessoas, ${error}`, { status: 500 })
+    return new Response(`Falha ao fazer o GET das páginas, ${error}`, { status: 500 })
   }
 }

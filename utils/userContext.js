@@ -10,6 +10,7 @@ export const ThemeProvider = ({ children }) => {
 	const { data: session, status } = useSession()
 	const [tema, setTema] = useState("")
 	const [data, setData] = useState([])
+	const [premiumInfo, setPremiumInfo] = useState([])
 
 	const getInfo = async () => {
 		try {
@@ -24,6 +25,13 @@ export const ThemeProvider = ({ children }) => {
 			if (response.tema === "dark") {
 				setTema("dark")
 			}
+
+			if (data.premium === 1) {
+				const result = await fetch(`/api/premium/${session?.user.id}`)
+				const isPremium = result.json()
+				setPremiumInfo(isPremium)
+			}
+
 		} catch (error) {
 			console.log(error)
 		}
@@ -32,21 +40,21 @@ export const ThemeProvider = ({ children }) => {
 	useEffect(() => {
 		const isUserAuthenticated = () => {
 
-      if (status == 'loading') {
-        // A sessão ainda está sendo carregada, não faz nada neste momento.
-      } else {
-        if (status == "authenticated") {
+			if (status == 'loading') {
+				// A sessão ainda está sendo carregada, não faz nada neste momento.
+			} else {
+				if (status == "authenticated") {
 					if (session != undefined || session != null) {
 						getInfo()
 					}
-        }
-      }
-    }
-    isUserAuthenticated()
+				}
+			}
+		}
+		isUserAuthenticated()
 	}, [session])
 
 	return (
-		<ThemeContext.Provider value={{ tema, setTema, data, setData, getInfo }}>
+		<ThemeContext.Provider value={{ tema, setTema, data, setData, premiumInfo, setPremiumInfo, getInfo }}>
 			{children}
 		</ThemeContext.Provider>
 	)

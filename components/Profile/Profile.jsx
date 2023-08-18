@@ -11,7 +11,7 @@ import { useEffect } from 'react'
 import Link from 'next/link'
 import Loader from '@components/Others/Loader'
 
-const profile = ({ content, showAddExperience, showAddCertificado, showEditProfile, showAddDescricao }) => {
+const profile = ({ content, showAddExperience, showAddCertificado, showEditProfile, showAddDescricao, endereco }) => {
 
   const { data } = infoUser()
 
@@ -43,25 +43,21 @@ const profile = ({ content, showAddExperience, showAddCertificado, showEditProfi
                 )}
               </div>
               <Link href={`/usuario/seguidores/${content._id}`}>
-                <p className='pink-span pink-hover'>{content.seguidores} seguidores</p>
+                <p className='pink-span pink-hover'>{content.seguidores} conexões</p>
               </Link>
             </div>
+
             <div className='main-profile-info'>
-              {content.email ? (
-                <div className='info-section'>
-                  <IoMailOutline size={15} />
-                  {content.email}
-                </div>
-              ) : (
-                <div></div>
-              )}
-              {content.resumo ? (
+
+              {content.headline ? (
                 <div className='info-section'>
                   <IoNewspaperOutline size={15} />
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio minima sunt placeat perferendis quia tempora eius laborum cumque quas! Rem inventore veniam, dolorem itaque tempore expedita laudantium aperiam iusto aliquid.
+                  {content.headline} Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi corrupti illum dolore, tenetur, nam distinctio suscipit magnam saepe et ratione atque necessitatibus dolorum id iure, sequi eos numquam expedita adipisci?
                 </div>
               ) : (
-                <div></div>
+                <div className="info-section">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi corrupti illum dolore, tenetur, nam distinctio suscipit magnam saepe et ratione atque necessitatibus dolorum id iure, sequi eos numquam expedita adipisci?
+                </div>
               )}
 
               {content.formacao ? (
@@ -92,8 +88,8 @@ const profile = ({ content, showAddExperience, showAddCertificado, showEditProfi
               )}
             </div>
             <div className='bottom-profile-info'>
-              {content.endereco ? (
-                <div className='endereco'>Santa Bárbara d'Oeste, São Paulo, Brasil <span className='pink-span'>Contact Info</span></div>
+              {endereco ? (
+                <div className='endereco'>{endereco.cidade}, {endereco.estado}, {endereco.pais} <span className='pink-span'>Contact Info</span></div>
               ) : (
                 <div> </div>
               )}

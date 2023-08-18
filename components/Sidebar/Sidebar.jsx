@@ -7,14 +7,18 @@ import FriendsSidebar from './FriendsSidebar'
 import JobsSidebar from './JobsSidebar'
 import NewsSidebar from './NewsSidebar'
 import { infoUser } from '@utils/userContext'
+import PremiumForm from './PremiumForm'
+import { useState } from 'react'
+import ToastMessage from '@components/Others/ToastMessage'
 
 const Sidebar = ({ info }) => {
 
   const { data } = infoUser()
-
+  const [showPremiumForm, setShowPremiumForm] = useState(false)
   return (
     <div className='sidebar-container'>
-      {data ? (
+      <ToastMessage />
+      {data.premium === 0 ? (
         <div className='offer-premium'>
           <div className='offer-premium-top'>
             <p>
@@ -29,7 +33,7 @@ const Sidebar = ({ info }) => {
               <p>Tenha mais visibilidade. Experimente o Premium por 30 dias grátis</p>
             </div>
           </div>
-          <div className='offer-premium-bottom icon-cursor'>
+          <div className='offer-premium-bottom icon-cursor' onClick={setShowPremiumForm}>
             Experimentar
           </div>
         </div>
@@ -39,6 +43,11 @@ const Sidebar = ({ info }) => {
       <JobsSidebar />
       <NewsSidebar />
       <FriendsSidebar />
+      {showPremiumForm ? (
+        <PremiumForm data={data} handleClick={setShowPremiumForm} />
+      ) : (
+        <></>
+      )}
     </div>
   )
 }

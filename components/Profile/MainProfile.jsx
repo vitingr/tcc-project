@@ -11,6 +11,7 @@ import { IoEyeOutline } from 'react-icons/io5'
 import Certificado from './Certificado'
 import Experiencia from './Experiencia'
 import { infoUser } from '@utils/userContext'
+import ToastMessage from '@components/Others/ToastMessage'
 
 const MainProfile = ({ content, setShowAddExperience, setShowAddCertificado, setShowAddDescricao }) => {
 
@@ -21,15 +22,15 @@ const MainProfile = ({ content, setShowAddExperience, setShowAddCertificado, set
   const descricao = content.resumo
 
   const fetchData = async () => {
-    if (data._id != undefined) {
+    if (content._id != undefined) {
       try {
         // Fetch Certificados
-        const responseCertificados = await fetch(`/api/profile/certificado/user/${data._id}`)
+        const responseCertificados = await fetch(`/api/profile/certificado/user/${content._id}`)
         const fetchCertificados = await responseCertificados.json()
         setCertificados(fetchCertificados)
 
         // Fetch Experiencias
-        const responseExperiencias = await fetch(`/api/profile/experiencia/user/${data._id}`)
+        const responseExperiencias = await fetch(`/api/profile/experiencia/user/${content._id}`)
         const fetchExperiencias = await responseExperiencias.json()
         setExperiencias(fetchExperiencias)
 
@@ -47,7 +48,7 @@ const MainProfile = ({ content, setShowAddExperience, setShowAddCertificado, set
 
   return (
     <div className='main-profile-container'>
-
+      <ToastMessage />
       <div className='container-section-profile' id="analytics">
         <div className='section-top'>
           <h3>Analytics</h3>
@@ -135,7 +136,7 @@ const MainProfile = ({ content, setShowAddExperience, setShowAddCertificado, set
       <div className='container-section-profile'>
         <div className='section-top'>
           <h3>Atividade</h3>
-          <p className='pink-span'>{data.seguidores} seguidores</p>
+          <p className='pink-span'>{content.seguidores} seguidoras</p>
         </div>
         <div className='section-bottom'>
           <h6>Você não postou nada recentemente</h6>

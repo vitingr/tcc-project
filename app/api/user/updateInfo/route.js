@@ -4,7 +4,7 @@ import Post from "@components/Post";
 
 export const POST = async (request) => {
 
-    const { userId, nome, sobrenome, telefone, website, cargo_atual, area, ultima_empresa, foto, background, resumo } = await request.json()
+    const { userId, nome, sobrenome, telefone, website, cargo_atual, area, ultima_empresa, foto, background, resumo, headline } = await request.json()
 
     // Verificar Parametros
     if (userId) {
@@ -30,9 +30,10 @@ export const POST = async (request) => {
                 user.ultima_empresa = ultima_empresa
                 user.foto = foto
                 user.background = background
-                user.resumo = resumo
+                user.resumo = resumo,
+                user.headline = headline
 
-                user.save()
+                await user.save()
                 return new Response("Usuário atualizado com sucesso!", { status: 200 })
 
             } else {

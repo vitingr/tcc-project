@@ -107,6 +107,13 @@ const UserSchema = new Schema({
     },
     profile_searchs: {
         type: Number
+    },
+    headline: {
+        type: String
+    },
+    premium: {
+        type: Number,
+        default: 0
     }
 
 })

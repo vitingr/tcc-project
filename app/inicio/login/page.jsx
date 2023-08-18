@@ -52,7 +52,7 @@ const page = () => {
           <div className='register-login-form'>
             <div className='register-login-input'>
               <IoMailSharp size={20} />
-              <input type="email" name="email" id="email" minLength={8} maxLength={120} placeholder='Email' required />
+              <input type="email" name="email" id="email" minLength={8} maxLength={120} autoComplete="off" placeholder='Email' required />
             </div>
             <div className='register-login-input'>
               <IoLockClosed size={20} />

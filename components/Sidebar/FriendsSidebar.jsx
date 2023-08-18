@@ -11,7 +11,7 @@ import FriendOptionSidebar from './FriendOptionSidebar'
 const FriendsSidebar = () => {
 
   const { data: session } = useSession()
-  const [data, setData] = useState()
+  const [data, setData] = useState([])
 
   useEffect(() => {
     const fetchData = async () => {

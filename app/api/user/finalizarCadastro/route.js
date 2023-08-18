@@ -42,16 +42,16 @@ export const POST = async (request) => {
               compartilhamentos: 0
             })
 
-            user.save()
-            newPostagem.save()
-            newEndereco.save()
+            await user.save()
+            await newPostagem.save()
+            await newEndereco.save()
 
             return new Response("Perfil finalizado com sucesso", { status: 200 })
 
           } else {
 
-            user.save()
-            newEndereco.save()
+            await user.save()
+            await newEndereco.save()
 
             return new Response("Perfil finalizado com sucesso", { status: 200 })
 

@@ -7,10 +7,6 @@ import { usePathname } from 'next/navigation'
 // Imports Components
 import Sidebar from '@components/Sidebar/Sidebar'
 import Profile from '@components/Profile/Profile'
-import AddCertificado from '@components/Profile/AddCertificado'
-import AddExperience from '@components/Profile/AddExperience'
-import AddDescricao from "@components/Profile/AddDescricao";
-import EditProfile from '@components/Profile/EditProfile'
 
 // Imports Context
 import Loader from '@components/Others/Loader'
@@ -24,14 +20,19 @@ const page = () => {
   const { data } = infoUser()
   const pathname = usePathname().split("/")
   const userId = pathname[3]
+  const [endereco, setEndereco] = useState([])
 
   const [content, setContent] = useState([])
 
   const fetchData = async () => {
     try {
-      const result = await fetch(`/api/user/${userId}`)
-      const response = await result.json()
-      setContent(response)
+      const result1 = await fetch(`/api/user/${userId}`)
+      const response1 = await result1.json()
+      setContent(response1)
+
+      const result2 = await fetch(`/api/endereco/${userId}`)
+      const response2 = await result2.json()
+      setEndereco(response2)
 
       const profile_visualization = await fetch("/api/user/seeProfile", {
         method: "POST",
@@ -47,14 +48,14 @@ const page = () => {
   }
 
   useEffect(() => {
-    if (session) {
+    if (session && data._id !== undefined) {
       fetchData()
     }
-  }, [session])
+  }, [session, data])
 
   return session ? (
     <div className='profile-main-container'>
-      <Profile content={content} />
+      <Profile content={content} endereco={endereco} />
       <Sidebar data={content} />
     </div>
   ) : (

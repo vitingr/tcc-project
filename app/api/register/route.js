@@ -42,7 +42,9 @@ export const POST = async (request) => {
           website: "",
           novoUsuario: true,
           profile_views: 0,
-          profile_searchs: 0
+          profile_searchs: 0,
+          headline: "",
+          premium: 0
         })
       }
 

@@ -10,7 +10,7 @@ import ToastMessage from '@components/Others/ToastMessage'
 
 const page = () => {
 
-  const { data, getInfo } = infoUser()
+  const { data, premiumInfo, getInfo } = infoUser()
   const [theme, setTheme] = useState("")
 
   const changeTheme = async (tema) => {
@@ -75,10 +75,16 @@ const page = () => {
 
       </div>
 
-      <div className='gradient-container'></div>
-      <div className='settings-section'>
-        <h1 className='settings-title'>Outros</h1>
-      </div>
+      {data.premium === 1 ? (
+        <>
+          <div className='gradient-container'></div>
+          <div className='settings-section'>
+            <h1 className='settings-title'>Opções Premium</h1>
+          </div>
+        </>
+      ) : (
+        <></>
+      )}
 
     </div>
   )
