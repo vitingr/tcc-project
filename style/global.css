@@ -1022,6 +1022,10 @@ html {
 .center-glassmorphism {
 	width: 100%;
 	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
 
 .add-profile-container {
@@ -2812,4 +2816,16 @@ html {
 		padding: 75px 50px 50px 50px;
 	}
 
+	.glassmorphism {
+		position: absolute;
+		height: 140vh;
+	}
+
+	.center-glassmorphism {
+		height: 100%;
+	}
+
+	.center-glassmorphism {
+		justify-content: flex-start;
+	}
 }

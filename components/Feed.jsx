@@ -56,6 +56,7 @@ const Feed = ({ data }) => {
 
   useEffect(() => {
     if (session) {
+      console.log(session)
       fetchData()
     }
   }, [session])
