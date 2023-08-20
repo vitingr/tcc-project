@@ -34,7 +34,7 @@ export const POST = async (request) => {
           notificacoes: 0,
           paginas: "",
           foto: "https://static.licdn.com/sc/h/1c5u578iilxfi4m4dvc4q810q",
-          background: "/assets/images/bg1.jpg",
+          background: "/assets/images/background.svg",
           seguidores: 0,
           resumo: "",
           cargo_atual: "",

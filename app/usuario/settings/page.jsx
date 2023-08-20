@@ -80,6 +80,18 @@ const page = () => {
           <div className='gradient-container'></div>
           <div className='settings-section'>
             <h1 className='settings-title'>Opções Premium</h1>
+            <div className='main-settings-section'>
+              <div className='settings-item'>
+                Background Animado:
+                <label class="switch">
+                  <input type="checkbox" />
+                  <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"><path fill="none" d="m4 16.5 8 8 16-16"></path></svg>
+                  </span>
+                </label>
+              </div>
+
+            </div>
           </div>
         </>
       ) : (

@@ -106,7 +106,7 @@ const handler = NextAuth({
 							notificacoes: 0,
 							paginas: "",
 							foto: profile.picture,
-							background: "/assets/images/bg1.jpg",
+							background: "/assets/images/background.svg",
 							seguidores: 0,
 							resumo: "",
 							cargo_atual: "",

@@ -1416,7 +1416,8 @@ html {
 /* -=-=- FOOTER CONTAINER -=-=- */
 
 .footer-container {
-	margin-top: -175px;
+	padding-top: 175px;
+	background: var(--background-color);
 }
 
 .custom-shape-divider-bottom-1688910825 {
@@ -2554,6 +2555,93 @@ html {
 	background: var(--friend-color);
 	font-size: 13px;
 	color: var(--font-color-low-emphasis);
+}
+
+/* -=-=- ANALYTICS -=-=- */
+
+.graph-container {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.profile-graph-config {
+	margin-top: 50px;
+	width: 300px;
+	height: 300px;
+}
+
+.switch {
+  font-size: 17px;
+  position: relative;
+  display: inline-block;
+  width: 35px;
+  height: 20px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #B0B0B0;
+  border: 1px solid #B0B0B0;
+  transition: .4s;
+  border-radius: 32px;
+  outline: none;
+}
+
+.slider:before {
+	position: absolute;
+	content: "";
+	height: 1rem;
+	width: 1rem;
+	border-radius: 50%;
+	outline: 2px solid #B0B0B0;
+	left: 2px;
+	bottom: 2px;
+	background-color: #fff;
+	transition: transform .25s ease-in-out 0s;
+}
+
+.slider-icon {
+  opacity: 0;
+  height: 8px;
+  width: 8px;
+  stroke-width: 8;
+  position: absolute;
+  z-index: 999;
+  stroke: var(--color1);
+  right: 60%;
+  top: 30%;
+  transition: right ease-in-out .3s, opacity ease-in-out .15s;
+}
+
+input:checked + .slider {
+  background-color: var(--color1);
+	border: 1px solid var(--color1);
+}
+
+input:checked + .slider .slider-icon {
+  opacity: 1;
+  right: 20%;
+}
+
+input:checked + .slider:before {
+	transform: translateX(1.5em);
+	outline-color: var(--color1);
+	left: -5px;
 }
 
 /* -=-=- ANIMAÇÕES -=-=- */

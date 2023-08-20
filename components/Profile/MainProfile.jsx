@@ -12,6 +12,7 @@ import Certificado from './Certificado'
 import Experiencia from './Experiencia'
 import { infoUser } from '@utils/userContext'
 import ToastMessage from '@components/Others/ToastMessage'
+import CircularChart from '@components/Others/CircularChart'
 
 const MainProfile = ({ content, setShowAddExperience, setShowAddCertificado, setShowAddDescricao }) => {
 
@@ -75,12 +76,13 @@ const MainProfile = ({ content, setShowAddExperience, setShowAddCertificado, set
               </div>
             </div>
           </div>
+
         </div>
       </div>
 
       <div className='container-section-profile'>
         <div className='section-top'>
-          <h3>Recursos</h3>
+          <h3>Recursos - Minha Atividade</h3>
           {content._id === data._id ? (
             <span className='section-icon'>
               <IoEyeOutline size={15} />
@@ -91,8 +93,11 @@ const MainProfile = ({ content, setShowAddExperience, setShowAddCertificado, set
           )}
         </div>
         <div className='section-bottom'>
-          <h6>Sem dados...</h6>
-          <p>Nenhuma informações sobre certificações disponível!</p>
+          <div className="graph-container">
+            <CircularChart />
+          </div>
+          {/* <h6>Sem dados...</h6>
+          <p>Nenhuma informações sobre certificações disponível!</p> */}
         </div>
       </div>
 

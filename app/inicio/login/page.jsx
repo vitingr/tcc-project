@@ -5,6 +5,11 @@ import React from 'react'
 import Link from 'next/link'
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
+import { toast } from 'react-toastify'
+
+// Imports Components
+import LoginMessage from '@components/Others/LoginMessage';
 
 // Imports NextAuth
 import { signIn, useSession, getProviders } from "next-auth/react";
@@ -23,9 +28,7 @@ const page = () => {
 
     const setUpProviders = async () => {
       const response = await getProviders()
-
       setProviders(response) // Só pode ter um setProviders
-
     }
 
     setUpProviders()
@@ -37,6 +40,7 @@ const page = () => {
 
   return (
     <div className='register-login-container center'>
+      <LoginMessage />
       <div className='register-login-left-container'>
         <div className='register-login-left center'>
           <h3>Já é faz parte?</h3>

@@ -17,7 +17,9 @@ const FriendsSidebar = () => {
     const fetchData = async () => {
       const result = await fetch(`/api/network/options/${session?.user.id}`)
       const response = await result.json()
-      setData(response)
+      if (response.length > 1) {
+        setData(response)
+      }
     }
 
     if (session) {

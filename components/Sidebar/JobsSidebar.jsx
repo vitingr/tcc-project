@@ -16,7 +16,9 @@ const JobsSidebar = () => {
     const fetchData = async () => {
       const result = await fetch(`/api/pageOptions/${session?.user.id}`)
       const response = await result.json()
-      setData(response)
+      if (response.length > 1) {
+        setData(response)
+      }
     }
     if (session) {
       fetchData()
@@ -31,14 +33,19 @@ const JobsSidebar = () => {
         </h3>
         <IoAlertCircleOutline size={17.5} className='icon-cursor' />
       </div>
-      {data ? (
+      {data > 0 ? (
         <div className='jobs-sidebar-container'>
           {data.map((vaga) => (
             <JobSidebar key={vaga._id} image={vaga.foto} name={vaga.cargo} minSalary={vaga.salario} maxSalary={vaga.salario} />
           ))}
         </div>
       ) : (
-        <></>
+        <div className='jobs-sidebar-container'>
+          <JobSidebar image={"/assets/images/natura.png"} name={"Natura Co."} minSalary={2.600} maxSalary={5.200} />
+          <JobSidebar image={"https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Logo_Takeda.svg/1280px-Logo_Takeda.svg.png"} name={"Takeda Brasil"} minSalary={2.600} maxSalary={5.200} />
+          <JobSidebar image={"https://logodownload.org/wp-content/uploads/2017/03/dell-logo-1-1.png"} name={"Dell"} minSalary={2.600} maxSalary={5.200} />
+          <JobSidebar image={"https://logodownload.org/wp-content/uploads/2017/05/banco-santander-logo-41.png"} name={"Banco Santander"} minSalary={2.600} maxSalary={5.200} />
+        </div>
       )}
       <div className='center'>
         <button className="cta icon-cursor">
