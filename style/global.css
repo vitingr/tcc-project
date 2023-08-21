@@ -555,7 +555,12 @@ html {
 .background-home-profile {
 	border-radius: 6.5px 6.5px 0px 0px;
 	height: 65px;
-	background: linear-gradient(-25deg, var(--color1), var(--color2), var(--color3), var(--color4));
+}
+
+.background-home-profile-animated {
+	border-radius: 6.5px 6.5px 0px 0px;
+	height: 65px;
+	/* background: linear-gradient(-25deg, var(--color1), var(--color2), var(--color3), var(--color4)); */
 	animation: gradiente 7.5s ease-in-out alternate infinite;
 	background-size: 300%;
 }
@@ -1337,6 +1342,13 @@ html {
 	gap: 15px;
 	padding: 15px 0px 15px 0px;
 	border-bottom: 1px solid #33333315;
+}
+
+.certificado-photo-container {
+	display: flex;
+    align-items: center;
+		width: 60px;
+		height: 60px;
 }
 
 .certificado-photo {
@@ -2624,7 +2636,7 @@ html {
   z-index: 999;
   stroke: var(--color1);
   right: 60%;
-  top: 30%;
+  top: 24%;
   transition: right ease-in-out .3s, opacity ease-in-out .15s;
 }
 

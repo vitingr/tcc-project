@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Theme from '@components/Others/Theme'
 import { infoUser } from '@utils/userContext'
 import { toast } from 'react-toastify'
@@ -12,6 +12,7 @@ const page = () => {
 
   const { data, premiumInfo, getInfo } = infoUser()
   const [theme, setTheme] = useState("")
+  const [isChecked, setIsChecked] = useState(false)
 
   const changeTheme = async (tema) => {
     try {
@@ -32,6 +33,35 @@ const page = () => {
       console.log(error)
     }
   }
+
+  const changeAnimatedBackground = async (e) => {
+    e.preventDefault()
+    try {
+      const changeBg = await fetch("/api/premium/changeBG", {
+        method: "POST",
+        body: JSON.stringify({
+          userId: data._id
+        })
+      })
+
+      if (changeBg.ok) {
+        setIsChecked(!isChecked)
+        getInfo()
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    if (data && premiumInfo) {
+      if (premiumInfo.background === 'animated') {
+        setIsChecked(true)
+      } else {
+        setIsChecked(false)
+      }
+    }
+  }, [data, premiumInfo])
 
   return (
     <div className='settings-container'>
@@ -83,10 +113,10 @@ const page = () => {
             <div className='main-settings-section'>
               <div className='settings-item'>
                 Background Animado:
-                <label class="switch">
-                  <input type="checkbox" />
-                  <span class="slider">
-                    <svg class="slider-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"><path fill="none" d="m4 16.5 8 8 16-16"></path></svg>
+                <label className="switch" onClick={changeAnimatedBackground}>
+                  <input type="checkbox" checked={isChecked}/>
+                  <span className="slider">
+                    <svg className="slider-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"><path fill="none" d="m4 16.5 8 8 16-16"></path></svg>
                   </span>
                 </label>
               </div>

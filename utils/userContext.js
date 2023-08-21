@@ -28,7 +28,7 @@ export const ThemeProvider = ({ children }) => {
 
 			if (data.premium === 1) {
 				const result = await fetch(`/api/premium/${session?.user.id}`)
-				const isPremium = result.json()
+				const isPremium = await result.json()
 				setPremiumInfo(isPremium)
 			}
 

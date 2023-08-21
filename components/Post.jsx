@@ -7,7 +7,7 @@ const Post = ({ post }) => {
 		<div className='post-container'>
 			<div className='top-post-container'>
 				<div className='post-photo'>
-					<Image src={post.fotoDono} width={100} height={100} className='very-small-rounded-photo' alt="photo" />
+					<img src={post.fotoDono} className='very-small-rounded-photo' alt="photo" />
 				</div>
 				<div className='post-creator-info'>
 					<h3>{post.nomeDono}</h3>

@@ -14,9 +14,11 @@ import { useSession } from "next-auth/react"
 
 // Import Icons
 import { IoPencilOutline, IoPeopleSharp, IoBusinessOutline, IoPodiumSharp, IoThumbsUpSharp, IoImageOutline, IoLocationOutline, IoHappyOutline } from 'react-icons/io5'
+import { infoUser } from '@utils/userContext'
 
 const Feed = ({ data }) => {
 
+  const {premiumInfo} = infoUser()
   const { data: session } = useSession()
   const [post, setPost] = useState("")
   const [postagens, setPostagens] = useState([])
@@ -25,6 +27,7 @@ const Feed = ({ data }) => {
     const answer = await fetch(`/api/posts/`)
     const data = await answer.json()
     setPostagens(data)
+    console.log(premiumInfo)
   }
 
   const createPost = async () => {
@@ -66,7 +69,7 @@ const Feed = ({ data }) => {
       <ToastMessage />
       <div className='actions-container'>
         <div className='home-profile'>
-          <div className='background-home-profile' style={{ backgroundImage: `url(${data.background})` }}>
+          <div className={premiumInfo.background === 'animated' ? 'background-home-profile-animated' : 'background-home-profile'} style={{ backgroundImage: `url(${data.background})` }}>
           </div>
           <div className='photo-home-profile center'>
             <img src={data.foto} className='medium-rounded-photo' alt='photo-left' />

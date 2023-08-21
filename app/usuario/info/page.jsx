@@ -18,7 +18,7 @@ import { infoUser } from '@utils/userContext'
 
 const AditionalInfoContainer = () => {
 
-  const {data} = infoUser()
+  const { data } = infoUser()
   const router = useRouter()
   const [step, setStep] = useState(1)
 
@@ -45,35 +45,37 @@ const AditionalInfoContainer = () => {
 
   const terminarCadastro = async (e) => {
     e.preventDefault()
-
-    try {
-      const response = await fetch("/api/user/finalizarCadastro", {
-        method: "POST",
-        body: JSON.stringify({
-          userId: data._id,
-          cidade: cidade,
-          estado: estado,
-          pais: pais,
-          area: area,
-          preferenciaEmprego: preferenciaEmprego,
-          cargoAtual: cargoAtual,
-          ultimoContrato: ultimoContrato,
-          ultimaEmpresa: ultimaEmpresa,
-          procurandoEmprego: procurandoEmprego,
-          share: share
+    if (data._id != undefined) {
+      try {
+        console.log(`${cidade}, ${estado}, ${pais}, ${area}, ${preferenciaEmprego}, ${cargoAtual}, ${ultimoContrato}, ${ultimaEmpresa}, ${procurandoEmprego}, ${share}`)
+        const response = await fetch("/api/user/finalizarCadastro", {
+          method: "POST",
+          body: JSON.stringify({
+            userId: data._id,
+            cidade: cidade,
+            estado: estado,
+            pais: pais,
+            area: area,
+            preferenciaEmprego: preferenciaEmprego,
+            cargoAtual: cargoAtual,
+            ultimoContrato: ultimoContrato,
+            ultimaEmpresa: ultimaEmpresa,
+            procurandoEmprego: procurandoEmprego,
+            share: share
+          })
         })
-      })
 
-      if (response.ok) {
-        toast.success("Perfil Atualizado com sucesso!")
-        router.push("/usuario/feed")
-      } else {
-        toast.error("Houve um erro ao atualizar o perfil")
+        if (response.ok) {
+          toast.success("Perfil Atualizado com sucesso!")
+          router.push("/usuario/feed")
+        } else {
+          toast.error("Houve um erro ao atualizar o perfil")
+        }
+
+      } catch (error) {
+
+        console.log(error)
       }
-
-    } catch (error) {
-      
-      console.log(error)
     }
   }
 

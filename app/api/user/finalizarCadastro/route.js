@@ -12,7 +12,7 @@ export const POST = async (request) => {
 
       await ConnectToDB() 
 
-      const newEndereco = new Endereco({
+      const newEndereco = await new Endereco({
         dono: userId,
         pais: pais,
         estado: estado,
@@ -32,7 +32,7 @@ export const POST = async (request) => {
 
           if (share === true) {
             
-            const newPostagem = new Postagem({
+            const newPostagem = await new Postagem({
               dono: userId,
               fotoDono: user.foto,
               nomeDono: user.nomeCompleto,
@@ -62,10 +62,12 @@ export const POST = async (request) => {
         }
 
       } catch (error) {
+        console.log(error)
         return new Response(`Não foi possível editar o perfil. ${error}`, { status: 500 })
       }
 
     } catch (error) {
+      console.log(error)
     return new Response(`Não foi possível criar o endereço. ${error}`, { status: 500 })
     }
 

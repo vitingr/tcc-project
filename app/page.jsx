@@ -11,6 +11,10 @@ import { signIn, useSession, getProviders } from "next-auth/react";
 
 // Import Icons
 import { IoMailSharp, IoLockClosed, IoPersonSharp, IoLogoGoogle, IoLogoInstagram, IoLogoFacebook, IoLogoTwitter, IoLogoTwitch } from 'react-icons/io5'
+import { toast } from 'react-toastify'
+
+// Imports Components
+import LoginMessage from '@components/Others/LoginMessage';
 
 const page = () => {
 
@@ -33,6 +37,10 @@ const page = () => {
         password: data.password,
         redirect: false
       })
+
+      if (response.error === "CredentialsSignin") {
+        toast.error("ERRO! Email Incorreto")
+      }
 
       console.log(response)
 
@@ -63,6 +71,7 @@ const page = () => {
 
   return (
     <div className='register-login-container center'>
+      <LoginMessage />
       <div className='register-login-left-container'>
         <div className='register-login-left center'>
           <h3>Já é faz parte?</h3>
@@ -79,7 +88,7 @@ const page = () => {
             <div className='register-login-form'>
               <div className='register-login-input'>
                 <IoMailSharp size={20} />
-                <input type="email" name="email" id="email" minLength={8} maxLength={120} placeholder='Email' value={data.email} onChange={(e) => { setData({ ...data, email: e.target.value }) }} required />
+                <input type="email" name="email" id="email" minLength={8} maxLength={120} placeholder='Email' autoComplete="off" value={data.email} onChange={(e) => { setData({ ...data, email: e.target.value }) }} required />
               </div>
               <div className='register-login-input'>
                 <IoLockClosed size={20} />

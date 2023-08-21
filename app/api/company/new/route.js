@@ -20,7 +20,7 @@ export const POST = async (request) => {
                     qtdFuncionarios: tamanho,
                     industria: industria,
                     tipo: tipo,
-                    foto: "https://cdn-icons-png.flaticon.com/512/5809/5809858.png",
+                    foto: "/assets/images/undefined.svg",
                     background: "/assets/images/bg2.jpg",
                     qtdSeguidores: 0,
                     seguidores: "",

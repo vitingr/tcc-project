@@ -159,21 +159,29 @@ const MainProfile = ({ content, setShowAddExperience, setShowAddCertificado, set
               {certificados.map((certificado) => (
                 <Certificado key={certificado._id} certificado={certificado} />
               ))}
-              <Link href="#top-profile">
-                <div className='section-button center' onClick={() => setShowAddCertificado(true)}>
-                  Adicionar Certificações
-                </div>
-              </Link>
+              {content._id === data._id ? (
+                <Link href="#top-profile">
+                  <div className='section-button center' onClick={() => setShowAddCertificado(true)}>
+                    Adicionar Certificações
+                  </div>
+                </Link>
+              ) : (
+                <></>
+              )}
             </div>
           ) : (
             <div>
               <h6>Sem dados...</h6>
               <p>Nenhuma informações sobre certificações disponível!</p>
-              <Link href="#top-profile">
-                <div className='section-button center' onClick={() => setShowAddCertificado(true)}>
-                  Adicionar Certificações
-                </div>
-              </Link>
+              {content._id === data._id ? (
+                <Link href="#top-profile">
+                  <div className='section-button center' onClick={() => setShowAddCertificado(true)}>
+                    Adicionar Certificações
+                  </div>
+                </Link>
+              ) : (
+                <></>
+              )}
             </div>
           )}
         </div>
@@ -189,21 +197,29 @@ const MainProfile = ({ content, setShowAddExperience, setShowAddCertificado, set
               {experiencias.map((experiencia) => (
                 <Experiencia key={experiencia._id} experiencia={experiencia} />
               ))}
-              <Link href="#body">
-                <div className='section-button center' onClick={() => setShowAddExperience(true)}>
-                  Adicionar Experiência
-                </div>
-              </Link>
+              {content._id === data._id ? (
+                <Link href="#body">
+                  <div className='section-button center' onClick={() => setShowAddExperience(true)}>
+                    Adicionar Experiência
+                  </div>
+                </Link>
+              ) : (
+                <></>
+              )}
             </div>
           ) : (
             <div>
               <h6>Sem dados...</h6>
               <p>Nenhuma informações sobre experiência disponível!</p>
-              <Link href="#body">
-                <div className='section-button center' onClick={() => setShowAddExperience(true)}>
-                  Adicionar Experiência
-                </div>
-              </Link>
+              {content._id === data._id ? (
+                <Link href="#body">
+                  <div className='section-button center' onClick={() => setShowAddExperience(true)}>
+                    Adicionar Experiência
+                  </div>
+                </Link>
+              ) : (
+                <></>
+              )}
             </div>
           )}
         </div>

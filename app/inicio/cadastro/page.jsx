@@ -94,7 +94,7 @@ const page = () => {
               </div>
               <div className='register-login-input'>
                 <IoMailSharp size={20} />
-                <input type="email" name="email" id="email" minLength={8} maxLength={120} placeholder='Email' value={data.email} onChange={(e) => { setData({ ...data, email: e.target.value }) }} required />
+                <input type="email" name="email" id="email" minLength={8} maxLength={120} placeholder='Email' autoComplete="off" value={data.email} onChange={(e) => { setData({ ...data, email: e.target.value }) }} required />
               </div>
               <div className='register-login-input'>
                 <IoLockClosed size={20} />

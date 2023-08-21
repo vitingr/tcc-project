@@ -42,6 +42,8 @@ const AddCertificado = ({ data, handleClick }) => {
       setErros(true)
     }
 
+    //foto: "https://etecperuibe.com.br/wp-content/uploads/2021/02/Positiva.png",
+
     if (erros === false) {
       try {
         const response = await fetch("/api/profile/certificado/new", {
@@ -50,7 +52,7 @@ const AddCertificado = ({ data, handleClick }) => {
             userId: data._id,
             nome: nomeCurso,
             unidade: nomeInstituicao,
-            foto: "https://etecperuibe.com.br/wp-content/uploads/2021/02/Positiva.png",
+            foto: "/assets/images/undefined.svg",
             mesInicio: mesInicio,
             mesFim: mesFim,
             anoInicio: anoInicio,
