@@ -2,6 +2,7 @@
 
 import { useSession } from 'next-auth/react'
 import React from 'react'
+import Link from 'next/link'
 
 // Imports React
 import { IoAlertCircleOutline } from 'react-icons/io5'
@@ -46,13 +47,15 @@ const FriendsSidebar = () => {
       )}
       <div className='main-friend-sidebar'>
         <div className='friends-sidebar center'>
-          <button className="cta icon-cursor">
-            <span>Ver mais</span>
-            <svg viewBox="0 0 13 10" height="10px" width="15px">
-              <path d="M1,5 L11,5"></path>
-              <polyline points="8 1 12 5 8 9"></polyline>
-            </svg>
-          </button>
+          <Link href="/usuario/amigos/adicionarAmigos">
+            <button className="cta icon-cursor">
+              <span>Ver mais</span>
+              <svg viewBox="0 0 13 10" height="10px" width="15px">
+                <path d="M1,5 L11,5"></path>
+                <polyline points="8 1 12 5 8 9"></polyline>
+              </svg>
+            </button>
+          </Link>
         </div>
       </div>
     </div>

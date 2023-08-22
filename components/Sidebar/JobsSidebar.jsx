@@ -33,7 +33,7 @@ const JobsSidebar = () => {
         </h3>
         <IoAlertCircleOutline size={17.5} className='icon-cursor' />
       </div>
-      {data > 0 ? (
+      {data.length > 0 ? (
         <div className='jobs-sidebar-container'>
           {data.map((vaga) => (
             <JobSidebar key={vaga._id} image={vaga.foto} name={vaga.cargo} minSalary={vaga.salario} maxSalary={vaga.salario} />
