@@ -270,6 +270,10 @@ html {
 	display: flex;
 }
 
+.provider-div {
+	width: 100%;
+}
+
 /* -=-=- CONFIGURAÇÕES NAVBAR -=-=- */
 
 .navbar {

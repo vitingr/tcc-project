@@ -41,12 +41,14 @@ const handler = NextAuth({
 					} else {
 						console.log("Usuário Existente")
 
-						const user = { id: userExists._id, name: userExists.nomeCompleto, email: userExists.email }
+						if (userExists.senha === password) {
+							const user = { id: userExists._id, name: userExists.nomeCompleto, email: userExists.email }
 
-						if (user) {
-							return user
-						} else {
-							return null
+							if (user) {
+								return user
+							} else {
+								return null
+							}
 						}
 					}
 
@@ -75,6 +77,7 @@ const handler = NextAuth({
 				await ConnectToDB()
 
 				if (credentials) {
+					console.log(`CREDENCIAIS: ${credentials}`)
 					return true
 				}
 

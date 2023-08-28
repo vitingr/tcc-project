@@ -39,14 +39,8 @@ const page = () => {
       })
 
       if (response.error === "CredentialsSignin") {
-        toast.error("ERRO! Email Incorreto")
+        toast.error("ERRO! Credenciais incorretas")
       }
-
-      console.log(response)
-
-      // if (response.ok) {
-      //   router.push("/usuario/feed")
-      // }
 
     } else {
       console.log("erro")
@@ -58,8 +52,7 @@ const page = () => {
     const setUpProviders = async () => {
       const response = await getProviders()
 
-      setProviders(response) // Só pode ter um setProviders
-
+      setProviders(response)   
     }
 
     setUpProviders()
@@ -105,7 +98,7 @@ const page = () => {
                 Object.values(providers).map((provider) => (
                   <>
                     {provider.name != "credentials" ? (
-                      <button className='register-login-icon icon-cursor transparent' type="button" key={provider.name} onClick={() => signIn(provider.id)}>
+                      <button className='register-login-icon icon-cursor transparent' key={provider.name} type="button" onClick={() => signIn(provider.id)}>
                         <IoLogoGoogle size={25} />
                         Entrar com {provider.name}
                       </button>
