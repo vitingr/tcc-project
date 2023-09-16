@@ -8,6 +8,7 @@ import { toast } from 'react-toastify'
 // Import Components
 import Posts from './Posts'
 import ToastMessage from '@components/Others/ToastMessage'
+import UploadPostPhoto from './Others/UploadPostPhoto'
 
 // Imports NextAuth
 import { useSession } from "next-auth/react"
@@ -22,12 +23,12 @@ const Feed = ({ data }) => {
   const { data: session } = useSession()
   const [post, setPost] = useState("")
   const [postagens, setPostagens] = useState([])
+  const [photo, setPhoto] = useState()
 
   const fetchData = async () => {
     const answer = await fetch(`/api/posts/`)
     const data = await answer.json()
     setPostagens(data)
-    console.log(premiumInfo)
   }
 
   const createPost = async () => {
@@ -36,8 +37,9 @@ const Feed = ({ data }) => {
         method: "POST",
         body: JSON.stringify({
           userId: session?.user.id,
-          foto: data.foto,
+          fotoDono: data.foto,
           nomeDono: data.nomeCompleto,
+          foto: photo,
           conteudo: post,
           curtidas: 0,
           compartilhamentos: 0
@@ -154,9 +156,7 @@ const Feed = ({ data }) => {
 
           <div className='main-posts-container'>
             <div className='actions-posts-container'>
-              <span>
-                <IoImageOutline size={18} />
-              </span>
+              <UploadPostPhoto file={setPhoto} value={photo} />
               <span>
                 <IoLocationOutline size={18} />
               </span>

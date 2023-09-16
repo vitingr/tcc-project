@@ -17,7 +17,7 @@ const Navbar = () => {
 	const { data } = infoUser()
 
 	return (
-		<header>
+		<header className='header'>
 			{session?.user ? (
 				<nav className='navbar' id="navbar">
 

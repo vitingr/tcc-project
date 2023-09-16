@@ -50,56 +50,61 @@ const MainProfile = ({ content, setShowAddExperience, setShowAddCertificado, set
   return (
     <div className='main-profile-container'>
       <ToastMessage />
-      <div className='container-section-profile' id="analytics">
-        <div className='section-top'>
-          <h3>Analytics</h3>
-        </div>
-        <div className='section-bottom'>
-          <div className="analytics-flex">
-            <div className="analytic-item">
-              <div>
-                <IoPeopleSharp size={20} />
+      {content._id === data._id ? (
+        <div className='container-section-profile' id="analytics">
+          <div className='section-top'>
+            <h3>Analytics</h3>
+          </div>
+          <div className='section-bottom'>
+            <div className="analytics-flex">
+              <div className="analytic-item">
+                <div>
+                  <IoPeopleSharp size={20} />
+                </div>
+                <div>
+                  <h4>{data.profile_views < 0 ? "0" : `${data.profile_views}`} Visualizações de Perfil</h4>
+                  <p>Veja quantas pessoas que visualizaram o seu perfil recentemente</p>
+                </div>
               </div>
-              <div>
-                <h4>{data.profile_views ? "0" : `${data.profile_views}`} Visualizações de Perfil</h4>
-                <p>Veja quantas pessoas que visualizaram o seu perfil recentemente</p>
-              </div>
-            </div>
 
-            <div className="analytic-item">
-              <div>
-                <IoSearchSharp size={20} />
-              </div>
-              <div>
-                <h4>{data.profile_searchs ? "0" : `${data.profile_searchs}`} Ocorrências de buscas</h4>
-                <p>Veja com qual frequência você apareceu em resultados de busca</p>
+              <div className="analytic-item">
+                <div>
+                  <IoSearchSharp size={20} />
+                </div>
+                <div>
+                  <h4>{data.profile_searchs ? "0" : `${data.profile_searchs}`} Ocorrências de buscas</h4>
+                  <p>Veja com qual frequência você apareceu em resultados de busca</p>
+                </div>
               </div>
             </div>
           </div>
-
         </div>
-      </div>
+      ) : (
+        <></>
+      )}
 
-      <div className='container-section-profile'>
-        <div className='section-top'>
-          <h3>Recursos - Minha Atividade</h3>
-          {content._id === data._id ? (
-            <span className='section-icon'>
-              <IoEyeOutline size={15} />
-              <p>somente você pode ver</p>
-            </span>
-          ) : (
-            <></>
-          )}
-        </div>
-        <div className='section-bottom'>
-          <div className="graph-container">
-            <CircularChart />
+      {content._id === data._id ? (
+        <div className='container-section-profile'>
+          <div className='section-top'>
+            <h3>Recursos - Minha Atividade</h3>
+            {content._id === data._id ? (
+              <span className='section-icon'>
+                <IoEyeOutline size={15} />
+                <p>somente você pode ver</p>
+              </span>
+            ) : (
+              <></>
+            )}
           </div>
-          {/* <h6>Sem dados...</h6>
-          <p>Nenhuma informações sobre certificações disponível!</p> */}
+          <div className='section-bottom'>
+            <div className="graph-container">
+              <CircularChart />
+            </div>
+          </div>
         </div>
-      </div>
+      ) : (
+        <></>
+      )}
 
       <div className='container-section-profile'>
         <div className='section-top'>

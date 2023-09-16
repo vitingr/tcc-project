@@ -42,8 +42,12 @@ const page = () => {
         })
       })
 
+      if (profile_visualization.ok) {
+        return
+      }
+
     } catch (error) {
-      console.log(error)
+      throw new Error(error)
     }
   }
 

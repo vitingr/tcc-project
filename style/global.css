@@ -274,7 +274,16 @@ html {
 	width: 100%;
 }
 
+.bg-transparent {
+	background: transparent;
+}
+
 /* -=-=- CONFIGURAÇÕES NAVBAR -=-=- */
+
+.header {
+	top: 0;
+	position: sticky;
+}
 
 .navbar {
 	background: var(--container-color);
@@ -2777,7 +2786,7 @@ input:checked + .slider:before {
 		width: 100%;
 		position: fixed;
 		left: 0%;
-		top: 89.5vh;
+		top: 90vh;
 		background: var(--container-color);
 		z-index: 1000;
 		padding: 10px 0px 6px 0px;

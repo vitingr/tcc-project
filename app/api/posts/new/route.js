@@ -2,7 +2,7 @@ import { ConnectToDB } from "@utils/database";
 import Postagem from "@models/Postagem";
 
 export const POST = async (request) => {
-    const { userId, foto, nomeDono, conteudo, curtidas, compartilhamentos } = await request.json()
+    const { userId, fotoDono, nomeDono, foto, conteudo, curtidas, compartilhamentos } = await request.json()
     try {
 
         await ConnectToDB()
@@ -14,9 +14,10 @@ export const POST = async (request) => {
             try {
                 const newPost = new Postagem({
                     dono: userId,
-                    fotoDono: foto,
+                    fotoDono: fotoDono,
                     nomeDono: nomeDono,
                     conteudo: conteudo,
+                    fotos: foto,
                     curtidas: curtidas,
                     compartilhamentos: compartilhamentos
                 })

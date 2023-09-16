@@ -21,7 +21,7 @@ const profile = ({ content, showAddExperience, showAddCertificado, showEditProfi
         <div className='profile-bg' style={{ backgroundImage: `url(${content.background})` }}></div>
         <div className='main-profile'>
           <div className='profile-photo'>
-            <img src={content.foto} alt='photo-profile' className='big-rounded-photo' />
+            <img src={content.foto} alt='photo-profile' className='big-rounded-photo scale-transform icon-cursor' />
             {content.logado ? (
               <div className='online'></div>
             ) : (
