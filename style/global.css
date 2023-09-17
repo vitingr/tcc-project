@@ -2790,6 +2790,13 @@ input:checked + .slider:before {
 	max-height: 100px;
 	overflow: hidden;
 }
+.search-item-post-container {
+	padding: 35px 0px 20px 0px !important;
+}
+
+.search-post-title {
+	margin-left: 35px;
+}
 
 /* -=-=- ANIMAÇÕES -=-=- */
 

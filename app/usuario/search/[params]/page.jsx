@@ -11,6 +11,7 @@ import SearchPage from '@components/Search/SearchPage'
 import SearchPost from '@components/Search/SearchPost'
 import SearchJob from '@components/Search/SearchJob'
 import ProfileSidebar from '@components/ProfileSidebar'
+import Post from '@components/Post'
 
 const page = () => {
 
@@ -94,12 +95,12 @@ const page = () => {
             )}
           </div>
 
-          <div className='search-item-container'>
-            <h1 className='search-title'>Postagens</h1>
+          <div className='search-item-container search-item-post-container'>
+            <h1 className='search-title search-post-title'>Postagens</h1>
             {posts.length > 0 ? (
               <>
                 {posts.map((post) => (
-                  <SearchPost data={post} />
+                  <Post post={post} />
                 ))}
                 <div className='search-see-more'>
                   Ver mais postagens
