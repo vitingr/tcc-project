@@ -3,6 +3,12 @@ import Postagem from "@models/Postagem";
 
 export const POST = async (request) => {
     const { userId, fotoDono, nomeDono, foto, conteudo, curtidas, compartilhamentos } = await request.json()
+
+    const meses = [
+        "janeiro", "fevereiro", "março", "abril", "maio", "junho",
+        "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"
+    ];
+
     try {
 
         await ConnectToDB()
@@ -12,12 +18,24 @@ export const POST = async (request) => {
         } else {
             // Criar nova Postagem
             try {
+
+                const data = new Date()
+
+                const dia = data.getDate();
+                const mes = meses[data.getMonth()];
+                const ano = data.getFullYear();
+                const hora = data.getHours();
+                const minutos = data.getMinutes();
+
+                const dataFormatada = `${dia} de ${mes} de ${ano} às ${hora}:${minutos}`;
+
                 const newPost = new Postagem({
                     dono: userId,
                     fotoDono: fotoDono,
                     nomeDono: nomeDono,
+                    data: dataFormatada,
                     conteudo: conteudo,
-                    fotos: foto,
+                    fotos: foto, 
                     curtidas: curtidas,
                     compartilhamentos: compartilhamentos
                 })

@@ -12,6 +12,7 @@ import {
   Legend
 } from 'chart.js'
 import { useState, useEffect } from 'react';
+import { infoUser } from '@utils/userContext';
 
 ChartJS.register(
   CategoryScale,
@@ -24,6 +25,8 @@ ChartJS.register(
 
 const CircularChart = () => {
 
+  const {data} = infoUser()
+
   const [chartData, setChartData] = useState({
     datasets: []
   })
@@ -32,11 +35,11 @@ const CircularChart = () => {
 
   useEffect(() => {
     setChartData({
-      labels: ["Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"],
+      labels: ["Visualizações no Perfil", "Buscas de Perfil"],
       datasets: [
         {
           label: "Atividade",
-          data: [65, 69, 35, 81, 166, 155]
+          data: [data.profile_views, data.profile_searchs]
         }
       ]
     })

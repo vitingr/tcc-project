@@ -29,7 +29,7 @@ const page = () => {
       const result1 = await fetch(`/api/user/${userId}`)
       const response1 = await result1.json()
       setContent(response1)
-
+ 
       const result2 = await fetch(`/api/endereco/${userId}`)
       const response2 = await result2.json()
       setEndereco(response2)

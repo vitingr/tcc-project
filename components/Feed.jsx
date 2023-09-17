@@ -19,11 +19,11 @@ import { infoUser } from '@utils/userContext'
 
 const Feed = ({ data }) => {
 
-  const {premiumInfo} = infoUser()
+  const { premiumInfo } = infoUser()
   const { data: session } = useSession()
   const [post, setPost] = useState("")
   const [postagens, setPostagens] = useState([])
-  const [photo, setPhoto] = useState()
+  const [photo, setPhoto] = useState("")
 
   const fetchData = async () => {
     const answer = await fetch(`/api/posts/`)
@@ -47,7 +47,7 @@ const Feed = ({ data }) => {
       })
 
       if (response.ok) {
-        fetchData()
+        await fetchData()
         setPost("")
         toast.success("Post Criado com sucesso!")
       } else {
@@ -60,11 +60,11 @@ const Feed = ({ data }) => {
   }
 
   useEffect(() => {
-    if (session) {
+    if (session && data !== undefined) {
       console.log(session)
       fetchData()
     }
-  }, [session])
+  }, [session, data])
 
   return (
     <div className='feed-container'>
@@ -151,8 +151,16 @@ const Feed = ({ data }) => {
         <div className='top-posts-container'>
           <div className='write-posts-container'>
             <img src={data.foto} className='very-small-rounded-photo post-photo-profile' alt='photo-post' />
-            <input type="text" name="post-something" id="post-something" className='post-something' onChange={(e) => setPost(e.target.value)} value={post} />
+            <input type="text" name="post-something" id="post-something" className='post-something' spellCheck="false" onChange={(e) => setPost(e.target.value)} value={post} />
           </div>
+
+          {photo !== "" ? (
+            <div className='image-post margin-top'>
+              <img src={photo} alt="Visualization Post Photo" className='image-post-photo' />
+            </div>
+          ) : (
+            <></>
+          )}
 
           <div className='main-posts-container'>
             <div className='actions-posts-container'>
@@ -163,6 +171,8 @@ const Feed = ({ data }) => {
               <span>
                 <IoHappyOutline size={18} />
               </span>
+            </div>
+            <div>
             </div>
             <div className='post-publication icon-cursor center' onClick={createPost}>
               Publicar

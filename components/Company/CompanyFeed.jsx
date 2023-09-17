@@ -58,7 +58,7 @@ const CompanyFeed = ({ info, dono, posts, setCreateVaga }) => {
         </div>
         {dono ? (
           <div className='edit-about-company'>
-            <p className='btn-edit-company'>Editar Informações</p>
+            <p className='section-button center'>Editar Informações</p>
           </div>
         ) : (
           <></>

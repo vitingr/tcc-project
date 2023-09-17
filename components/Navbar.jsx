@@ -1,8 +1,9 @@
 "use client"
 
 // Imports React
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 // Imports NextAuth
 import { signOut, useSession } from "next-auth/react"
@@ -10,11 +11,21 @@ import { signOut, useSession } from "next-auth/react"
 // Imports Icons
 import { IoSearchOutline, IoHomeSharp, IoGitNetwork, IoBriefcaseSharp, IoNotifications, IoSettingsSharp, IoExit, IoNewspaper, IoMenuSharp } from 'react-icons/io5'
 import { infoUser } from '@utils/userContext'
+import { redirect } from 'next/navigation'
 
 const Navbar = () => {
 
 	const { data: session } = useSession()
 	const { data } = infoUser()
+	const router = useRouter()
+
+	const [searchText, setSearchText] = useState("")
+
+	const search = async (e) => {
+		e.preventDefault()
+		const query = searchText.replace(" ", "-")
+		router.push(`/usuario/search/${query}`)
+	}
 
 	return (
 		<header className='header'>
@@ -31,12 +42,16 @@ const Navbar = () => {
 
 					<div className='search-container'>
 						<img src="https://i.pinimg.com/736x/3d/37/60/3d3760207a12e626f1149118404e003d.jpg" alt="logo" className='search-logo' />
-						<div className='search-content'>
-							<div className='icon-cursor center'>
-								<IoSearchOutline size={22.5} />
+						<form onSubmit={search} className='search-content'>
+							<div className='search-content'>
+								<Link href={`/usuario/search/${searchText}`}>
+									<div className='icon-cursor center'>
+										<IoSearchOutline size={22.5} />
+									</div>
+								</Link>
+								<input type="text" id="search-items" name="search-items" placeholder='Buscar' onChange={(e) => setSearchText(e.target.value)} required />
 							</div>
-							<input type="text" name="search-home" id="search-home" placeholder='Buscar' />
-						</div>
+						</form>
 					</div>
 
 					<div className='nav-content'>
