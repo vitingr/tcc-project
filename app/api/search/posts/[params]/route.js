@@ -1,5 +1,5 @@
 import { ConnectToDB } from "@utils/database";
-import Post from "@components/Post";
+import Postagem from "@models/Postagem";
 
 export const GET = async (request, { params }) => {
   try {
@@ -14,7 +14,9 @@ export const GET = async (request, { params }) => {
 
       try {
 
-        const posts = await Post.find({ conteudo: new RegExp(query, 'i')}).exec();
+        console.log(query)
+
+        const posts = await Postagem.find({ conteudo: new RegExp(query, 'i')}).exec();
 
         return new Response(JSON.stringify(posts), { status: 200 })
 

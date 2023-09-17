@@ -561,7 +561,9 @@ html {
 }
 
 .home-profile {
-	min-width: 100%;
+	width: 100%;
+	max-width: 275px;
+	max-height: 450px;
 	border-radius: 6.5px;
 	display: flex;
 	flex-direction: column;
@@ -2690,8 +2692,15 @@ input:checked + .slider:before {
 	color: var(--font-color);
 }
 
-.search-container {
-	max-width: 1000px;
+.page-search-container {
+	display: flex;
+	max-width: 1300px;
+	gap: 25px;
+}
+
+.page-search-container-right {
+	display: flex;
+	gap: 25px;
 }
 
 .search-error {
@@ -2709,7 +2718,7 @@ input:checked + .slider:before {
 
 .search-item-container {
 	background: var(--container-color);
-	width: 100%;
+	width: 550px;
 	padding: 35px 35px 20px 35px;
 	min-height: 10vh;
 	border-radius: 10px;
@@ -2727,7 +2736,7 @@ input:checked + .slider:before {
 	color: var(--color1);
 }
 
-.search-user {
+.search-option {
 	display: flex;
 	padding-bottom: 15px;
 	margin-bottom: 15px;
@@ -2736,31 +2745,31 @@ input:checked + .slider:before {
 	width: 100%;
 }
 
-.search-user-info {
+.search-option-info {
 	width: 100%;
 }
 
-.search-user-photo img {
+.search-option-photo img {
 	width: 55px;
 	border-radius: 50%;
 }
 
-.search-user-info h1 {
+.search-option-info h1 {
 	font-size: 15px;
 }
 
-.search-user-info h4 {
+.search-option-info h4 {
 	font-weight: normal;
 	font-size: 13px;
 }
 
-.search-user-info h5 {
+.search-option-info h5 {
 	font-weight: normal;
 	font-size: 12px;
 	color: var(--font-color-low-emphasis);
 }
 
-.search-user-action div {
+.search-option-action div {
 	background: var(--color1);
 	color: white;
 	padding: 6.5px;
@@ -2773,8 +2782,13 @@ input:checked + .slider:before {
 	transition-duration: 0.3s;
 }
 
-.search-user-action div:hover {
+.search-option-action div:hover {
 	background: var(--color2);
+}
+
+.descricao-option {
+	max-height: 100px;
+	overflow: hidden;
 }
 
 /* -=-=- ANIMAÇÕES -=-=- */

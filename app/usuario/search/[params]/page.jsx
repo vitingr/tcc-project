@@ -10,11 +10,12 @@ import SearchUser from '@components/Search/SearchUser'
 import SearchPage from '@components/Search/SearchPage'
 import SearchPost from '@components/Search/SearchPost'
 import SearchJob from '@components/Search/SearchJob'
+import ProfileSidebar from '@components/ProfileSidebar'
 
 const page = () => {
 
   const { data: session } = useSession()
-  const { data } = infoUser()
+  const { data, premiumInfo } = infoUser()
   const pathname = usePathname().split("/")
   const query = pathname[3]
 
@@ -53,81 +54,84 @@ const page = () => {
   }, [session, data])
 
   return data ? (
-    <div className='search-container'>
-      <div className='search-items-container'>
-        <div className='search-item-container'>
-          <h1 className='search-title'>Pessoas</h1>
-          {users.length > 0 ? (
-            <>
-              {users.map((user) => (
-                <SearchUser data={user} />
-              ))}
-              <div className='search-see-more'>
-                Descobrir mais pessoas
-              </div>
-            </>
-          ) : (
-            <>
-              <h1 className='search-error'>Ops... não encontramos nada relacionado</h1>
-            </>
-          )}
-        </div>
+    <div className='page-search-container'>
+      <ProfileSidebar data={data} premiumInfo={premiumInfo} />
+      <div className='page-search-container-right'>
+        <div className='search-items-container'>
+          <div className='search-item-container'>
+            <h1 className='search-title'>Pessoas</h1>
+            {users.length > 0 ? (
+              <>
+                {users.map((user) => (
+                  <SearchUser data={user} />
+                ))}
+                <div className='search-see-more'>
+                  Descobrir mais pessoas
+                </div>
+              </>
+            ) : (
+              <>
+                <h1 className='search-error'>Ops... não encontramos nada relacionado</h1>
+              </>
+            )}
+          </div>
 
-        <div className='search-item-container'>
-          <h1 className='search-title'>Páginas</h1>
-          {pages.length > 0 ? (
-            <>
-              {pages.map((page) => (
-                <SearchPage data={page} />
-              ))}
-              <div className='search-see-more'>
-                Descobrir mais páginas
-              </div>
-            </>
-          ) : (
-            <>
-              <h1 className='search-error'>Ops! não encontramos nada relacionado...</h1>
-            </>
-          )}
-        </div>
+          <div className='search-item-container'>
+            <h1 className='search-title'>Páginas</h1>
+            {pages.length > 0 ? (
+              <>
+                {pages.map((page) => (
+                  <SearchPage data={page} />
+                ))}
+                <div className='search-see-more'>
+                  Descobrir mais páginas
+                </div>
+              </>
+            ) : (
+              <>
+                <h1 className='search-error'>Ops! não encontramos nada relacionado...</h1>
+              </>
+            )}
+          </div>
 
-        <div className='search-item-container'>
-          <h1 className='search-title'>Postagens</h1>
-          {posts.length > 0 ? (
-            <>
-              {posts.map((post) => (
-                <SearchPost data={post} />
-              ))}
-              <div className='search-see-more'>
-                Ver mais postagens
-              </div>
-            </>
-          ) : (
-            <>
-              <h1 className='search-error'>Ops... não encontramos nada relacionado</h1>
-            </>
-          )}
-        </div>
+          <div className='search-item-container'>
+            <h1 className='search-title'>Postagens</h1>
+            {posts.length > 0 ? (
+              <>
+                {posts.map((post) => (
+                  <SearchPost data={post} />
+                ))}
+                <div className='search-see-more'>
+                  Ver mais postagens
+                </div>
+              </>
+            ) : (
+              <>
+                <h1 className='search-error'>Ops... não encontramos nada relacionado</h1>
+              </>
+            )}
+          </div>
 
-        <div className='search-item-container'>
-          <h1 className='search-title'>Vagas de Emprego</h1>
-          {jobs.length > 0 ? (
-            <>
-              {jobs.map((job) => (
-                <SearchJob data={job} />
-              ))}
-              <div className='search-see-more'>
-                Ver mais vagas
-              </div>
-            </>
-          ) : (
-            <>
-              <h1 className='search-error'>Ops... não encontramos nada relacionado</h1>
-            </>
-          )}
+          <div className='search-item-container'>
+            <h1 className='search-title'>Vagas de Emprego</h1>
+            {jobs.length > 0 ? (
+              <>
+                {jobs.map((job) => (
+                  <SearchJob data={job} />
+                ))}
+                <div className='search-see-more'>
+                  Ver mais vagas
+                </div>
+              </>
+            ) : (
+              <>
+                <h1 className='search-error'>Ops... não encontramos nada relacionado</h1>
+              </>
+            )}
+          </div>
         </div>
+        <Sidebar />
       </div>
-      <Sidebar />
     </div>
   ) : (
     <Loader />
