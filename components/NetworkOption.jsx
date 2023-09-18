@@ -25,13 +25,13 @@ const NetworkOption = ({ content, handleClick, message, type }) => {
 					{type === "pagina" ? (
 						<Link href={`/usuario/pagina/${content._id}`}>
 							<div className='friend-photo-container'>
-								<img src={content.foto} className='medium-rounded-photo' alt='profile photo' />
+								<img src={content.foto} className='medium-rounded-photo scale-transform' alt='profile photo' />
 							</div>
 						</Link>
 					) : (
 						<Link href={`/usuario/user/${content._id}`}>
 							<div className='friend-photo-container'>
-								<img src={content.foto} className='medium-rounded-photo' alt='profile photo' />
+								<img src={content.foto} className='medium-rounded-photo scale-transform' alt='profile photo' />
 							</div>
 						</Link>
 					)}
