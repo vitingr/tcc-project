@@ -7,11 +7,12 @@ import { useEffect, useState } from 'react'
 import { motion } from "framer-motion";
 import Seguidor from './Seguidor'
 import { IoSearchOutline } from 'react-icons/io5'
+import { infoUser } from '@utils/userContext'
 
 const Seguidores = ({ content }) => {
 
   const { data: session } = useSession()
-
+  const {getInfo} = infoUser()
   const [data, setData] = useState([])
 
   const fetchData = async () => {
@@ -21,9 +22,33 @@ const Seguidores = ({ content }) => {
         const result = await fetch(`/api/network/amigos/meusAmigos/${content._id}`)
         const response = await result.json()
         setData(response)
+        getInfo()
       } catch (error) {
         console.log(error)
       }
+    }
+  }
+
+  const removerAmigo = async (amigo) => {
+    try {
+
+      const response = await fetch("/api/network/amigos/removerAmigo", {
+        method: "POST",
+        body: JSON.stringify({
+          userId: session?.user.id,
+          amigoId: amigo,
+        })
+      })
+
+      if (response.ok) {
+        fetchData()
+        toast.success("Amizade desfeita com sucesso!")
+      } else {
+        toast.error("ERRO! Não foi possível desfazer a amizade")
+      }
+
+    } catch (error) {
+      console.log(error)
     }
   }
 
@@ -73,7 +98,7 @@ const Seguidores = ({ content }) => {
         >
           {data.map((friend) => (
             <motion.li key={friend._id} variants={item}>
-              <Seguidor content={friend} message={"Remover"} />
+              <Seguidor content={friend} message={"Remover"} handleClick={removerAmigo} />
             </motion.li>
           ))}
         </motion.ul>

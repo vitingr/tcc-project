@@ -11,6 +11,8 @@ export const GET = async (request, { params }) => {
             response.forEach((opcao) => {
                 if (opcao.amigos_pendentes.includes(params.id)) {
                     convitesEnviados.push(opcao)
+                } else {
+                    return
                 }
             })
             if (convitesEnviados) {

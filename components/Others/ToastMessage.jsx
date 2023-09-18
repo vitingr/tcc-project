@@ -11,7 +11,7 @@ const ToastMessage = () => {
 
     return tema === "dark" ? (
         <ToastContainer
-            position="top-center"
+            position="bottom-center"
             autoClose={5000}
             hideProgressBar={false}
             newestOnTop={false}
@@ -21,10 +21,11 @@ const ToastMessage = () => {
             draggable
             pauseOnHover
             theme="dark"
+            className="max-index"
         />
     ) : (
         <ToastContainer
-            position="top-center"
+            position="bottom-center"
             autoClose={5000}
             hideProgressBar={false}
             newestOnTop
@@ -34,6 +35,7 @@ const ToastMessage = () => {
             draggable
             pauseOnHover
             theme="light"
+            className="max-index"
         />
     )
 }

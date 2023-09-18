@@ -14,6 +14,8 @@ const NetworkOption = ({ content, handleClick, message, type }) => {
 	const { data: session } = useSession()
 	const [data, setData] = useState([])
 
+	console.log(content)
+
 	return (
 		<div>
 			<ToastMessage />

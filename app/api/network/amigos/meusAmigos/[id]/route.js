@@ -13,7 +13,7 @@ export const GET = async (request, { params }) => {
 
             amigosUser.forEach(item => {
                 if (item == 0 || item == null || item == undefined || item == "" || !item) {
-                    console.log("Amigo Invalido")
+                    return
                 } else {
                     amigos.push(item)
                 }

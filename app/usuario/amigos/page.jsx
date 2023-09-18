@@ -7,6 +7,10 @@ import { useEffect, useState } from 'react'
 import NetworkOption from '@components/NetworkOption'
 import { motion } from "framer-motion";
 import Sidebar from '@components/Sidebar/Sidebar'
+import { toast } from 'react-toastify'
+
+// Imports Components
+import ToastMessage from '@components/Others/ToastMessage'
 
 const page = () => {
 
@@ -44,8 +48,32 @@ const page = () => {
     }
   };
 
+  const removerAmigo = async (amigo) => {
+    try {
+
+      const response = await fetch("/api/network/amigos/removerAmigo", {
+        method: "POST",
+        body: JSON.stringify({
+          userId: session?.user.id,
+          amigoId: amigo,
+        })
+      })
+
+      if (response.ok) {
+        fetchData()
+        toast.success("Amizade desfeita com sucesso!")
+      } else {
+        toast.error("ERRO! Não foi possível desfazer a amizade")
+      }
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <div className='friends-container'>
+      <ToastMessage />
       <FriendActions />
       <div className='friends-options-container'>
 
@@ -66,7 +94,7 @@ const page = () => {
             >
               {data.map((amigo) => (
                 <motion.li key={amigo._id} variants={item}>
-                  <NetworkOption content={amigo} message={"Remover"} handleClick={"Remover"} type={"usuario"} />
+                  <NetworkOption content={amigo} message={"Remover"} handleClick={removerAmigo} type={"usuario"} />
                 </motion.li>
               ))}
 

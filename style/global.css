@@ -285,7 +285,7 @@ html {
 /* -=-=- CONFIGURAÇÕES NAVBAR -=-=- */
 
 .header {
-	z-index: 9999;
+	z-index: 6;
 	top: 0;
 	position: sticky;
 }
@@ -1162,7 +1162,7 @@ html {
 /* -=-=- AMIGOS -=-=- */
 
 .friends-container {
-	z-index: 999;
+	z-index: 5;
 	width: 100%;
 	display: flex;
 	flex-wrap: wrap;
@@ -1780,7 +1780,7 @@ html {
 
 .create-company,
 .create-instituition {
-	z-index: 10;
+	z-index: 5;
 	background: var(--container-color);
 	padding: 50px;
 	border-radius: 10px;
@@ -1848,7 +1848,7 @@ html {
 	gap: 40px;
 	max-width: 1250px;
 	width: 100%;
-	z-index: 999;
+	z-index: 5;
 }
 
 .main-company-container {
@@ -1992,7 +1992,7 @@ html {
 .aditionalinfo-container {
 	max-width: 750px;
 	width: 100%;
-	z-index: 999;
+	z-index: 5;
 }
 
 .info-form-container {
@@ -2120,7 +2120,7 @@ html {
 	min-height: 800px;
 	width: 100%;
 	background: var(--container-color);
-	z-index: 10;
+	z-index: 5;
 	border-radius: 10px;
 }
 
@@ -2129,7 +2129,7 @@ html {
 	min-height: 800px;
 	width: 100%;
 	background: var(--container-color);
-	z-index: 10;
+	z-index: 5;
 	padding: 40px;
 	border-radius: 10px;
 }
@@ -2653,7 +2653,7 @@ html {
   width: 8px;
   stroke-width: 8;
   position: absolute;
-  z-index: 999;
+  z-index: 5;
   stroke: var(--color1);
   right: 60%;
   top: 24%;
@@ -2798,6 +2798,10 @@ input:checked + .slider:before {
 	margin-left: 35px;
 }
 
+.max-index {
+	position: absolute;
+}
+
 /* -=-=- ANIMAÇÕES -=-=- */
 
 @keyframes gradiente {
@@ -2917,7 +2921,7 @@ input:checked + .slider:before {
 		left: 0%;
 		top: 90vh;
 		background: var(--container-color);
-		z-index: 1000;
+		z-index: 6;
 		padding: 10px 0px 6px 0px;
 	}
 

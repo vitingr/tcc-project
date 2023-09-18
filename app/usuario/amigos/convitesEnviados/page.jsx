@@ -97,7 +97,7 @@ const page = () => {
             >
               {data.map((amigo) => (
                 <motion.li key={amigo._id} variants={item}>
-                  <NetworkOption message={"Cancelar"} handleClick={cancelarConvite} type={"usuario"} />
+                  <NetworkOption content={amigo} message={"Cancelar"} handleClick={cancelarConvite} type={"usuario"} />
                 </motion.li>
               ))}
             </motion.ul>

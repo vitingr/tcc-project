@@ -1,7 +1,7 @@
 import React from 'react'
 import { IoEllipsisHorizontalSharp } from 'react-icons/io5'
 
-const Seguidor = ({ content }) => {
+const Seguidor = ({ content, message, handleClick }) => {
   return (
     <div className="follower-container">
       <div className="follower-left">
@@ -14,8 +14,8 @@ const Seguidor = ({ content }) => {
           <p>{content.seguidores} seguidores</p>
         </div>
         <div className="follower-right">
-          <div>
-            Remover
+          <div onClick={() => handleClick(content._id)}>
+            {message}
           </div>
           <IoEllipsisHorizontalSharp size={20} className="icon-cursor" />
         </div>
