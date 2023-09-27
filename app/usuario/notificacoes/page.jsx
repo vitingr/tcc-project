@@ -16,9 +16,29 @@ const page = () => {
 		console.log(response)
 	}
 
+	const removeNotificacoes = async () => {
+		try {
+			const response = await fetch(`/api/user/notificacoes/remove`, {
+				method: "POST",
+				body: JSON.stringify({
+					userId: data._id
+				})
+			})
+
+			if (response.ok) {
+				return
+			}
+		} catch (error) {
+			console.log(error)
+		}
+	}
+
 	useEffect(() => {
 		if (data) {
 			findNotificacoes()
+			if (notificacoes) {
+				removeNotificacoes()
+			}
 		}
 	}, [data])
 
