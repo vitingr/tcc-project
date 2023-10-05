@@ -77,7 +77,6 @@ const handler = NextAuth({
 				await ConnectToDB()
 
 				if (credentials) {
-					console.log(`CREDENCIAIS: ${credentials}`)
 					return true
 				}
 

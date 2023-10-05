@@ -6,7 +6,7 @@ import { infoUser } from '@utils/userContext'
 import { useSession } from 'next-auth/react'
 import VagaCard from './VagaCard'
 
-const CompanyFeed = ({ info, dono, posts, setCreateVaga }) => {
+const CompanyFeed = ({ info, dono, posts, setCreateVaga, setCreatePost }) => {
 
   const { data: session } = useSession()
   const { data } = infoUser()
@@ -91,9 +91,11 @@ const CompanyFeed = ({ info, dono, posts, setCreateVaga }) => {
           </p>
         )}
         {dono ? (
-          <button className='section-button center'>
-            Adicionar Post
-          </button>
+          <Link href="#about">
+            <button className='section-button center' onClick={() => setCreatePost(true)}>
+              Adicionar Post
+            </button>
+          </Link>
         ) : (
           <></>
         )}

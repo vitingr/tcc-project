@@ -6,7 +6,7 @@ import { IoAddSharp, IoOpenOutline, IoRemoveOutline } from 'react-icons/io5'
 import CompanyFeed from './CompanyFeed'
 import Link from 'next/link'
 
-const MainCompany = ({ content, dono, setCreateVaga, setEditCompany, addPage, removePage }) => {
+const MainCompany = ({ content, dono, setCreateVaga, setCreatePost, setEditCompany, addPage, removePage }) => {
 
   const { data } = infoUser()
   const [posts, setPosts] = useState([])
@@ -14,8 +14,6 @@ const MainCompany = ({ content, dono, setCreateVaga, setEditCompany, addPage, re
 
   useEffect(() => {
     if (data._id !== undefined && content._id !== undefined) {
-      console.log(content)
-      console.log(data)
       if (content.dono != data._id) {
         if (content.seguidores.includes(data._id)) {
           setFollow(true)
@@ -80,7 +78,7 @@ const MainCompany = ({ content, dono, setCreateVaga, setEditCompany, addPage, re
       </div>
 
       <div className='company-feed-container'>
-        <CompanyFeed info={content} dono={dono} posts={posts} setCreateVaga={setCreateVaga} />
+        <CompanyFeed info={content} dono={dono} posts={posts} setCreateVaga={setCreateVaga} setCreatePost={setCreatePost} />
       </div>
     </div >
   )

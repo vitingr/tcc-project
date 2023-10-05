@@ -12,6 +12,7 @@ import Sidebar from '@components/Sidebar/Sidebar'
 import CreateVaga from '@components/Company/CreateVaga'
 import { useSession } from 'next-auth/react'
 import EditCompany from '@components/Company/EditCompany'
+import CreatePost from '@components/Company/CreatePost'
 
 const page = () => {
 
@@ -25,6 +26,7 @@ const page = () => {
   const [isDono, setIsDono] = useState(false)
   const [editCompany, setEditCompany] = useState(false)
   const [createVaga, setCreateVaga] = useState(false)
+  const [createPost, setCreatePost] = useState(false)
 
   const getCompany = async () => {
     try {
@@ -97,18 +99,12 @@ const page = () => {
 
   return (
     <div className='company-container'>
-      <MainCompany content={company} dono={isDono} setCreateVaga={setCreateVaga} setEditCompany={setEditCompany} addPage={addPage} removePage={removePage} />
+      {/* <CreatePost handleClick={setCreateVaga} /> */}
+      <MainCompany content={company} dono={isDono} setCreateVaga={setCreateVaga} setCreatePost={setCreatePost} setEditCompany={setEditCompany} addPage={addPage} removePage={removePage} />
       <Sidebar />
-      {createVaga ? (
-        <CreateVaga handleClick={setCreateVaga} />
-      ) : (
-        <></>
-      )}
-      {editCompany ? (
-        <EditCompany content={company} handleClick={setEditCompany} />
-      ) : (
-        <></>
-      )}
+      {createVaga ? (<CreateVaga handleClick={setCreateVaga} />) : (<></>)}
+      {createPost ? (<CreatePost handleClick={setCreatePost} />) : (<CreatePost handleClick={setCreatePost} />)}
+      {editCompany ? (<EditCompany content={company} handleClick={setEditCompany} />) : (<></>)}
     </div>
   )
 }

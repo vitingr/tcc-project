@@ -15,6 +15,7 @@ import { toast } from 'react-toastify'
 // Imports Components
 import ToastMessage from '@components/Others/ToastMessage'
 import { infoUser } from '@utils/userContext'
+import { useSession } from 'next-auth/react'
 
 const AditionalInfoContainer = () => {
 
