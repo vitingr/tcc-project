@@ -123,7 +123,6 @@ const handler = NextAuth({
 						})
 	
 					} else {
-	
 						console.log("Usuário Existente")
 					}
 	

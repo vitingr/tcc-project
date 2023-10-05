@@ -18,6 +18,7 @@ import { infoUser } from '@utils/userContext'
 
 const AditionalInfoContainer = () => {
 
+  const { data: status} = useSession()
   const { data } = infoUser()
   const router = useRouter()
   const [step, setStep] = useState(1)
@@ -45,7 +46,7 @@ const AditionalInfoContainer = () => {
 
   const terminarCadastro = async (e) => {
     e.preventDefault()
-    if (data._id != undefined) {
+    if (data._id != undefined && status == "authenticated") {
       try {
         console.log(`${cidade}, ${estado}, ${pais}, ${area}, ${preferenciaEmprego}, ${cargoAtual}, ${ultimoContrato}, ${ultimaEmpresa}, ${procurandoEmprego}, ${share}`)
         const response = await fetch("/api/user/finalizarCadastro", {

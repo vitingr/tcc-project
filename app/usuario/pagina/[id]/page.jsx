@@ -17,7 +17,7 @@ const page = () => {
 
   const router = useRouter()
   const { data } = infoUser()
-  const { data: session } = useSession()
+  const { data: session, status } = useSession()
   const pathname = usePathname().split("/")
   const userId = pathname[3]
 
@@ -42,25 +42,50 @@ const page = () => {
   }
 
   const addPage = async (pagina) => {
-    try {
-
-      const response = await fetch("/api/network/paginas/follow", {
-        method: "POST",
-        body: JSON.stringify({
-          userId: session?.user.id,
-          pagina: pagina
+    if (session?.user.id !== undefined && status === "authenticated") {
+      try {
+        const response = await fetch("/api/network/paginas/follow", {
+          method: "POST",
+          body: JSON.stringify({
+            userId: session?.user.id,
+            pagina: pagina
+          })
         })
-      })
 
-      if (response.ok) {
-        fetchData()
-        toast.success("Página adicionda com sucesso!")
-      } else {
-        toast.error("ERRO! Não é possível seguir a mesma página mais de uma vez")
+        if (response.ok) {
+          fetchData()
+          toast.success("Página adicionda com sucesso!")
+        } else {
+          toast.error("ERRO! Não é possível seguir a mesma página mais de uma vez")
+        }
+
+      } catch (error) {
+        console.log(error)
       }
+    }
+  }
 
-    } catch (error) {
-      console.log(error)
+  const removePage = async (pagina) => {
+    if (session?.user.id !== undefined && status === "authenticated") {
+      try {
+        const response = await fetch("/api/network/paginas/unfollow", {
+          method: "POST",
+          body: JSON.stringify({
+            userId: session?.user.id,
+            pagina: pagina
+          })
+        })
+
+        if (response.ok) {
+          fetchData()
+          toast.success("Página removida com sucesso!")
+        } else {
+          toast.error("ERRO! Não é possível deixar de seguir essa página")
+        }
+
+      } catch (error) {
+        console.log(error)
+      }
     }
   }
 
@@ -72,7 +97,7 @@ const page = () => {
 
   return (
     <div className='company-container'>
-      <MainCompany content={company} dono={isDono} setCreateVaga={setCreateVaga} setEditCompany={setEditCompany} handleClick={addPage} />
+      <MainCompany content={company} dono={isDono} setCreateVaga={setCreateVaga} setEditCompany={setEditCompany} addPage={addPage} removePage={removePage} />
       <Sidebar />
       {createVaga ? (
         <CreateVaga handleClick={setCreateVaga} />

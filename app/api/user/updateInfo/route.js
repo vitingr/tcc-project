@@ -3,12 +3,9 @@ import User from "@models/User";
 import Post from "@components/Post";
 
 export const POST = async (request) => {
-
     const { userId, nome, sobrenome, telefone, website, cargo_atual, area, ultima_empresa, foto, background, resumo, headline } = await request.json()
-
     // Verificar Parametros
     if (userId) {
-
 
         try {
 

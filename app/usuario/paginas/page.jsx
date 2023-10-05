@@ -7,6 +7,8 @@ import { useEffect, useState } from 'react'
 import NetworkOption from '@components/NetworkOption'
 import { motion } from "framer-motion";
 import Sidebar from '@components/Sidebar/Sidebar'
+import { toast } from 'react-toastify'
+import ToastMessage from '@components/Others/ToastMessage'
 
 const page = () => {
 
@@ -24,6 +26,29 @@ const page = () => {
       fetchData()
     }
   }, [session])
+
+  const removePage = async (pagina) => {
+    try {
+
+      const response = await fetch("/api/network/paginas/unfollow", {
+        method: "POST",
+        body: JSON.stringify({
+          userId: session?.user.id,
+          pagina: pagina
+        })
+      })
+
+      if (response.ok) {
+        fetchData()
+        toast.success("Página removida com sucesso!")
+      } else {
+        toast.error("ERRO! Não é possível deixar de seguir essa página")
+      }
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const container = {
     hidden: { opacity: 1, scale: 0 },
@@ -47,6 +72,7 @@ const page = () => {
 
   return (
     <div className='friends-container'>
+      <ToastMessage />
       <FriendActions />
       <div className='friends-options-container'>
         <h1 className='friends-options-title'>
@@ -67,7 +93,7 @@ const page = () => {
             >
               {data.map((pagina) => (
                 <motion.li key={pagina} variants={item}>
-                  <NetworkOption key={pagina._id} content={pagina} message={"Remover"} handleClick={"Remover"} type={"pagina"} />
+                  <NetworkOption key={pagina._id} content={pagina} message={"Remover"} handleClick={removePage} type={"pagina"} />
                 </motion.li>
               ))}
 

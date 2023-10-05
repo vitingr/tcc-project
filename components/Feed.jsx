@@ -14,7 +14,7 @@ import UploadPostPhoto from './Others/UploadPostPhoto'
 import { useSession } from "next-auth/react"
 
 // Import Icons
-import { IoPencilOutline, IoPeopleSharp, IoBusinessOutline, IoPodiumSharp, IoThumbsUpSharp, IoImageOutline, IoLocationOutline, IoHappyOutline } from 'react-icons/io5'
+import { IoLocationOutline, IoHappyOutline } from 'react-icons/io5'
 import { infoUser } from '@utils/userContext'
 import ProfileSidebar from './ProfileSidebar'
 
@@ -89,7 +89,6 @@ const Feed = ({ data }) => {
           <img src="https://i.pinimg.com/736x/3d/37/60/3d3760207a12e626f1149118404e003d.jpg" alt="logo" />
           <p>Projeto TCC EtecJd. © 2023</p>
         </div>
-
       </div>
 
       <div className='posts-container'>
@@ -111,18 +110,12 @@ const Feed = ({ data }) => {
           <div className='main-posts-container'>
             <div className='actions-posts-container'>
               <UploadPostPhoto file={setPhoto} value={photo} />
-              <span>
-                <IoLocationOutline size={18} />
-              </span>
-              <span>
-                <IoHappyOutline size={18} />
-              </span>
+              <span><IoLocationOutline size={18} /></span>
+              <span><IoHappyOutline size={18} /></span>
             </div>
             <div>
             </div>
-            <div className='post-publication icon-cursor center' onClick={createPost}>
-              Publicar
-            </div>
+            <div className='post-publication icon-cursor center' onClick={createPost}>Publicar</div>
           </div>
         </div>
 

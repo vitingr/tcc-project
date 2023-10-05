@@ -2,11 +2,11 @@
 
 import { infoUser } from '@utils/userContext'
 import React, { useEffect, useState } from 'react'
-import { IoAddSharp, IoOpenOutline } from 'react-icons/io5'
+import { IoAddSharp, IoOpenOutline, IoRemoveOutline } from 'react-icons/io5'
 import CompanyFeed from './CompanyFeed'
 import Link from 'next/link'
 
-const MainCompany = ({ content, dono, setCreateVaga, setEditCompany, handleClick }) => {
+const MainCompany = ({ content, dono, setCreateVaga, setEditCompany, addPage, removePage }) => {
 
   const { data } = infoUser()
   const [posts, setPosts] = useState([])
@@ -48,11 +48,11 @@ const MainCompany = ({ content, dono, setCreateVaga, setEditCompany, handleClick
                 ) : (
                   <>
                     {follow ? (
-                      <div className='option-mid-company color' >
-                        <IoAddSharp size={16} /> Deixar de Seguir
+                      <div className='option-mid-company color' onClick={() => removePage(content._id)}>
+                        <IoRemoveOutline size={16} /> Deixar de Seguir
                       </div>
                     ) : (
-                      <div className='option-mid-company color' onClick={() => handleClick(content._id)}>
+                      <div className='option-mid-company color' onClick={() => addPage(content._id)}>
                         <IoAddSharp size={16} /> Seguir
                       </div>
                     )}
