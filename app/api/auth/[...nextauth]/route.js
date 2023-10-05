@@ -135,8 +135,12 @@ const handler = NextAuth({
 				return false
 
 			}
-		},
-	}
+		}
+	},
+	redirect: {
+		destination: '/usuario/feed',
+		permanent: false,
+	},
 })
 
 export { handler as GET, handler as POST }
