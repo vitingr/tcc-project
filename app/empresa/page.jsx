@@ -11,6 +11,7 @@ import Sidebar from '@components/Sidebar/Sidebar'
 import CreateVaga from '@components/Company/CreateVaga'
 import { useSession } from 'next-auth/react'
 import EditCompany from '@components/Company/EditCompany'
+import CreatePost from '@components/Company/CreatePost'
 
 const page = () => {
 
@@ -19,22 +20,24 @@ const page = () => {
   const { data: session } = useSession()
 
   const [company, setCompany] = useState([])
+
   const [isDono, setIsDono] = useState(false)
   const [editCompany, setEditCompany] = useState(false)
   const [createVaga, setCreateVaga] = useState(false)
+  const [createPost, setCreatePost] = useState(false)
 
   const getCompany = async () => {
-    try {
-      if (data) {
+    if (data) {
+      try {
         const answer = await fetch(`/api/company/${data._id}`)
         const response = await answer.json()
         setCompany(response)
         if (data._id === response.dono) {
           setIsDono(true)
         }
+      } catch (error) {
+        console.log(error)
       }
-    } catch (error) {
-      console.log(error)
     }
   }
 
@@ -56,18 +59,11 @@ const page = () => {
 
   return (
     <div className='company-container'>
-      <MainCompany content={company} dono={isDono} setCreateVaga={setCreateVaga} setEditCompany={setEditCompany} handleClick={handleClick} />
+      <MainCompany content={company} dono={isDono} setCreateVaga={setCreateVaga} setCreatePost={setCreatePost} setEditCompany={setEditCompany} handleClick={handleClick} />
       <Sidebar />
-      {createVaga ? (
-        <CreateVaga handleClick={setCreateVaga} />
-      ) : (
-        <></>
-      )}
-      {editCompany ? (
-        <EditCompany content={company} handleClick={setEditCompany} />
-      ) : (
-        <></>
-      )}
+      {createPost ? (<CreatePost handleClick={setCreatePost} companyInfo={company} />) : (<></>)}
+      {createVaga ? (<CreateVaga handleClick={setCreateVaga} />) : (<></>)}
+      {editCompany ? (<EditCompany content={company} handleClick={setEditCompany} />) : (<></>)}
     </div>
   )
 }

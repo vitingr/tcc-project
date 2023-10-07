@@ -99,8 +99,8 @@ const page = () => {
 
   return (
     <div className='company-container'>
-      {/* <CreatePost handleClick={setCreateVaga} /> */}
       <MainCompany content={company} dono={isDono} setCreateVaga={setCreateVaga} setCreatePost={setCreatePost} setEditCompany={setEditCompany} addPage={addPage} removePage={removePage} />
+      <CreatePost />
       <Sidebar />
       {createVaga ? (<CreateVaga handleClick={setCreateVaga} />) : (<></>)}
       {createPost ? (<CreatePost handleClick={setCreatePost} />) : (<CreatePost handleClick={setCreatePost} />)}

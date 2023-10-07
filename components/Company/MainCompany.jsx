@@ -9,7 +9,6 @@ import Link from 'next/link'
 const MainCompany = ({ content, dono, setCreateVaga, setCreatePost, setEditCompany, addPage, removePage }) => {
 
   const { data } = infoUser()
-  const [posts, setPosts] = useState([])
   const [follow, setFollow] = useState(false)
 
   useEffect(() => {
@@ -78,7 +77,7 @@ const MainCompany = ({ content, dono, setCreateVaga, setCreatePost, setEditCompa
       </div>
 
       <div className='company-feed-container'>
-        <CompanyFeed info={content} dono={dono} posts={posts} setCreateVaga={setCreateVaga} setCreatePost={setCreatePost} />
+        <CompanyFeed info={content} dono={dono} setCreateVaga={setCreateVaga} setCreatePost={setCreatePost} />
       </div>
     </div >
   )
