@@ -12,7 +12,7 @@ function amigosAleatorios(amigos, quantidade) {
 
       let valor = amigos[numero]
       if (array.includes(valor)) {
-        console.log("Valor Inválido")
+        return
       } else {
         array.push(valor)
       }
@@ -23,7 +23,7 @@ function amigosAleatorios(amigos, quantidade) {
 
       let valor = amigos[numero]
       if (array.includes(valor)) {
-        console.log("Valor Inválido")
+        return
       } else {
         array.push(valor)
       }
@@ -37,14 +37,14 @@ function amigosAleatorios(amigos, quantidade) {
 export const GET = async (request, { params }) => {
   try {
     await ConnectToDB()
-    // Criar novo Certificado
+    
     try {
       let options = []
       const response = await User.find({ _id: { $ne: params.id } }).lean()
 
       response.forEach((opcao) => {
         if (opcao.amigos_pendentes.includes(params.id) || opcao.amigos.includes(params.id)) {
-          console.log("Amigo já adicionado")
+          return
         } else {
           options.push(opcao)
         }
@@ -64,12 +64,10 @@ export const GET = async (request, { params }) => {
       }
 
     } catch (error) {
-      console.log(error)
       return new Response(`Falha ao encontrar as pessoas, ${error}`, { status: 500 })
     }
 
   } catch (error) {
-    console.log(error)
     return new Response(`Falha ao fazer o GET das pessoas, ${error}`, { status: 500 })
   }
 }

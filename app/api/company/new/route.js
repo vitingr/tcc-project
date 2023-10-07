@@ -42,12 +42,10 @@ export const POST = async (request) => {
                 }
 
             } catch (error) {
-                console.log(error)
                 return new Response(`Falha ao criar a empresa, ${error}`, { status: 500 })
             }
         }
     } catch (error) {
-        console.log(error)
         return new Response(`Falha ao localizar o Usuário, ${error}`, { status: 500 })
     }
 }

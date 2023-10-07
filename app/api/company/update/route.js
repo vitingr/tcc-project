@@ -30,11 +30,9 @@ export const POST = async (request) => {
         return new Response(`Não foi possível encontrar a página`, { status: 500 })
       }
     } catch (error) {
-      console.log(error)
       return new Response(`Falha ao conectar ao banco de dado. ${error}`, { status: 500 })
     }
   } else {
-    console.log(error)
     return new Response(`Não foi possível encontrar o dono da página. ${error}`, { status: 500 })
   }
 }

@@ -14,7 +14,7 @@ export const GET = async (request, { params }) => {
 
             answer.forEach(convite => {
                 if (convite == 0 || convite == null || convite == undefined || convite == "" || !convite) {
-                    console.log("Amigo Invalido")
+                    return
                 } else {
                     convites.push(convite)
                 }

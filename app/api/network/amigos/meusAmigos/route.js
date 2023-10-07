@@ -4,7 +4,7 @@ import User from "@models/User";
 export const GET = async (request, { params }) => {
     try {
         await ConnectToDB()
-        // Verificar convites enviados
+        
         try {
             let meusAmigos = []
             let amigos = []
@@ -12,7 +12,7 @@ export const GET = async (request, { params }) => {
             
             user.forEach(item => {
                 if (item == 0 || item == null || item == undefined || item == "" || !item) {
-                    console.log("Amigo Invalido")
+                    return
                 } else {
                     amigos.push(item)
                 }

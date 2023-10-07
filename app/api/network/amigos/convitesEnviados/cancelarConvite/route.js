@@ -18,14 +18,11 @@ export const POST = async (request) => {
             response.save()
             return new Response("Convite Rejeitado!", { status: 200 })
 
-
         } catch (error) {
-            console.log(error)
             return new Response(`Falha ao encontrar os convites enviados, ${error}`, { status: 500 })
         }
 
     } catch (error) {
-        console.log(error)
         return new Response(`Falha ao fazer o GET dos convites enviados, ${error}`, { status: 500 })
     }
 }

@@ -6,9 +6,6 @@ export const POST = async (request) => {
     const { userId, amigoId } = await request.json()
     try {
         await ConnectToDB()
-        
-      console.log(userId)
-      console.log(amigoId)
 
         try {
             const user = await User.findOne({ _id: userId })
@@ -35,12 +32,10 @@ export const POST = async (request) => {
 
 
         } catch (error) {
-            console.log(error)
             return new Response(`Falha ao encontrar os convites enviados, ${error}`, { status: 500 })
         }
 
     } catch (error) {
-        console.log(error)
         return new Response(`Falha ao fazer oo se conectar com o banco de dados, ${error}`, { status: 500 })
     }
 }

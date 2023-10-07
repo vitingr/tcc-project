@@ -4,7 +4,7 @@ import User from "@models/User";
 export const GET = async (request, { params }) => {
     try {
         await ConnectToDB()
-        // Verificar convites enviados
+        
         try {
             let meusAmigos = []
             let amigos = []
@@ -21,7 +21,6 @@ export const GET = async (request, { params }) => {
             
             const response = await User.find({ _id: { $in: amigos } }).lean()
             response.forEach((opcao) => {
-                console.log(`AMIGO AGR = ${opcao.email}`)
                 if (opcao.amigos.includes(params.id)) {
                     meusAmigos.push(opcao)
                 } else {

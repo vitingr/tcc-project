@@ -4,7 +4,7 @@ import Pagina from "@models/Pagina";
 export const GET = async (request, { params }) => {
   try {
     await ConnectToDB()
-    // Criar novo Certificado
+    
     try {
       let pages_options = []
       const response = await Pagina.find({ dono: { $ne: params.id } }).lean()
@@ -13,7 +13,7 @@ export const GET = async (request, { params }) => {
         if (opcao.seguidores.includes(params.id)) {
           pages_options.push(opcao)
         } else {
-          console.log("Página não adicionada")
+          return
         }
       })
       if (pages_options) {

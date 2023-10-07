@@ -4,14 +4,14 @@ import Pagina from "@models/Pagina";
 export const GET = async (request, { params }) => {
     try {
         await ConnectToDB()
-        // Criar novo Certificado
+        
         try {
             let pages_options = []
             const response = await Pagina.find({dono: {$ne: params.id}}).lean()
 
             response.forEach((opcao) => {
                 if (opcao.seguidores.includes(params.id)) {
-                    console.log("Pagina já adicionada")
+                    return
                 } else {
                     pages_options.push(opcao)
                 }
