@@ -14,7 +14,7 @@ export const GET = async (request, { params }) => {
 
             answer.forEach(convite => {
                 if (convite == 0 || convite == null || convite == undefined || convite == "" || !convite) {
-                    return
+                    return 1
                 } else {
                     convites.push(convite)
                 }

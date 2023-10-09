@@ -17,7 +17,7 @@ const page = () => {
 
   const router = useRouter()
   const { data } = infoUser()
-  const { data: session } = useSession()
+  const { data: session, status } = useSession()
 
   const [company, setCompany] = useState([])
 
@@ -46,8 +46,8 @@ const page = () => {
   }
 
   useEffect(() => {
-    if (session) {
-      if (data) {
+    if (session && status == "authenticated") {
+      if (data._id !== undefined) {
         if (data.tipoConta == "instituicao" || data.tipoConta == "empresa") {
           getCompany()
         } else {

@@ -12,7 +12,7 @@ export const GET = async (request, { params }) => {
             
             user.forEach(item => {
                 if (item == 0 || item == null || item == undefined || item == "" || !item) {
-                    return
+                    return 1
                 } else {
                     amigos.push(item)
                 }

@@ -12,7 +12,7 @@ export const GET = async (request, { params }) => {
                 if (opcao.amigos_pendentes.includes(params.id)) {
                     convitesEnviados.push(opcao)
                 } else {
-                    return
+                    return 1
                 }
             })
             if (convitesEnviados) {

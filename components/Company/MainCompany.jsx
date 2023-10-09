@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react'
 import { IoAddSharp, IoOpenOutline, IoRemoveOutline } from 'react-icons/io5'
 import CompanyFeed from './CompanyFeed'
 import Link from 'next/link'
+import Loader from '@components/Others/Loader'
 
 const MainCompany = ({ content, dono, setCreateVaga, setCreatePost, setEditCompany, addPage, removePage }) => {
 
@@ -23,7 +24,7 @@ const MainCompany = ({ content, dono, setCreateVaga, setCreatePost, setEditCompa
     }
   }, [data, content])
 
-  return (
+  return content._id !== undefined ? (
     <div className='main-company-container' id="about">
       <div className='main-company-color-container'>
         <div className='bg-company' style={{ backgroundImage: `url(${content.background})` }}></div>
@@ -80,6 +81,8 @@ const MainCompany = ({ content, dono, setCreateVaga, setCreatePost, setEditCompa
         <CompanyFeed info={content} dono={dono} setCreateVaga={setCreateVaga} setCreatePost={setCreatePost} />
       </div>
     </div >
+  ) : (
+    <Loader />
   )
 }
 

@@ -10,7 +10,7 @@ export const GET = async (request, { params }) => {
             const response = await User.find({_id: {$ne: params.id}}).lean()
             response.forEach((opcao) => {
                 if (opcao.amigos_pendentes.includes(params.id) || opcao.amigos.includes(params.id)) {
-                    return
+                    return 1
                 } else {
                     addAmigos.push(opcao)
                 }

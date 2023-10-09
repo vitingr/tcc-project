@@ -6,7 +6,7 @@ export const POST = async (request) => {
     const { userId, amigo } = await request.json()
     try {
         await ConnectToDB()
-        // Verificar convites enviados
+        
         try {
             const response = await User.findOne({ _id: amigo })
             const amigosSeparados = response.amigos_pendentes.split(" ")

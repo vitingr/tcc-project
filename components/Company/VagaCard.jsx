@@ -1,12 +1,19 @@
+import Link from 'next/link'
 import React from 'react'
 import { IoEllipsisHorizontalSharp, IoPricetagSharp } from 'react-icons/io5'
 
-const VagaCard = ({ info }) => {
+const VagaCard = ({ info, dono }) => {
   return (
     <div className='vaga-card'>
       <div className='vaga-card-top'>
         <img src={info.foto} alt="logo" className='vaga-card-foto' />
-        <IoEllipsisHorizontalSharp size={20} className='icon-cursor' />
+        {dono ? (
+          <Link href={`/empresa/vaga/${info._id}`}>
+            <IoEllipsisHorizontalSharp size={20} className='icon-cursor' />
+          </Link>
+        ) : (
+          <IoEllipsisHorizontalSharp size={20} className='icon-cursor' />
+        )}
       </div>
       <div className='vaga-card-main'>
         <h1>{info.titulo}</h1>

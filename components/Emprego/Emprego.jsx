@@ -1,5 +1,5 @@
 import React from 'react'
-import {IoPricetagSharp} from 'react-icons/io5'
+import { IoPricetagSharp } from 'react-icons/io5'
 
 const Emprego = ({ vaga, setEmpregoInfo }) => {
   return (

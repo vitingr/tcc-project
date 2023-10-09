@@ -11,7 +11,7 @@ export const GET = async (request, { params }) => {
 
             response.forEach((opcao) => {
                 if (opcao.seguidores.includes(params.id)) {
-                    return
+                    return 1
                 } else {
                     pages_options.push(opcao)
                 }

@@ -2812,6 +2812,106 @@ input:checked + .slider:before {
 	position: absolute;
 }
 
+/* -=-=- CANDIDATURAS -=-=- */
+
+.candidaturas-container {
+	max-width: 700px;
+	width: 100%;
+	min-height: 300px;
+	border-radius: 15px;
+	background: var(--container-color);
+	padding: 35px;
+}
+
+.candidaturas-container h1 {
+	width: 100%;
+	text-align: center;
+	font-size: 22.5px;
+	margin-bottom: 75px;
+}
+
+.candidaturas-container h6 {
+	color: var(--font-color-low-emphasis);
+	font-weight: 400;	
+	margin-top: 15px;
+	margin-bottom: 25px;
+	cursor: pointer;
+	transition-timing-function: ease-in-out;
+	transition-duration: 0.3s;
+}
+
+.candidaturas-container h6:hover {
+	color: var(--font-color);
+}
+
+.candidaturas-options {
+	margin-top: 50px;
+}
+
+.candidaturas-options h5 {
+	width: 100%;
+	text-align: center;
+	font-weight: 400;
+}
+
+.candidatura-option {
+	padding-bottom: 35px;
+	border-bottom: 1px solid #3333331e;
+	margin-bottom: 35px;
+	display: flex;
+	gap: 15px;
+}
+
+.candidatura-option img {
+	max-width: 55px;
+	max-height: 55px;
+	border-radius: 10px;
+}
+
+.candidatura-option p {
+	font-size: 13px;
+}
+
+.candidatura-option-right {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	gap: 5px;
+}
+
+.candidatura-action {
+	display: flex;
+	align-items: center;
+}
+
+.candidatura-button {
+	background: var(--color1);
+	color: white;
+	padding: 6.5px;
+	border-radius: 20px;
+	width: 100px;
+	max-height: 35px;
+	text-align: center;
+	cursor: pointer;
+	transition-timing-function: ease-in-out;
+	transition-duration: 0.3s;
+}
+
+.candidatura-button:hover {
+	background: var(--color2);
+}
+
+.close-candidaturas {
+	margin-top: 4.2em;
+	width: 100%;
+	background: var(--color1);
+	color: white;
+	padding: 10px;
+	border-radius: 20px;
+	text-align: center;
+	cursor: pointer;
+}
+
 /* -=-=- ANIMAÇÕES -=-=- */
 
 @keyframes gradiente {

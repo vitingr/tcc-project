@@ -13,7 +13,7 @@ export const GET = async (request, { params }) => {
         if (opcao.seguidores.includes(params.id)) {
           pages_options.push(opcao)
         } else {
-          return
+          return 1
         }
       })
       if (pages_options) {

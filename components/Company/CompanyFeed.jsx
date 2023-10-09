@@ -53,7 +53,6 @@ const CompanyFeed = ({ info, dono, setCreateVaga, setCreatePost }) => {
         const result = await fetch(`/api/company/posts/${info._id}`)
         const response = await result.json()
         setCompanyPosts(response)
-        console.log(response)
       } catch (error) {
         console.log(error)
       }
@@ -160,7 +159,7 @@ const CompanyFeed = ({ info, dono, setCreateVaga, setCreatePost }) => {
         {vagas.length > 0 ? (
           <div className='vagas-card-container'>
             {vagas.map((item) => (
-              <VagaCard info={item} key={item._id} />
+              <VagaCard info={item} dono={dono} key={item._id} />
             ))}
           </div>
         ) : (

@@ -12,7 +12,7 @@ function amigosAleatorios(amigos, quantidade) {
 
       let valor = amigos[numero]
       if (array.includes(valor)) {
-        return
+        return 1
       } else {
         array.push(valor)
       }
@@ -23,7 +23,7 @@ function amigosAleatorios(amigos, quantidade) {
 
       let valor = amigos[numero]
       if (array.includes(valor)) {
-        return
+        return 1
       } else {
         array.push(valor)
       }
@@ -64,10 +64,12 @@ export const GET = async (request, { params }) => {
       }
 
     } catch (error) {
+      console.log(error)
       return new Response(`Falha ao encontrar as pessoas, ${error}`, { status: 500 })
     }
 
   } catch (error) {
+    console.log(error)
     return new Response(`Falha ao fazer o GET das pessoas, ${error}`, { status: 500 })
   }
 }
