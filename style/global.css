@@ -127,6 +127,14 @@ html {
 	scroll-behavior: smooth;
 }
 
+.text-center {
+	text-align: center;
+}
+
+.pink-icon * {
+	color: var(--color1);
+}
+
 /* -=-=- REUTILIZAVEIS -=-=- */
 
 .uploadPhoto-container button {
@@ -1049,7 +1057,7 @@ html {
 
 .center-glassmorphism {
 	width: 100%;
-	height: 100vh;
+	height: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -1057,13 +1065,15 @@ html {
 }
 
 .add-profile-container {
+	max-height: 800px;
+	overflow-y: scroll;
 	box-shadow: 0 8px 32px 0 rgba(41, 41, 41, 0.37);
 	border-radius: 10px;
 	border: 1px solid #3333332a;
 	max-width: 625px;
 	min-height: 300px;
 	background: var(--container-color);
-	padding: 25px 35px 150px 35px;
+	padding: 45px 35px 235px 35px;
 }
 
 .add-profile-container h2 {
@@ -3178,14 +3188,15 @@ input:checked + .slider:before {
 
 	.glassmorphism {
 		position: absolute;
-		height: 140vh;
 	}
 
 	.center-glassmorphism {
 		height: 100%;
+		justify-content: flex-start;
+		margin-top: 65px;
 	}
 
-	.center-glassmorphism {
-		justify-content: flex-start;
+	.interest-flex {
+		flex-wrap: wrap;
 	}
 }

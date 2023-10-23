@@ -40,17 +40,17 @@ const MainCompany = ({ content, dono, setCreateVaga, setCreatePost, setEditCompa
             <div className='mid-company-info'>
               <div className='options-company'>
                 {content.dono === data._id ? (
-                  <div className='option-mid-company gray' onClick={() => setEditCompany(true)}>
+                  <div className='option-mid-company gray text-center' onClick={() => setEditCompany(true)}>
                     Editar Página
                   </div>
                 ) : (
                   <>
                     {follow ? (
-                      <div className='option-mid-company color' onClick={() => removePage(content._id)}>
+                      <div className='option-mid-company color text-center' onClick={() => removePage(content._id)}>
                         <IoRemoveOutline size={16} /> Deixar de Seguir
                       </div>
                     ) : (
-                      <div className='option-mid-company color' onClick={() => addPage(content._id)}>
+                      <div className='option-mid-company color text-center' onClick={() => addPage(content._id)}>
                         <IoAddSharp size={16} /> Seguir
                       </div>
                     )}
@@ -58,7 +58,7 @@ const MainCompany = ({ content, dono, setCreateVaga, setCreatePost, setEditCompa
                 )}
                 {content.website ? (
                   <Link href={content.website} target='_blank'>
-                    <div className='option-mid-company white'>Visitar Website <IoOpenOutline size={16} /></div>
+                    <div className='option-mid-company white text-center'>Visitar Website <IoOpenOutline size={16} /></div>
                   </Link>
                 ) : (
                   <></>

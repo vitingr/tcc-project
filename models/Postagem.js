@@ -1,11 +1,11 @@
-import {Schema, model, models} from "mongoose"
+import { Schema, model, models } from "mongoose"
 
 const PostagemSchema = new Schema({
 
     dono: {
         type: Schema.Types.ObjectId,
         ref: "User",
-        required: true        
+        required: true
     },
     fotoDono: {
         type: String,
@@ -29,10 +29,12 @@ const PostagemSchema = new Schema({
     curtidas: {
         type: Number
     },
+    idsCurtidas: {
+        type: String
+    },
     compartilhamentos: {
         type: Number
     }
-
 })
 
 const Postagem = models.Postagem || model('Postagem', PostagemSchema);

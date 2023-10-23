@@ -37,6 +37,7 @@ export const POST = async (request) => {
                     conteudo: conteudo,
                     fotos: foto, 
                     curtidas: curtidas,
+                    idsCurtidas: "",
                     compartilhamentos: compartilhamentos
                 })
 

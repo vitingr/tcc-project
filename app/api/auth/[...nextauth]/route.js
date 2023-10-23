@@ -49,6 +49,8 @@ const handler = NextAuth({
 							} else {
 								return null
 							}
+						} else {
+							return false
 						}
 					}
 

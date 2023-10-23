@@ -1,8 +1,39 @@
+"use client"
+
 import React from 'react'
 import Image from 'next/image'
-import { IoHeartOutline, IoChatbubblesOutline, IoSendOutline, IoShareSocialOutline } from 'react-icons/io5'
+import { IoHeartOutline, IoChatbubblesOutline, IoSendOutline, IoShareSocialOutline, IoHeart } from 'react-icons/io5'
+import { infoUser } from '@utils/userContext'
+import { toast } from 'react-toastify'
 
-const Post = ({ post }) => {
+const Post = ({ post, fetchData }) => {
+
+	const { data } = infoUser()
+
+	const likePost = async (postId) => {
+		if (postId) {
+			try {
+				const response = await fetch("/api/posts/like", {
+					method: "POST",
+					body: JSON.stringify({
+						postId: postId,
+						userId: data._id
+					})
+				})
+
+				if (response.ok) {
+					fetchData()
+				} else {
+					toast.error("ERRO! Não foi possível curtir a postagem")
+				}
+				
+			} catch (error) {
+				console.log(error)
+				toast.error("ERRO! Não foi possível interagir com a postagem")
+			}
+		}
+	}
+
 	return (
 		<div className='post-container'>
 			<div className='top-post-container'>
@@ -18,7 +49,7 @@ const Post = ({ post }) => {
 				{post.conteudo}
 			</div>
 			{post.fotos ? (
-				<div className='image-post'> 
+				<div className='image-post'>
 					<img src={post.fotos} className='image-post-photo' alt="photo-post" />
 				</div>
 			) : (
@@ -26,7 +57,11 @@ const Post = ({ post }) => {
 			)}
 			<div className='post-actions'>
 				<div className='post-icons'>
-					<div className='post-icon icon-cursor'><IoHeartOutline size={18} /></div>
+					{post.idsCurtidas ? (
+					<div className='post-icon icon-cursor' onClick={() => likePost(post._id)}><IoHeart size={18} className="pink-icon" /></div>
+					) : (
+						<div className='post-icon icon-cursor' onClick={() => likePost(post._id)}><IoHeartOutline size={18} /></div>
+					)}
 					<div className='post-icon icon-cursor'><IoChatbubblesOutline size={18} /></div>
 					<div className='post-icon icon-cursor'><IoSendOutline size={18} /></div>
 					<div className='post-icon icon-cursor'><IoShareSocialOutline size={18} /></div>

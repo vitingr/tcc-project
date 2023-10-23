@@ -50,6 +50,7 @@ const Feed = ({ data }) => {
       if (response.ok) {
         await fetchData()
         setPost("")
+        fetchData()
         toast.success("Post Criado com sucesso!")
       } else {
         toast.error("Houve um erro ao publicar o Post")
@@ -62,7 +63,6 @@ const Feed = ({ data }) => {
 
   useEffect(() => {
     if (session && data !== undefined) {
-      console.log(session)
       fetchData()
     }
   }, [session, data])
@@ -96,7 +96,7 @@ const Feed = ({ data }) => {
         <div className='top-posts-container'>
           <div className='write-posts-container'>
             <img src={data.foto} className='very-small-rounded-photo post-photo-profile' alt='photo-post' />
-            <input type="text" name="post-something" id="post-something" className='post-something' spellCheck="false" onChange={(e) => setPost(e.target.value)} value={post} />
+            <input type="text" name="post-something" id="post-something" className='post-something' spellCheck="false" autoComplete='off' onChange={(e) => setPost(e.target.value)} value={post} />
           </div>
 
           {photo !== "" ? (

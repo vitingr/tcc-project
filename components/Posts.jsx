@@ -2,7 +2,7 @@ import React from 'react'
 import Post from './Post'
 import { motion } from "framer-motion";
 
-const Posts = ({ posts }) => {
+const Posts = ({ posts, fetch }) => {
 
   const container = {
     hidden: { opacity: 1, scale: 0 },
@@ -34,7 +34,7 @@ const Posts = ({ posts }) => {
       >
         {posts.map((post) => (
           <motion.li key={post._id} variants={item}>
-            <Post post={post} />
+            <Post post={post} fetchData={fetch} />
           </motion.li>
         ))}
       </motion.ul>
