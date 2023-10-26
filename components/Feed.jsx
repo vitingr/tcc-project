@@ -27,9 +27,14 @@ const Feed = ({ data }) => {
   const [photo, setPhoto] = useState("")
 
   const fetchData = async () => {
-    const answer = await fetch(`/api/posts/`)
-    const data = await answer.json()
-    setPostagens(data)
+    try {
+      console.log("Data fetched")
+      const answer = await fetch(`/api/posts/`)
+      const data = await answer.json()
+      setPostagens(data)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   const createPost = async () => {
@@ -47,7 +52,7 @@ const Feed = ({ data }) => {
         })
       })
 
-      await fetchData()
+      fetchData()
 
       if (response.ok) {
         setPost("")
