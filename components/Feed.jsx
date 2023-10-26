@@ -21,7 +21,7 @@ import ProfileSidebar from './ProfileSidebar'
 const Feed = ({ data }) => {
 
   const { premiumInfo } = infoUser()
-  const { data: session } = useSession()
+  const { data: session, status } = useSession()
   const [post, setPost] = useState("")
   const [postagens, setPostagens] = useState([])
   const [photo, setPhoto] = useState("")
@@ -47,10 +47,10 @@ const Feed = ({ data }) => {
         })
       })
 
+      await fetchData()
+
       if (response.ok) {
-        await fetchData()
         setPost("")
-        fetchData()
         toast.success("Post Criado com sucesso!")
       } else {
         toast.error("Houve um erro ao publicar o Post")
@@ -62,7 +62,7 @@ const Feed = ({ data }) => {
   }
 
   useEffect(() => {
-    if (session && data !== undefined) {
+    if (status === "authenticated" && data !== undefined) {
       fetchData()
     }
   }, [session, data])

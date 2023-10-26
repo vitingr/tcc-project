@@ -52,14 +52,13 @@ const page = () => {
 
   }
 
+  const setUpProviders = async () => {
+    const response = await getProviders()
+
+    setProviders(response)
+  }
+
   useEffect(() => {
-
-    const setUpProviders = async () => {
-      const response = await getProviders()
-
-      setProviders(response)
-    }
-
     setUpProviders()
     if (session) {
       router.push("/usuario/feed")

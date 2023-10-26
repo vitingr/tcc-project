@@ -23,13 +23,12 @@ const page = () => {
 
   const [providers, setProviders] = useState(null);
 
+  const setUpProviders = async () => {
+    const response = await getProviders()
+    setProviders(response) // Só pode ter um setProviders
+  }
+
   useEffect(() => {
-
-    const setUpProviders = async () => {
-      const response = await getProviders()
-      setProviders(response) // Só pode ter um setProviders
-    }
-
     setUpProviders()
     if (session) {
       router.push("/usuario/feed")
