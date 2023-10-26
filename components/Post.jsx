@@ -26,7 +26,7 @@ const Post = ({ post, fetchData }) => {
 				} else {
 					toast.error("ERRO! Não foi possível curtir a postagem")
 				}
-				
+
 			} catch (error) {
 				console.log(error)
 				toast.error("ERRO! Não foi possível interagir com a postagem")
@@ -58,7 +58,7 @@ const Post = ({ post, fetchData }) => {
 			<div className='post-actions'>
 				<div className='post-icons'>
 					{post.idsCurtidas ? (
-					<div className='post-icon icon-cursor' onClick={() => likePost(post._id)}><IoHeart size={18} className="pink-icon" /></div>
+						<div className='post-icon icon-cursor' onClick={() => likePost(post._id)}><IoHeart size={18} className="pink-icon" /></div>
 					) : (
 						<div className='post-icon icon-cursor' onClick={() => likePost(post._id)}><IoHeartOutline size={18} /></div>
 					)}

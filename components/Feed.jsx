@@ -115,7 +115,10 @@ const Feed = ({ data }) => {
             </div>
             <div>
             </div>
-            <div className='post-publication icon-cursor center' onClick={createPost}>Publicar</div>
+            <div className='post-publication icon-cursor center' onClick={() => {
+              createPost()
+              fetchData()
+            }}>Publicar</div>
           </div>
         </div>
 
