@@ -10,7 +10,7 @@ export const POST = async (request) => {
   if (userId) {
     try {
 
-      await ConnectToDB() 
+      await ConnectToDB()
 
       const newEndereco = await new Endereco({
         dono: userId,
@@ -20,7 +20,7 @@ export const POST = async (request) => {
       })
 
       try {
-        const user = await User.findOne({_id: userId})
+        const user = await User.findOne({ _id: userId })
 
         if (user) {
           user.area = area
@@ -31,14 +31,31 @@ export const POST = async (request) => {
           user.procurando_emprego = procurandoEmprego
 
           if (share === true) {
-            
+
+            const meses = [
+              "janeiro", "fevereiro", "março", "abril", "maio", "junho",
+              "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"
+          ];
+
+            const data = new Date()
+
+            const dia = data.getDate();
+            const mes = meses[data.getMonth()];
+            const ano = data.getFullYear();
+            const hora = data.getHours();
+            const minutos = data.getMinutes();
+
+            const dataFormatada = `${dia} de ${mes} de ${ano} às ${hora}:${minutos}`;
+
             const newPostagem = await new Postagem({
               dono: userId,
               fotoDono: user.foto,
               nomeDono: user.nomeCompleto,
+              data: dataFormatada,
               conteudo: "😀 Estou muito feliz em compartilhar o meu primeiro post na plataforma! vamos nos conectar e formar novas amizades.",
-              fotos: "https://media.licdn.com/dms/image/sync/C4E18AQEA4FSD2o7Amg/companyUpdate-article-image-shrink_627_1200/0/1659679841281?e=1693440000&v=beta&t=JTQrpOQY08aDttmV42sWo3FBj0z1lUPG21UdMdAXzkU",
+              fotos: "https://thumbs.dreamstime.com/b/connection-abstract-metaphor-people-connecting-plug-socket-together-connection-abstract-metaphor-people-connecting-plug-171652638.jpg",
               curtidas: 0,
+              idsCurtidas: "",
               compartilhamentos: 0
             })
 
@@ -68,7 +85,7 @@ export const POST = async (request) => {
 
     } catch (error) {
       console.log(error)
-    return new Response(`Não foi possível criar o endereço. ${error}`, { status: 500 })
+      return new Response(`Não foi possível criar o endereço. ${error}`, { status: 500 })
     }
 
   } else {

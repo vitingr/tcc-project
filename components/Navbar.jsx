@@ -141,29 +141,29 @@ const Navbar = () => {
 									</div>
 								</div>
 								<div className='home-options-menu'>
-									<Link href="/usuario/amigos">
+									<Link href="/usuario/amigos" onClick={() => setIsMenuOpen(!isMenuOpen)}>
 										<li className='icon-cursor'>
 											<div className='center'><IoPeopleSharp size={22.5} /></div>
 											<div>Ver amizades</div>
 										</li>
 									</Link>
-									<Link href="/empresa">
+									<Link href="/empresa" onClick={() => setIsMenuOpen(!isMenuOpen)}>
 										<li className='icon-cursor'>
 											<div className='center'><IoBusinessOutline size={22.5} /></div>
 											<div>Conta Empresarial</div>
 										</li>
 									</Link>
-									<Link href="/usuario/profile">
+									<Link href="/usuario/profile" onClick={() => setIsMenuOpen(!isMenuOpen)}>
 										<li className='icon-cursor'>
 											<div className='center'><IoPencilOutline size={22.5} /></div>
 											<div>Editar perfil</div>
 										</li>
 									</Link>
-									<li className='icon-cursor'>
+									<li className='icon-cursor' onClick={() => setIsMenuOpen(!isMenuOpen)}>
 										<div className='center'><IoThumbsUpSharp size={22.5} /></div>
 										<div>Minhas curtidas</div>
 									</li>
-									<li className='icon-cursor'>
+									<li className='icon-cursor' onClick={() => setIsMenuOpen(!isMenuOpen)}>
 										<div className='center'><IoPodiumSharp size={22.5} /></div>
 										<div className='center'>Atividade perfil</div>
 									</li>

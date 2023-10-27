@@ -60,12 +60,12 @@ const InfoForm = ({ children, step, setStep, handleClick, verify, share, setShar
                       <button className='info-form-submit' type='submit' onClick={() => setShare(true)}>Compartilhar</button>
                     </div>
                   ) : (
-                    <div onClick={voltar} className='action-info-form'>Voltar</div>
+                    <div onClick={() => voltar()} className='action-info-form'>Voltar</div>
                   )}
                 </div>
               )}
               {step == 4 ? (
-                <button className='info-form-submit' type='submit' onClick={() => avancar()}>
+                <button className='info-form-submit' onClick={() => avancar()}>
                   Confirmar Informações
                 </button>
               ) : (
@@ -76,7 +76,7 @@ const InfoForm = ({ children, step, setStep, handleClick, verify, share, setShar
                     </div>
                   ) : (
                     <button>
-                      <div onClick={() => avancar()} type='submit' className='action-info-form'>Avançar</div>
+                      <div onClick={() => avancar()} className='action-info-form'>Avançar</div>
                     </button>
                   )}
                 </div>

@@ -22,6 +22,7 @@ const page = () => {
   const { data: session } = useSession();
 
   const [providers, setProviders] = useState(null);
+  const [submitting, setSubmiting] = useState(false)
 
   const [data, setData] = useState({
     email: "",
@@ -38,14 +39,15 @@ const page = () => {
         redirect: false
       })
 
-      console.log(response)
-
       if (response.error === "CredentialsSignin") {
         toast.error("ERRO! Credenciais incorretas")
       }
 
+      if (response.ok) {
+        setSubmiting(false)
+      }
+
     } else {
-      console.log("erro")
       toast.error("ERRO! Informe a senha")
     }
   }
@@ -78,7 +80,10 @@ const page = () => {
           <p>
             Faça seu login para ter acesso a todos os recursos oferecidos e disponibilizados pela nossa plataforma
           </p>
-          <form onSubmit={registerUser}>
+          <form onSubmit={(e) => {
+            registerUser(e)
+            setSubmiting(true)
+          }}>
             <div className='register-login-form'>
               <div className='register-login-input'>
                 <IoMailSharp size={20} />
@@ -90,7 +95,7 @@ const page = () => {
               </div>
             </div>
             <button type="submit" className="register-login-button center">
-              Entrar
+              {submitting ? "Verificando..." : "Entrar"}
             </button>
           </form>
           <div className='register-login-icons-container'>

@@ -47,7 +47,7 @@ const AditionalInfoContainer = () => {
 
   const terminarCadastro = async (e) => {
     e.preventDefault()
-    if (data._id != undefined && status == "authenticated") {
+    if (data._id != undefined) {
       try {
         console.log(`${cidade}, ${estado}, ${pais}, ${area}, ${preferenciaEmprego}, ${cargoAtual}, ${ultimoContrato}, ${ultimaEmpresa}, ${procurandoEmprego}, ${share}`)
         const response = await fetch("/api/user/finalizarCadastro", {
@@ -75,7 +75,6 @@ const AditionalInfoContainer = () => {
         }
 
       } catch (error) {
-
         console.log(error)
       }
     }
