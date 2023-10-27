@@ -17,6 +17,9 @@ const PostCreator = ({ setPost, fetchData, setPhoto, photo, post }) => {
     try {
       const response = await fetch("/api/posts/new", {
         method: "POST",
+        headers: {
+          "Cache-Control": "no-cache"
+        },
         body: JSON.stringify({
           userId: session?.user?.id,
           fotoDono: data.foto,
@@ -29,9 +32,9 @@ const PostCreator = ({ setPost, fetchData, setPhoto, photo, post }) => {
       })
 
       if (response.ok) {
-        fetchData()
         setPhoto("")
         setPost("")
+        fetchData()
         toast.success("Post Criado com sucesso!")
       } else {
         toast.error("Houve um erro ao publicar o Post")
@@ -56,7 +59,6 @@ const PostCreator = ({ setPost, fetchData, setPhoto, photo, post }) => {
         </div>
         <div className='post-publication icon-cursor center' onClick={() => {
           createPost()
-          fetchData()
         }}>
           Publicar
         </div>
