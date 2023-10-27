@@ -1,7 +1,7 @@
 import { ConnectToDB } from "@utils/database";
 import User from "@models/User";
 
-function amigosAleatorios(amigos, quantidade) {
+async function amigosAleatorios(amigos, quantidade) {
 
   const array = []
   let contador = 0
@@ -12,7 +12,7 @@ function amigosAleatorios(amigos, quantidade) {
 
       let valor = amigos[numero]
       if (array.includes(valor)) {
-        return 1
+        console.log("")
       } else {
         array.push(valor)
       }
@@ -23,7 +23,7 @@ function amigosAleatorios(amigos, quantidade) {
 
       let valor = amigos[numero]
       if (array.includes(valor)) {
-        return 1
+        console.log("")
       } else {
         array.push(valor)
       }
@@ -44,18 +44,22 @@ export const GET = async (request, { params }) => {
 
       response.forEach((opcao) => {
         if (opcao.amigos_pendentes.includes(params.id) || opcao.amigos.includes(params.id)) {
-          return
+          console.log("")
         } else {
           options.push(opcao)
         }
       })
 
+      console.log(`OPTIONS: ${options}`)
+
       const search = async () => {
-        const friends = amigosAleatorios(options, 5)
+        const friends = await amigosAleatorios(options, 5)
         return friends
       }
 
       const options_amigos = await search()
+
+      console.log(options_amigos)
 
       if (options_amigos) {
         return new Response(JSON.stringify(options_amigos), { status: 200 })

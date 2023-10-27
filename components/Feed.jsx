@@ -29,7 +29,7 @@ const Feed = ({ data }) => {
 
   const fetchData = async () => {
     try {
-      const answer = await fetch(`/api/posts/`)
+      const answer = await fetch("/api/posts")
       const data = await answer.json()
       setPostagens(data)
     } catch (error) {
@@ -51,6 +51,7 @@ const Feed = ({ data }) => {
           compartilhamentos: 0
         })
       })
+
       if (response.ok) {
         fetchData()
         setPost("")
@@ -61,6 +62,7 @@ const Feed = ({ data }) => {
 
     } catch (error) {
       console.log(error)
+      toast.error("Não foi possível publicar o Post")
     }
   }
 
@@ -141,7 +143,9 @@ const Feed = ({ data }) => {
             <div className='post-publication icon-cursor center' onClick={() => {
               createPost()
               fetchData()
-            }}>Publicar</div>
+            }}>
+              Publicar 
+            </div>
           </div>
         </div>
 

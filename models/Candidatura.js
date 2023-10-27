@@ -1,7 +1,6 @@
 import { Schema, model, models } from "mongoose"
 
 const CandidaturaSchema = new Schema({
-
     dono: {
         type: Schema.Types.ObjectId,
         ref: "User",
@@ -38,8 +37,10 @@ const CandidaturaSchema = new Schema({
     },
     data: {
         type: String
+    },
+    open: {
+        type: Boolean
     }
-
 })
 
 const Candidatura = models.Candidatura || model('Candidatura', CandidaturaSchema);

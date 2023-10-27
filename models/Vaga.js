@@ -51,7 +51,8 @@ const VagaSchema = new Schema({
         type: String
     },
     ativa: {
-        type: Number
+        type: Boolean,
+        default: true
     }
 
 })

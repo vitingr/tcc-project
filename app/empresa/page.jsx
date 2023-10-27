@@ -62,7 +62,6 @@ const page = () => {
       <MainCompany content={company} dono={isDono} setCreateVaga={setCreateVaga} setCreatePost={setCreatePost} setEditCompany={setEditCompany} handleClick={handleClick} />
       <Sidebar />
       {createPost ? (<CreatePost handleClick={setCreatePost} companyInfo={company} />) : (<></>)}
-      {createVaga ? (<CreateVaga handleClick={setCreateVaga} />) : (<></>)}
       {editCompany ? (<EditCompany content={company} handleClick={setEditCompany} />) : (<></>)}
     </div>
   )

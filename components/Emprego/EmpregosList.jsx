@@ -31,7 +31,11 @@ const EmpregosList = ({ setEmpregoInfo }) => {
         Ver minhas vagas aplicadas
       </div>
       {vagas.map((vaga) => (
-        <Emprego vaga={vaga} setEmpregoInfo={setEmpregoInfo} key={vaga._id} />
+        <div key={vaga._id}>
+          {vaga.ativa ? (
+            <Emprego vaga={vaga} setEmpregoInfo={setEmpregoInfo} />
+          ) : (<></>)}
+        </div>
       ))}
     </div>
   )

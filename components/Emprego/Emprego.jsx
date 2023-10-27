@@ -13,7 +13,9 @@ const Emprego = ({ vaga, setEmpregoInfo }) => {
         <h6>{vaga.local} ({vaga.tipo})</h6>
         <div className='status-emprego'>
           <IoPricetagSharp size={13} />
-          <p>Processo aberto</p>
+          {
+            vaga.ativa ? <p>Processo aberto</p> : <p>Processo fechado</p>
+          }
         </div>
       </div>
     </div>

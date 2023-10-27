@@ -9,7 +9,7 @@ import TextEditor from '@components/Others/TextEditor'
 import ToastMessage from '@components/Others/ToastMessage'
 import { infoUser } from '@utils/userContext'
 
-const CreateVaga = ({ handleClick }) => {
+const CreateVaga = ({ handleClick, fetchData }) => {
 
   const { data } = infoUser()
 
@@ -39,6 +39,7 @@ const CreateVaga = ({ handleClick }) => {
 
       if (response.ok) {
         handleClick(false)
+        fetchData()
         toast.success("Vaga criada com sucesso!")
       } else {
         toast.error("Houve um erro ao criar a vaga")

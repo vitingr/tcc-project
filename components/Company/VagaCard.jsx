@@ -23,7 +23,7 @@ const VagaCard = ({ info, dono }) => {
       <div className='vaga-card-bottom'>
         <div className='status-emprego'>
           <IoPricetagSharp size={13} />
-          <p>Processo aberto</p>
+          {info.ativa ? <p>Processo aberto</p> : <p>Processo fechado</p>}
         </div>
         <div className='vaga-card-time'>
           Publicado 2 dias atrás

@@ -7,13 +7,15 @@ import { useSession } from 'next-auth/react'
 import VagaCard from './VagaCard'
 import Post from '@components/Post'
 import { motion } from "framer-motion";
+import CreateVaga from './CreateVaga'
 
-const CompanyFeed = ({ info, dono, setCreateVaga, setCreatePost }) => {
+const CompanyFeed = ({ info, dono, setCreatePost }) => {
 
   const { data: session } = useSession()
   const { data } = infoUser()
   const [vagas, setVagas] = useState([])
   const [companyPosts, setCompanyPosts] = useState([])
+  const [createVaga, setCreateVaga] = useState(false)
 
   const container = {
     hidden: { opacity: 1, scale: 0 },
@@ -182,6 +184,8 @@ const CompanyFeed = ({ info, dono, setCreateVaga, setCreatePost }) => {
       <div className='company-feed-item'>
         <h1>Seguidores</h1>
       </div>
+
+      {createVaga ? (<CreateVaga handleClick={setCreateVaga} fetchData={getInfo()} />) : (<></>)}
 
     </div>
   )

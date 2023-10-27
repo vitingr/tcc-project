@@ -27,7 +27,8 @@ export const POST = async (request) => {
             salario: salario,
             descricao: sobre,
             requisitos: requisitos,
-            foto: page.foto
+            foto: page.foto,
+            ativa: true
           })
 
           await newVaga.save()

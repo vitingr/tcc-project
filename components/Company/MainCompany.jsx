@@ -7,7 +7,7 @@ import CompanyFeed from './CompanyFeed'
 import Link from 'next/link'
 import Loader from '@components/Others/Loader'
 
-const MainCompany = ({ content, dono, setCreateVaga, setCreatePost, setEditCompany, addPage, removePage }) => {
+const MainCompany = ({ content, dono, setCreatePost, setEditCompany, addPage, removePage }) => {
 
   const { data } = infoUser()
   const [follow, setFollow] = useState(false)
@@ -78,7 +78,7 @@ const MainCompany = ({ content, dono, setCreateVaga, setCreatePost, setEditCompa
       </div>
 
       <div className='company-feed-container'>
-        <CompanyFeed info={content} dono={dono} setCreateVaga={setCreateVaga} setCreatePost={setCreatePost} />
+        <CompanyFeed info={content} dono={dono} setCreatePost={setCreatePost} />
       </div>
     </div >
   ) : (
