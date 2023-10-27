@@ -7,18 +7,20 @@ import { toast } from 'react-toastify'
 import ToastMessage from './Others/ToastMessage'
 import { useSession } from 'next-auth/react'
 import { infoUser } from '@utils/userContext'
+import { useRouter } from 'next/router'
 
 const PostCreator = ({ setPost, fetchData, setPhoto, photo, post }) => {
 
   const {data: session} = useSession()
   const {data} = infoUser()
+  const router = useRouter()
 
   const createPost = async () => {
     try {
-      const response = await fetch("/api/posts/new", {
+      const response = await fetch(`/api/posts/new?timestamp=${new Date().getTime()}`, {
         method: "POST",
         headers: {
-          "Cache-Control": "no-cache"
+          "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate"
         },
         body: JSON.stringify({
           userId: session?.user?.id,
@@ -37,6 +39,7 @@ const PostCreator = ({ setPost, fetchData, setPhoto, photo, post }) => {
         setPhoto("")
         setPost("")
         fetchData()
+        router.push("/usuario/feed")
         toast.success("Post Criado com sucesso!")
       } else {
         toast.error("Houve um erro ao publicar o Post")
@@ -59,8 +62,8 @@ const PostCreator = ({ setPost, fetchData, setPhoto, photo, post }) => {
         </div>
         <div>
         </div>
-        <div className='post-publication icon-cursor center' onClick={() => {
-          createPost()
+        <div className='post-publication icon-cursor center' onClick={async () => {
+          await createPost()
         }}>
           Publicar
         </div>

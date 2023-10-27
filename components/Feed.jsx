@@ -37,6 +37,7 @@ const Feed = ({ data }) => {
           "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate"
         }
       })
+      
       const data = await answer.json()
       setPostagens(data)
     } catch (error) {
