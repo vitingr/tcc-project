@@ -1,6 +1,6 @@
 export const APP_ROUTES = {
     private: {
-        usuario: "/usuario/feed"
+        usuario: "/usuario"
     },
     public: {
         login: "/",

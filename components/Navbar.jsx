@@ -43,7 +43,9 @@ const Navbar = () => {
 					</div>
 
 					<div className='search-container'>
-						<img src="https://i.pinimg.com/736x/3d/37/60/3d3760207a12e626f1149118404e003d.jpg" alt="logo" className='search-logo' />
+						<Link href="/usuario/feed">
+							<img src="https://i.pinimg.com/736x/3d/37/60/3d3760207a12e626f1149118404e003d.jpg" alt="logo" className='search-logo' />
+						</Link>
 						<form onSubmit={search} className='search-content'>
 							<div className='search-content'>
 								<Link href={`/usuario/search/${searchText}`}>

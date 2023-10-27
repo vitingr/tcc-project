@@ -23,6 +23,7 @@ const Feed = ({ data }) => {
 
   const { premiumInfo } = infoUser()
   const { data: session, status } = useSession()
+  
   const [post, setPost] = useState("")
   const [postagens, setPostagens] = useState([])
   const [photo, setPhoto] = useState("")

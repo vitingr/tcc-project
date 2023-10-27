@@ -50,16 +50,12 @@ export const GET = async (request, { params }) => {
         }
       })
 
-      console.log(`OPTIONS: ${options}`)
-
       const search = async () => {
         const friends = await amigosAleatorios(options, 5)
         return friends
       }
 
       const options_amigos = await search()
-
-      console.log(options_amigos)
 
       if (options_amigos) {
         return new Response(JSON.stringify(options_amigos), { status: 200 })
