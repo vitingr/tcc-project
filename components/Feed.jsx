@@ -31,7 +31,12 @@ const Feed = ({ data }) => {
 
   const fetchData = async () => {
     try {
-      const answer = await fetch("/api/posts")
+      const answer = await fetch(`/api/posts?timestamp=${new Date().getTime()}`, {
+        method: "GET",
+        headers: {
+          "Cache-Control": "no-cache"
+        }
+      })
       const data = await answer.json()
       setPostagens(data)
     } catch (error) {
