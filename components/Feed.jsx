@@ -18,12 +18,13 @@ import { useSession } from "next-auth/react"
 import { IoLocationOutline, IoHappyOutline } from 'react-icons/io5'
 import { infoUser } from '@utils/userContext'
 import ProfileSidebar from './ProfileSidebar'
+import PostCreator from './PostCreator';
 
 const Feed = ({ data }) => {
 
   const { premiumInfo } = infoUser()
   const { data: session, status } = useSession()
-  
+
   const [post, setPost] = useState("")
   const [postagens, setPostagens] = useState([])
   const [photo, setPhoto] = useState("")
@@ -35,35 +36,6 @@ const Feed = ({ data }) => {
       setPostagens(data)
     } catch (error) {
       console.log(error)
-    }
-  }
-
-  const createPost = async () => {
-    try {
-      const response = await fetch("/api/posts/new", {
-        method: "POST",
-        body: JSON.stringify({
-          userId: session?.user.id,
-          fotoDono: data.foto,
-          nomeDono: data.nomeCompleto,
-          foto: photo,
-          conteudo: post,
-          curtidas: 0,
-          compartilhamentos: 0
-        })
-      })
-
-      if (response.ok) {
-        fetchData()
-        setPost("")
-        toast.success("Post Criado com sucesso!")
-      } else {
-        toast.error("Houve um erro ao publicar o Post")
-      }
-
-    } catch (error) {
-      console.log(error)
-      toast.error("Não foi possível publicar o Post")
     }
   }
 
@@ -133,21 +105,7 @@ const Feed = ({ data }) => {
             <></>
           )}
 
-          <div className='main-posts-container'>
-            <div className='actions-posts-container'>
-              <UploadPostPhoto file={setPhoto} value={photo} />
-              <span><IoLocationOutline size={18} /></span>
-              <span><IoHappyOutline size={18} /></span>
-            </div>
-            <div>
-            </div>
-            <div className='post-publication icon-cursor center' onClick={() => {
-              createPost()
-              fetchData()
-            }}>
-              Publicar 
-            </div>
-          </div>
+          <PostCreator fetchData={fetchData} setPost={setPost} setPhoto={setPhoto} photo={photo} post={post} />
         </div>
 
         {postagens.length > 0 ? (
