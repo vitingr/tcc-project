@@ -2,8 +2,9 @@
 
 // Imports React
 import React, { useEffect, useState } from 'react'
-import Link from 'next/link'
+import { motion } from "framer-motion";
 import { toast } from 'react-toastify'
+import Post from './Post'
 
 // Import Components
 import Posts from './Posts'
@@ -50,10 +51,8 @@ const Feed = ({ data }) => {
           compartilhamentos: 0
         })
       })
-
-      await fetchData()
-
       if (response.ok) {
+        fetchData()
         setPost("")
         toast.success("Post Criado com sucesso!")
       } else {
@@ -66,10 +65,30 @@ const Feed = ({ data }) => {
   }
 
   useEffect(() => {
-    if (status === "authenticated" && data !== undefined) {
+    if (session) {
       fetchData()
     }
-  }, [session, data])
+  }, [session])
+
+  const container = {
+    hidden: { opacity: 1, scale: 0 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        delayChildren: 0.3,
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const item = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1
+    }
+  };
 
   return (
     <div className='feed-container'>
@@ -126,7 +145,26 @@ const Feed = ({ data }) => {
           </div>
         </div>
 
-        <Posts posts={postagens} fetch={fetchData} />
+        {postagens.length > 0 ? (
+          <div className='publications-container'>
+            <motion.ul
+              className=""
+              variants={container}
+              initial="hidden"
+              animate="visible"
+            >
+              {postagens.map((post) => (
+                <motion.li key={post._id} variants={item}>
+                  <Post post={post} fetchData={fetchData} />
+                </motion.li>
+              ))}
+            </motion.ul>
+          </div>
+        ) : (
+          <div>
+            Não há postagens
+          </div>
+        )}
 
       </div>
     </div>

@@ -95,7 +95,7 @@ const page = () => {
               </div>
             </div>
             <button type="submit" className="register-login-button center">
-              {submitting ? "Verificando..." : "Entrar"}
+              {submitting ? "Logando..." : "Entrar"}
             </button>
           </form>
           <div className='register-login-icons-container'>

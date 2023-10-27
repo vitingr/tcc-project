@@ -22,6 +22,7 @@ const page = () => {
   const router = useRouter()
 
   const [providers, setProviders] = useState(null);
+  const [submitting, setSubmiting] = useState(false)
 
   const [data, setData] = useState({
     name: "",
@@ -41,8 +42,9 @@ const page = () => {
       })
 
       if (response.ok) {
-        router.push("/")
+        setSubmiting(false)
         toast.success("SUCESSO! A conta foi criada")
+        router.push("/")
       } else {
         toast.error("ERRO! Não foi possível criar a conta")
       }
@@ -77,7 +79,10 @@ const page = () => {
           </p>
         </div>
         <div className='register-login-right'>
-          <form onSubmit={registerUser}>
+          <form onSubmit={() => {
+            registerUser()
+            setSubmiting(true)
+          }}>
             <h2>Registrar</h2>
             <p>
               Faça seu registro para ter acesso a todos os recursos oferecidos e disponibilizados pela nossa plataforma
@@ -105,7 +110,7 @@ const page = () => {
               </div>
             </div>
             <button type="submit" className="register-login-button center">
-              Registrar
+              {submitting ? "Cadastrando..." : "Cadastrar"}
             </button>
           </form>
           <div className='register-login-more'>
