@@ -40,10 +40,10 @@ const Feed = ({ data }) => {
   }
 
   useEffect(() => {
-    if (session) {
+    if (status === "authenticated") {
       fetchData()
     }
-  }, [session])
+  }, [status])
 
   const container = {
     hidden: { opacity: 1, scale: 0 },
