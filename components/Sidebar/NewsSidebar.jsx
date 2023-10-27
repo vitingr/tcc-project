@@ -16,19 +16,19 @@ const NewsSidebar = () => {
       <div className='sidebar-hot-container'>
         <li>
           <div><IoNewspaper size={18} /></div>
-          <p>Em Alta</p>
+          <p>Mercado de Trabalho</p>
         </li>
         <li>
           <div><IoNewspaper size={18} /></div>
-          <p>Em Alta</p>
+          <p>Processos Seletivos</p>
         </li>
         <li>
           <div><IoNewspaper size={18} /></div>
-          <p>Em Alta</p>
+          <p>Vagas</p>
         </li>
         <li>
           <div><IoNewspaper size={18} /></div>
-          <p>Em Alta</p>
+          <p>Candidaturas</p>
         </li>
       </div>
     </div>

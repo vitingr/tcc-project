@@ -28,7 +28,6 @@ const Feed = ({ data }) => {
 
   const fetchData = async () => {
     try {
-      console.log("Data fetched")
       const answer = await fetch(`/api/posts/`)
       const data = await answer.json()
       setPostagens(data)
@@ -52,7 +51,7 @@ const Feed = ({ data }) => {
         })
       })
 
-      fetchData()
+      await fetchData()
 
       if (response.ok) {
         setPost("")

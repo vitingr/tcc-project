@@ -418,6 +418,7 @@ html {
 /* -=-=- LOGIN / REGISTER -=-=- */
 
 .register-login-container {
+	padding: 5%;
 	position: absolute;
 	height: 100%;
 	width: 100%;
@@ -570,6 +571,10 @@ html {
 .actions-container {
 	max-width: 265px;
 	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
 }
 
 .home-profile {
@@ -2922,6 +2927,136 @@ input:checked + .slider:before {
 	cursor: pointer;
 }
 
+/* -=-=- MENU NAVBAR -=-=- */
+
+.photo-home-profile-menu {
+	margin-top: -90px;
+}
+
+.info-home-profile-menu {
+	padding: 5px 15px 35px 15px;
+}
+
+.home-basic-info-menu,
+.home-friends-menu {
+	padding: 15px;
+	border-bottom: 1px solid #33333318;
+}
+
+.home-basic-info-menu h2 {
+	margin-top: 60px;
+	text-align: center;
+	color: var(--font-color);
+	font-weight: 500;
+	font-size: 22.5px;
+}
+
+.home-basic-info-menu p {
+	text-align: center;
+	color: var(--font-color-low-emphasis);
+	font-size: 13px;
+	padding-bottom: 25px;
+}
+
+.home-friends-menu {
+	margin-top: 25px;
+	padding-bottom: 35px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.home-friends-menu h4 {
+	color: var(--font-color);
+	font-weight: 500;
+	font-size: 15px;
+}
+
+.home-friends-menu p {
+	font-size: 13px;
+	color: var(--font-color-low-emphasis)
+}
+
+.home-friends-menu span {
+	cursor: pointer;
+	color: var(--color1);
+}
+
+.home-friends-menu span:hover {
+	text-decoration: underline;
+}
+
+.home-options-menu {
+	margin-left: 15px;
+	margin-top: 35px;
+	padding-bottom: 15px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.home-options-menu li {
+	display: flex;
+	align-items: center;
+	padding: 5px 0px 5px 0px;
+	gap: 15px;
+	list-style: none;
+	color: var(--font-color-low-emphasis);
+	transition-timing-function: ease-in-out;
+	transition-duration: 0.3s;
+}
+
+.home-options-menu li:hover {
+	color: var(--color1);
+}
+
+.home-options-menu li div {
+	font-size: 15px;
+	font-weight: 300;
+}
+
+.actions-container {
+	max-width: 265px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.menu-photo {
+	margin-top: 25px;
+	width: 75px !important;
+	height: 75px !important;
+}
+
+.home-profile-menu {
+	position: absolute;
+	right: 8%;
+	width: 100%;
+	max-width: 375px;
+	margin-top: 650px;
+	height: 600px;
+	border-radius: 6.5px;
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	min-height: 100px;
+	background: var(--container-color);
+	box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+
+.background-home-profile-menu {
+	border-radius: 6.5px 6.5px 0px 0px;
+	height: 100px;
+}
+
+.background-home-profile-animated-menu {
+	border-radius: 6.5px 6.5px 0px 0px;
+	height: 65px;
+	/* background: linear-gradient(-25deg, var(--color1), var(--color2), var(--color3), var(--color4)); */
+	animation: gradiente 7.5s ease-in-out alternate infinite;
+	background-size: 300%;
+}
+
 /* -=-=- ANIMAÇÕES -=-=- */
 
 @keyframes gradiente {
@@ -2984,10 +3119,6 @@ input:checked + .slider:before {
 }
 
 @media (max-width: 1075px) {
-	.sidebar-container {
-		display: none;
-	}
-
 	.feed-container {
 		gap: 0px;
 		flex-wrap: wrap;
@@ -3002,7 +3133,10 @@ input:checked + .slider:before {
 		max-width: 500px;
 	}
 
-	.actions-container,
+	.actions-container {
+		display: none;
+	}
+
 	.home-profile {
 		max-width: none;
 	}
@@ -3010,12 +3144,47 @@ input:checked + .slider:before {
 	.emprego-popup-container {
 		display: none;
 	}
+
+	.nav-content {
+		width: 100%;
+		position: fixed;
+		left: 0%;
+		top: 90vh;
+		background: var(--container-color);
+		z-index: 6;
+		padding: 10px 0px 6px 0px;
+		display: flex;
+		justify-content: center;
+	}
+
+	.menu-navbar {
+		display: block;
+		cursor: pointer;
+	}
+
+	.sign-out {
+		display: none;
+	}
+}
+
+@media (max-width: 850px) {
+	.sidebar-container {
+		display: none;
+	}
 }
 
 @media (max-width: 650px) {
 
+	.register-login-container {
+		padding: 0;
+	}
+
 	.bottom-company-info {
 		display: none;
+	}
+
+	.home-profile-menu {
+		right: 2%;
 	}
 
 	.medium-rounded-photo {
@@ -3033,20 +3202,6 @@ input:checked + .slider:before {
 
 	.friends-options {
 		justify-content: center;
-	}
-
-	.actions-navbar {
-		display: none;
-	}
-
-	.nav-content {
-		width: 100%;
-		position: fixed;
-		left: 0%;
-		top: 90vh;
-		background: var(--container-color);
-		z-index: 6;
-		padding: 10px 0px 6px 0px;
 	}
 
 	.nav-list {
@@ -3075,9 +3230,8 @@ input:checked + .slider:before {
 		padding: 0;
 	}
 
-	.menu-navbar {
-		display: block;
-		cursor: pointer;
+	.actions-navbar {
+		display: none;
 	}
 
 	.notificacoes-container {
