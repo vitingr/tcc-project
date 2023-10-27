@@ -34,7 +34,7 @@ const Feed = ({ data }) => {
       const answer = await fetch(`/api/posts?timestamp=${new Date().getTime()}`, {
         method: "GET",
         headers: {
-          "Cache-Control": "no-cache"
+          "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate"
         }
       })
       const data = await answer.json()

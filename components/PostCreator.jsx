@@ -31,6 +31,8 @@ const PostCreator = ({ setPost, fetchData, setPhoto, photo, post }) => {
         })
       })
 
+      console.log(response)
+ 
       if (response.ok) {
         setPhoto("")
         setPost("")
