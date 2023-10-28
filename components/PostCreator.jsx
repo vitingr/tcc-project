@@ -7,13 +7,11 @@ import { toast } from 'react-toastify'
 import ToastMessage from './Others/ToastMessage'
 import { useSession } from 'next-auth/react'
 import { infoUser } from '@utils/userContext'
-import { useRouter } from 'next/navigation'
 
 const PostCreator = ({ setPost, fetchData, setPhoto, photo, post }) => {
 
   const {data: session} = useSession()
   const {data} = infoUser()
-  const router = useRouter()
 
   const createPost = async () => {
     try {
@@ -29,21 +27,11 @@ const PostCreator = ({ setPost, fetchData, setPhoto, photo, post }) => {
           compartilhamentos: 0
         })
       })
-
-      console.log(`post creat = ${response}`)
  
       if (response.ok) {
         setPhoto("")
         setPost("")
-        
-        console.log("A")
-
         fetchData()
-
-        console.log("B")
-
-        router.push("/usuario/feed")
-
         toast.success("Post Criado com sucesso!")
       } else {
         toast.error("Houve um erro ao publicar o Post")
