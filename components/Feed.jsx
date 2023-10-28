@@ -37,7 +37,7 @@ const Feed = ({ data }) => {
           "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate"
         }
       })
-      
+
       const data = await answer.json()
       console.log(data)
       setPostagens(data)
@@ -113,6 +113,10 @@ const Feed = ({ data }) => {
           )}
 
           <PostCreator fetchData={fetchData} setPost={setPost} setPhoto={setPhoto} photo={photo} post={post} />
+        </div>
+
+        <div>
+            {JSON.stringify(postagens)}
         </div>
 
         {postagens.length > 0 ? (
