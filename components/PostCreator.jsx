@@ -30,13 +30,20 @@ const PostCreator = ({ setPost, fetchData, setPhoto, photo, post }) => {
         })
       })
 
-      console.log(response)
+      console.log(`post creat = ${reponse}`)
  
       if (response.ok) {
         setPhoto("")
         setPost("")
+        
+        console.log("A")
+
         fetchData()
+
+        console.log("B")
+
         router.push("/usuario/feed")
+
         toast.success("Post Criado com sucesso!")
       } else {
         toast.error("Houve um erro ao publicar o Post")
