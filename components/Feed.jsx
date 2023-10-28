@@ -113,10 +113,6 @@ const Feed = ({ data }) => {
           <PostCreator fetchData={fetchData} setPost={setPost} setPhoto={setPhoto} photo={photo} post={post} />
         </div>
 
-        <div>
-            {JSON.stringify(postagens)}
-        </div>
-
         {postagens.length > 0 ? (
           <div className='publications-container'>
             <motion.ul
