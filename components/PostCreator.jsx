@@ -30,7 +30,7 @@ const PostCreator = ({ setPost, fetchData, setPhoto, photo, post }) => {
         })
       })
 
-      console.log(`post creat = ${reponse}`)
+      console.log(`post creat = ${response}`)
  
       if (response.ok) {
         setPhoto("")
