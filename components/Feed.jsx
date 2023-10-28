@@ -39,6 +39,7 @@ const Feed = ({ data }) => {
       })
       
       const data = await answer.json()
+      console.log(data)
       setPostagens(data)
     } catch (error) {
       console.log(error)

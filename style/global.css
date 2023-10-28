@@ -2949,7 +2949,7 @@ input:checked + .slider:before {
 }
 
 .home-basic-info-menu h2 {
-	margin-top: 60px;
+	padding-top: 125px;
 	text-align: center;
 	color: var(--font-color);
 	font-weight: 500;
@@ -3370,5 +3370,9 @@ input:checked + .slider:before {
 	.nav-content {
 		display: flex;
 		justify-content: left;
+	}
+
+	.option-mid-company {
+		font-size: 12px;
 	}
 }

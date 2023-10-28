@@ -119,13 +119,11 @@ const Navbar = () => {
 
 					{isMenuOpen ? (
 						<div className='home-profile-menu'>
-							<div className={premiumInfo.background === 'animated' ? 'background-home-profile-animated-menu' : 'background-home-profile-menu'} style={{ backgroundImage: `url(${data.background})` }}>
-							</div>
 							<div className='photo-home-profile-menu center' />
 							<div className='info-home-profile-menu'>
 								<div className='home-basic-info-menu'>
 									<Link href="/usuario/profile">
-										<h2>{data.nomeCompleto}</h2>
+										<h2>Olá {data.nomeCompleto}</h2>
 									</Link>
 									<p>{data.email}</p>
 								</div>

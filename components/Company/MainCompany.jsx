@@ -47,11 +47,13 @@ const MainCompany = ({ content, dono, setCreatePost, setEditCompany, addPage, re
                   <>
                     {follow ? (
                       <div className='option-mid-company color text-center' onClick={() => removePage(content._id)}>
-                        <IoRemoveOutline size={16} /> Deixar de Seguir
+                        {/* <IoRemoveOutline size={16} /> Deixar de Seguir */}
+                        Deixar de seguir
                       </div>
                     ) : (
                       <div className='option-mid-company color text-center' onClick={() => addPage(content._id)}>
-                        <IoAddSharp size={16} /> Seguir
+                        {/* <IoAddSharp size={16} /> Seguir */}
+                        Seguir
                       </div>
                     )}
                   </>
