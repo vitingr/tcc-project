@@ -30,8 +30,9 @@ const Feed = ({ data }) => {
   const [photo, setPhoto] = useState("")
 
   const fetchData = async () => {
-    try {
-      const answer = await fetch(`/api/posts?timestamp=${new Date().getTime()}`, {
+    try { 
+      // ?timestamp=${new Date().getTime()}
+      const answer = await fetch(`/api/posts`, {
         method: "GET",
         headers: {
           "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate"
@@ -62,7 +63,7 @@ const Feed = ({ data }) => {
         staggerChildren: 0.2
       }
     }
-  };
+  }
 
   const item = {
     hidden: { y: 20, opacity: 0 },
@@ -70,7 +71,7 @@ const Feed = ({ data }) => {
       y: 0,
       opacity: 1
     }
-  };
+  }
 
   return (
     <div className='feed-container'>

@@ -29,7 +29,7 @@ export const POST = async (request) => {
 
                 const dataFormatada = `${dia} de ${mes} de ${ano} às ${hora}:${minutos}`;
 
-                const newPost = new Postagem({
+                const newPost = await new Postagem({
                     dono: userId,
                     fotoDono: fotoDono,
                     nomeDono: nomeDono,
@@ -41,7 +41,7 @@ export const POST = async (request) => {
                     compartilhamentos: compartilhamentos
                 })
 
-                await newPost.save()
+                newPost.save()
                 return new Response(JSON.stringify(newPost), { status: 200 })
 
             } catch (error) {
