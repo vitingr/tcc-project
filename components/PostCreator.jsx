@@ -17,11 +17,8 @@ const PostCreator = ({ setPost, fetchData, setPhoto, photo, post }) => {
 
   const createPost = async () => {
     try {
-      const response = await fetch(`/api/posts/new?timestamp=${new Date().getTime()}`, {
+      const response = await fetch(`/api/posts/new`, {
         method: "POST",
-        headers: {
-          "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate"
-        },
         body: JSON.stringify({
           userId: session?.user?.id,
           fotoDono: data.foto,
