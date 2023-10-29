@@ -114,7 +114,7 @@ const page = () => {
             </button>
           </form>
           <div className='register-login-more'>
-            <Link href="/inicio/login">
+            <Link href="/">
               Já possui uma conta? clique <span className='pink-span'>aqui</span>
             </Link>
           </div>
