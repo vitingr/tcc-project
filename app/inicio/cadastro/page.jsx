@@ -38,6 +38,9 @@ const page = () => {
     if (data.password === passwordConfirm) {
       const response = await fetch("/api/register", {
         method: "POST",
+        headers: {
+          "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate"
+        },
         body: JSON.stringify({data})
       })
 
