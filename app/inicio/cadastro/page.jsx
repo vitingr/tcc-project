@@ -22,7 +22,7 @@ const page = () => {
   const router = useRouter()
 
   const [providers, setProviders] = useState(null);
-  const [submitting, setSubmiting] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
 
   const [data, setData] = useState({
     name: "",
@@ -32,32 +32,28 @@ const page = () => {
   })
   const [passwordConfirm, setPasswordConfirm] = useState("")
 
-  const registerUser = async (e) => {
-    e.preventDefault()
-
+  const registerUser = async () => {
     if (data.password === passwordConfirm) {
-      try {
         const response = await fetch("/api/register", {
           method: "POST",
-          body: JSON.stringify({ data })
+          body: JSON.stringify({ data: data })
         })
 
+        console.log(response)
+
         if (response.ok) {
-          setSubmiting(false)
+          setSubmitting(false)
           toast.success("SUCESSO! A conta foi criada")
+          router.push("/")
         } else {
           toast.error("ERRO! Não foi possível criar a conta")
         }
-      } catch (error) {
-        console.log(error)
-      }
     }
 
   }
 
   const setUpProviders = async () => {
     const response = await getProviders()
-
     setProviders(response)
   }
 
@@ -80,9 +76,9 @@ const page = () => {
           </p>
         </div>
         <div className='register-login-right'>
-          <form onSubmit={() => {
-            registerUser()
-            setSubmiting(true)
+          <form onSubmit={async () => {
+            await registerUser()
+            setSubmitting(true)
           }}>
             <h2>Registrar</h2>
             <p>
