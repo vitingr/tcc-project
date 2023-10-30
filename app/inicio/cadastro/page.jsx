@@ -36,23 +36,21 @@ const page = () => {
     e.preventDefault()
 
     if (data.password === passwordConfirm) {
-      const response = await fetch("/api/register", {
-        method: "POST",
-        headers: {
-          "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate"
-        },
-        body: JSON.stringify({data})
-      })
+      try {
+        const response = await fetch("/api/register", {
+          method: "POST",
+          body: JSON.stringify({ data })
+        })
 
-      if (response.ok) {
-        setSubmiting(false)
-        toast.success("SUCESSO! A conta foi criada")
-        router.push("/")
-      } else {
-        toast.error("ERRO! Não foi possível criar a conta")
+        if (response.ok) {
+          setSubmiting(false)
+          toast.success("SUCESSO! A conta foi criada")
+        } else {
+          toast.error("ERRO! Não foi possível criar a conta")
+        }
+      } catch (error) {
+        console.log(error)
       }
-    } else {
-      toast.error("ERRO! As senhas são diferentes")
     }
 
   }
@@ -73,7 +71,7 @@ const page = () => {
 
   return (
     <div className='register-login-container center'>
-      <LoginMessage/>
+      <LoginMessage />
       <div className='register-login-left-container'>
         <div className='register-login-left center'>
           <h3>Novo por Aqui?</h3>
