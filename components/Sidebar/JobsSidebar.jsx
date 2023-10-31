@@ -41,8 +41,8 @@ const JobsSidebar = () => {
         </div>
       ) : (
         <div className='jobs-sidebar-container'>
-          <JobSidebar image={"/assets/images/natura.png"} name={"Natura Co."} minSalary={2.600} maxSalary={5.200} />
-          <JobSidebar image={"https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Logo_Takeda.svg/1280px-Logo_Takeda.svg.png"} name={"Takeda Brasil"} minSalary={2.600} maxSalary={5.200} />
+          <JobSidebar image={"/assets/images/natura.png"} name={"Natura Co."} minSalary={2600} maxSalary={5200} />
+          <JobSidebar image={"https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Logo_Takeda.svg/1280px-Logo_Takeda.svg.png"} name={"Takeda Brasil"} minSalary={2600} maxSalary={5200} />
           <JobSidebar image={"https://logodownload.org/wp-content/uploads/2017/03/dell-logo-1-1.png"} name={"Dell"} minSalary={2600} maxSalary={5200} />
           <JobSidebar image={"https://logodownload.org/wp-content/uploads/2017/05/banco-santander-logo-41.png"} name={"Banco Santander"} minSalary={2600} maxSalary={5200} />
         </div>

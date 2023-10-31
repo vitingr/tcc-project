@@ -11,8 +11,6 @@ import { signOut, useSession } from "next-auth/react"
 // Imports Icons
 import { IoSearchOutline, IoHomeSharp, IoGitNetwork, IoBriefcaseSharp, IoNotifications, IoSettingsSharp, IoExit, IoNewspaper, IoMenuSharp, IoBusinessOutline, IoPeopleSharp, IoPencilOutline, IoThumbsUpSharp, IoPodiumSharp } from 'react-icons/io5'
 import { infoUser } from '@utils/userContext'
-import { redirect } from 'next/navigation'
-import ProfileSidebar from './ProfileSidebar'
 
 const Navbar = () => {
 
@@ -23,17 +21,16 @@ const Navbar = () => {
 	const [searchText, setSearchText] = useState("")
 	const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-	const search = async (e) => {
-		e.preventDefault()
-		const query = searchText.replace(" ", "-")
-		router.push(`/usuario/search/${query}`)
-	}
+	// const search = async (e) => {
+	// 	e.preventDefault()
+	// 	const query = searchText.replace(" ", "-")
+	// 	router.push(`/usuario/search/${query}`)
+	// }
 
 	return (
 		<header className='header'>
 			{session?.user ? (
 				<nav className='navbar' id="navbar">
-
 					<div className="profile-photo-navbar-sm">
 						<Link href="/usuario/profile">
 							<div className='center'>

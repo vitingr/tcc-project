@@ -37,21 +37,21 @@ export const ThemeProvider = ({ children }) => {
 		}
 	}
 
-	useEffect(() => {
-		const isUserAuthenticated = () => {
-
-			if (status == 'loading') {
-				// A sessão ainda está sendo carregada, não faz nada neste momento.
-			} else {
-				if (status == "authenticated") {
-					if (session != undefined || session != null) {
-						getInfo()
-					}
+	const isUserAuthenticated = () => {
+		if (status == 'loading') {
+			// A sessão ainda está sendo carregada, não faz nada neste momento.
+		} else {
+			if (status == "authenticated") {
+				if (session != undefined || session != null) {
+					getInfo()
 				}
 			}
 		}
+	}
+
+	useEffect(() => {
 		isUserAuthenticated()
-	}, [session])
+	}, [session, status])
 
 	return (
 		<ThemeContext.Provider value={{ tema, setTema, data, setData, premiumInfo, setPremiumInfo, getInfo }}>

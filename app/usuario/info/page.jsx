@@ -15,11 +15,9 @@ import { toast } from 'react-toastify'
 // Imports Components
 import ToastMessage from '@components/Others/ToastMessage'
 import { infoUser } from '@utils/userContext'
-import { useSession } from 'next-auth/react'
 
 const AditionalInfoContainer = () => {
 
-  const { data: status} = useSession()
   const { data } = infoUser()
   const router = useRouter()
   const [step, setStep] = useState(1)

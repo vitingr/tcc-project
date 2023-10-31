@@ -18,7 +18,7 @@ import SetTheme from "@components/Others/SetTheme"
 export default function RootLayout({ children }) {
 
   const metadata = {
-    title: 'Linkedin Fake',
+    title: 'TCC RH',
     description: 'Grupo do TCC',
   }
 

@@ -49,7 +49,7 @@ const InfoForm = ({ children, step, setStep, handleClick, verify, share, setShar
           </div>
         )}
         <div className='info-form-inputs'>
-          <form>
+          <form onSubmit={(e) => handleClick(e)}>
             {children}
             <div className='info-form-buttons'>
               {step == 1 ? (
@@ -58,7 +58,7 @@ const InfoForm = ({ children, step, setStep, handleClick, verify, share, setShar
                 <div>
                   {step == 5 ? (
                     <div>
-                      <button className='info-form-submit' onClick={() => setShare(true)}>Compartilhar</button>
+                      <button className='info-form-submit type="submit"' onClick={() => setShare(true)}>Compartilhar</button>
                     </div>
                   ) : (
                     <div onClick={() => voltar()} className='action-info-form'>Voltar</div>
@@ -73,7 +73,7 @@ const InfoForm = ({ children, step, setStep, handleClick, verify, share, setShar
                 <div>
                   {step == 5 ? (
                     <div>
-                      <button className='info-form-submit' onClick={() => setShare(false)}>Não Compartilhar</button>
+                      <button className='info-form-submit' type="submit" onClick={() => setShare(false)}>Não Compartilhar</button>
                     </div>
                   ) : (
                     <button>
