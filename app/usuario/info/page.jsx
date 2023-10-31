@@ -49,7 +49,6 @@ const AditionalInfoContainer = () => {
     e.preventDefault()
     if (data._id != undefined) {
       try {
-        console.log(`${cidade}, ${estado}, ${pais}, ${area}, ${preferenciaEmprego}, ${cargoAtual}, ${ultimoContrato}, ${ultimaEmpresa}, ${procurandoEmprego}, ${share}`)
         const response = await fetch("/api/user/finalizarCadastro", {
           method: "POST",
           body: JSON.stringify({

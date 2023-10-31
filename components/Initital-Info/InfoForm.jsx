@@ -6,6 +6,7 @@ import { toast } from 'react-toastify'
 
 // Imports Components
 import ToastMessage from '@components/Others/ToastMessage'
+import Loader from '@components/Others/Loader'
 
 const InfoForm = ({ children, step, setStep, handleClick, verify, share, setShare }) => {
 
@@ -33,7 +34,7 @@ const InfoForm = ({ children, step, setStep, handleClick, verify, share, setShar
     }
   }
 
-  return (
+  return data ? (
     <div className='info-form-container'>
       <ToastMessage />
       <div className='info-form-main'>
@@ -87,6 +88,8 @@ const InfoForm = ({ children, step, setStep, handleClick, verify, share, setShar
         </div>
       </div>
     </div>
+  ) : (
+    <Loader />
   )
 }
 
