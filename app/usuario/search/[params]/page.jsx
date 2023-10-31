@@ -15,7 +15,7 @@ import Post from '@components/Post'
 
 const page = () => {
 
-  const { data: session } = useSession()
+  const { data: session, status } = useSession()
   const { data, premiumInfo } = infoUser()
   const pathname = usePathname().split("/")
   const query = pathname[3]
@@ -49,7 +49,7 @@ const page = () => {
   }
 
   useEffect(() => {
-    if (session && data._id !== undefined) {
+    if (session && data._id !== undefined && status === "authenticated") {
       fetchData()
     }
   }, [session, data])

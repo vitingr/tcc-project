@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { infoUser } from '@utils/userContext'
 import { useRouter } from 'next/navigation'
 import { useSession } from 'next-auth/react'
@@ -6,6 +6,9 @@ import { useSession } from 'next-auth/react'
 const setTheme = ({ children }) => {
 
   const router = useRouter()
+  
+  const isFetched = useRef(false)
+
   const { data, tema } = infoUser()
   const {data: status} = useSession()
 
@@ -94,10 +97,13 @@ const setTheme = ({ children }) => {
   }
 
   useEffect(() => {
-    if (data.cargo_atual === "" || data.ultima_empresa === "" || data.ultimo_contrato === "" || data.area === "" || data.procurando_emprego === "" && status === "authenticated") {
-      router.push("/usuario/info")
+    if (!isFetched.current) {
+      if (data.cargo_atual === "" || data.ultima_empresa === "" || data.ultimo_contrato === "" || data.area === "" || data.procurando_emprego === "" && status === "authenticated") {
+        router.push("/usuario/info")
+      }
+    } else {
+      isFetched.current = true
     }
-
   }, [data])
 
   return (
