@@ -7,6 +7,7 @@ const setTheme = ({ children }) => {
 
   const router = useRouter()
   const { data, tema } = infoUser()
+  const {data: status} = useSession()
 
   if (tema === "light") {
     document.documentElement.style.setProperty('--font-color', '#2f3234');
@@ -93,7 +94,7 @@ const setTheme = ({ children }) => {
   }
 
   useEffect(() => {
-    if (data.cargo_atual === "" || data.ultima_empresa === "" || data.ultimo_contrato === "" || data.area === "" || data.procurando_emprego === "") {
+    if (data.cargo_atual === "" || data.ultima_empresa === "" || data.ultimo_contrato === "" || data.area === "" || data.procurando_emprego === "" && status === "authenticated") {
       router.push("/usuario/info")
     }
 
