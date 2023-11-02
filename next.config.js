@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    basePath: '/Tcc',
     experimental: {
         appDir: true,
         serverComponentsExternalPackages: ["mongoose"],
