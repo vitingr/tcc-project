@@ -60,5 +60,5 @@ const VagaSchema = new Schema({
     }
 })
 
-const Vaga = models.Vaga || model('Vagas', VagaSchema);
+const Vaga = models.Vaga || model('Vaga', VagaSchema);
 export default Vaga;
