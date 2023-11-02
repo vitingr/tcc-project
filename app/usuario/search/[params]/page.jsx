@@ -49,7 +49,7 @@ const page = () => {
   }
 
   useEffect(() => {
-    if (session && data._id !== undefined && status === "authenticated") {
+    if (session && data._id !== undefined && status === "authenticated" && query !== "") {
       fetchData()
     }
   }, [session, data])

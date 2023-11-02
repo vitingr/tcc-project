@@ -70,7 +70,7 @@ const AditionalInfoContainer = () => {
         } else {
           toast.error("Houve um erro ao atualizar o perfil")
         }
-
+  
       } catch (error) {
         console.log(error)
       }
