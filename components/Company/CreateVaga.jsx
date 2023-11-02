@@ -8,6 +8,7 @@ import TextEditor from '@components/Others/TextEditor'
 // Imports Components
 import ToastMessage from '@components/Others/ToastMessage'
 import { infoUser } from '@utils/userContext'
+import { CIDADES_BRASIL } from '@constants/json-cidades'
 
 const CreateVaga = ({ handleClick, fetchData }) => {
 
@@ -19,11 +20,32 @@ const CreateVaga = ({ handleClick, fetchData }) => {
   const [requisitos, setRequisitos] = useState("")
   const [sobre, setSobre] = useState("")
   const [salario, setSalario] = useState("")
+  const [beneficios, setBeneficios] = useState("")
+  const [pais, setPais] = useState("")
+  const [estado, setEstado] = useState("")
+  const [cidade, setCidade] = useState("")
+
+  const [cidadesList, setCidadesList] = useState([])
+
+  const buscaCidadesPorEstado = (estado) => {
+    var estadoSelecionado = CIDADES_BRASIL.estados.find((sigla) => sigla.sigla === estado)
+    var cidades = estadoSelecionado.cidades
+    return cidades;
+  }
+
+  const handleChangeEstado = (e) => {
+    const estado = e.target.value;
+    setEstado(estado)
+    const cidadesDoEstado = buscaCidadesPorEstado(estado)
+    setCidadesList(cidadesDoEstado);
+  };
 
   const createVaga = async (e) => {
     e.preventDefault()
 
     try {
+      const local = `${pais} - ${estado}, ${cidade}`
+
       const response = await fetch("/api/vaga/new", {
         method: "POST",
         body: JSON.stringify({
@@ -33,7 +55,9 @@ const CreateVaga = ({ handleClick, fetchData }) => {
           tipo: tipo,
           requisitos: requisitos,
           sobre: sobre,
-          salario: salario
+          salario: salario,
+          beneficios: beneficios,
+          local: local
         })
       })
 
@@ -53,7 +77,7 @@ const CreateVaga = ({ handleClick, fetchData }) => {
   return (
     <Popup title={"Adicone Oportunidades de Emprego"} subtitle={"Informe as vagas e oportunidades de emprego para mulheres que a sua empresa está oferencendo."} handleClick={handleClick} classStyles={""}>
       <ToastMessage />
-      <form>
+      <form onSubmit={(e) => createVaga(e)}>
 
         <div className='input-add-container'>
           <p>Título</p>
@@ -63,6 +87,38 @@ const CreateVaga = ({ handleClick, fetchData }) => {
         <div className='input-add-container'>
           <p>Cargo</p>
           <input type="text" name="cargo" id="add-input" className='add-input' placeholder='ex: Cargo oferecido.' autoComplete='off' maxLength={65} minLength={4} onChange={(e) => setCargo(e.target.value)} required />
+        </div>
+
+        <div className='input-add-container'>
+          <p>País</p>
+          <select name="pais" id="pais" onChange={(e) => setPais(e.target.value)} className='add-input' required>
+            <option value="">Selecione um país</option>
+            <option value="Brasil">Brasil</option>
+          </select>
+        </div>
+
+        <div className='input-add-container'>
+          <p>Estado / Distrito</p>
+          <select onChange={handleChangeEstado} name='estado' id='estado' className='add-input' required>
+            <option value="">Selecione um estado</option>
+            {CIDADES_BRASIL.estados.map((estado) => (
+              <option key={estado.sigla} value={estado.sigla}>
+                {estado.nome}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className='input-add-container'>
+          <p>Cidade</p>
+          <select name='cidade' id='cidade' onChange={(e) => setCidade(e.target.value)} className='add-input' required>
+            <option value="">Selecione uma cidade</option>
+            {cidadesList.map((cidade) => (
+              <option key={cidade} value={cidade}>
+                {cidade}
+              </option>
+            ))}
+          </select>
         </div>
 
         <div className='input-add-container'>
@@ -86,11 +142,16 @@ const CreateVaga = ({ handleClick, fetchData }) => {
         </div>
 
         <div className='input-add-container'>
+          <p>Benefícios para mulheres</p>
+          <input type="text" name="cargo" id="add-input" className='add-input' placeholder='Benefícios oferecidos exclusivamente para mulheres.' autoComplete='off' maxLength={65} minLength={4} onChange={(e) => setBeneficios(e.target.value)} required />
+        </div>
+
+        <div className='input-add-container'>
           <p>Salário em Reais</p>
           <input type="number" name="salario" id="add-input" className='add-input' placeholder='exK R$1900,00' autoComplete='off' maxLength={60} minLength={4} onChange={(e) => setSalario(e.target.value)} required />
         </div>
 
-        <button type="submit" className='add-button center' onClick={(e) => createVaga(e)}>
+        <button type="submit" className='add-button center'>
           Adicionar Vaga
         </button>
       </form>

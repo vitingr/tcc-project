@@ -48,8 +48,6 @@ const EditCompany = ({ content, handleClick }) => {
         })
       })
 
-      console.log(response)
-
       if (response.ok) {
         getInfo()
         toast.success("O seu perfil foi atualizado com sucesso!")

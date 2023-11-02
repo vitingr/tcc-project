@@ -3,7 +3,7 @@ import Pagina from "@models/Pagina";
 import Vaga from "@models/Vaga";
 
 export const POST = async (request) => {
-  const { userId, titulo, cargo, tipo, requisitos, sobre, salario } = await request.json()
+  const { userId, titulo, cargo, tipo, requisitos, sobre, salario, beneficios, local } = await request.json()
   try {
 
     await ConnectToDB()
@@ -17,22 +17,22 @@ export const POST = async (request) => {
       if (page) {
 
         try {
-          const newVaga = new Vaga({
+          await Vaga.create({
             empresa: page._id,
             nomeEmpresa: page.nome,
             cargo: cargo,
             titulo: titulo,
             tipo: tipo,
-            local: "Santa Bárbara d'Oeste, SP",
+            local: local,
             salario: salario,
             descricao: sobre,
             requisitos: requisitos,
             foto: page.foto,
-            ativa: true
+            ativa: true,
+            beneficios: beneficios
           })
 
-          await newVaga.save()
-          return new Response(JSON.stringify(newVaga), { status: 200 })
+          return new Response("Vaga criada com sucesso!", { status: 200 })
 
         } catch (error) {
           console.log(error)

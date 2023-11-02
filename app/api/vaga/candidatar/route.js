@@ -9,8 +9,6 @@ export const POST = async (request) => {
     "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"
   ]
 
-  console.log(fotoCandidato)
-
   if (userId) {
     try {
       

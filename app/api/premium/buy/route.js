@@ -4,7 +4,6 @@ import Premium from "@models/Premium";
 
 export const POST = async (request) => {
   const { userId } = await request.json()
-  console.log(userId)
 
   if (userId) {
 
@@ -19,7 +18,6 @@ export const POST = async (request) => {
         background: "static"
       })
 
-      console.log(user)
       user.premium = 1
 
       await newPremium.save()

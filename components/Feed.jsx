@@ -99,7 +99,7 @@ const Feed = ({ data }) => {
         <div className='top-posts-container'>
           <div className='write-posts-container'>
             <img src={data.foto} className='very-small-rounded-photo post-photo-profile' alt='photo-post' />
-            <input type="text" name="post-something" id="post-something" className='post-something' spellCheck="false" autoComplete='off' onChange={(e) => setPost(e.target.value)} value={post} />
+            <input type="text" name="post-something" id="post-something" placeholder='Faça uma postagem' className='post-something' spellCheck="false" autoComplete='off' onChange={(e) => setPost(e.target.value)} value={post} />
           </div>
 
           {photo !== "" ? (

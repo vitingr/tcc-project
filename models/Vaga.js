@@ -53,9 +53,12 @@ const VagaSchema = new Schema({
     ativa: {
         type: Boolean,
         default: true
+    },
+    beneficios: {
+        type: String,
+        required: true
     }
-
 })
 
-const Vaga = models.Vaga || model('Vaga', VagaSchema);
+const Vaga = models.Vaga || model('Vagas', VagaSchema);
 export default Vaga;

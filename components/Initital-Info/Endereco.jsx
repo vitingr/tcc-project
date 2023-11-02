@@ -12,7 +12,6 @@ const Endereco = ({ step, setStep, pais, setPais, cidade, setCidade, estado, set
     var estadoSelecionado = CIDADES_BRASIL.estados.find((sigla) => sigla.sigla === estado); // Vai procurar no json estados, um estado com o sigla igual ao estado Selecionado
     var cidades = estadoSelecionado.cidades
     return cidades;
-
     // estado busca o BA, estado selecionado para procurar no json
   }
 

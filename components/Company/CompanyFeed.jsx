@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { infoUser } from '@utils/userContext'
 import { useSession } from 'next-auth/react'
@@ -11,11 +11,13 @@ import CreateVaga from './CreateVaga'
 
 const CompanyFeed = ({ info, dono, setCreatePost }) => {
 
-  const { data: session } = useSession()
+  const { data: session, status } = useSession()
   const { data } = infoUser()
   const [vagas, setVagas] = useState([])
   const [companyPosts, setCompanyPosts] = useState([])
   const [createVaga, setCreateVaga] = useState(false)
+
+  const isFetched = useRef(false)
 
   const container = {
     hidden: { opacity: 1, scale: 0 },
@@ -62,14 +64,16 @@ const CompanyFeed = ({ info, dono, setCreatePost }) => {
   }
 
   useEffect(() => {
-    if (session) {
-      if (info) {
+    if (status === "authenticated" && info) {
+      if (!isFetched.current) {
         getInfo()
         getCompanyPosts()
+      } else {
+        isFetched.current = true
       }
     }
 
-  }, [session, info])
+  }, [])
 
   return (
     <div className='company-feed-container'>

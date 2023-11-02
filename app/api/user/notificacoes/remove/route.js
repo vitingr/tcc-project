@@ -5,7 +5,6 @@ export const POST = async (request) => {
   const { userId } = await request.json()
 
   if (userId) {
-    console.log("A")
     try {
 
       const user = await User.findOne({ _id: userId })

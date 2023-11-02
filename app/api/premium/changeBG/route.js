@@ -4,7 +4,6 @@ import Premium from "@models/Premium";
 
 export const POST = async (request) => {
   const { userId } = await request.json()
-  console.log(userId)
 
   if (userId) {
 
