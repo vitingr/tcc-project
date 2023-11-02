@@ -2,7 +2,6 @@
   "name": "tcc",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://vitingr.github.io/Tcc",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
