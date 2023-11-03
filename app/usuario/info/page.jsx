@@ -15,6 +15,7 @@ import { toast } from 'react-toastify'
 // Imports Components
 import ToastMessage from '@components/Others/ToastMessage'
 import { infoUser } from '@utils/userContext'
+import Loader from '@components/Others/Loader'
 
 const AditionalInfoContainer = () => {
 
@@ -77,7 +78,7 @@ const AditionalInfoContainer = () => {
     }
   }
 
-  return (
+  return data._id !== undefined ? (
     <div className='aditionalinfo-container'>
       <ToastMessage />
       {step === 1 ? (
@@ -110,6 +111,8 @@ const AditionalInfoContainer = () => {
         <div> </div>
       )}
     </div>
+  ) : (
+    <Loader />
   )
 }
 

@@ -42,9 +42,9 @@ const page = () => {
         console.log(response)
 
         if (response.ok) {
-          setSubmitting(false)
           toast.success("SUCESSO! A conta foi criada")
           router.push("/")
+          setSubmitting(false)
         } else {
           toast.error("ERRO! Não foi possível criar a conta")
         }
