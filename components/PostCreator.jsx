@@ -1,5 +1,3 @@
-"use client"
-
 import React from 'react'
 import { IoHappyOutline, IoLocationOutline } from 'react-icons/io5'
 import UploadPostPhoto from './Others/UploadPostPhoto'

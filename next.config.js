@@ -14,7 +14,18 @@ const nextConfig = {
             topLevelAwait: true,
         }
         return config
-    }
+    },
+    headers: () => [
+        {
+          source: '/usuario/feed',
+          headers: [
+            {
+              key: 'Cache-Control',
+              value: 'no-store',
+            },
+          ],
+        },
+      ],
 }
 
 module.exports = nextConfig
