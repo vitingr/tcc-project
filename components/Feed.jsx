@@ -7,15 +7,12 @@ import { toast } from 'react-toastify'
 import Post from './Post'
 
 // Import Components
-import Posts from './Posts'
 import ToastMessage from '@components/Others/ToastMessage'
-import UploadPostPhoto from './Others/UploadPostPhoto'
 
 // Imports NextAuth
 import { useSession } from "next-auth/react"
 
 // Import Icons
-import { IoLocationOutline, IoHappyOutline } from 'react-icons/io5'
 import { infoUser } from '@utils/userContext'
 import ProfileSidebar from './ProfileSidebar'
 import PostCreator from './PostCreator';
@@ -24,19 +21,12 @@ const Feed = ({ data }) => {
   const { premiumInfo } = infoUser()
   const { data: session, status } = useSession()
 
-  const [post, setPost] = useState("")
   const [postagens, setPostagens] = useState([])
-  const [photo, setPhoto] = useState("")
 
-  const fetchData = async () => {
-    try { 
+  const fetchData = async (id) => {
+    try {
       console.log("A")
-      const answer = await fetch(`/api/posts?timestamp=${new Date().getTime()}`, {
-        method: "GET",
-        headers: {
-          "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate"
-        }
-      })
+      const answer = await fetch(`/api/posts/${id}`)
       console.log("B")
       const data = await answer.json()
       console.log("C")
@@ -44,14 +34,32 @@ const Feed = ({ data }) => {
       console.log("D")
     } catch (error) {
       console.log(error)
+      toast.error("Não foi possível atualizar o Feed")
     }
+    // try {
+    //   console.log("A")
+    //   const answer = await fetch(`/api/posts?timestamp=${new Date().getTime()}`, {
+    //     method: "GET",
+    //     headers: {
+    //       "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate"
+    //     }
+    //   })
+    //   console.log("B")
+    //   const data = await answer.json()
+    //   console.log("C")
+    //   setPostagens(data)
+    //   console.log("D")
+    // } catch (error) {
+    //   console.log(error)
+    //   toast.error("Não foi possível atualizar o Feed")
+    // }
   }
 
   useEffect(() => {
-    if (status === "authenticated") {
-      fetchData()
+    if (status === "authenticated" && session?.user?.id !== undefined && data._id !== undefined) {
+      fetchData(data._id)
     }
-  }, [status])
+  }, [status, session, data._id])
 
   const container = {
     hidden: { opacity: 1, scale: 0 },
@@ -100,20 +108,8 @@ const Feed = ({ data }) => {
       <div className='posts-container'>
 
         <div className='top-posts-container'>
-          <div className='write-posts-container'>
-            <img src={data.foto} className='very-small-rounded-photo post-photo-profile' alt='photo-post' />
-            <input type="text" name="post-something" id="post-something" placeholder='Faça uma postagem' className='post-something' spellCheck="false" autoComplete='off' onChange={(e) => setPost(e.target.value)} value={post} />
-          </div>
 
-          {photo !== "" ? (
-            <div className='image-post margin-top'>
-              <img src={photo} alt="Visualization Post Photo" className='image-post-photo' />
-            </div>
-          ) : (
-            <></>
-          )}
-
-          <PostCreator fetchData={fetchData} setPost={setPost} setPhoto={setPhoto} photo={photo} post={post} />
+          <PostCreator fetchData={fetchData} />
         </div>
 
         {postagens.length > 0 ? (
