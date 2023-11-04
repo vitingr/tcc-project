@@ -25,34 +25,12 @@ const Feed = ({ data }) => {
 
   const fetchData = async (id) => {
     try {
-      console.log("A")
       const answer = await fetch(`/api/posts/${id}`)
-      console.log("B")
       const data = await answer.json()
-      console.log("C")
       setPostagens(data)
-      console.log("D")
     } catch (error) {
       console.log(error)
-      toast.error("Não foi possível atualizar o Feed")
     }
-    // try {
-    //   console.log("A")
-    //   const answer = await fetch(`/api/posts?timestamp=${new Date().getTime()}`, {
-    //     method: "GET",
-    //     headers: {
-    //       "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate"
-    //     }
-    //   })
-    //   console.log("B")
-    //   const data = await answer.json()
-    //   console.log("C")
-    //   setPostagens(data)
-    //   console.log("D")
-    // } catch (error) {
-    //   console.log(error)
-    //   toast.error("Não foi possível atualizar o Feed")
-    // }
   }
 
   useEffect(() => {

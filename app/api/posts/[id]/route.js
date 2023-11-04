@@ -6,7 +6,8 @@ export const GET = async (request, {params}) => {
 
         await ConnectToDB()
 
-        const posts = await Postagem.find({dono: {$ne: params.id}}).sort({data: 'desc'})
+        // const posts = await Postagem.find({dono: {$ne: params.id}}).sort({data: 'desc'})
+        const posts = await Postagem.find().sort({data: 'desc'})
 
         return new Response(JSON.stringify(posts), {status: 200})
 
