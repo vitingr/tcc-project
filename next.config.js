@@ -25,6 +25,15 @@ const nextConfig = {
             },
           ],
         },
+        {
+            source: '/api/posts',
+            headers: [
+              {
+                key: 'Cache-Control',
+                value: 'no-store',
+              },
+            ],
+          },
       ],
 }
 
