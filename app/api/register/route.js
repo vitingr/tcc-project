@@ -29,7 +29,7 @@ export const POST = async (request) => {
           preferencia_emprego: "",
           procurando_emprego: "",
           escola: "",
-          amigos: "",
+          amigos: "",   
           amigos_pendentes: "",
           notificacoes: 0,
           paginas: "",

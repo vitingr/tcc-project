@@ -70,7 +70,7 @@ const page = () => {
       <LoginMessage />
       <div className='register-login-left-container'>
         <div className='register-login-left center'>
-          <h3>Já é faz parte?</h3>
+          <h3>Já faz parte?</h3>
           <p>
             Faça login na nossa plataforma para explorar as mais diversas oportunidade e conecte-se com outras pessoas!
           </p>

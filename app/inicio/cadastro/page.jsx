@@ -38,18 +38,15 @@ const page = () => {
           method: "POST",
           body: JSON.stringify({ data: data })
         })
-
-        console.log(response)
-
         if (response.ok) {
+          console.log("Usuário foi adicionado")
           toast.success("SUCESSO! A conta foi criada")
-          router.push("/")
           setSubmitting(false)
+          router.push("/")
         } else {
           toast.error("ERRO! Não foi possível criar a conta")
         }
     }
-
   }
 
   const setUpProviders = async () => {
@@ -76,9 +73,10 @@ const page = () => {
           </p>
         </div>
         <div className='register-login-right'>
-          <form onSubmit={async () => {
-            await registerUser()
+          <form onSubmit={async (e) => {
+            e.preventDefault()
             setSubmitting(true)
+            await registerUser()
           }}>
             <h2>Registrar</h2>
             <p>
