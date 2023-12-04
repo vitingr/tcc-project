@@ -45,9 +45,6 @@ const Post = ({ post, fetchData }) => {
 					<p>{post.data}</p>
 				</div>
 			</div>
-			<div className='content-post'>
-				{post.conteudo}
-			</div>
 			{post.fotos ? (
 				<div className='image-post'>
 					<img src={post.fotos} className='image-post-photo' alt="photo-post" />
@@ -58,13 +55,13 @@ const Post = ({ post, fetchData }) => {
 			<div className='post-actions'>
 				<div className='post-icons'>
 					{post.idsCurtidas ? (
-						<div className='post-icon icon-cursor' onClick={() => likePost(post._id)}><IoHeart size={18} className="pink-icon" /></div>
+						<div className='post-icon icon-cursor' onClick={() => likePost(post._id)}><IoHeart size={20} className="pink-icon" /></div>
 					) : (
-						<div className='post-icon icon-cursor' onClick={() => likePost(post._id)}><IoHeartOutline size={18} /></div>
+						<div className='post-icon icon-cursor' onClick={() => likePost(post._id)}><IoHeartOutline size={20} /></div>
 					)}
-					<div className='post-icon icon-cursor'><IoChatbubblesOutline size={18} /></div>
-					<div className='post-icon icon-cursor'><IoSendOutline size={18} /></div>
-					<div className='post-icon icon-cursor'><IoShareSocialOutline size={18} /></div>
+					<div className='post-icon icon-cursor'><IoChatbubblesOutline size={20} /></div>
+					<div className='post-icon icon-cursor'><IoSendOutline size={20} /></div>
+					<div className='post-icon icon-cursor'><IoShareSocialOutline size={20} /></div>
 				</div>
 				<div>
 					<p className='post-likes icon-cursor'>
@@ -72,6 +69,9 @@ const Post = ({ post, fetchData }) => {
 					</p>
 				</div>
 			</div>
+			<p className='content-post'>
+				<span>{post.nomeDono}:</span> {post.conteudo}
+			</p>
 		</div>
 	)
 }

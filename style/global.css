@@ -1505,7 +1505,7 @@ html {
 /* -=-=- POST CONTAINER -=-=- */
 
 .post-container {
-	padding: 10px;
+	padding: 0px;
 	border-radius: 10px;
 	background: var(--container-color);
 	margin-bottom: 10px;
@@ -1514,7 +1514,7 @@ html {
 .top-post-container {
 	display: flex;
 	gap: 10px;
-	margin-bottom: 25px;
+	margin-bottom: 10px;
 	padding: 20px 20px 0px 20px;
 }
 
@@ -1524,14 +1524,20 @@ html {
 }
 
 .content-post {
-	padding: 0px 20px 0px 20px;
+	padding: 0px 20px 40px 20px;
 	font-size: 13px;
 	margin-bottom: 20px;
+	text-align: justify;
+}
+
+.content-post span {
+	font-size: 13px;
+	font-weight: bold;
 }
 
 .image-post {
 	width: 100%;
-	margin-bottom: 25px;
+	margin-bottom: 5px;
 }
 
 .image-post-photo {
@@ -1562,6 +1568,7 @@ html {
 }
 
 .post-likes {
+	font-size: 14px;
 	transition-timing-function: ease-in-out;
 	transition-duration: 0.3s;
 	font-size: 12px;
@@ -2946,6 +2953,7 @@ input:checked+.slider:before {
 }
 
 .info-home-profile-menu {
+	box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow);
 	padding: 5px 15px 35px 15px;
 }
 
@@ -3288,6 +3296,34 @@ input:checked+.slider:before {
 
 @media (max-width: 650px) {
 
+	.post-likes {
+		font-size: 12px;
+	}
+
+	.top-posts-container {
+		padding: 20px;
+	}
+
+	:root {
+		--container-color: #fefefe;
+	}
+
+	.image-post-photo {
+		border-radius: 0px;
+	}
+
+	.post-creator-info h3 {
+		font-size: 13px;
+	}
+
+	.top-post-container p {
+		font-size: 11px;
+	}
+
+	.top-post-container {
+		padding: 10px 10px 0px 10px;
+	}
+
 	.register-login-container {
 		padding: 0;
 	}
@@ -3297,6 +3333,8 @@ input:checked+.slider:before {
 	}
 
 	.home-profile-menu {
+		box-shadow: 1px solid #333;
+		border-radius: 20px;
 		right: 2%;
 	}
 
@@ -3310,7 +3348,8 @@ input:checked+.slider:before {
 	}
 
 	.main-container {
-		padding: 10% 1%;
+		background: #fefefe;
+		padding: 10% 0%;
 	}
 
 	.friends-options {
@@ -3465,10 +3504,6 @@ input:checked+.slider:before {
 
 	.interest-flex {
 		flex-wrap: wrap;
-	}
-
-	.post-container {
-		padding: 0;
 	}
 
 	.nav-content {

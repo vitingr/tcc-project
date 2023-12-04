@@ -6,6 +6,11 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { driver } from "driver.js";
 import "driver.js/dist/driver.css";
+import { VscSignOut } from "react-icons/vsc";
+import { AiOutlineHeart } from 'react-icons/ai'
+import { BsPeople } from "react-icons/bs";
+import { AiOutlineBarChart } from "react-icons/ai";
+import { IoSettingsOutline } from "react-icons/io5";
 
 // Imports NextAuth
 import { signOut, useSession } from "next-auth/react"
@@ -99,7 +104,7 @@ const Navbar = () => {
 								<input type="text" id="search-items" name="search-items" placeholder='Buscar' onChange={(e) => setSearchText(e.target.value)} required />
 							</div>
 						</form>
-					</div>
+					</div>   
 
 					<div className='nav-content'>
 						<ul className='nav-list'>
@@ -186,7 +191,7 @@ const Navbar = () => {
 								<div className='home-options-menu'>
 									<Link href="/usuario/amigos" onClick={() => setIsMenuOpen(!isMenuOpen)}>
 										<li className='icon-cursor'>
-											<div className='center'><IoPeopleSharp size={22.5} /></div>
+											<div className='center'><BsPeople size={22.5} /></div>
 											<div>Ver amizades</div>
 										</li>
 									</Link>
@@ -198,17 +203,21 @@ const Navbar = () => {
 									</Link>
 									<Link href="/usuario/profile" onClick={() => setIsMenuOpen(!isMenuOpen)}>
 										<li className='icon-cursor'>
-											<div className='center'><IoPencilOutline size={22.5} /></div>
+											<div className='center'><IoSettingsOutline size={22.5} /></div>
 											<div>Editar perfil</div>
 										</li>
 									</Link>
 									<li className='icon-cursor' onClick={() => setIsMenuOpen(!isMenuOpen)}>
-										<div className='center'><IoThumbsUpSharp size={22.5} /></div>
+										<div className='center'><AiOutlineHeart size={22.5} /></div>
 										<div>Minhas curtidas</div>
 									</li>
 									<li className='icon-cursor' onClick={() => setIsMenuOpen(!isMenuOpen)}>
-										<div className='center'><IoPodiumSharp size={22.5} /></div>
+										<div className='center'><AiOutlineBarChart size={22.5} /></div>
 										<div className='center'>Atividade perfil</div>
+									</li>
+									<li className='icon-cursor' onClick={() => signOut()}>
+										<div className='center'><VscSignOut size={22.5} /></div>
+										<div className='center'>Sair</div>
 									</li>
 								</div>
 							</div>

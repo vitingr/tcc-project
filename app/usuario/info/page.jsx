@@ -19,7 +19,7 @@ import Loader from '@components/Others/Loader'
 
 const AditionalInfoContainer = () => {
 
-  const { data } = infoUser()
+  const { data, getInfo } = infoUser()
   const router = useRouter()
   const [step, setStep] = useState(1)
 
@@ -66,6 +66,7 @@ const AditionalInfoContainer = () => {
         })
 
         if (response.ok) {
+          await getInfo()
           toast.success("Perfil Atualizado com sucesso!")
           router.push("/usuario/feed")
         } else {
