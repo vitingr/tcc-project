@@ -30,19 +30,19 @@ const Navbar = () => {
 	// }
 
 	const driverObj = driver({
-    showProgress: true,
-    popoverClass: 'driverjs-theme',
-    steps: [
-      // { element: '#home', popover: { title: 'Conheça nosso menu', description: 'Apresentaremos a você todas as funcionalidades de nosso site! Esperamos que você goste e aproveite ao máximo', side: "left", align: 'start' } },
+		showProgress: true,
+		popoverClass: 'driverjs-theme',
+		steps: [
+			// { element: '#home', popover: { title: 'Conheça nosso menu', description: 'Apresentaremos a você todas as funcionalidades de nosso site! Esperamos que você goste e aproveite ao máximo', side: "left", align: 'start' } },
 			{ element: '#home', popover: { title: 'Menu Inicial', description: 'Esse é o nosso menu inicial, aqui você pode ver as mais recentes postagens, vagas de emprego, e algumas informações pessoais básicas.', side: "left", align: 'start' } },
-      { element: '#network', popover: { title: 'Sua rede de Amigos', description: 'Aqui é possível consultar as suas conexões e amizades realizadas dentro de nossa plataforma', side: "bottom", align: 'start' } },
-      { element: '#jobs', popover: { title: 'Vagas de Emprego', description: 'Aqui você pode buscar uma vaga específica explorar e encontrar as oportunidades que mais se assemelham ao seu perfil profissional!', side: "bottom", align: 'start' } },
-      { element: '#notifications', popover: { title: 'Suas notificações', description: 'Veja quem enviou um convite de conexão ou qual amigo realizou alguma publicação recente.', side: "bottom", align: 'start' } },
-      { element: '#settings', popover: { title: 'Configurações', description: 'Aqui você ver suas informações, alterar configurações visuais e recursos de acessibilidade, e muito mais referente a customização!', side: "bottom", align: 'start' } },
-      { element: '#news', popover: { title: 'Notícias e Artigos', description: 'Aqui você pode conferir as notícias do momento, além de alguns artigos e dicas relacionados com o mercado de trabalho para mulheres, além de treinamentos extremamente úteis para impulsionar a sua carreira profissional.', side: "right", align: 'start' } },
-      { popover: { title: 'Desfrute ao máximo!', description: 'E é isso! Explore as mais diversas variedades de pratos e restaurantes, desejamos uma boa experiência.' } }
-    ]
-  })
+			{ element: '#network', popover: { title: 'Sua rede de Amigos', description: 'Aqui é possível consultar as suas conexões e amizades realizadas dentro de nossa plataforma', side: "bottom", align: 'start' } },
+			{ element: '#jobs', popover: { title: 'Vagas de Emprego', description: 'Aqui você pode buscar uma vaga específica explorar e encontrar as oportunidades que mais se assemelham ao seu perfil profissional!', side: "bottom", align: 'start' } },
+			{ element: '#notifications', popover: { title: 'Suas notificações', description: 'Veja quem enviou um convite de conexão ou qual amigo realizou alguma publicação recente.', side: "bottom", align: 'start' } },
+			{ element: '#settings', popover: { title: 'Configurações', description: 'Aqui você ver suas informações, alterar configurações visuais e recursos de acessibilidade, e muito mais referente a customização!', side: "bottom", align: 'start' } },
+			{ element: '#news', popover: { title: 'Notícias e Artigos', description: 'Aqui você pode conferir as notícias do momento, além de alguns artigos e dicas relacionados com o mercado de trabalho para mulheres, além de treinamentos extremamente úteis para impulsionar a sua carreira profissional.', side: "right", align: 'start' } },
+			{ popover: { title: 'Desfrute ao máximo!', description: 'E é isso! Explore as mais diversas variedades de pratos e restaurantes, desejamos uma boa experiência.' } }
+		]
+	})
 
 	const viewMenu = async () => {
 		try {
@@ -66,8 +66,10 @@ const Navbar = () => {
 
 	useEffect(() => {
 		if (data._id !== undefined && data.novoUsuario === 1) {
-			viewMenu() 
-			driverObj.drive()
+			if (data.cargo_atual != "" || data.ultima_empresa != "" || data.ultimo_contrato != "" || data.area != "" || data.procurando_emprego != "" && status != "authenticated") {
+				viewMenu()
+				driverObj.drive()
+			}
 		}
 	}, [data])
 

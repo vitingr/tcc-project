@@ -49,7 +49,10 @@ const InfoForm = ({ children, step, setStep, handleClick, verify, share, setShar
           </div>
         )}
         <div className='info-form-inputs'>
-          <form onSubmit={(e) => handleClick(e)}>
+          <form onSubmit={async (e) => {
+            e.preventDefault()
+            await handleClick(e)
+          }}>
             {children}
             <div className='info-form-buttons'>
               {step == 1 ? (
