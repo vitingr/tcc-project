@@ -40,14 +40,19 @@ const page = () => {
       })
 
       if (response.error === "CredentialsSignin") {
+        setSubmiting(false)
         toast.error("ERRO! Credenciais incorretas")
       }
 
       if (response.ok) {
         setSubmiting(false)
+      } else {
+        setSubmiting(false)
+        toast.error("Houve um problema no servidor")
       }
 
     } else {
+      setSubmiting(false)
       toast.error("ERRO! Informe a senha")
     }
   }

@@ -42,8 +42,12 @@ const page = () => {
         setSubmitting(false)
         router.push("/")
       } else {
+        setSubmitting(false)
         toast.error("ERRO! Não foi possível criar a conta")
       }
+    } else {
+      setSubmitting(false)
+      toast.error("As senhas estão diferentes")
     }
   }
 
