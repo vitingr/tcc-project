@@ -17,11 +17,10 @@ import { signIn, useSession, getProviders } from "next-auth/react";
 import { IoMailSharp, IoLockClosed, IoPersonSharp, IoLogoGoogle, IoLogoFacebook } from 'react-icons/io5'
 
 const page = () => {
-
-  const { data: session } = useSession();
+  const { data: session } = useSession()
   const router = useRouter()
 
-  const [providers, setProviders] = useState(null);
+  const [providers, setProviders] = useState(null)
   const [submitting, setSubmitting] = useState(false)
 
   const [data, setData] = useState({
@@ -34,18 +33,17 @@ const page = () => {
 
   const registerUser = async () => {
     if (data.password === passwordConfirm) {
-        const response = await fetch("/api/register", {
-          method: "POST",
-          body: JSON.stringify({ data: data })
-        })
-        if (response.ok) {
-          console.log("Usuário foi adicionado")
-          toast.success("SUCESSO! A conta foi criada")
-          setSubmitting(false)
-          router.push("/")
-        } else {
-          toast.error("ERRO! Não foi possível criar a conta")
-        }
+      const response = await fetch("/api/register", {
+        method: "POST",
+        body: JSON.stringify({ data: data })
+      })
+      if (response.ok) {
+        toast.success("SUCESSO! A conta foi criada")
+        setSubmitting(false)
+        router.push("/")
+      } else {
+        toast.error("ERRO! Não foi possível criar a conta")
+      }
     }
   }
 
@@ -58,8 +56,7 @@ const page = () => {
     setUpProviders()
     if (session) {
       router.push("/usuario/feed")
-    }
-
+    }   
   }, [session])
 
   return (

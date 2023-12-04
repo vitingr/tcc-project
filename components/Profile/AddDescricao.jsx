@@ -53,10 +53,7 @@ const AddDescricao = ({ data, handleClick }) => {
       <ToastMessage />
       <form>
         <div className='input-add-container'>
-          <p>Empresa <span className="pink-span">*</span></p>
-          {/* <textarea name="resumo" id="resumo" cols="30" rows="20" placeholder="Sua descrição aqui" autoComplete='off' onChange={(e) => setDescricao(e.target.value)} className='add-input' value={descricao} required>
-          
-          </textarea> */}
+          <p>A sua descrição <span className="pink-span">*</span></p>
           <TextEditor value={descricao} setValue={setDescricao} />
         </div>
         <button type="submit" className='add-button center' onClick={(e) => createResumo(e)}>

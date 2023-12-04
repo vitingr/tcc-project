@@ -1,9 +1,11 @@
 "use client"
 
 // Imports React
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { driver } from "driver.js";
+import "driver.js/dist/driver.css";
 
 // Imports NextAuth
 import { signOut, useSession } from "next-auth/react"
@@ -15,7 +17,7 @@ import { infoUser } from '@utils/userContext'
 const Navbar = () => {
 
 	const { data: session } = useSession()
-	const { data, premiumInfo } = infoUser()
+	const { data, getInfo, premiumInfo } = infoUser()
 	const router = useRouter()
 
 	const [searchText, setSearchText] = useState("")
@@ -26,6 +28,48 @@ const Navbar = () => {
 	// 	const query = searchText.replace(" ", "-")
 	// 	router.push(`/usuario/search/${query}`)
 	// }
+
+	const driverObj = driver({
+    showProgress: true,
+    popoverClass: 'driverjs-theme',
+    steps: [
+      // { element: '#home', popover: { title: 'Conheça nosso menu', description: 'Apresentaremos a você todas as funcionalidades de nosso site! Esperamos que você goste e aproveite ao máximo', side: "left", align: 'start' } },
+			{ element: '#home', popover: { title: 'Menu Inicial', description: 'Esse é o nosso menu inicial, aqui você pode ver as mais recentes postagens, vagas de emprego, e algumas informações pessoais básicas.', side: "left", align: 'start' } },
+      { element: '#network', popover: { title: 'Sua rede de Amigos', description: 'Aqui é possível consultar as suas conexões e amizades realizadas dentro de nossa plataforma', side: "bottom", align: 'start' } },
+      { element: '#jobs', popover: { title: 'Vagas de Emprego', description: 'Aqui você pode buscar uma vaga específica explorar e encontrar as oportunidades que mais se assemelham ao seu perfil profissional!', side: "bottom", align: 'start' } },
+      { element: '#notifications', popover: { title: 'Suas notificações', description: 'Veja quem enviou um convite de conexão ou qual amigo realizou alguma publicação recente.', side: "bottom", align: 'start' } },
+      { element: '#settings', popover: { title: 'Configurações', description: 'Aqui você ver suas informações, alterar configurações visuais e recursos de acessibilidade, e muito mais referente a customização!', side: "bottom", align: 'start' } },
+      { element: '#news', popover: { title: 'Notícias e Artigos', description: 'Aqui você pode conferir as notícias do momento, além de alguns artigos e dicas relacionados com o mercado de trabalho para mulheres, além de treinamentos extremamente úteis para impulsionar a sua carreira profissional.', side: "right", align: 'start' } },
+      { popover: { title: 'Desfrute ao máximo!', description: 'E é isso! Explore as mais diversas variedades de pratos e restaurantes, desejamos uma boa experiência.' } }
+    ]
+  })
+
+	const viewMenu = async () => {
+		try {
+			const response = await fetch("/api/user/SeeDriver", {
+				method: "POST",
+				body: JSON.stringify({
+					userId: data._id
+				})
+			})
+			console.log(response)
+			if (response.ok) {
+				console.log("Perfil visto")
+				getInfo()
+			} else {
+				console.log("erro")
+			}
+		} catch (error) {
+			console.log(error)
+		}
+	}
+
+	useEffect(() => {
+		if (data._id !== undefined && data.novoUsuario === 1) {
+			viewMenu() 
+			driverObj.drive()
+		}
+	}, [data])
 
 	return (
 		<header className='header'>
@@ -40,9 +84,9 @@ const Navbar = () => {
 					</div>
 
 					<div className='search-container'>
-						<Link href="/usuario/feed">
-							<img src="https://i.pinimg.com/736x/3d/37/60/3d3760207a12e626f1149118404e003d.jpg" alt="logo" className='search-logo' />
-						</Link>
+						{/* <Link href="/usuario/feed">
+							<img src="https://www.brandbucket.com/sites/default/files/logo_uploads/464455/large_alpworks.png" alt="logo" className='search-logo' />
+						</Link> */}
 						<form className='search-content'>
 							<div className='search-content'>
 								<Link href={`/usuario/search/${searchText}`}>
@@ -57,25 +101,25 @@ const Navbar = () => {
 
 					<div className='nav-content'>
 						<ul className='nav-list'>
-							<li>
+							<li id='home'>
 								<Link href="/usuario/feed" className='link-nav center'>
 									<div><IoHomeSharp size={17.5} /></div>
 									<p>Início</p>
 								</Link>
 							</li>
-							<li>
+							<li id='network'>
 								<Link href="/usuario/amigos" className='link-nav center'>
 									<div><IoGitNetwork size={17.5} /></div>
 									<p>Network</p>
 								</Link>
 							</li>
-							<li>
+							<li id='jobs'>
 								<Link href="/usuario/empregos" className='link-nav center'>
 									<div><IoBriefcaseSharp size={17.5} /></div>
 									<p>Emprego</p>
 								</Link>
 							</li>
-							<li>
+							<li id='notifications'>
 								<Link href="/usuario/notificacoes" className='link-nav center'>
 									<div><IoNotifications size={17.5} /></div>
 									<p>Notif.</p>
@@ -84,13 +128,13 @@ const Navbar = () => {
 									</div>
 								</Link>
 							</li>
-							<li className="settings">
+							<li className="settings" id='settings'>
 								<Link href="/usuario/settings" className='link-nav center'>
 									<div><IoSettingsSharp size={17.5} /></div>
 									<p>Settings</p>
 								</Link>
 							</li>
-							<li>
+							<li id='news'>
 								<Link href="#" className='link-nav center'>
 									<div><IoNewspaper size={17.5} /></div>
 									<p>News</p>

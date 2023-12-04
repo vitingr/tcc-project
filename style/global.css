@@ -3064,6 +3064,103 @@ input:checked+.slider:before {
 	background-size: 300%;
 }
 
+/* -=-=- DRIVER CONFIGURATION -=-=- */
+
+.driver-popover {
+	max-width: 450px;
+}
+
+.driver-popover.driverjs-theme {
+	background-color: white;
+	color: #3e3e3e;
+	padding: 50px;
+}
+
+.driver-popover {
+	max-width: 500px !important;
+}
+
+.driver-popover.driverjs-theme .driver-popover-title {
+	font-size: 25px;
+	text-align: center;
+}
+
+.driver-popover.driverjs-theme .driver-popover-description {
+	color: #717171;
+	font-size: 15px;
+	margin-top: 20px;
+}
+
+.driver-popover-progress-text {
+	display: none !important;
+}
+
+.driver-popover.driverjs-theme button {
+	flex: 1;
+	text-align: center;
+	color: #3e3e3e;
+	font-size: 24px;
+	padding: 5px 8px;
+	border-radius: 6px;
+}
+
+.driver-popover-navigation-btns {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	margin-top: 25px;
+}
+
+.driver-popover-prev-btn {
+	width: 100px !important;
+	background: white !important;
+	color: var(--color2) !important;
+	font-size: 17.5px !important;
+	text-shadow: none !important;
+}
+
+.driver-popover-next-btn {
+	width: 100px !important;
+	background: var(--color2) !important;
+	color: white !important;
+	font-size: 17.5px !important;
+	text-shadow: none !important;
+}
+
+.driver-popover.driverjs-theme .driver-popover-navigation-btns {
+	justify-content: space-between;
+	gap: 3px;
+}
+
+.driver-popover.driverjs-theme .driver-popover-close-btn {
+	color: #9b9b9b;
+}
+
+.driver-popover.driverjs-theme .driver-popover-close-btn:hover {
+	color: #3e3e3e;
+}
+
+.driver-popover.driverjs-theme .driver-popover-arrow-side-left.driver-popover-arrow {
+	border-left-color: white;
+}
+
+.driver-popover.driverjs-theme .driver-popover-arrow-side-right.driver-popover-arrow {
+	border-right-color: white;
+}
+
+.driver-popover.driverjs-theme .driver-popover-arrow-side-top.driver-popover-arrow {
+	border-top-color: white;
+}
+
+.driver-popover.driverjs-theme .driver-popover-arrow-side-bottom.driver-popover-arrow {
+	border-bottom-color: white;
+}
+
+.driver-popover-footer {
+	display: flex;
+	flex-direction: column;
+}
+
 /* -=-=- ANIMAÇÕES -=-=- */
 
 @keyframes gradiente {

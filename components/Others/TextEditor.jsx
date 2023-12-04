@@ -15,10 +15,8 @@ const TextEditor = ({value, setValue}) => {
 			<Editor
 				apiKey='6espmx3caysbp4lgeuk7j57elnl47badfrzwxrnl2f71hirk'
 				onInit={(evt, editor) => editorRef.current = editor}
-				initialValue={value}
-				onEditorChange={(newValue) => {
-					setValue(newValue);
-				}}
+				value={value}
+				onEditorChange={(newValue) => setValue(newValue)}
 				init={{
 					height: 500,
 					menubar: false,

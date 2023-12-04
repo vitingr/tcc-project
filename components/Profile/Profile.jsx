@@ -52,11 +52,11 @@ const profile = ({ content, showAddExperience, showAddCertificado, showEditProfi
               {content.headline ? (
                 <div className='info-section'>
                   <IoNewspaperOutline size={15} />
-                  {content.headline} Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi corrupti illum dolore, tenetur, nam distinctio suscipit magnam saepe et ratione atque necessitatibus dolorum id iure, sequi eos numquam expedita adipisci?
+                  {content.headline}
                 </div>
               ) : (
                 <div className="info-section">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi corrupti illum dolore, tenetur, nam distinctio suscipit magnam saepe et ratione atque necessitatibus dolorum id iure, sequi eos numquam expedita adipisci?
+                  Olá! me chamo {content.nomeCompleto}! Estou ingressando agora na plataforma, gostaria de compartilhar minhas habilidades técnicas e profissionais com todos os profissionais da plataforma, vamos nos conectar?
                 </div>
               )}
 

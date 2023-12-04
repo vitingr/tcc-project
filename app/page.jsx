@@ -114,10 +114,10 @@ const page = () => {
                   </>
                 ))}
             </>
-            <div className="register-login-icon icon-cursor">
+            {/* <div className="register-login-icon icon-cursor">
               <IoLogoFacebook size={25} />
               Entrar com Facebook
-            </div>
+            </div> */}
           </div>
           <div className='register-login-more'>
             <Link href="/inicio/cadastro">
