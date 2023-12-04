@@ -14,7 +14,7 @@ export const POST = async (request) => {
     if (user) {
       user.save()
       return new Response("Usuário atualizado com sucesso!", { status: 200 })
-    } else {
+    } else {  
       return new Response(`Não foi possível encontrar o usuário. ${error}`, { status: 500 })
     }
   } catch (error) {

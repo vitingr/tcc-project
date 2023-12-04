@@ -357,7 +357,12 @@ html {
 	border-radius: 5px;
 }
 
+.link-nav:hover {
+	transform: rotate(7.5deg);
+}
+
 .link-nav div {
+
 	max-height: 20px;
 }
 
