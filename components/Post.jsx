@@ -33,7 +33,7 @@ const Post = ({ post, fetchData }) => {
 			}
 		}
 	}
-
+   
 	return (
 		<div className='post-container'>
 			<div className='top-post-container'>
@@ -54,7 +54,7 @@ const Post = ({ post, fetchData }) => {
 			)}
 			<div className='post-actions'>
 				<div className='post-icons'>
-					{post.idsCurtidas ? (
+					{post.idsCurtidas.includes(data._id) ? (
 						<div className='post-icon icon-cursor' onClick={() => likePost(post._id)}><IoHeart size={20} className="pink-icon" /></div>
 					) : (
 						<div className='post-icon icon-cursor' onClick={() => likePost(post._id)}><IoHeartOutline size={20} /></div>
